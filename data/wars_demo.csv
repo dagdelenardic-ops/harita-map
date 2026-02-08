@@ -1,0 +1,5 @@
+country,iso2,war_name,start_year,end_year,opponents,theater,outcome,is_current,arrow_label,summary_1_2_sentences
+Türkiye,TR,Türk Kurtuluş Savaşı,1919,1922,Yunanistan ve İtilaf güçleri,Anadolu,zafer,false,Kurtuluş (1919–1922),Bağımsızlık mücadelesi; yeni devletin kuruluş sürecini belirledi.
+Türkiye,TR,Kıbrıs Harekâtı,1974,1974,Kıbrıs Rum güçleri (dolaylı Yunanistan),Doğu Akdeniz,ateşkes/fiili bölünme,false,Kıbrıs (1974),Ada’da fiili bölünmeye giden askeri müdahale.
+Ukrayna,UA,Rusya-Ukrayna Savaşı,2014,present,Rusya,Doğu Avrupa,devam,true,RU-UA (2014–),2014’te başlayan süreç 2022’de geniş çaplı savaşa dönüştü; halen sürüyor.
+Yunanistan,GR,Yunan-Türk Savaşı (1919–1922),1919,1922,Türkiye (TBMM kuvvetleri),Anadolu,yenilgi,false,Anadolu (1919–22),İzmir çıkarmasıyla başlayan ve 1922’de sona eren sefer.

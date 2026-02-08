@@ -1,0 +1,61 @@
+region,country,event,category,year,year_start,year_end,decade,summary
+Asya,Moğolistan,Moğol Devrimi,Devrim/Rejim Değişikliği,1921,1921,1921,1920,Çin işgalinin sonu ve bağımsız modern devletin kuruluşu.
+Asya,Moğolistan,BM Üyeliği,Devrim/Rejim Değişikliği,1961,1961,1961,1960,Uluslararası tanınırlığın pekişmesi.
+Asya,Moğolistan,Komünist Rejimin Sonu,Devrim/Rejim Değişikliği,1990,1990,1990,1990,Tek parti iktidarının kansız devrimle sona ermesi.
+Asya,Moğolistan,Erdenet Madeni,Ekonomi,1978,1978,2024,1970,Asya'nın en büyük bakır madenlerinden birinin açılışı.
+Asya,Moğolistan,Cengiz Han Havalimanı,Kültür & Toplum,2021,2021,2021,2020,Yeni uluslararası havalimanının açılışı.
+Asya,Moğolistan,Papa Ziyareti,Kültür & Toplum,2023,2023,2023,2020,Papa Francis'in tarihi ziyareti.
+Asya,Moğolistan,Kömür Protestoları,Devrim/Rejim Değişikliği,2022,2022,2022,2020,Yolsuzluk iddiaları nedeniyle başkentte büyük gösteriler.
+Asya,Moğolistan,İlk Uydu (MongolZat-1),Kültür & Toplum,2017,2017,2017,2010,Uzay çağına giriş.
+Asya,Moğolistan,Rusya-Çin Doğalgaz Boru Hattı,Ekonomi,2019,2019,2024,2010,Transit ülke olarak stratejik önem kazanması.
+Asya,Moğolistan,Demokratik Anayasa,Devrim/Rejim Değişikliği,1992,1992,1992,1990,Çok partili sisteme geçişin anayasal zemini.
+Okyanusya,Papua Yeni Gine,Bağımsızlık,Devrim/Rejim Değişikliği,1975,1975,1975,1970,Avustralya yönetiminden barışçıl ayrılma.
+Okyanusya,Papua Yeni Gine,Bougainville İç Savaşı,Savaş/Çatışma,1988,1988,1998,1980,Bakır madeni kaynaklı ayrılıkçı isyan.
+Okyanusya,Papua Yeni Gine,Bougainville Barış Anlaşması,Devrim/Rejim Değişikliği,2001,2001,2001,2000,Özerklik ve bağımsızlık referandumu sözü.
+Okyanusya,Papua Yeni Gine,2019 Bağımsızlık Referandumu,Devrim/Rejim Değişikliği,2019,2019,2019,2010,Bougainville halkının %98 oyla bağımsızlığı seçmesi.
+Okyanusya,Papua Yeni Gine,APEC Zirvesi,Devrim/Rejim Değişikliği,2018,2018,2018,2010,Port Moresby'de küresel liderlerin ağırlanması (Maserati skandalı).
+Okyanusya,Papua Yeni Gine,Enga Toprak Kayması,Kültür & Toplum,2024,2024,2024,2020,Yüzlerce kişinin öldüğü büyük doğal afet.
+Okyanusya,Papua Yeni Gine,Kabile Çatışmaları (Highlands),Savaş/Çatışma,2023,2023,2024,2020,Modern silahlarla artan kabile şiddeti.
+Okyanusya,Papua Yeni Gine,ABD Savunma Anlaşması,Savaş/Çatışma,2023,2023,2023,2020,Pasifik jeopolitiğinde ABD ile yakınlaşma.
+Okyanusya,Papua Yeni Gine,Marape Hükümeti,Önemli Lider,2019,2019,2024,2010,James Marape'nin başbakanlığı ve "En zengin siyah Hıristiyan ulus" vizyonu.
+Okyanusya,Papua Yeni Gine,Sandline Olayı,Savaş/Çatışma,1997,1997,1997,1990,Paralı asker kullanımına karşı ordunun isyanı.
+Okyanusya,Yeni Zelanda,Waitangi Günü Resmi Tatili,Kültür & Toplum,1974,1974,1974,1970,Kurucu antlaşma gününün ulusal bayram olması.
+Okyanusya,Yeni Zelanda,Nükleersiz Bölge İlanı,Savaş/Çatışma,1987,1987,1987,1980,ABD donanmasının limanlara girişinin yasaklanması.
+Okyanusya,Yeni Zelanda,Rainbow Warrior Batırılması,Terör Saldırısı,1985,1985,1985,1980,Fransız istihbaratının Greenpeace gemisine saldırısı.
+Okyanusya,Yeni Zelanda,Yüzüklerin Efendisi Çekimleri,Kültür & Toplum,2001,2001,2003,2000,Ülke turizmini dönüştüren film serisi.
+Okyanusya,Yeni Zelanda,Christchurch Depremi,Kültür & Toplum,2011,2011,2011,2010,Büyük yıkım ve can kaybı.
+Okyanusya,Yeni Zelanda,Christchurch Camii Saldırısı,Terör Saldırısı,2019,2019,2019,2010,51 kişinin öldüğü ırkçı terör eylemi.
+Okyanusya,Yeni Zelanda,Jacinda Ardern Dönemi,Önemli Lider,2017,2017,2023,2010,Genç liderin kriz yönetimi ve küresel popülaritesi.
+Okyanusya,Yeni Zelanda,COVID-19 Eliminasyon Stratejisi,Kültür & Toplum,2020,2020,2022,2020,Sıkı sınır kontrolleriyle virüsün sıfırlanması.
+Okyanusya,Yeni Zelanda,Maori Dili Rönesansı,Kültür & Toplum,2022,2022,2024,2020,Yerli dilin kamusal alanda artan kullanımı (Matariki tatili).
+Okyanusya,Yeni Zelanda,Cyclone Gabrielle,Kültür & Toplum,2023,2023,2023,2020,İklim değişikliği kaynaklı büyük afet.
+Asya,Endonezya,Bağımsızlık Savaşı,Savaş/Çatışma,1945,1945,1949,1940,Hollanda sömürgeciliğine karşı silahlı mücadele.
+Asya,Endonezya,30 Eylül Darbe Girişimi,Savaş/Çatışma,1965,1965,1966,1960,Suharto'nun yükselişi ve komünist tasfiyesi (büyük katliamlar).
+Asya,Endonezya,Doğu Timor İşgali,Savaş/Çatışma,1975,1975,1999,1970,Portekiz çekilince bölgenin ilhak edilmesi.
+Asya,Endonezya,Suharto'nun İstifası,Devrim/Rejim Değişikliği,1998,1998,1998,1990,32 yıllık Yeni Düzen rejiminin sonu (Reformasi).
+Asya,Endonezya,Bali Bombalı Saldırıları,Terör Saldırısı,2002,2002,2002,2000,202 kişinin öldüğü cihatçı saldırı.
+Asya,Endonezya,2004 Tsunami Felaketi,Kültür & Toplum,2004,2004,2004,2000,Açe bölgesinde büyük yıkım ve 170 bin ölüm.
+Asya,Endonezya,Başkentin Taşınması (Nusantara),Devrim/Rejim Değişikliği,2019,2019,2024,2010,Cakarta'dan Borneo ormanlarına taşınma kararı.
+Asya,Endonezya,G20 Zirvesi (Bali),Devrim/Rejim Değişikliği,2022,2022,2022,2020,Küresel liderlerin ağırlanması.
+Asya,Endonezya,Prabowo Subianto Seçimi,Devrim/Rejim Değişikliği,2024,2024,2024,2020,Eski generalin devlet başkanı seçilmesi.
+Asya,Endonezya,Nikel İhracat Yasağı,Ekonomi,2020,2020,2024,2020,Elektrikli araç bataryası merkezi olma stratejisi.
+Avrupa,Lüksemburg,AB Kurucu Üyeliği,Devrim/Rejim Değişikliği,1957,1957,1957,1950,Roma Antlaşması'nı imzalayan 6 ülkeden biri.
+Avrupa,Lüksemburg,Schengen Anlaşması,Kültür & Toplum,1985,1985,1985,1980,Serbest dolaşım anlaşmasının Lüksemburg kasabasında imzalanması.
+Avrupa,Lüksemburg,Euro'ya Geçiş,Ekonomi,2002,2002,2002,2000,Ortak para biriminin kullanımı.
+Avrupa,Lüksemburg,Jean-Claude Juncker Dönemi,Önemli Lider,1995,1995,2013,1990,Avrupa siyasetinde etkili uzun başbakanlık.
+Avrupa,Lüksemburg,Uzay Madenciliği Yasası,Ekonomi,2017,2017,2017,2010,Uzay kaynaklarının kullanımı için yasal çerçeve.
+Avrupa,Lüksemburg,Ücretsiz Toplu Taşıma,Kültür & Toplum,2020,2020,2020,2020,Dünyada toplu taşımayı tamamen ücretsiz yapan ilk ülke.
+Avrupa,Lüksemburg,Xavier Bettel ve Evlilik,Kültür & Toplum,2015,2015,2015,2010,Görevdeki bir AB liderinin ilk eşcinsel evliliği.
+Avrupa,Lüksemburg,Anayasa Reformu,Devrim/Rejim Değişikliği,2023,2023,2023,2020,Büyük Dük'ün yetkilerinin sembolik hale getirilmesi.
+Avrupa,Lüksemburg,Esch-sur-Alzette Kültür Başkenti,Kültür & Toplum,2022,2022,2022,2020,Avrupa kültür başkenti unvanı.
+Avrupa,Lüksemburg,NATO Zirveleri,Savaş/Çatışma,1960,1960,2024,1960,Stratejik konumuyla ittifakta kilit rol.
+Asya,Kazakistan,Hazar Denizi Anlaşması,Devrim/Rejim Değişikliği,2018,2018,2018,2010,Hazar'ın hukuki statüsünün belirlenmesi.
+Asya,Kazakistan,Dünya Fuarı (EXPO 2017),Kültür & Toplum,2017,2017,2017,2010,Geleceğin Enerjisi temalı global fuar.
+Asya,Kazakistan,Semipalatinsk Kapatılması,Savaş/Çatışma,1991,1991,1991,1990,Sovyet nükleer deneme sahasının kapatılması (29 Ağustos).
+Asya,Kazakistan,Siber Güvenlik Stratejisi,Teknoloji,2017,2017,2025,2010,Dijital Kazakistan programı.
+Avrupa,İrlanda,Lizbon Antlaşması Krizi,Devrim/Rejim Değişikliği,2008,2008,2009,2000,Referandumda ret ve sonraki kabul süreci.
+Avrupa,İrlanda,Facebook/Google Merkezleri,Ekonomi,2005,2005,2024,2000,Dublin'in Avrupa'nın teknoloji başkenti olması (Silikon Rıhtım).
+Avrupa,Belçika,Brüksel Saldırıları,Terör Saldırısı,2016,2016,2016,2010,Havalimanı ve metroda IŞİD saldırıları.
+Avrupa,Belçika,Kral Albert II Feragatı,Devrim/Rejim Değişikliği,2013,2013,2013,2010,Kral Philippe'in tahta geçişi.
+Avrupa,Belçika,Dünya Rekoru Hükümetsizlik,Devrim/Rejim Değişikliği,2010,2010,2011,2010,541 gün süren koalisyon kurma krizi.
+Avrupa,Belçika,Atomium'un Renovasyonu,Kültür & Toplum,2006,2006,2006,2000,Brüksel'in simgesinin yenilenmesi.

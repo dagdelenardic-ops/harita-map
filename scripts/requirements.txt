@@ -1,0 +1,4 @@
+folium>=0.14.0
+pandas>=2.0.0
+branca>=0.6.0
+requests>=2.28.0

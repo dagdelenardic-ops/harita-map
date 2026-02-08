@@ -1,0 +1,92 @@
+region,country,event,category,year,year_start,year_end,decade,summary
+Balkanlar,Arnavutluk,Bağımsızlık İlanı,Devrim/Rejim Değişikliği,1912,1912,1912,1910,Osmanlı İmparatorluğu'ndan bağımsızlık.
+Balkanlar,Arnavutluk,BM Üyeliği,Diplomasi,1955,1955,1955,1950,Birleşmiş Milletler'e katılım.
+Balkanlar,Arnavutluk,Ateizm Kampanyası,Kültür/Bilim,1967,1967,1967,1960,Dünyanın ilk anayasal ateist devleti ilanı.
+Balkanlar,Arnavutluk,Hoxha'nın Ölümü,Önemli Lider,1985,1985,1985,1980,Uzun süreli lider Enver Hoca'nın ölümü.
+Balkanlar,Arnavutluk,Çok Partili Seçimler,Devrim/Rejim Değişikliği,1991,1991,1991,1990,Komünist rejimin sonu ve demokratikleşme.
+Balkanlar,Arnavutluk,Vize Serbestisi,Diplomasi,2010,2010,2010,2010,AB ülkelerine vizesiz seyahat hakkı.
+Balkanlar,Karadağ,Kral Nikola Dönemi,Önemli Lider,1910,1910,1918,1910,Karadağ Krallığı'nın ilanı.
+Balkanlar,Karadağ,Yugoslavya'ya Katılım,Devrim/Rejim Değişikliği,1918,1918,1918,1910,Sırp-Hırvat-Sloven Krallığı'na katılma.
+Balkanlar,Karadağ,Zabljak Anayasası,Devrim/Rejim Değişikliği,1992,1992,1992,1990,Yeni Yugoslavya Federasyonu'nun kurulması.
+Balkanlar,Karadağ,Euro Kullanımı,Ekonomi,2002,2002,2002,2000,Alman Markı yerine Euro'nun fiilen kullanılması.
+Balkanlar,Karadağ,AB Adaylığı,Diplomasi,2010,2010,2010,2010,AB aday ülke statüsü kazanması.
+Balkanlar,Karadağ,Darbe Girişimi İddiası,Terör Saldırısı,2016,2016,2016,2010,Seçim günü darbe girişimi iddiası ve tutuklamalar.
+Balkanlar,Karadağ,Din Yasası Protestoları,Kültür/Bilim,2019,2019,2020,2010,Sırp Ortodoks Kilisesi mülkleri üzerine tartışmalar.
+Balkanlar,Kosova,Yugoslavya Anayasası,Devrim/Rejim Değişikliği,1974,1974,1974,1970,Kosova'ya geniş özerklik tanıyan anayasa.
+Balkanlar,Kosova,Özerkliğin İptali,Devrim/Rejim Değişikliği,1989,1989,1989,1980,Miloseviç'in Kosova'nın özerkliğini kaldırması.
+Balkanlar,Kosova,Gölge Hükümet,Devrim/Rejim Değişikliği,1992,1992,1992,1990,İbrahim Rugova'nın pasif direniş hareketi.
+Balkanlar,Kosova,UÇK'nın Ortaya Çıkışı,Savaş/Çatışma,1996,1996,1996,1990,Silahlı direnişin başlaması.
+Balkanlar,Kosova,Recak Katliamı,Savaş/Çatışma,1999,1999,1999,1990,NATO müdahalesini tetikleyen katliam.
+Balkanlar,Kosova,BM Yönetimi (UNMIK),Devrim/Rejim Değişikliği,1999,1999,2008,1990,Savaş sonrası BM idaresi.
+Balkanlar,Kosova,Uluslararası Adalet Divanı Kararı,Diplomasi,2010,2010,2010,2010,Bağımsızlık ilanının meşru olduğuna dair karar.
+Balkanlar,Kosova,Brüksel Anlaşması,Diplomasi,2013,2013,2013,2010,Sırbistan ile ilişkileri normalleştirme adımı.
+Balkanlar,Makedonya,İlinden İsyanı (Anma),Kültür/Bilim,1903,1903,1903,1900,Makedon ulusal hareketinin sembolik tarihi.
+Balkanlar,Makedonya,ASNOM Konferansı,Devrim/Rejim Değişikliği,1944,1944,1944,1940,Makedon devletinin temellerinin atılması.
+Balkanlar,Makedonya,BM Üyeliği,Diplomasi,1993,1993,1993,1990,FYROM adıyla BM'ye katılım.
+Balkanlar,Makedonya,Ohri Çerçeve Anlaşması,Savaş/Çatışma,2001,2001,2001,2000,Etnik çatışmayı bitiren barış anlaşması.
+Balkanlar,Makedonya,Boris Trajkovski Kazası,Önemli Lider,2004,2004,2004,2000,Cumhurbaşkanının uçak kazasında ölümü.
+Balkanlar,Makedonya,Renkli Devrim,Devrim/Rejim Değişikliği,2016,2016,2016,2010,Hükümet karşıtı protestolar.
+Balkanlar,Sırbistan,Sırp Cumhuriyeti'nin İlanı (Bosna),Savaş/Çatışma,1992,1992,1992,1990,Bosna'daki Sırp yapılanması (Sırbistan ile ilişkili).
+Balkanlar,Sırbistan,Hiperenflasyon,Ekonomi,1993,1993,1993,1990,Tarihin en yüksek enflasyon oranlarından biri.
+Balkanlar,Sırbistan,Miloseviç'in İadesi,Devrim/Rejim Değişikliği,2001,2001,2001,2000,Lahey'deki mahkemeye teslim edilmesi.
+Balkanlar,Sırbistan,Sırbistan Anayasası,Devrim/Rejim Değişikliği,2006,2006,2006,2000,Bağımsızlık sonrası yeni anayasa.
+Balkanlar,Sırbistan,Güney Akım İptali,Ekonomi,2014,2014,2014,2010,Rus doğalgaz projesinin iptali.
+Karayipler,Jamaika,Bağımsızlık,Devrim/Rejim Değişikliği,1962,1962,1962,1960,Birleşik Krallık'tan bağımsızlık.
+Karayipler,Jamaika,Bob Marley'in Ölümü,Kültür/Bilim,1981,1981,1981,1980,Reggae efsanesinin ölümü.
+Karayipler,Jamaika,Kasırga Gilbert,Doğal Afet,1988,1988,1988,1980,Büyük yıkıma yol açan kasırga.
+Karayipler,Jamaika,Usain Bolt Rekoru,Kültür/Bilim,2008,2008,2008,2000,Pekin Olimpiyatları'nda dünya rekoru.
+Karayipler,Jamaika,PJ Patterson Dönemi,Önemli Lider,1992,1992,2006,1990,Uzun süreli başbakanlık.
+Karayipler,Jamaika,Kingston Şiddet Olayları,Savaş/Çatışma,2010,2010,2010,2010,Uyuşturucu lordu Dudus'un yakalanması operasyonu.
+Karayipler,Jamaika,İlk Kadın Başbakan,Önemli Lider,2006,2006,2006,2000,Portia Simpson-Miller'ın göreve gelmesi.
+Karayipler,Jamaika,IMF Anlaşması,Ekonomi,2013,2013,2013,2010,Ekonomik reform programı.
+Karayipler,Jamaika,Mavi Dağlar UNESCO,Kültür/Bilim,2015,2015,2015,2010,Dünya mirası listesine giriş.
+Afrika,Namibia,Alman Sömürge Dönemi Sonu,Devrim/Rejim Değişikliği,1915,1915,1915,1910,Güney Afrika'nın bölgeyi işgali.
+Afrika,Namibia,Bağımsızlık Savaşı Başlangıcı,Savaş/Çatışma,1966,1966,1966,1960,SWAPO'nun silahlı mücadeleye başlaması.
+Afrika,Namibia,Bağımsızlık,Devrim/Rejim Değişikliği,1990,1990,1990,1990,Güney Afrika'dan bağımsızlık kazanılması.
+Afrika,Namibia,Sam Nujoma Dönemi,Önemli Lider,1990,1990,2005,1990,İlk devlet başkanı.
+Afrika,Namibia,Caprivi Çatışması,Savaş/Çatışma,1999,1999,1999,1990,Ayrılıkçı hareket girişimi.
+Afrika,Namibia,Soykırımın Tanınması,Diplomasi,2021,2021,2021,2020,Almanya'nın sömürge dönemi soykırımını tanıması.
+Afrika,Gabon,Bağımsızlık,Devrim/Rejim Değişikliği,1960,1960,1960,1960,Fransa'dan bağımsızlık.
+Afrika,Gabon,Omar Bongo Dönemi,Önemli Lider,1967,1967,2009,1960,42 yıl süren başkanlık.
+Afrika,Gabon,Çok Partili Geçiş,Devrim/Rejim Değişikliği,1990,1990,1990,1990,Demokratik reformlar.
+Afrika,Gabon,Ali Bongo Seçimi,Önemli Lider,2009,2009,2009,2000,Babanın ardından oğlunun seçilmesi.
+Afrika,Gabon,Askeri Darbe,Devrim/Rejim Değişikliği,2023,2023,2023,2020,Ali Bongo'nun devrilmesi.
+Asya,Kamboçya,Bağımsızlık,Devrim/Rejim Değişikliği,1953,1953,1953,1950,Fransa'dan bağımsızlık.
+Asya,Kamboçya,Kızıl Kmerler Rejimi,Savaş/Çatışma,1975,1975,1979,1970,Pol Pot liderliğindeki soykırım dönemi.
+Asya,Kamboçya,Vietnam İşgali,Savaş/Çatışma,1979,1979,1989,1970,Kızıl Kmerler'in devrilmesi.
+Asya,Kamboçya,Paris Barış Anlaşması,Diplomasi,1991,1991,1991,1990,İç savaşın sona ermesi.
+Asya,Kamboçya,BM Seçimleri,Devrim/Rejim Değişikliği,1993,1993,1993,1990,Demokratik seçimlerin yapılması.
+Asya,Kamboçya,Pol Pot'un Ölümü,Önemli Lider,1998,1998,1998,1990,Eski diktatörün ölümü.
+Güney Amerika,Suriname,Bağımsızlık,Devrim/Rejim Değişikliği,1975,1975,1975,1970,Hollanda'dan bağımsızlık.
+Güney Amerika,Suriname,Askeri Darbe,Savaş/Çatışma,1980,1980,1980,1980,Desi Bouterse'nin yönetimi ele geçirmesi.
+Güney Amerika,Suriname,İç Savaş,Savaş/Çatışma,1986,1986,1992,1980,Jungle Commando ile ordu arasındaki çatışmalar.
+Güney Amerika,Suriname,Demokrasiye Dönüş,Devrim/Rejim Değişikliği,1991,1991,1991,1990,Serbest seçimlerin yapılması.
+Soğuk Savaş,Tacikistan,Bağımsızlık,Devrim/Rejim Değişikliği,1991,1991,1991,1990,SSCB'den bağımsızlık.
+Soğuk Savaş,Tacikistan,İç Savaş,Savaş/Çatışma,1992,1992,1997,1990,Hükümet ve muhalefet arası kanlı savaş.
+Soğuk Savaş,Tacikistan,Barış Anlaşması,Diplomasi,1997,1997,1997,1990,BM gözetiminde barış.
+Asya,Myanmar,Bağımsızlık,Devrim/Rejim Değişikliği,1948,1948,1948,1940,İngiltere'den bağımsızlık.
+Asya,Myanmar,Askeri Darbe 1962,Devrim/Rejim Değişikliği,1962,1962,1962,1960,Ne Win'in yönetime el koyması.
+Asya,Myanmar,8888 Ayaklanması,Devrim/Rejim Değişikliği,1988,1988,1988,1980,Demokrasi yanlısı büyük protestolar.
+Asya,Myanmar,Aung San Suu Kyi Nobel,Kültür/Bilim,1991,1991,1991,1990,Barış ödülü kazanması.
+Asya,Myanmar,Saffron Devrimi,Devrim/Rejim Değişikliği,2007,2007,2007,2000,Rahiplerin öncülük ettiği protestolar.
+Asya,Myanmar,Askeri Darbe 2021,Devrim/Rejim Değişikliği,2021,2021,2021,2020,Sivil hükümetin devrilmesi.
+Afrika,Ruanda,Bağımsızlık,Devrim/Rejim Değişikliği,1962,1962,1962,1960,Belçika'dan bağımsızlık.
+Afrika,Ruanda,Ruanda Soykırımı,Savaş/Çatışma,1994,1994,1994,1990,Tutsi nüfusuna yönelik etnik temizlik.
+Afrika,Ruanda,Kagame Dönemi,Önemli Lider,2000,2000,2024,2000,Paul Kagame'nin başkanlığı.
+Afrika,Burkina Faso,Yukarı Volta Bağımsızlık,Devrim/Rejim Değişikliği,1960,1960,1960,1960,Fransa'dan bağımsızlık.
+Afrika,Burkina Faso,Thomas Sankara Devrimi,Devrim/Rejim Değişikliği,1983,1983,1983,1980,Ülkenin adının değişmesi ve sosyalist reformlar.
+Afrika,Burkina Faso,Sankara Suikastı,Önemli Lider,1987,1987,1987,1980,Liderin öldürülmesi ve darbe.
+Orta Doğu,Yemen,Kuzey-Güney Birleşmesi,Devrim/Rejim Değişikliği,1990,1990,1990,1990,Yemen Cumhuriyeti'nin ilanı.
+Orta Doğu,Yemen,Arap Baharı,Devrim/Rejim Değişikliği,2011,2011,2011,2010,Salih'in istifası.
+Orta Doğu,Yemen,İç Savaş Başlangıcı,Savaş/Çatışma,2014,2014,2014,2010,Husilerin Sana'yı ele geçirmesi.
+Orta Doğu,Misir,Süveyş Krizi,Savaş/Çatışma,1956,1956,1956,1950,Kanalın millileştirilmesi ve savaş.
+Orta Doğu,Misir,Enver Sedat Suikastı,Terör Saldırısı,1981,1981,1981,1980,Tören sırasında suikast.
+Orta Doğu,Misir,Tahrir Devrimi,Devrim/Rejim Değişikliği,2011,2011,2011,2010,Mübarek'in devrilmesi.
+Orta Doğu,Misir,Sisi Darbesi,Devrim/Rejim Değişikliği,2013,2013,2013,2010,Mursi'nin görevden alınması.
+Afrika,Libya,Kaddafi Darbesi,Devrim/Rejim Değişikliği,1969,1969,1969,1960,Monarşinin yıkılması.
+Afrika,Libya,Lockerbie Saldırısı,Terör Saldırısı,1988,1988,1988,1980,Yolcu uçağının bombalanması.
+Afrika,Libya,Libya İç Savaşı,Savaş/Çatışma,2011,2011,2011,2010,Kaddafi'nin devrilmesi ve ölümü.
+Asya,Afganistan,Sovyet İşgali,Savaş/Çatışma,1979,1979,1989,1970,Sovyet ordusunun müdahalesi.
+Asya,Afganistan,Taliban Rejimi,Devrim/Rejim Değişikliği,1996,1996,2001,1990,Kabil'in düşmesi.
+Asya,Afganistan,ABD İşgali,Savaş/Çatışma,2001,2001,2021,2000,11 Eylül sonrası müdahale.
+Asya,Afganistan,Taliban'ın Dönüşü,Devrim/Rejim Değişikliği,2021,2021,2021,2020,ABD çekilmesi ve Kabil'in düşmesi.

@@ -1,0 +1,995 @@
+{
+    "version": "1.0",
+    "description": "Master country name mappings: Turkish (canonical) <-> English (GeoJSON) <-> ISO codes",
+    "countries": [
+        {
+            "turkish": "ABD",
+            "english": "United States of America",
+            "iso2": "us",
+            "aliases": [
+                "USA",
+                "Amerika"
+            ]
+        },
+        {
+            "turkish": "Afganistan",
+            "english": "Afghanistan",
+            "iso2": "af"
+        },
+        {
+            "turkish": "Almanya",
+            "english": "Germany",
+            "iso2": "de"
+        },
+        {
+            "turkish": "Angola",
+            "english": "Angola",
+            "iso2": "ao"
+        },
+        {
+            "turkish": "Arjantin",
+            "english": "Argentina",
+            "iso2": "ar",
+            "aliases": [
+                "Argentina"
+            ]
+        },
+        {
+            "turkish": "Arnavutluk",
+            "english": "Albania",
+            "iso2": "al"
+        },
+        {
+            "turkish": "Avustralya",
+            "english": "Australia",
+            "iso2": "au"
+        },
+        {
+            "turkish": "Avusturya",
+            "english": "Austria",
+            "iso2": "at",
+            "aliases": [
+                "Austria"
+            ]
+        },
+        {
+            "turkish": "Azerbaycan",
+            "english": "Azerbaijan",
+            "iso2": "az"
+        },
+        {
+            "turkish": "Bangladeş",
+            "english": "Bangladesh",
+            "iso2": "bd",
+            "aliases": [
+                "Banglades"
+            ]
+        },
+        {
+            "turkish": "Batı Sahra",
+            "english": "Western Sahara",
+            "iso2": "eh"
+        },
+        {
+            "turkish": "Batı Şeria",
+            "english": "Palestine",
+            "iso2": "ps"
+        },
+        {
+            "turkish": "Belarus",
+            "english": "Belarus",
+            "iso2": "by"
+        },
+        {
+            "turkish": "Belçika",
+            "english": "Belgium",
+            "iso2": "be",
+            "aliases": [
+                "Belcika"
+            ]
+        },
+        {
+            "turkish": "Benin",
+            "english": "Benin",
+            "iso2": "bj"
+        },
+        {
+            "turkish": "Birleşik Arap Emirlikleri",
+            "english": "United Arab Emirates",
+            "iso2": "ae",
+            "aliases": [
+                "BAE"
+            ]
+        },
+        {
+            "turkish": "Birleşik Krallık",
+            "english": "United Kingdom",
+            "iso2": "gb",
+            "aliases": [
+                "Birlesik Krallik",
+                "İngiltere"
+            ]
+        },
+        {
+            "turkish": "Bolivya",
+            "english": "Bolivia",
+            "iso2": "bo",
+            "aliases": [
+                "Bolivia"
+            ]
+        },
+        {
+            "turkish": "Bosna Hersek",
+            "english": "Bosnia and Herzegovina",
+            "iso2": "ba"
+        },
+        {
+            "turkish": "Botsvana",
+            "english": "Botswana",
+            "iso2": "bw"
+        },
+        {
+            "turkish": "Brezilya",
+            "english": "Brazil",
+            "iso2": "br",
+            "aliases": [
+                "Brazil"
+            ]
+        },
+        {
+            "turkish": "Bulgaristan",
+            "english": "Bulgaria",
+            "iso2": "bg"
+        },
+        {
+            "turkish": "Burkina Faso",
+            "english": "Burkina Faso",
+            "iso2": "bf"
+        },
+        {
+            "turkish": "Burundi",
+            "english": "Burundi",
+            "iso2": "bi"
+        },
+        {
+            "turkish": "Cabo Verde",
+            "english": "Cabo Verde",
+            "iso2": "cv",
+            "aliases": [
+                "Yeşil Burun Adalari",
+                "Yesil Burun Adalari"
+            ]
+        },
+        {
+            "turkish": "Cezayir",
+            "english": "Algeria",
+            "iso2": "dz",
+            "aliases": [
+                "Algeria"
+            ]
+        },
+        {
+            "turkish": "Cibuti",
+            "english": "Djibouti",
+            "iso2": "dj"
+        },
+        {
+            "turkish": "Çad",
+            "english": "Chad",
+            "iso2": "td"
+        },
+        {
+            "turkish": "Çek Cumhuriyeti",
+            "english": "Czechia",
+            "iso2": "cz",
+            "aliases": [
+                "Cekya",
+                "Czech Republic",
+                "Cekoslovakya"
+            ]
+        },
+        {
+            "turkish": "Çin",
+            "english": "China",
+            "iso2": "cn",
+            "aliases": [
+                "Cin"
+            ]
+        },
+        {
+            "turkish": "Danimarka",
+            "english": "Denmark",
+            "iso2": "dk"
+        },
+        {
+            "turkish": "Demokratik Kongo Cumhuriyeti",
+            "english": "Democratic Republic of the Congo",
+            "iso2": "cd",
+            "aliases": [
+                "Kongo",
+                "DRC"
+            ]
+        },
+        {
+            "turkish": "Ekvador",
+            "english": "Ecuador",
+            "iso2": "ec",
+            "aliases": [
+                "Ecuador"
+            ]
+        },
+        {
+            "turkish": "Ekvator Ginesi",
+            "english": "Equatorial Guinea",
+            "iso2": "gq"
+        },
+        {
+            "turkish": "El Salvador",
+            "english": "El Salvador",
+            "iso2": "sv"
+        },
+        {
+            "turkish": "Endonezya",
+            "english": "Indonesia",
+            "iso2": "id"
+        },
+        {
+            "turkish": "Eritre",
+            "english": "Eritrea",
+            "iso2": "er"
+        },
+        {
+            "turkish": "Ermenistan",
+            "english": "Armenia",
+            "iso2": "am"
+        },
+        {
+            "turkish": "Estonya",
+            "english": "Estonia",
+            "iso2": "ee"
+        },
+        {
+            "turkish": "Esvatini",
+            "english": "eSwatini",
+            "iso2": "sz"
+        },
+        {
+            "turkish": "Etiyopya",
+            "english": "Ethiopia",
+            "iso2": "et",
+            "aliases": [
+                "Ethiopia"
+            ]
+        },
+        {
+            "turkish": "Fas",
+            "english": "Morocco",
+            "iso2": "ma",
+            "aliases": [
+                "Morocco"
+            ]
+        },
+        {
+            "turkish": "Fildişi Sahili",
+            "english": "Ivory Coast",
+            "iso2": "ci",
+            "aliases": [
+                "Fildisi Sahili",
+                "Côte d'Ivoire"
+            ]
+        },
+        {
+            "turkish": "Filipinler",
+            "english": "Philippines",
+            "iso2": "ph"
+        },
+        {
+            "turkish": "Filistin",
+            "english": "Palestine",
+            "iso2": "ps"
+        },
+        {
+            "turkish": "Finlandiya",
+            "english": "Finland",
+            "iso2": "fi"
+        },
+        {
+            "turkish": "Fransa",
+            "english": "France",
+            "iso2": "fr"
+        },
+        {
+            "turkish": "Gabon",
+            "english": "Gabon",
+            "iso2": "ga"
+        },
+        {
+            "turkish": "Gambiya",
+            "english": "Gambia",
+            "iso2": "gm"
+        },
+        {
+            "turkish": "Gana",
+            "english": "Ghana",
+            "iso2": "gh"
+        },
+        {
+            "turkish": "Gazze",
+            "english": "Palestine",
+            "iso2": "ps"
+        },
+        {
+            "turkish": "Gine",
+            "english": "Guinea",
+            "iso2": "gn"
+        },
+        {
+            "turkish": "Gine-Bissau",
+            "english": "Guinea-Bissau",
+            "iso2": "gw"
+        },
+        {
+            "turkish": "Gronland",
+            "english": "Greenland",
+            "iso2": "gl"
+        },
+        {
+            "turkish": "Guatemala",
+            "english": "Guatemala",
+            "iso2": "gt"
+        },
+        {
+            "turkish": "Güney Afrika",
+            "english": "South Africa",
+            "iso2": "za",
+            "aliases": [
+                "Guney Afrika"
+            ]
+        },
+        {
+            "turkish": "Güney Kore",
+            "english": "South Korea",
+            "iso2": "kr",
+            "aliases": [
+                "Guney Kore"
+            ]
+        },
+        {
+            "turkish": "Güney Sudan",
+            "english": "South Sudan",
+            "iso2": "ss",
+            "aliases": [
+                "Guney Sudan",
+                "South Sudan"
+            ]
+        },
+        {
+            "turkish": "Gürcistan",
+            "english": "Georgia",
+            "iso2": "ge",
+            "aliases": [
+                "Gurcistan"
+            ]
+        },
+        {
+            "turkish": "Guyana",
+            "english": "Guyana",
+            "iso2": "gy"
+        },
+        {
+            "turkish": "Haiti",
+            "english": "Haiti",
+            "iso2": "ht"
+        },
+        {
+            "turkish": "Hindistan",
+            "english": "India",
+            "iso2": "in"
+        },
+        {
+            "turkish": "Hollanda",
+            "english": "Netherlands",
+            "iso2": "nl"
+        },
+        {
+            "turkish": "Hırvatistan",
+            "english": "Croatia",
+            "iso2": "hr",
+            "aliases": [
+                "Hirvatistan"
+            ]
+        },
+        {
+            "turkish": "Irak",
+            "english": "Iraq",
+            "iso2": "iq"
+        },
+        {
+            "turkish": "İran",
+            "english": "Iran",
+            "iso2": "ir",
+            "aliases": [
+                "Iran"
+            ]
+        },
+        {
+            "turkish": "İrlanda",
+            "english": "Ireland",
+            "iso2": "ie",
+            "aliases": [
+                "Irlanda"
+            ]
+        },
+        {
+            "turkish": "İspanya",
+            "english": "Spain",
+            "iso2": "es",
+            "aliases": [
+                "Ispanya"
+            ]
+        },
+        {
+            "turkish": "İsrail",
+            "english": "Israel",
+            "iso2": "il",
+            "aliases": [
+                "Israil"
+            ]
+        },
+        {
+            "turkish": "İsveç",
+            "english": "Sweden",
+            "iso2": "se",
+            "aliases": [
+                "Isvec"
+            ]
+        },
+        {
+            "turkish": "İsviçre",
+            "english": "Switzerland",
+            "iso2": "ch",
+            "aliases": [
+                "Isvicre",
+                "Switzerland"
+            ]
+        },
+        {
+            "turkish": "İtalya",
+            "english": "Italy",
+            "iso2": "it",
+            "aliases": [
+                "Italya"
+            ]
+        },
+        {
+            "turkish": "İzlanda",
+            "english": "Iceland",
+            "iso2": "is",
+            "aliases": [
+                "Izlanda"
+            ]
+        },
+        {
+            "turkish": "Jamaika",
+            "english": "Jamaica",
+            "iso2": "jm"
+        },
+        {
+            "turkish": "Japonya",
+            "english": "Japan",
+            "iso2": "jp"
+        },
+        {
+            "turkish": "Kamboçya",
+            "english": "Cambodia",
+            "iso2": "kh",
+            "aliases": [
+                "Kambocya"
+            ]
+        },
+        {
+            "turkish": "Kamerun",
+            "english": "Cameroon",
+            "iso2": "cm"
+        },
+        {
+            "turkish": "Kanada",
+            "english": "Canada",
+            "iso2": "ca"
+        },
+        {
+            "turkish": "Karadağ",
+            "english": "Montenegro",
+            "iso2": "me"
+        },
+        {
+            "turkish": "Katar",
+            "english": "Qatar",
+            "iso2": "qa"
+        },
+        {
+            "turkish": "Kazakistan",
+            "english": "Kazakhstan",
+            "iso2": "kz"
+        },
+        {
+            "turkish": "Kenya",
+            "english": "Kenya",
+            "iso2": "ke"
+        },
+        {
+            "turkish": "Kıbrıs",
+            "english": "Cyprus",
+            "iso2": "cy",
+            "aliases": [
+                "Kibris"
+            ]
+        },
+        {
+            "turkish": "Kırgızistan",
+            "english": "Kyrgyzstan",
+            "iso2": "kg"
+        },
+        {
+            "turkish": "Kolombiya",
+            "english": "Colombia",
+            "iso2": "co",
+            "aliases": [
+                "Colombia"
+            ]
+        },
+        {
+            "turkish": "Komorlar",
+            "english": "Comoros",
+            "iso2": "km"
+        },
+        {
+            "turkish": "Kosova",
+            "english": "Kosovo",
+            "iso2": "xk"
+        },
+        {
+            "turkish": "Küba",
+            "english": "Cuba",
+            "iso2": "cu",
+            "aliases": [
+                "Kuba"
+            ]
+        },
+        {
+            "turkish": "Kuveyt",
+            "english": "Kuwait",
+            "iso2": "kw"
+        },
+        {
+            "turkish": "Kuzey Kıbrıs",
+            "english": "Northern Cyprus",
+            "iso2": "trnc",
+            "aliases": [
+                "KKTC",
+                "Kuzey Kibris"
+            ]
+        },
+        {
+            "turkish": "Kuzey Kore",
+            "english": "North Korea",
+            "iso2": "kp"
+        },
+        {
+            "turkish": "Lesoto",
+            "english": "Lesotho",
+            "iso2": "ls"
+        },
+        {
+            "turkish": "Letonya",
+            "english": "Latvia",
+            "iso2": "lv"
+        },
+        {
+            "turkish": "Liberya",
+            "english": "Liberia",
+            "iso2": "lr"
+        },
+        {
+            "turkish": "Libya",
+            "english": "Libya",
+            "iso2": "ly"
+        },
+        {
+            "turkish": "Litvanya",
+            "english": "Lithuania",
+            "iso2": "lt"
+        },
+        {
+            "turkish": "Lübnan",
+            "english": "Lebanon",
+            "iso2": "lb"
+        },
+        {
+            "turkish": "Lüksemburg",
+            "english": "Luxembourg",
+            "iso2": "lu"
+        },
+        {
+            "turkish": "Macaristan",
+            "english": "Hungary",
+            "iso2": "hu",
+            "aliases": [
+                "Hungary"
+            ]
+        },
+        {
+            "turkish": "Madagaskar",
+            "english": "Madagascar",
+            "iso2": "mg"
+        },
+        {
+            "turkish": "Makedonya",
+            "english": "North Macedonia",
+            "iso2": "mk"
+        },
+        {
+            "turkish": "Malavi",
+            "english": "Malawi",
+            "iso2": "mw"
+        },
+        {
+            "turkish": "Maldivler",
+            "english": "Maldives",
+            "iso2": "mv"
+        },
+        {
+            "turkish": "Malezya",
+            "english": "Malaysia",
+            "iso2": "my"
+        },
+        {
+            "turkish": "Mali",
+            "english": "Mali",
+            "iso2": "ml"
+        },
+        {
+            "turkish": "Mauritius",
+            "english": "Mauritius",
+            "iso2": "mu"
+        },
+        {
+            "turkish": "Meksika",
+            "english": "Mexico",
+            "iso2": "mx"
+        },
+        {
+            "turkish": "Mısır",
+            "english": "Egypt",
+            "iso2": "eg",
+            "aliases": [
+                "Misir"
+            ]
+        },
+        {
+            "turkish": "Moldova",
+            "english": "Moldova",
+            "iso2": "md"
+        },
+        {
+            "turkish": "Moğolistan",
+            "english": "Mongolia",
+            "iso2": "mn",
+            "aliases": [
+                "Mogolistan"
+            ]
+        },
+        {
+            "turkish": "Moritanya",
+            "english": "Mauritania",
+            "iso2": "mr"
+        },
+        {
+            "turkish": "Mozambik",
+            "english": "Mozambique",
+            "iso2": "mz"
+        },
+        {
+            "turkish": "Myanmar",
+            "english": "Myanmar",
+            "iso2": "mm"
+        },
+        {
+            "turkish": "Namibya",
+            "english": "Namibia",
+            "iso2": "na"
+        },
+        {
+            "turkish": "Nepal",
+            "english": "Nepal",
+            "iso2": "np"
+        },
+        {
+            "turkish": "Nijer",
+            "english": "Niger",
+            "iso2": "ne"
+        },
+        {
+            "turkish": "Nijerya",
+            "english": "Nigeria",
+            "iso2": "ng",
+            "aliases": [
+                "Nigeria"
+            ]
+        },
+        {
+            "turkish": "Nikaragua",
+            "english": "Nicaragua",
+            "iso2": "ni"
+        },
+        {
+            "turkish": "Norveç",
+            "english": "Norway",
+            "iso2": "no",
+            "aliases": [
+                "Norvec"
+            ]
+        },
+        {
+            "turkish": "Orta Afrika Cumhuriyeti",
+            "english": "Central African Republic",
+            "iso2": "cf"
+        },
+        {
+            "turkish": "Özbekistan",
+            "english": "Uzbekistan",
+            "iso2": "uz",
+            "aliases": [
+                "Ozbekistan"
+            ]
+        },
+        {
+            "turkish": "Pakistan",
+            "english": "Pakistan",
+            "iso2": "pk"
+        },
+        {
+            "turkish": "Papua Yeni Gine",
+            "english": "Papua New Guinea",
+            "iso2": "pg"
+        },
+        {
+            "turkish": "Paraguay",
+            "english": "Paraguay",
+            "iso2": "py"
+        },
+        {
+            "turkish": "Peru",
+            "english": "Peru",
+            "iso2": "pe"
+        },
+        {
+            "turkish": "Polonya",
+            "english": "Poland",
+            "iso2": "pl",
+            "aliases": [
+                "Poland"
+            ]
+        },
+        {
+            "turkish": "Portekiz",
+            "english": "Portugal",
+            "iso2": "pt"
+        },
+        {
+            "turkish": "Romanya",
+            "english": "Romania",
+            "iso2": "ro"
+        },
+        {
+            "turkish": "Ruanda",
+            "english": "Rwanda",
+            "iso2": "rw"
+        },
+        {
+            "turkish": "Rusya",
+            "english": "Russia",
+            "iso2": "ru"
+        },
+        {
+            "turkish": "Sao Tome ve Principe",
+            "english": "São Tomé and Principe",
+            "iso2": "st"
+        },
+        {
+            "turkish": "Senegal",
+            "english": "Senegal",
+            "iso2": "sn"
+        },
+        {
+            "turkish": "Seyseller",
+            "english": "Seychelles",
+            "iso2": "sc"
+        },
+        {
+            "turkish": "Sierra Leone",
+            "english": "Sierra Leone",
+            "iso2": "sl"
+        },
+        {
+            "turkish": "Singapur",
+            "english": "Singapore",
+            "iso2": "sg"
+        },
+        {
+            "turkish": "Sırbistan",
+            "english": "Republic of Serbia",
+            "iso2": "rs",
+            "aliases": [
+                "Sirbistan",
+                "Yugoslavya"
+            ]
+        },
+        {
+            "turkish": "Slovakya",
+            "english": "Slovakia",
+            "iso2": "sk",
+            "aliases": [
+                "Slovakia"
+            ]
+        },
+        {
+            "turkish": "Slovenya",
+            "english": "Slovenia",
+            "iso2": "si"
+        },
+        {
+            "turkish": "Somali",
+            "english": "Somalia",
+            "iso2": "so"
+        },
+        {
+            "turkish": "Sri Lanka",
+            "english": "Sri Lanka",
+            "iso2": "lk"
+        },
+        {
+            "turkish": "Sudan",
+            "english": "Sudan",
+            "iso2": "sd"
+        },
+        {
+            "turkish": "Surinam",
+            "english": "Suriname",
+            "iso2": "sr",
+            "aliases": [
+                "Suriname"
+            ]
+        },
+        {
+            "turkish": "Suriye",
+            "english": "Syria",
+            "iso2": "sy"
+        },
+        {
+            "turkish": "Suudi Arabistan",
+            "english": "Saudi Arabia",
+            "iso2": "sa"
+        },
+        {
+            "turkish": "Şili",
+            "english": "Chile",
+            "iso2": "cl",
+            "aliases": [
+                "Sili",
+                "Chile"
+            ]
+        },
+        {
+            "turkish": "Tacikistan",
+            "english": "Tajikistan",
+            "iso2": "tj"
+        },
+        {
+            "turkish": "Tanzanya",
+            "english": "United Republic of Tanzania",
+            "iso2": "tz"
+        },
+        {
+            "turkish": "Tayland",
+            "english": "Thailand",
+            "iso2": "th"
+        },
+        {
+            "turkish": "Togo",
+            "english": "Togo",
+            "iso2": "tg"
+        },
+        {
+            "turkish": "Trinidad ve Tobago",
+            "english": "Trinidad and Tobago",
+            "iso2": "tt"
+        },
+        {
+            "turkish": "Tunus",
+            "english": "Tunisia",
+            "iso2": "tn",
+            "aliases": [
+                "Tunisia"
+            ]
+        },
+        {
+            "turkish": "Türkiye",
+            "english": "Turkey",
+            "iso2": "tr",
+            "aliases": [
+                "Turkiye",
+                "Republic of Turkey"
+            ]
+        },
+        {
+            "turkish": "Türkmenistan",
+            "english": "Turkmenistan",
+            "iso2": "tm"
+        },
+        {
+            "turkish": "Uganda",
+            "english": "Uganda",
+            "iso2": "ug"
+        },
+        {
+            "turkish": "Ukrayna",
+            "english": "Ukraine",
+            "iso2": "ua"
+        },
+        {
+            "turkish": "Ürdün",
+            "english": "Jordan",
+            "iso2": "jo",
+            "aliases": [
+                "Urdun"
+            ]
+        },
+        {
+            "turkish": "Uruguay",
+            "english": "Uruguay",
+            "iso2": "uy"
+        },
+        {
+            "turkish": "Venezuela",
+            "english": "Venezuela",
+            "iso2": "ve",
+            "aliases": [
+                "Venezüela"
+            ]
+        },
+        {
+            "turkish": "Vietnam",
+            "english": "Vietnam",
+            "iso2": "vn"
+        },
+        {
+            "turkish": "Yemen",
+            "english": "Yemen",
+            "iso2": "ye"
+        },
+        {
+            "turkish": "Yeni Zelanda",
+            "english": "New Zealand",
+            "iso2": "nz"
+        },
+        {
+            "turkish": "Yunanistan",
+            "english": "Greece",
+            "iso2": "gr"
+        },
+        {
+            "turkish": "Zambiya",
+            "english": "Zambia",
+            "iso2": "zm"
+        },
+        {
+            "turkish": "Zimbabve",
+            "english": "Zimbabwe",
+            "iso2": "zw",
+            "aliases": [
+                "Zimbabwe"
+            ]
+        }
+    ]
+}

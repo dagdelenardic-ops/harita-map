@@ -1,0 +1,52 @@
+region,country,event,category,year,year_start,year_end,decade,summary
+Ortadoğu,Turkiye,NATO Üyeliği,Diplomasi,1952,1952,1952,1950,Türkiye'nin NATO'ya katılımı.
+Ortadoğu,Turkiye,6-7 Eylül Olayları,Savaş/Çatışma,1955,1955,1955,1950,İstanbul'da azınlıklara yönelik saldırılar.
+Ortadoğu,Turkiye,1960 Darbesi,Devrim/Rejim Değişikliği,1960,1960,1960,1960,27 Mayıs askeri müdahalesi.
+Ortadoğu,Turkiye,Boğaziçi Köprüsü,Kültür/Bilim,1973,1973,1973,1970,Asya ve Avrupa'yı bağlayan ilk köprü.
+Ortadoğu,Turkiye,Kıbrıs Barış Harekatı,Savaş/Çatışma,1974,1974,1974,1970,Kıbrıs'a askeri müdahale.
+Ortadoğu,Turkiye,Susurluk Kazası,Savaş/Çatışma,1996,1996,1996,1990,Devlet-mafya ilişkilerinin oraya çıkışı.
+Ortadoğu,Turkiye,Gölcük Depremi,Doğal Afet,1999,1999,1999,1990,Marmara bölgesini yıkan büyük deprem.
+Ortadoğu,Turkiye,2001 Ekonomik Krizi,Ekonomi,2001,2001,2001,2000,Cumhuriyet tarihinin en büyük ekonomik krizi.
+Ortadoğu,Turkiye,AK Parti İktidarı,Devrim/Rejim Değişikliği,2002,2002,2002,2000,Tek parti iktidarının başlaması.
+Ortadoğu,Turkiye,AB Müzakereleri,Diplomasi,2005,2005,2005,2000,Tam üyelik müzakerelerinin başlaması.
+Ortadoğu,Turkiye,Gezi Parkı Olayları,Devrim/Rejim Değişikliği,2013,2013,2013,2010,Hükümet karşıtı kitlesel protestolar.
+Ortadoğu,Iran,Musaddık Darbesi 1953,Savaş/Çatışma,1953,1953,1953,1950,CIA destekli darbe ile Şah'ın dönüşü.
+Ortadoğu,Iran,Beyaz Devrim,Devrim/Rejim Değişikliği,1963,1963,1963,1960,Toprak reformu ve kadın hakları.
+Ortadoğu,Iran,İslam Devrimi,Devrim/Rejim Değişikliği,1979,1979,1979,1970,Ayetullah Humeyni'nin dönüşü (Tekrar Ek).
+Ortadoğu,Iran,Rehine Krizi,Diplomasi,1979,1979,1981,1970,ABD Büyükelçiliği işgali (Tekrar Ek).
+Ortadoğu,Iran,İran-Irak Savaşı Sonu,Barış/Diplomasi,1988,1988,1988,1980,BM kararı ile ateşkes.
+Ortadoğu,Iran,Hamaney Liderliği,Önemli Lider,1989,1989,2024,1980,Dini liderlik değişimi.
+Ortadoğu,Iran,Hatemi Dönemi,Devrim/Rejim Değişikliği,1997,1997,2005,1990,Reformist süreç.
+Ortadoğu,Iran,Yeşil Hareket,Devrim/Rejim Değişikliği,2009,2009,2009,2000,Seçim sonrası protestolar (Tekrar Ek).
+Ortadoğu,Iran,Süleymani Suikastı,Savaş/Çatışma,2020,2020,2020,2020,ABD SİHA saldırısı ile ölüm.
+Kuzey Avrupa,Izlanda,NATO Üyeliği,Diplomasi,1949,1949,1949,1940,Kurucu üye olarak katılım.
+Kuzey Avrupa,Izlanda,Balık Savaşları,Savaş/Çatışma,1970,1970,1976,1970,İngiltere ile deniz yetki alanı çatışması (Tekrar Ek).
+Kuzey Avrupa,Izlanda,Reagan-Gorbaçov Zirvesi,Diplomasi,1986,1986,1986,1980,Reykjavik'te Soğuk Savaş bitiren zirve.
+Kuzey Avrupa,Izlanda,AET Katılımı,Ekonomi,1994,1994,1994,1990,Avrupa Ekonomik Alanı üyeliği.
+Kuzey Avrupa,Izlanda,Bankacılık Çöküşü,Ekonomi,2008,2008,2008,2000,3 büyük bankanın iflası (Tekrar Ek).
+Kuzey Avrupa,Izlanda,Volkan Patlaması 2010,Doğal Afet,2010,2010,2010,2010,Eyjafjallajokull (Tekrar Ek).
+Kuzey Avrupa,Izlanda,Panama Belgeleri İstifası,Devrim/Rejim Değişikliği,2016,2016,2016,2010,Başbakanın istifası.
+Kuzey Avrupa,Izlanda,Turizm Patlaması,Ekonomi,2015,2015,2019,2010,Turist sayısında rekor artış.
+Afrika,Gana,Bağımsızlık 1957,Devrim/Rejim Değişikliği,1957,1957,1957,1950,Kwame Nkrumah liderliği (Tekrar Ek).
+Afrika,Gana,Akosombo Barajı,Ekonomi,1965,1965,1965,1960,Volta Gölü'nün oluşumu.
+Afrika,Gana,Rawlings Darbesi 1979,Savaş/Çatışma,1979,1979,1979,1970,Yolsuzlukla mücadele darbesi.
+Afrika,Gana,Dördüncü Cumhuriyet,Devrim/Rejim Değişikliği,1993,1993,1993,1990,Yeni anayasa ve demokrasi.
+Afrika,Gana,Petrol Keşfi,Ekonomi,2007,2007,2007,2000,Jubilee sahasında petrol.
+Afrika,Gana,Kofi Annan BM,Önemli Lider,1997,1997,2006,1990,Ganalı genel sekreter.
+Afrika,Gana,Nana Akufo-Addo,Önemli Lider,2017,2017,2024,2010,Eğitim reformları.
+Karayipler,Kuba,Batista Darbesi,Devrim/Rejim Değişikliği,1952,1952,1952,1950,Diktatörlüğün başlangıcı.
+Karayipler,Kuba,Moncada Kışlası Baskını,Savaş/Çatışma,1953,1953,1953,1950,Devrimin ilk kıvılcımı.
+Karayipler,Kuba,Santa Clara Muharebesi,Savaş/Çatışma,1958,1958,1958,1950,Che Guevara'nın zaferi.
+Karayipler,Kuba,Angola Müdahalesi,Savaş/Çatışma,1975,1975,1991,1970,Yurtdışına asker gönderme.
+Karayipler,Kuba,Sovyet Yardımı Kesilmesi,Ekonomi,1991,1991,1991,1990,Ekonomik kriz başlangıcı.
+Karayipler,Kuba,ABD İlişkileri Normalleşme,Diplomasi,2014,2014,2014,2010,Obama ziyareti.
+Karayipler,Kuba,Yeni Anayasa,Devrim/Rejim Değişikliği,2019,2019,2019,2010,Özel mülkiyetin tanınması.
+Karayipler,Kuba,2021 Protestoları,Devrim/Rejim Değişikliği,2021,2021,2021,2020,Nadir görülen hükümet karşıtı eylemler.
+Afrika,DRC,Lumumba Suikastı,Önemli Lider,1961,1961,1961,1960,İlk başbakanın öldürülmesi.
+Afrika,DRC,Mobutu Darbesi,Devrim/Rejim Değişikliği,1965,1965,1965,1960,Zaire isminin verilmesi.
+Afrika,DRC,Rumble in the Jungle,Kültür/Bilim,1974,1974,1974,1970,Ali-Foreman boks maçı.
+Afrika,DRC,Birinci Kongo Savaşı,Savaş/Çatışma,1996,1996,1997,1990,Mobutu'nun devrilmesi.
+Afrika,DRC,İkinci Kongo Savaşı,Savaş/Çatışma,1998,1998,2003,1990,Afrika'nın Dünya Savaşı.
+Afrika,DRC,BM Barış Gücü (MONUSCO),Diplomasi,1999,1999,2024,1990,En büyük barış gücü misyonu.
+Afrika,DRC,İlk Demokratik Geçiş,Devrim/Rejim Değişikliği,2019,2019,2019,2010,Tshisekedi'nin göreve gelmesi.
+Afrika,DRC,Ebola Salgını,Doğal Afet,2018,2018,2020,2010,Büyük sağlık krizi.
