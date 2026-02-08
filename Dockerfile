@@ -20,7 +20,10 @@ COPY . .
 # We need to make sure the script output directory matches what we serve
 RUN python scripts/geopolitical_map.py
 
+# Rename the output file to index.html so it serves by default
+RUN mv output/geopolitical_map.html output/index.html
+
 # We'll use python's built-in http server to serve the output directory
-# The output directory contains geopolitical_map.html
+# The output directory contains index.html
 # We want to serve this on port 8080 (Cloud Run default)
 CMD ["python", "-m", "http.server", "8080", "--directory", "output"]
