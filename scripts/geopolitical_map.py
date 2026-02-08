@@ -127,6 +127,13 @@ class GeopoliticalMap:
         english_to_turkish_json = json.dumps(self.english_to_turkish, ensure_ascii=False)
         turkish_to_iso_json = json.dumps(self.turkish_to_iso, ensure_ascii=False)
 
+        parse_md_js = r'''
+function parseMarkdownLinks(text) {
+    if (!text) return "";
+    return text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s\)]+)\)/g, '<a href="$2" target="_blank" style="color: #3498db; text-decoration: underline;">$1</a>');
+}
+'''
+
         return f'''
 <title>Jeopolitik Tarih Haritası | Son 100 Yılın Önemli Olayları</title>
 <meta charset="UTF-8">
@@ -624,6 +631,7 @@ class GeopoliticalMap:
 </div>
 
 <script>
+{parse_md_js}
 // Data
 const allEvents = {events_json};
 const countryMeta = {country_metadata_json};
@@ -1144,7 +1152,7 @@ function openSidebar(countryName) {{
                     <div class="event-item">
                         <div class="event-year">${{e.year}}</div>
                         <div class="event-title">${{e.title}}</div>
-                        <div class="event-desc">${{e.description}}</div>
+                        <div class="event-desc">${{parseMarkdownLinks(e.description)}}</div>
                          ${{videoHtml}}
                     </div>
                  `;
