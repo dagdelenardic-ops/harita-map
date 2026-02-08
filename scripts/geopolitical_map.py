@@ -128,8 +128,28 @@ class GeopoliticalMap:
         turkish_to_iso_json = json.dumps(self.turkish_to_iso, ensure_ascii=False)
 
         return f'''
+<title>Jeopolitik Tarih Haritası | Son 100 Yılın Önemli Olayları</title>
 <meta charset="UTF-8">
-<meta charset="UTF-8">
+<meta name="description" content="Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin. Savaşlar, antlaşmalar ve krizler.">
+<meta name="keywords" content="jeopolitik, tarih, dünya haritası, interaktif harita, askeri tarih, siyasi tarih, olaylar">
+<meta name="author" content="Jeopolitik Map">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jeopolitik.com.tr/">
+<meta property="og:title" content="Jeopolitik Tarih Haritası | Son 100 Yılın Önemli Olayları">
+<meta property="og:description" content="Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin.">
+<meta property="og:image" content="https://jeopolitik.com.tr/og-image.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://jeopolitik.com.tr/">
+<meta property="twitter:title" content="Jeopolitik Tarih Haritası | Son 100 Yılın Önemli Olayları">
+<meta property="twitter:description" content="Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin.">
+<meta property="twitter:image" content="https://jeopolitik.com.tr/og-image.jpg">
+
+<link rel="canonical" href="https://jeopolitik.com.tr/" />
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
     * {{
@@ -1401,7 +1421,27 @@ window.addEventListener('load', function() {{
         # Post-process HTML to add marker tracking for filtering        
         self._inject_marker_tracking(output_path, by_country)
 
+        # Create robots.txt
+        robots_path = Path(output_path).parent / "robots.txt"
+        with open(robots_path, "w") as f:
+            f.write("User-agent: *\nAllow: /\nSitemap: https://jeopolitik.com.tr/sitemap.xml")
+            
+        # Create sitemap.xml
+        sitemap_path = Path(output_path).parent / "sitemap.xml"
+        import datetime
+        now = datetime.datetime.now().strftime("%Y-%m-%d")
+        with open(sitemap_path, "w") as f:
+            f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n')
+            f.write(f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+            f.write(f'  <url>\n')
+            f.write(f'    <loc>https://jeopolitik.com.tr/</loc>\n')
+            f.write(f'    <lastmod>{now}</lastmod>\n')
+            f.write(f'    <priority>1.0</priority>\n')
+            f.write(f'  </url>\n')
+            f.write(f'</urlset>')
+
         print(f"Harita oluşturuldu: {output_path}")
+        print(f"SEO dosyaları oluşturuldu: robots.txt, sitemap.xml")
         print(f"Toplam {len(self.events)} olay, {len(by_country)} ülke")
         return str(output_path)
     
