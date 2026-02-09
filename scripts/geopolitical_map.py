@@ -883,11 +883,11 @@ function parseMarkdownLinks(text) {
     <div class="sidebar-content" id="sidebarContent"></div>
 </div>
 
-<button class="panel-fab" id="panelFab" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">
+<button class="panel-fab hidden" id="panelFab" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">
     Filtreler
 </button>
 
-<div class="control-panel" id="controlPanel">
+<div class="control-panel mobile-open" id="controlPanel">
     <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="true">Kapat</button>
     <h3>Jeopolitik Tarih Haritası</h3>
 
