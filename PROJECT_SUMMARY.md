@@ -22,8 +22,8 @@ Son dönemde projeye eklenen kritik özellikler:
     *   `robots.txt` ve `sitemap.xml` dosyaları otomatik oluşturuluyor.
 3.  **YouTube Entegrasyonu:** "32. Gün" arşivinden önemli tarihi videolar haritadaki olaylara embed (gömülü) edildi.
 4.  **Akıllı Wikipedia Linkleri:**
-    *   Markdown formatındaki linkler HTML'e çevrildi.
-    *   Eğer Türkçe Wikipedia sayfası yoksa, otomatik olarak **İngilizce Wikipedia makalesi + Google Translate** (Türkçe) linkine yönlendirme (`scripts/fix_wiki.py` — doğrudan EN makale URL’si kullanılır, artık Special:Search değil).
+    *   Event'lerde Wikipedia linki `wikipedia_url` alanında tutulur; UI bu alan doluysa her event altında "Wikipedia ↗" linki gösterir.
+    *   `scripts/fix_wiki.py` linkleri normalize eder: **TR Wikipedia sayfası varsa TR**, yoksa **EN** (translate yok). Eski Google Translate + `Special:Search` linkleri otomatik olarak doğrudan makale URL'sine çevrilir.
 5.  **Görsel Geliştirmeler:** Seçilen ülkenin bayrağının ülke sınırları içine (HOI4 tarzı) maskelenerek gelmesi sağlandı.
 6.  **Fransa bayrağı düzeltmesi:** GeoJSON’da "France" sadece French Guiana geometrisine sahipti; script içinde bu feature "French Guiana" olarak yeniden adlandırıldı ve ana Fransa (metropolitan) için yeni bir "France" feature’ı eklendi. Böylece Avrupa’daki Fransa’ya hover’da bayrak görünür.
 7.  **Mobil iyileştirmeler:** Ülke paneli (sidebar) kapatma butonu eklendi (`closeSidebar()`). Mobilde (≤768px) sidebar tam genişlik, filtre paneli "Filtreler" butonu ile açılıp kapanabiliyor; panel kapatılınca sadece buton kalır, harita alanı artar.
