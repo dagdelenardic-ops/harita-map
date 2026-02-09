@@ -767,7 +767,7 @@ function parseMarkdownLinks(text) {
         }}
     }}
     .panel-toggle {{
-        display: none;
+        /* display is controlled by media queries */
         width: 100%;
         padding: 8px;
         margin-bottom: 8px;
@@ -778,9 +778,12 @@ function parseMarkdownLinks(text) {
         cursor: pointer;
         font-size: 13px;
         font-weight: 700;
+        position: sticky;
+        top: 0;
+        z-index: 1;
     }}
     .panel-fab {{
-        display: none;
+        /* display is controlled by media queries */
         position: fixed;
         top: 10px;
         right: 10px;
