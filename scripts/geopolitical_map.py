@@ -358,6 +358,7 @@ function parseMarkdownLinks(text) {
         max-height: 90vh;
         overflow-y: auto;
         width: 280px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
     }}
     .control-panel h3 {{
         margin: 0 0 12px 0;
@@ -739,25 +740,29 @@ function parseMarkdownLinks(text) {
             transform: translateX(100%);
         }}
         .control-panel {{
-            width: 260px;
-            max-height: 70vh;
+            width: min(320px, 92vw);
+            max-height: 80vh;
+            transform: translateX(110%);
+            opacity: 0;
+            pointer-events: none;
         }}
-        .control-panel.collapsed {{
-            padding: 8px 12px;
-            max-height: none;
-        }}
-        .control-panel.collapsed .control-section,
-        .control-panel.collapsed .instructions,
-        .control-panel.collapsed .stats-box,
-        .control-panel.collapsed h3 {{
-            display: none;
+        .control-panel.mobile-open {{
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
         }}
         .panel-toggle {{
             display: block;
         }}
+        .panel-fab {{
+            display: inline-flex;
+        }}
     }}
     @media (min-width: 769px) {{
         .panel-toggle {{
+            display: none;
+        }}
+        .panel-fab {{
             display: none;
         }}
     }}
@@ -772,7 +777,29 @@ function parseMarkdownLinks(text) {
         border-radius: 6px;
         cursor: pointer;
         font-size: 13px;
+        font-weight: 700;
     }}
+    .panel-fab {{
+        display: none;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1101;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        box-shadow: 0 6px 22px rgba(0,0,0,0.22);
+        align-items: center;
+        gap: 8px;
+    }}
+    .panel-fab.hidden {{ display: none; }}
+    .panel-fab:active {{ transform: scale(0.98); }}
     .build-info {{
         position: fixed;
         right: 8px;
@@ -856,8 +883,12 @@ function parseMarkdownLinks(text) {
     <div class="sidebar-content" id="sidebarContent"></div>
 </div>
 
+<button class="panel-fab" id="panelFab" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">
+    Filtreler
+</button>
+
 <div class="control-panel" id="controlPanel">
-    <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat">Filtreler</button>
+    <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="true">Kapat</button>
     <h3>Jeopolitik Tarih Haritası</h3>
 
     <div class="instructions">
@@ -1813,10 +1844,22 @@ function closeSidebar() {{
 }}
 function toggleFilterPanel() {{
     const panel = document.getElementById('controlPanel');
+    const fab = document.getElementById('panelFab');
     const btn = document.getElementById('panelToggle');
-    if (panel && btn) {{
-        panel.classList.toggle('collapsed');
-        btn.textContent = panel.classList.contains('collapsed') ? 'Filtreleri aç' : 'Filtreleri kapat';
+    if (!panel) return;
+    const open = !panel.classList.contains('mobile-open');
+    if (open) {{
+        panel.classList.add('mobile-open');
+    }} else {{
+        panel.classList.remove('mobile-open');
+    }}
+    if (fab) {{
+        fab.classList.toggle('hidden', open);
+        fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }}
+    if (btn) {{
+        btn.textContent = 'Kapat';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }}
 }}
 function toggleDecadeSection(header) {{
