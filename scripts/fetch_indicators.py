@@ -366,6 +366,28 @@ def main() -> None:
 
     bigmac_by_country, bigmac_meta, bigmac_unknown = fetch_big_mac_index(lookup)
 
+    # Static BRICS+ list (as of Jan 2025 expansion, incl. Indonesia; canonicalized via mappings)
+    # Source: brics.br (Brazilian BRICS presidency comms).
+    brics_plus_en = [
+        "Brazil",
+        "Russia",
+        "India",
+        "China",
+        "South Africa",
+        "Saudi Arabia",
+        "Egypt",
+        "United Arab Emirates",
+        "Ethiopia",
+        "Iran",
+        "Indonesia",
+    ]
+    brics_plus = []
+    for n in brics_plus_en:
+        canon = _canonicalize(lookup, n)
+        if canon:
+            brics_plus.append(canon.turkish)
+    brics_plus = sorted(set(brics_plus))
+
     # Static G8 list (canonicalized via mappings)
     g8_en = [
         "Canada",
@@ -389,9 +411,14 @@ def main() -> None:
         "groups": {
             "g8": g8,
             "nato": nato_members,
+            "brics_plus": brics_plus,
             "sources": {
                 "g8": {"type": "static", "note": "Classic G8 members (incl. Russia)"},
                 "nato": {"type": "wikipedia", "url": WIKI_NATO_URL},
+                "brics_plus": {
+                    "type": "static",
+                    "note": "BRICS+ full members (incl. Indonesia, Jan 2025 expansion) - see brics.br",
+                },
             },
         },
         "indicators": {
@@ -414,6 +441,7 @@ def main() -> None:
 
     print("Wrote:", OUTPUT_PATH)
     print("- NATO members:", len(nato_members), "(unknown:", len(nato_unknown), ")")
+    print("- BRICS+ members:", len(brics_plus))
     print("- Min wage countries:", len(min_wage_by_country), "(unknown:", len(min_wage_unknown), ")")
     print("- Big Mac countries:", len(bigmac_by_country), "as of", bigmac_meta.get("latest_date"))
 

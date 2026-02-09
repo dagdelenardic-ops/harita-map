@@ -1,0 +1,5 @@
+.DS_Store
+
+# Script backups
+data/events.json.bak.*
+

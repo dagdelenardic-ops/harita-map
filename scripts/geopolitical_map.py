@@ -839,6 +839,11 @@ function parseMarkdownLinks(text) {
         border: 1px solid rgba(52, 152, 219, 0.55);
         color: #3498db;
     }}
+    .group-badge.brics {{
+        background: rgba(88, 101, 242, 0.16);
+        border: 1px solid rgba(88, 101, 242, 0.55);
+        color: #5865f2;
+    }}
     .indicator-select {{
         width: 100%;
         padding: 6px 8px;
@@ -941,6 +946,11 @@ function parseMarkdownLinks(text) {
                 <span class="category-color" style="background: #f1c40f;"></span>
                 G8 Ülkeleri
             </label>
+            <label class="category-item" style="background: #f3f0ff; border: 1px solid rgba(88, 101, 242, 0.35);">
+                <input type="checkbox" onchange="toggleCountryGroup('brics_plus')" id="group-brics_plus">
+                <span class="category-color" style="background: #5865f2;"></span>
+                BRICS+ Ülkeleri
+            </label>
         </div>
     </div>
 
@@ -981,14 +991,15 @@ const decades = ['1920s', '1930s', '1940s', '1950s', '1960s', '1970s', '1980s', 
 const externalData = {indicators_json};
 const countryGroups = {{
     g8: new Set((externalData.groups && externalData.groups.g8) ? externalData.groups.g8 : []),
-    nato: new Set((externalData.groups && externalData.groups.nato) ? externalData.groups.nato : [])
+    nato: new Set((externalData.groups && externalData.groups.nato) ? externalData.groups.nato : []),
+    brics_plus: new Set((externalData.groups && externalData.groups.brics_plus) ? externalData.groups.brics_plus : [])
 }};
 const externalIndicators = (externalData && externalData.indicators) ? externalData.indicators : {{}};
 
 // Expose to window for other injected scripts
 window.countryGroups = countryGroups;
 window.externalIndicators = externalIndicators;
-window.activeCountryGroup = null; // 'g8' | 'nato' | null
+window.activeCountryGroup = null; // 'g8' | 'nato' | 'brics_plus' | null
 window.activeIndicator = ''; // 'min_wage' | 'bigmac' | ''
 
 // State
@@ -1038,8 +1049,10 @@ function toggleCountryGroup(groupKey) {{
 
     const g8Box = document.getElementById('group-g8');
     const natoBox = document.getElementById('group-nato');
+    const bricsBox = document.getElementById('group-brics_plus');
     if (g8Box) g8Box.checked = window.activeCountryGroup === 'g8';
     if (natoBox) natoBox.checked = window.activeCountryGroup === 'nato';
+    if (bricsBox) bricsBox.checked = window.activeCountryGroup === 'brics_plus';
 
     updateVisibleCount();
     updateMarkerVisibility();
@@ -1176,7 +1189,11 @@ function groupStyle(feature) {{
     if (!set.has(canon)) {{
         return {{ fillOpacity: 0, opacity: 0, weight: 0, color: 'transparent' }};
     }}
-    const color = groupKey === 'nato' ? '#3498db' : '#f1c40f';
+    const color = (groupKey === 'nato')
+        ? '#3498db'
+        : (groupKey === 'brics_plus')
+            ? '#5865f2'
+            : '#f1c40f';
     return {{
         fillColor: color,
         fillOpacity: 0.12,
@@ -1545,16 +1562,22 @@ function highlightCountryWithFlag(countryName) {{
     let flagCode = null;
     let flagUrl = null;
 
+    // Group override: show NATO flag when NATO group is active and the country is a NATO member.
+    const NATO_FLAG_URL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_NATO.svg/640px-Flag_of_NATO.svg.png';
+    if (window.activeCountryGroup === 'nato' && countryGroups && countryGroups.nato && countryGroups.nato.has(countryName)) {{
+        flagUrl = NATO_FLAG_URL;
+    }}
+
     // Special Case: Manual Overrides / Special Territories
-    if (specialFlagUrls[countryName]) {{
+    if (!flagUrl && specialFlagUrls[countryName]) {{
         flagUrl = specialFlagUrls[countryName];
     }} 
     // Strategy A: Check countryCodeMap (name -> iso) which is the source of truth for this project
-    else if (window.countryCodeMap && window.countryCodeMap[countryName]) {{
+    else if (!flagUrl && window.countryCodeMap && window.countryCodeMap[countryName]) {{
         flagCode = window.countryCodeMap[countryName];
     }}
     // Strategy B: Check Meta (if available) - converting 3-char code if needed
-    else if (countryMeta[countryName] && countryMeta[countryName].code) {{
+    else if (!flagUrl && countryMeta[countryName] && countryMeta[countryName].code) {{
         const c = countryMeta[countryName].code;
         if (c.length === 2) flagCode = c.toLowerCase();
         else if (c.length === 3) {{
@@ -1568,7 +1591,7 @@ function highlightCountryWithFlag(countryName) {{
         }}
     }}
     // Strategy C: Check Feature Properties directly (often has ISO codes)
-    else if (feature.properties && feature.properties['ISO3166-1-Alpha-2']) {{
+    else if (!flagUrl && feature.properties && feature.properties['ISO3166-1-Alpha-2']) {{
         const iso = feature.properties['ISO3166-1-Alpha-2'];
         if (iso && iso !== '-99') flagCode = iso.toLowerCase();
     }}
@@ -1605,6 +1628,9 @@ function buildEconomyHtml(countryName) {{
     }}
     if (countryGroups.nato && countryGroups.nato.has(countryName)) {{
         badges.push('<span class="group-badge nato">NATO</span>');
+    }}
+    if (countryGroups.brics_plus && countryGroups.brics_plus.has(countryName)) {{
+        badges.push('<span class="group-badge brics">BRICS+</span>');
     }}
 
     const minw = getIndicatorDetails(countryName, 'min_wage');
