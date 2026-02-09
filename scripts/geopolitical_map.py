@@ -148,30 +148,88 @@ class GeopoliticalMap:
         ana Fransa (metropolitan) için yeni feature ekler; böylece Fransa'ya hover'da bayrak çıkar."""
         if not self.geojson_data or 'features' not in self.geojson_data:
             return
-        for f in self.geojson_data['features']:
-            props = f.get('properties') or {}
-            if props.get('name') != 'France':
-                continue
-            geom = f.get('geometry')
-            if not geom or geom.get('type') != 'MultiPolygon':
-                continue
-            coords = geom.get('coordinates') or []
-            if not coords or not coords[0] or not coords[0][0]:
-                continue
-            first_lon, first_lat = coords[0][0][0][0], coords[0][0][0][1]
-            # French Guiana: ~(-54, 2)
-            if -60 < first_lon < -50 and 0 < first_lat < 10:
-                props['name'] = 'French Guiana'
+
+        # If France includes overseas territories, the overall bbox becomes huge and the flag overlay
+        # gets distorted. Keep only metropolitan France (+Corsica) polygons for the "France" feature.
+        EU_BBOX = (-10.0, 35.0, 20.0, 60.0)  # lon_min, lat_min, lon_max, lat_max
+
+        def _poly_bbox(poly):
+            if not poly or not poly[0]:
+                return None
+            ring = poly[0]
+            lons = [pt[0] for pt in ring if isinstance(pt, (list, tuple)) and len(pt) >= 2]
+            lats = [pt[1] for pt in ring if isinstance(pt, (list, tuple)) and len(pt) >= 2]
+            if not lons or not lats:
+                return None
+            return min(lons), min(lats), max(lons), max(lats)
+
+        def _bbox_within(b, window):
+            if not b:
+                return False
+            minlon, minlat, maxlon, maxlat = b
+            wminlon, wminlat, wmaxlon, wmaxlat = window
+            return (wminlon <= minlon <= wmaxlon) and (wminlat <= minlat <= wmaxlat) and (wminlon <= maxlon <= wmaxlon) and (wminlat <= maxlat <= wmaxlat)
+
+        france_feature = None
+        for f in self.geojson_data["features"]:
+            props = f.get("properties") or {}
+            if props.get("name") == "France":
+                france_feature = f
                 break
-        # Ana Fransa (metropolitan) için basit kutu geometrisi ekle (Avrupa)
-        self.geojson_data['features'].append({
-            'type': 'Feature',
-            'properties': {'name': 'France', 'ISO3166-1-Alpha-3': 'FRA', 'ISO3166-1-Alpha-2': 'FR'},
-            'geometry': {
-                'type': 'Polygon',
-                'coordinates': [[[-5.5, 41.0], [10.0, 41.0], [10.0, 51.5], [-5.5, 51.5], [-5.5, 41.0]]]
+
+        if france_feature:
+            geom = france_feature.get("geometry") or {}
+            if geom.get("type") == "MultiPolygon":
+                coords = geom.get("coordinates") or []
+                metro = []
+                non_metro = []
+                for poly in coords:
+                    b = _poly_bbox(poly)
+                    if _bbox_within(b, EU_BBOX):
+                        metro.append(poly)
+                    else:
+                        non_metro.append(poly)
+
+                if metro:
+                    geom["coordinates"] = metro
+                    france_feature["geometry"] = geom
+                    props = france_feature.setdefault("properties", {})
+                    if props.get("ISO3166-1-Alpha-2") in (None, "", "-99"):
+                        props["ISO3166-1-Alpha-2"] = "FR"
+                    if props.get("ISO3166-1-Alpha-3") in (None, "", "-99"):
+                        props["ISO3166-1-Alpha-3"] = "FRA"
+                    return
+
+            # If we couldn't extract metropolitan France, rename this feature so lookups don't grab it.
+            props = france_feature.setdefault("properties", {})
+            props["name"] = "France (Overseas)"
+
+        # Add metropolitan France from a local GeoJSON snippet (kept small and bbox-correct for flag masking).
+        france_path = self.base_dir / "data" / "france_metropolitan.geojson"
+        if france_path.exists():
+            try:
+                france_data = json.loads(france_path.read_text(encoding="utf-8"))
+                for f in france_data.get("features", []):
+                    props = f.setdefault("properties", {})
+                    props.setdefault("name", "France")
+                    props.setdefault("ISO3166-1-Alpha-3", "FRA")
+                    props.setdefault("ISO3166-1-Alpha-2", "FR")
+                    self.geojson_data["features"].append(f)
+                return
+            except Exception as e:
+                print(f"WARNING: failed to load france_metropolitan.geojson: {e}")
+
+        # Last resort fallback: approximate box geometry (better than nothing, but less accurate).
+        self.geojson_data["features"].append(
+            {
+                "type": "Feature",
+                "properties": {"name": "France", "ISO3166-1-Alpha-3": "FRA", "ISO3166-1-Alpha-2": "FR"},
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [[[-5.5, 41.0], [10.0, 41.0], [10.0, 51.5], [-5.5, 51.5], [-5.5, 41.0]]],
+                },
             }
-        })
+        )
 
     def _get_custom_css_js(self) -> str:
         """Get custom CSS and JavaScript for the map."""
