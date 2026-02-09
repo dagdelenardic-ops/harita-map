@@ -591,6 +591,28 @@ function parseMarkdownLinks(text) {
         line-height: 1.5;
         margin-bottom: 8px;
     }}
+    .event-links {{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 8px;
+    }}
+    .event-wiki {{
+        font-size: 11px;
+        color: #74b9ff;
+        text-decoration: none;
+        border: 1px solid rgba(116,185,255,0.35);
+        padding: 2px 8px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }}
+    .event-wiki:hover {{
+        color: #dfe6e9;
+        border-color: rgba(116,185,255,0.6);
+        background: rgba(116,185,255,0.08);
+    }}
     
     /* Metadata Card - Dark Theme */
     .country-meta-card {{
@@ -1763,12 +1785,16 @@ function openSidebar(countryName) {{
                  const cat = categories[e.category] || {{}};
                  const videoHtml = e.youtube_video_id ? 
                     `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>` : '';
+                 const wikiHtml = e.wikipedia_url
+                    ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
+                    : '';
                  
                  html += `
                     <div class="event-item">
                         <div class="event-year">${{e.year}}</div>
                         <div class="event-title">${{e.title}}</div>
                         <div class="event-desc">${{parseMarkdownLinks(e.description)}}</div>
+                        ${{wikiHtml}}
                          ${{videoHtml}}
                     </div>
                  `;
