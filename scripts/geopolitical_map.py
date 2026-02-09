@@ -2147,7 +2147,8 @@ window.addEventListener('load', function() {{
             '#2c3e50': 'black',
             '#e67e22': 'orange',
             '#9b59b6': 'purple',
-            '#3498db': 'blue'
+            '#3498db': 'blue',
+            '#2ecc71': 'green',
         }
         color = color_map.get(cat.get('color', '#3498db'), 'blue')
         return folium.Icon(color=color, icon=icon, prefix='fa')
