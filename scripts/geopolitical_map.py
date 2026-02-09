@@ -757,12 +757,18 @@ function parseMarkdownLinks(text) {
         .panel-fab {{
             display: inline-flex;
         }}
+        .panel-handle {{
+            display: inline-flex;
+        }}
     }}
     @media (min-width: 769px) {{
         .panel-toggle {{
             display: none;
         }}
         .panel-fab {{
+            display: none;
+        }}
+        .panel-handle {{
             display: none;
         }}
     }}
@@ -803,6 +809,35 @@ function parseMarkdownLinks(text) {
     }}
     .panel-fab.hidden {{ display: none; }}
     .panel-fab:active {{ transform: scale(0.98); }}
+    .panel-handle {{
+        /* display is controlled by media queries */
+        position: fixed;
+        top: 50%;
+        right: 6px;
+        transform: translateY(-50%);
+        z-index: 1102;
+        width: 36px;
+        height: 46px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(52, 152, 219, 0.55);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+        color: #3498db;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }}
+    .panel-handle:active {{
+        transform: translateY(-50%) scale(0.98);
+    }}
+    .panel-handle-icon {{
+        font-size: 22px;
+        font-weight: 900;
+        line-height: 1;
+        display: block;
+    }}
     .build-info {{
         position: fixed;
         right: 8px;
@@ -980,6 +1015,10 @@ function parseMarkdownLinks(text) {
     <a href="/healthz.json" target="_blank" rel="noopener">health</a>
     <div id="indicatorHoverInfo" style="margin-top:2px; color:#bdc3c7;"></div>
 </div>
+
+<button class="panel-handle" id="panelHandle" onclick="toggleFilterPanel()" aria-label="Filtre panelini aç/kapat" aria-expanded="true">
+    <span class="panel-handle-icon" id="panelHandleIcon" aria-hidden="true">›</span>
+</button>
 
 <script>
 {parse_md_js}
@@ -1875,6 +1914,8 @@ function toggleFilterPanel() {{
     const panel = document.getElementById('controlPanel');
     const fab = document.getElementById('panelFab');
     const btn = document.getElementById('panelToggle');
+    const handle = document.getElementById('panelHandle');
+    const handleIcon = document.getElementById('panelHandleIcon');
     if (!panel) return;
     const open = !panel.classList.contains('mobile-open');
     if (open) {{
@@ -1889,6 +1930,13 @@ function toggleFilterPanel() {{
     if (btn) {{
         btn.textContent = 'Kapat';
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }}
+    if (handle) {{
+        handle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }}
+    if (handleIcon) {{
+        // Show direction: when panel is open, arrow points right (close); when closed, left (open).
+        handleIcon.textContent = open ? '›' : '‹';
     }}
 }}
 function toggleDecadeSection(header) {{
