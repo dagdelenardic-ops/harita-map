@@ -128,11 +128,12 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="countryName">Ulke Adi *</label>
-                        <input type="text" id="countryName" required placeholder="ornek: Turkiye">
+                        <input type="text" id="countryName" required placeholder="ornek: Turkiye" list="countryNameList">
+                        <datalist id="countryNameList"></datalist>
                     </div>
                     <div class="form-group">
                         <label for="countryCode">Ulke Kodu *</label>
-                        <input type="text" id="countryCode" required placeholder="ornek: TR" maxlength="3">
+                        <input type="text" id="countryCode" required placeholder="ornek: TR" maxlength="4">
                     </div>
                 </div>
 
@@ -232,6 +233,8 @@
         </div>
     </div>
 
+    <script src="data.js"></script>
+    <script src="country_mappings.js"></script>
     <script src="admin.js"></script>
 </body>
 </html>

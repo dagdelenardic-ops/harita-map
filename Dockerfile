@@ -16,6 +16,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the entire project
 COPY . .
 
+# Fetch external datasets (NATO, minimum wage, Big Mac index, etc.)
+RUN python scripts/fetch_indicators.py
+
 # Generate the map (assuming this script generates output/geopolitical_map.html)
 # We need to make sure the script output directory matches what we serve
 RUN python scripts/geopolitical_map.py

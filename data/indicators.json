@@ -1,0 +1,1311 @@
+{
+  "fetched_at_utc": "2026-02-09T12:08:16Z",
+  "groups": {
+    "g8": [
+      "ABD",
+      "Almanya",
+      "Birleşik Krallık",
+      "Fransa",
+      "Japonya",
+      "Kanada",
+      "Rusya",
+      "İtalya"
+    ],
+    "nato": [
+      "Arnavutluk",
+      "Belçika",
+      "Bulgaristan",
+      "Kanada",
+      "Hırvatistan",
+      "Çek Cumhuriyeti",
+      "Danimarka",
+      "Estonya",
+      "Finlandiya",
+      "Fransa",
+      "Almanya",
+      "Yunanistan",
+      "Macaristan",
+      "İzlanda",
+      "İtalya",
+      "Letonya",
+      "Litvanya",
+      "Lüksemburg",
+      "Karadağ",
+      "Hollanda",
+      "Makedonya",
+      "Norveç",
+      "Polonya",
+      "Portekiz",
+      "Romanya",
+      "Slovakya",
+      "Slovenya",
+      "İspanya",
+      "İsveç",
+      "Türkiye",
+      "Birleşik Krallık",
+      "ABD"
+    ],
+    "sources": {
+      "g8": {
+        "type": "static",
+        "note": "Classic G8 members (incl. Russia)"
+      },
+      "nato": {
+        "type": "wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Member_states_of_NATO"
+      }
+    }
+  },
+  "indicators": {
+    "min_wage": {
+      "label": "Asgari Ücret (USD/saat, nominal)",
+      "unit": "USD/saat",
+      "source": {
+        "type": "wikipedia",
+        "url": "https://en.wikipedia.org/wiki/List_of_countries_by_minimum_wage"
+      },
+      "by_country": {
+        "Afganistan": {
+          "hourly_usd_nominal": 0.41,
+          "annual_usd_nominal": 858.0,
+          "monthly_usd_note": 76.3,
+          "effective_date": "2017"
+        },
+        "Arnavutluk": {
+          "hourly_usd_nominal": 2.23,
+          "annual_usd_nominal": 4637.0,
+          "monthly_usd_note": 471.0,
+          "effective_date": "1 Apr 2023"
+        },
+        "Cezayir": {
+          "hourly_usd_nominal": 1.03,
+          "annual_usd_nominal": 2132.0,
+          "monthly_usd_note": 185.05,
+          "effective_date": "1 January 2026"
+        },
+        "Angola": {
+          "hourly_usd_nominal": 0.29,
+          "annual_usd_nominal": 663.0,
+          "monthly_usd_note": 61.0,
+          "effective_date": "2022"
+        },
+        "Ermenistan": {
+          "hourly_usd_nominal": 0.86,
+          "annual_usd_nominal": 1787.0,
+          "monthly_usd_note": 190.0,
+          "effective_date": "15 Nov 2022"
+        },
+        "Avustralya": {
+          "hourly_usd_nominal": 18.12,
+          "annual_usd_nominal": 35810.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 July 2024"
+        },
+        "Avusturya": {
+          "hourly_usd_nominal": 8.186538461538461,
+          "annual_usd_nominal": 17028.0,
+          "monthly_usd_note": 1419.0,
+          "effective_date": "2017"
+        },
+        "Azerbaycan": {
+          "hourly_usd_nominal": 1.17,
+          "annual_usd_nominal": 2435.0,
+          "monthly_usd_note": 203.0,
+          "effective_date": "5 Jan 2023 [ 26 ]"
+        },
+        "Bangladeş": {
+          "hourly_usd_nominal": 0.5115384615384616,
+          "annual_usd_nominal": 1276.8000000000002,
+          "monthly_usd_note": 106.4,
+          "effective_date": "1 Dec 2013"
+        },
+        "Belarus": {
+          "hourly_usd_nominal": 0.7038461538461539,
+          "annual_usd_nominal": 1464.0,
+          "monthly_usd_note": 122.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "Belçika": {
+          "hourly_usd_nominal": 14.58,
+          "annual_usd_nominal": 28809.0,
+          "monthly_usd_note": 2401.0,
+          "effective_date": "1 April 2024"
+        },
+        "Benin": {
+          "hourly_usd_nominal": 0.42,
+          "annual_usd_nominal": 865.0,
+          "monthly_usd_note": 86.12,
+          "effective_date": "1 Jan 2023"
+        },
+        "Bolivya": {
+          "hourly_usd_nominal": 1.88,
+          "annual_usd_nominal": 4703.0,
+          "monthly_usd_note": 362.0,
+          "effective_date": "1 May 2024"
+        },
+        "Bosna Hersek": {
+          "hourly_usd_nominal": 1.9,
+          "annual_usd_nominal": 3949.0,
+          "monthly_usd_note": null,
+          "effective_date": "2022"
+        },
+        "Botsvana": {
+          "hourly_usd_nominal": 0.77,
+          "annual_usd_nominal": 1933.0,
+          "monthly_usd_note": 152.0,
+          "effective_date": "2022"
+        },
+        "Brezilya": {
+          "hourly_usd_nominal": 1.71,
+          "annual_usd_nominal": 3910.0,
+          "monthly_usd_note": 291.78,
+          "effective_date": "1 Jan 2026"
+        },
+        "Bulgaristan": {
+          "hourly_usd_nominal": 3.93,
+          "annual_usd_nominal": 8181.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2025"
+        },
+        "Burkina Faso": {
+          "hourly_usd_nominal": 0.36,
+          "annual_usd_nominal": 750.0,
+          "monthly_usd_note": 59.0,
+          "effective_date": "1 Apr 2012"
+        },
+        "Burundi": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2017"
+        },
+        "Kamboçya": {
+          "hourly_usd_nominal": 0.9615384615384616,
+          "annual_usd_nominal": 2400.0,
+          "monthly_usd_note": 200.0,
+          "effective_date": "3 Oct 2023"
+        },
+        "Kamerun": {
+          "hourly_usd_nominal": 0.38,
+          "annual_usd_nominal": 785.0,
+          "monthly_usd_note": 62.0,
+          "effective_date": "30 July 2014"
+        },
+        "Kanada": {
+          "hourly_usd_nominal": 11.6,
+          "annual_usd_nominal": 24128.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 June 2022"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "hourly_usd_nominal": 0.39,
+          "annual_usd_nominal": 821.0,
+          "monthly_usd_note": null,
+          "effective_date": "2011"
+        },
+        "Çad": {
+          "hourly_usd_nominal": 0.64,
+          "annual_usd_nominal": 1298.0,
+          "monthly_usd_note": 110.0,
+          "effective_date": "18 Oct 2011"
+        },
+        "Şili": {
+          "hourly_usd_nominal": 3.66,
+          "annual_usd_nominal": 8364.0,
+          "monthly_usd_note": 553.0,
+          "effective_date": "1 May 2025"
+        },
+        "Çin": {
+          "hourly_usd_nominal": 1.45,
+          "annual_usd_nominal": 3014.0,
+          "monthly_usd_note": 369.88,
+          "effective_date": "1 Jan 2025"
+        },
+        "Kolombiya": {
+          "hourly_usd_nominal": 2.26,
+          "annual_usd_nominal": 5638.0,
+          "monthly_usd_note": 350.0,
+          "effective_date": "1 Jan 2025"
+        },
+        "Komorlar": {
+          "hourly_usd_nominal": 0.76,
+          "annual_usd_nominal": 1587.0,
+          "monthly_usd_note": 129.0,
+          "effective_date": "2017"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "hourly_usd_nominal": 0.09,
+          "annual_usd_nominal": 220.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2009"
+        },
+        "Fildişi Sahili": {
+          "hourly_usd_nominal": 0.38,
+          "annual_usd_nominal": 792.0,
+          "monthly_usd_note": 120.0,
+          "effective_date": "2013"
+        },
+        "Hırvatistan": {
+          "hourly_usd_nominal": 5.1923076923076925,
+          "annual_usd_nominal": 10800.0,
+          "monthly_usd_note": 900.0,
+          "effective_date": "1 Jan 2024"
+        },
+        "Küba": {
+          "hourly_usd_nominal": 0.03201923076923077,
+          "annual_usd_nominal": 79.92,
+          "monthly_usd_note": 6.66,
+          "effective_date": "2021"
+        },
+        "Kıbrıs": {
+          "hourly_usd_nominal": 4.836538461538462,
+          "annual_usd_nominal": 12072.0,
+          "monthly_usd_note": 1006.0,
+          "effective_date": "2017"
+        },
+        "Çek Cumhuriyeti": {
+          "hourly_usd_nominal": 4.79,
+          "annual_usd_nominal": 9959.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2025"
+        },
+        "Danimarka": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2017"
+        },
+        "Cibuti": {
+          "hourly_usd_nominal": 0.9519230769230769,
+          "annual_usd_nominal": 2376.0,
+          "monthly_usd_note": 198.0,
+          "effective_date": "2017"
+        },
+        "Ekvador": {
+          "hourly_usd_nominal": 3.43,
+          "annual_usd_nominal": 7124.0,
+          "monthly_usd_note": 594.0,
+          "effective_date": "1 Jan 2025"
+        },
+        "Mısır": {
+          "hourly_usd_nominal": 0.7587912087912088,
+          "annual_usd_nominal": 1657.1999999999998,
+          "monthly_usd_note": 138.1,
+          "effective_date": "1 Mar 2025"
+        },
+        "El Salvador": {
+          "hourly_usd_nominal": 1.6,
+          "annual_usd_nominal": 3650.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2018"
+        },
+        "Ekvator Ginesi": {
+          "hourly_usd_nominal": 1.12,
+          "annual_usd_nominal": 2792.0,
+          "monthly_usd_note": 224.0,
+          "effective_date": "2017"
+        },
+        "Eritre": {
+          "hourly_usd_nominal": 0.12082973206568713,
+          "annual_usd_nominal": 279.6,
+          "monthly_usd_note": 23.3,
+          "effective_date": "2017"
+        },
+        "Estonya": {
+          "hourly_usd_nominal": 5.09,
+          "annual_usd_nominal": 10578.0,
+          "monthly_usd_note": 857.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "Esvatini": {
+          "hourly_usd_nominal": 0.33,
+          "annual_usd_nominal": 694.0,
+          "monthly_usd_note": 86.5,
+          "effective_date": "2011"
+        },
+        "Etiyopya": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2017"
+        },
+        "Finlandiya": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2017"
+        },
+        "Fransa": {
+          "hourly_usd_nominal": 14.05,
+          "annual_usd_nominal": 25572.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2025"
+        },
+        "Gabon": {
+          "hourly_usd_nominal": 1.56,
+          "annual_usd_nominal": 3246.0,
+          "monthly_usd_note": 255.0,
+          "effective_date": "1 Feb 2010"
+        },
+        "Gürcistan": {
+          "hourly_usd_nominal": 0.27692307692307694,
+          "annual_usd_nominal": 576.0,
+          "monthly_usd_note": 48.0,
+          "effective_date": "2017"
+        },
+        "Almanya": {
+          "hourly_usd_nominal": 16.44,
+          "annual_usd_nominal": 41033.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2026"
+        },
+        "Gana": {
+          "hourly_usd_nominal": 0.39,
+          "annual_usd_nominal": 814.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2024"
+        },
+        "Yunanistan": {
+          "hourly_usd_nominal": 6.6,
+          "annual_usd_nominal": 13738.0,
+          "monthly_usd_note": 1145.0,
+          "effective_date": "1 Apr 2024"
+        },
+        "Guatemala": {
+          "hourly_usd_nominal": 1.57,
+          "annual_usd_nominal": 3924.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2016"
+        },
+        "Gine": {
+          "hourly_usd_nominal": 0.2980769230769231,
+          "annual_usd_nominal": 744.0,
+          "monthly_usd_note": 62.0,
+          "effective_date": "2017"
+        },
+        "Gine-Bissau": {
+          "hourly_usd_nominal": 0.18,
+          "annual_usd_nominal": 412.0,
+          "monthly_usd_note": 30.0,
+          "effective_date": "2017"
+        },
+        "Guyana": {
+          "hourly_usd_nominal": 0.97,
+          "annual_usd_nominal": 2015.0,
+          "monthly_usd_note": 168.0,
+          "effective_date": "1 July 2013"
+        },
+        "Haiti": {
+          "hourly_usd_nominal": 0.41,
+          "annual_usd_nominal": 1014.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Aug 2017"
+        },
+        "Macaristan": {
+          "hourly_usd_nominal": 4.42,
+          "annual_usd_nominal": 9184.0,
+          "monthly_usd_note": 978.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "İzlanda": {
+          "hourly_usd_nominal": 17.45,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "3 Dec 2022  (conversion rate, 1 Sep 2023)"
+        },
+        "Hindistan": {
+          "hourly_usd_nominal": 0.27,
+          "annual_usd_nominal": 674.0,
+          "monthly_usd_note": null,
+          "effective_date": "2015"
+        },
+        "Endonezya": {
+          "hourly_usd_nominal": 1.18,
+          "annual_usd_nominal": 2449.0,
+          "monthly_usd_note": 303.0,
+          "effective_date": "1 Feb 2020"
+        },
+        "İran": {
+          "hourly_usd_nominal": 0.76,
+          "annual_usd_nominal": 1747.0,
+          "monthly_usd_note": null,
+          "effective_date": "20 Mar 2024"
+        },
+        "Irak": {
+          "hourly_usd_nominal": 0.99,
+          "annual_usd_nominal": 2069.0,
+          "monthly_usd_note": 214.0,
+          "effective_date": "2014"
+        },
+        "İrlanda": {
+          "hourly_usd_nominal": 18.64,
+          "annual_usd_nominal": 37801.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2025"
+        },
+        "İsrail": {
+          "hourly_usd_nominal": 10.63,
+          "annual_usd_nominal": 23211.0,
+          "monthly_usd_note": 1934.0,
+          "effective_date": "1 Apr 2025"
+        },
+        "İtalya": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2019"
+        },
+        "Jamaika": {
+          "hourly_usd_nominal": 2.14,
+          "annual_usd_nominal": 4461.0,
+          "monthly_usd_note": 343.0,
+          "effective_date": "1 Apr 2023"
+        },
+        "Japonya": {
+          "hourly_usd_nominal": 9.32,
+          "annual_usd_nominal": 19388.0,
+          "monthly_usd_note": null,
+          "effective_date": "31 Mar 2026"
+        },
+        "Ürdün": {
+          "hourly_usd_nominal": 2.17,
+          "annual_usd_nominal": 5408.0,
+          "monthly_usd_note": 409.0,
+          "effective_date": "1 Jan 2025"
+        },
+        "Kuzey Kore": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2014"
+        },
+        "Güney Kore": {
+          "hourly_usd_nominal": 10.09,
+          "annual_usd_nominal": 20990.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2023"
+        },
+        "Kosova": {
+          "hourly_usd_nominal": 1.16,
+          "annual_usd_nominal": 2413.0,
+          "monthly_usd_note": 224.0,
+          "effective_date": "17 Aug 2011"
+        },
+        "Kuveyt": {
+          "hourly_usd_nominal": 0.96,
+          "annual_usd_nominal": 2400.0,
+          "monthly_usd_note": 216.0,
+          "effective_date": "14 Apr 2010"
+        },
+        "Kırgızistan": {
+          "hourly_usd_nominal": 0.17,
+          "annual_usd_nominal": 349.0,
+          "monthly_usd_note": 28.0,
+          "effective_date": "1 Jan 2024"
+        },
+        "Letonya": {
+          "hourly_usd_nominal": 5.05,
+          "annual_usd_nominal": 10502.0,
+          "monthly_usd_note": 999.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "Lübnan": {
+          "hourly_usd_nominal": 0.9615384615384616,
+          "annual_usd_nominal": 2400.0,
+          "monthly_usd_note": 200.0,
+          "effective_date": "1 Apr 2024"
+        },
+        "Lesoto": {
+          "hourly_usd_nominal": 0.41,
+          "annual_usd_nominal": 956.0,
+          "monthly_usd_note": 112.0,
+          "effective_date": "2014"
+        },
+        "Liberya": {
+          "hourly_usd_nominal": 0.5480769230769231,
+          "annual_usd_nominal": 1368.0,
+          "monthly_usd_note": 114.0,
+          "effective_date": "2014"
+        },
+        "Libya": {
+          "hourly_usd_nominal": 1.875,
+          "annual_usd_nominal": 3900.0,
+          "monthly_usd_note": 325.0,
+          "effective_date": "1 Mar 2011"
+        },
+        "Litvanya": {
+          "hourly_usd_nominal": 8.34,
+          "annual_usd_nominal": 17343.0,
+          "monthly_usd_note": 1364.0,
+          "effective_date": "1 Jan 2025"
+        },
+        "Lüksemburg": {
+          "hourly_usd_nominal": 15.43,
+          "annual_usd_nominal": 32103.0,
+          "monthly_usd_note": 2966.0,
+          "effective_date": "1 Apr 2023"
+        },
+        "Madagaskar": {
+          "hourly_usd_nominal": 0.18,
+          "annual_usd_nominal": 376.0,
+          "monthly_usd_note": 31.26,
+          "effective_date": "1 Jan 2015"
+        },
+        "Malavi": {
+          "hourly_usd_nominal": 0.11,
+          "annual_usd_nominal": 266.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2016"
+        },
+        "Malezya": {
+          "hourly_usd_nominal": 1.86,
+          "annual_usd_nominal": 4348.0,
+          "monthly_usd_note": 336.0,
+          "effective_date": "1 May 2022"
+        },
+        "Maldivler": {
+          "hourly_usd_nominal": 1.1634615384615385,
+          "annual_usd_nominal": 2904.0,
+          "monthly_usd_note": 242.0,
+          "effective_date": "2014"
+        },
+        "Mali": {
+          "hourly_usd_nominal": 0.25,
+          "annual_usd_nominal": 616.0,
+          "monthly_usd_note": null,
+          "effective_date": "2014"
+        },
+        "Moritanya": {
+          "hourly_usd_nominal": 0.71,
+          "annual_usd_nominal": 1473.0,
+          "monthly_usd_note": null,
+          "effective_date": "2023"
+        },
+        "Mauritius": {
+          "hourly_usd_nominal": 1.08,
+          "annual_usd_nominal": 2538.0,
+          "monthly_usd_note": 251.05,
+          "effective_date": "2019"
+        },
+        "Meksika": {
+          "hourly_usd_nominal": 2.01,
+          "annual_usd_nominal": 5020.0,
+          "monthly_usd_note": null,
+          "effective_date": "2025"
+        },
+        "Moldova": {
+          "hourly_usd_nominal": 1.31,
+          "annual_usd_nominal": 2715.0,
+          "monthly_usd_note": 222.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "Moğolistan": {
+          "hourly_usd_nominal": 1.6,
+          "annual_usd_nominal": 3336.0,
+          "monthly_usd_note": 229.0,
+          "effective_date": "1 Apr 2025"
+        },
+        "Karadağ": {
+          "hourly_usd_nominal": 3.07,
+          "annual_usd_nominal": 6387.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2022"
+        },
+        "Fas": {
+          "hourly_usd_nominal": 1.75,
+          "annual_usd_nominal": 3997.0,
+          "monthly_usd_note": 349.0,
+          "effective_date": "1 July 2015"
+        },
+        "Mozambik": {
+          "hourly_usd_nominal": 1.6211538461538462,
+          "annual_usd_nominal": 3372.0,
+          "monthly_usd_note": 281.0,
+          "effective_date": "1 April 2024"
+        },
+        "Myanmar": {
+          "hourly_usd_nominal": 0.3,
+          "annual_usd_nominal": 691.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Sep 2015"
+        },
+        "Namibya": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2014"
+        },
+        "Nepal": {
+          "hourly_usd_nominal": 0.8,
+          "annual_usd_nominal": 1986.0,
+          "monthly_usd_note": 165.5,
+          "effective_date": "July 2025"
+        },
+        "Hollanda": {
+          "hourly_usd_nominal": 17.4,
+          "annual_usd_nominal": 36187.0,
+          "monthly_usd_note": 3016.0,
+          "effective_date": "1 Jan 2026"
+        },
+        "Yeni Zelanda": {
+          "hourly_usd_nominal": 16.67,
+          "annual_usd_nominal": 34667.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Apr 2025"
+        },
+        "Nikaragua": {
+          "hourly_usd_nominal": 1.6730769230769231,
+          "annual_usd_nominal": 4176.0,
+          "monthly_usd_note": 348.0,
+          "effective_date": "1 Mar 2024"
+        },
+        "Nijer": {
+          "hourly_usd_nominal": 0.31,
+          "annual_usd_nominal": 650.0,
+          "monthly_usd_note": 60.0,
+          "effective_date": "17 Aug 2012"
+        },
+        "Nijerya": {
+          "hourly_usd_nominal": 1.01,
+          "annual_usd_nominal": 2103.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 May 2024"
+        },
+        "Makedonya": {
+          "hourly_usd_nominal": 1.16,
+          "annual_usd_nominal": 2418.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Apr 2021"
+        },
+        "Kuzey Kıbrıs": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2024"
+        },
+        "Norveç": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2014"
+        },
+        "Pakistan": {
+          "hourly_usd_nominal": 0.52,
+          "annual_usd_nominal": 1289.0,
+          "monthly_usd_note": 107.0,
+          "effective_date": "1 June 2016"
+        },
+        "Batı Şeria": {
+          "hourly_usd_nominal": 2.98,
+          "annual_usd_nominal": 6985.0,
+          "monthly_usd_note": 582.0,
+          "effective_date": "2022"
+        },
+        "Papua Yeni Gine": {
+          "hourly_usd_nominal": 0.91,
+          "annual_usd_nominal": 2086.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Aug 2014"
+        },
+        "Paraguay": {
+          "hourly_usd_nominal": 1.99,
+          "annual_usd_nominal": 4957.0,
+          "monthly_usd_note": 363.0,
+          "effective_date": "1 July 2024"
+        },
+        "Peru": {
+          "hourly_usd_nominal": 1.4,
+          "annual_usd_nominal": 3495.0,
+          "monthly_usd_note": 318.0,
+          "effective_date": "1 June 2022"
+        },
+        "Filipinler": {
+          "hourly_usd_nominal": 1.64,
+          "annual_usd_nominal": 3405.0,
+          "monthly_usd_note": null,
+          "effective_date": "18 July 2025"
+        },
+        "Polonya": {
+          "hourly_usd_nominal": 6.97,
+          "annual_usd_nominal": 14506.0,
+          "monthly_usd_note": 1209.0,
+          "effective_date": "1 Jan 2025"
+        },
+        "Portekiz": {
+          "hourly_usd_nominal": 5.6,
+          "annual_usd_nominal": 11638.0,
+          "monthly_usd_note": 828.0,
+          "effective_date": "1 Jan 2024"
+        },
+        "Katar": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2025"
+        },
+        "Romanya": {
+          "hourly_usd_nominal": 5.62,
+          "annual_usd_nominal": 11683.0,
+          "monthly_usd_note": 915.0,
+          "effective_date": "1 Jan 2025"
+        },
+        "Rusya": {
+          "hourly_usd_nominal": 2.12,
+          "annual_usd_nominal": 4414.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2026"
+        },
+        "Ruanda": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2013"
+        },
+        "Suudi Arabistan": {
+          "hourly_usd_nominal": 5.13,
+          "annual_usd_nominal": 12800.0,
+          "monthly_usd_note": 1066.66,
+          "effective_date": "2 Feb 2013"
+        },
+        "Senegal": {
+          "hourly_usd_nominal": 0.33,
+          "annual_usd_nominal": 686.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 1996"
+        },
+        "Seyseller": {
+          "hourly_usd_nominal": 1.58,
+          "annual_usd_nominal": 3282.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2014"
+        },
+        "Sierra Leone": {
+          "hourly_usd_nominal": 0.28,
+          "annual_usd_nominal": 575.0,
+          "monthly_usd_note": 57.0,
+          "effective_date": "1 Jan 2015"
+        },
+        "Singapur": {
+          "hourly_usd_nominal": 4.510489510489511,
+          "annual_usd_nominal": 10320.0,
+          "monthly_usd_note": 860.0,
+          "effective_date": "2019"
+        },
+        "Slovakya": {
+          "hourly_usd_nominal": 4.77,
+          "annual_usd_nominal": 9914.0,
+          "monthly_usd_note": 828.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "Slovenya": {
+          "hourly_usd_nominal": 8.21,
+          "annual_usd_nominal": 17079.0,
+          "monthly_usd_note": 1423.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "Somali": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2013"
+        },
+        "Güney Afrika": {
+          "hourly_usd_nominal": 1.57,
+          "annual_usd_nominal": 3671.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Mar 2022"
+        },
+        "Güney Sudan": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2011"
+        },
+        "İspanya": {
+          "hourly_usd_nominal": 8.39,
+          "annual_usd_nominal": 17457.0,
+          "monthly_usd_note": 1455.0,
+          "effective_date": "1 Jan 2023"
+        },
+        "Sri Lanka": {
+          "hourly_usd_nominal": 0.65,
+          "annual_usd_nominal": 1629.0,
+          "monthly_usd_note": 89.7,
+          "effective_date": "1 April 2025"
+        },
+        "Sudan": {
+          "hourly_usd_nominal": 0.01,
+          "annual_usd_nominal": 13.0,
+          "monthly_usd_note": null,
+          "effective_date": "2013"
+        },
+        "Surinam": {
+          "hourly_usd_nominal": 2.88,
+          "annual_usd_nominal": 5983.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 April 2025"
+        },
+        "İsveç": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "2017"
+        },
+        "İsviçre": {
+          "hourly_usd_nominal": 32.23021582733813,
+          "annual_usd_nominal": 69888.0,
+          "monthly_usd_note": 5824.0,
+          "effective_date": "2014"
+        },
+        "Suriye": {
+          "hourly_usd_nominal": 0.4,
+          "annual_usd_nominal": 96.0,
+          "monthly_usd_note": null,
+          "effective_date": "2013"
+        },
+        "Tacikistan": {
+          "hourly_usd_nominal": 0.51,
+          "annual_usd_nominal": 1061.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Sep 2025"
+        },
+        "Tayland": {
+          "hourly_usd_nominal": 1.5,
+          "annual_usd_nominal": 3733.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2023"
+        },
+        "Togo": {
+          "hourly_usd_nominal": 0.36,
+          "annual_usd_nominal": 757.0,
+          "monthly_usd_note": 70.0,
+          "effective_date": "1 Jan 2012"
+        },
+        "Trinidad ve Tobago": {
+          "hourly_usd_nominal": 0.3057692307692308,
+          "annual_usd_nominal": 636.0,
+          "monthly_usd_note": 53.0,
+          "effective_date": "1 Jan 2015"
+        },
+        "Tunus": {
+          "hourly_usd_nominal": 0.8,
+          "annual_usd_nominal": 2000.0,
+          "monthly_usd_note": 166.0,
+          "effective_date": "2020"
+        },
+        "Türkiye": {
+          "hourly_usd_nominal": 3.948717948717949,
+          "annual_usd_nominal": 9240.0,
+          "monthly_usd_note": 770.0,
+          "effective_date": "1 Jan 2026"
+        },
+        "Uganda": {
+          "hourly_usd_nominal": 0.2,
+          "annual_usd_nominal": 426.0,
+          "monthly_usd_note": 34.58,
+          "effective_date": "1 July 2017"
+        },
+        "Ukrayna": {
+          "hourly_usd_nominal": 1.83,
+          "annual_usd_nominal": 3802.0,
+          "monthly_usd_note": 204.24,
+          "effective_date": "1 Jan 2026"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": null,
+          "effective_date": "4 April 2025"
+        },
+        "Birleşik Krallık": {
+          "hourly_usd_nominal": 16.73,
+          "annual_usd_nominal": 34790.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Apr 2025"
+        },
+        "ABD": {
+          "hourly_usd_nominal": 7.25,
+          "annual_usd_nominal": 15080.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2025"
+        },
+        "Uruguay": {
+          "hourly_usd_nominal": 2.46,
+          "annual_usd_nominal": 6136.0,
+          "monthly_usd_note": 507.0,
+          "effective_date": "2024"
+        },
+        "Özbekistan": {
+          "hourly_usd_nominal": 0.5,
+          "annual_usd_nominal": 1041.0,
+          "monthly_usd_note": 71.0,
+          "effective_date": "1 June 2022"
+        },
+        "Venezuela": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": 10.32,
+          "monthly_usd_note": null,
+          "effective_date": "1 May 2020"
+        },
+        "Vietnam": {
+          "hourly_usd_nominal": 1.32,
+          "annual_usd_nominal": 2751.0,
+          "monthly_usd_note": null,
+          "effective_date": "1 Jan 2026"
+        },
+        "Yemen": {
+          "hourly_usd_nominal": 0.4807692307692308,
+          "annual_usd_nominal": 1200.0,
+          "monthly_usd_note": 100.0,
+          "effective_date": "2013"
+        },
+        "Zambiya": {
+          "hourly_usd_nominal": 0.24,
+          "annual_usd_nominal": 596.0,
+          "monthly_usd_note": 81.0,
+          "effective_date": "10 Sep 2018"
+        },
+        "Zimbabve": {
+          "hourly_usd_nominal": null,
+          "annual_usd_nominal": null,
+          "monthly_usd_note": 227.0,
+          "effective_date": "2012"
+        }
+      }
+    },
+    "bigmac": {
+      "label": "Big Mac Endeksi (USD)",
+      "unit": "USD",
+      "source": {
+        "type": "github",
+        "url": "https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/output-data/big-mac-full-index.csv",
+        "latest_date": "2025-01-01",
+        "rows_latest_date": 46
+      },
+      "by_country": {
+        "Birleşik Arap Emirlikleri": {
+          "date": "2025-01-01",
+          "currency_code": "AED",
+          "local_price": 18.0,
+          "dollar_price": 4.90075961774075,
+          "usd_raw": -0.15358
+        },
+        "Arjantin": {
+          "date": "2025-01-01",
+          "currency_code": "ARS",
+          "local_price": 7300.0,
+          "dollar_price": 6.9523802902495,
+          "usd_raw": 0.20076
+        },
+        "Avustralya": {
+          "date": "2025-01-01",
+          "currency_code": "AUD",
+          "local_price": 7.75,
+          "dollar_price": 4.87048750000002,
+          "usd_raw": -0.15881
+        },
+        "Azerbaycan": {
+          "date": "2025-01-01",
+          "currency_code": "AZN",
+          "local_price": 6.24,
+          "dollar_price": 3.67058823529412,
+          "usd_raw": -0.36605
+        },
+        "Brezilya": {
+          "date": "2025-01-01",
+          "currency_code": "BRL",
+          "local_price": 23.9,
+          "dollar_price": 4.02580558222582,
+          "usd_raw": -0.3047
+        },
+        "Kanada": {
+          "date": "2025-01-01",
+          "currency_code": "CAD",
+          "local_price": 7.81,
+          "dollar_price": 5.4294553164865,
+          "usd_raw": -0.06227
+        },
+        "İsviçre": {
+          "date": "2025-01-01",
+          "currency_code": "CHF",
+          "local_price": 7.2,
+          "dollar_price": 7.9924515735139,
+          "usd_raw": 0.38039
+        },
+        "Şili": {
+          "date": "2025-01-01",
+          "currency_code": "CLP",
+          "local_price": 4490.0,
+          "dollar_price": 4.5479868321094,
+          "usd_raw": -0.21451
+        },
+        "Çin": {
+          "date": "2025-01-01",
+          "currency_code": "CNY",
+          "local_price": 25.5,
+          "dollar_price": 3.51828473271384,
+          "usd_raw": -0.39235
+        },
+        "Kolombiya": {
+          "date": "2025-01-01",
+          "currency_code": "COP",
+          "local_price": 21900.0,
+          "dollar_price": 5.17458922267746,
+          "usd_raw": -0.10629
+        },
+        "Çek Cumhuriyeti": {
+          "date": "2025-01-01",
+          "currency_code": "CZK",
+          "local_price": 109.0,
+          "dollar_price": 4.56223474162684,
+          "usd_raw": -0.21205
+        },
+        "Danimarka": {
+          "date": "2025-01-01",
+          "currency_code": "DKK",
+          "local_price": 39.0,
+          "dollar_price": 5.48700704869367,
+          "usd_raw": -0.05233
+        },
+        "Mısır": {
+          "date": "2025-01-01",
+          "currency_code": "EGP",
+          "local_price": 135.0,
+          "dollar_price": 2.6865671641791,
+          "usd_raw": -0.536
+        },
+        "Guatemala": {
+          "date": "2025-01-01",
+          "currency_code": "GTQ",
+          "local_price": 31.0,
+          "dollar_price": 4.01476397073108,
+          "usd_raw": -0.3066
+        },
+        "Macaristan": {
+          "date": "2025-01-01",
+          "currency_code": "HUF",
+          "local_price": 1420.0,
+          "dollar_price": 3.64633292534634,
+          "usd_raw": -0.37024
+        },
+        "Endonezya": {
+          "date": "2025-01-01",
+          "currency_code": "IDR",
+          "local_price": 41000.0,
+          "dollar_price": 2.53516772298655,
+          "usd_raw": -0.56215
+        },
+        "Hindistan": {
+          "date": "2025-01-01",
+          "currency_code": "INR",
+          "local_price": 226.0,
+          "dollar_price": 2.61752059415401,
+          "usd_raw": -0.54792
+        },
+        "İsrail": {
+          "date": "2025-01-01",
+          "currency_code": "ILS",
+          "local_price": 17.0,
+          "dollar_price": 4.71469181168966,
+          "usd_raw": -0.18572
+        },
+        "Ürdün": {
+          "date": "2025-01-01",
+          "currency_code": "JOD",
+          "local_price": 2.5,
+          "dollar_price": 3.52609308885755,
+          "usd_raw": -0.391
+        },
+        "Japonya": {
+          "date": "2025-01-01",
+          "currency_code": "JPY",
+          "local_price": 480.0,
+          "dollar_price": 3.109714618898,
+          "usd_raw": -0.46292
+        },
+        "Güney Kore": {
+          "date": "2025-01-01",
+          "currency_code": "KRW",
+          "local_price": 5500.0,
+          "dollar_price": 3.84292901062046,
+          "usd_raw": -0.33628
+        },
+        "Kuveyt": {
+          "date": "2025-01-01",
+          "currency_code": "KWD",
+          "local_price": 1.4,
+          "dollar_price": 4.54397922752353,
+          "usd_raw": -0.2152
+        },
+        "Lübnan": {
+          "date": "2025-01-01",
+          "currency_code": "LBP",
+          "local_price": 480000.0,
+          "dollar_price": 5.36013400335008,
+          "usd_raw": -0.07424
+        },
+        "Moldova": {
+          "date": "2025-01-01",
+          "currency_code": "MDL",
+          "local_price": 65.0,
+          "dollar_price": 3.5230352303523,
+          "usd_raw": -0.39153
+        },
+        "Meksika": {
+          "date": "2025-01-01",
+          "currency_code": "MXN",
+          "local_price": 95.0,
+          "dollar_price": 4.60115270983678,
+          "usd_raw": -0.20533
+        },
+        "Malezya": {
+          "date": "2025-01-01",
+          "currency_code": "MYR",
+          "local_price": 13.15,
+          "dollar_price": 3.00331163640516,
+          "usd_raw": -0.48129
+        },
+        "Nikaragua": {
+          "date": "2025-01-01",
+          "currency_code": "NIO",
+          "local_price": 164.0,
+          "dollar_price": 4.47790128412011,
+          "usd_raw": -0.22661
+        },
+        "Norveç": {
+          "date": "2025-01-01",
+          "currency_code": "NOK",
+          "local_price": 75.0,
+          "dollar_price": 6.67449807774455,
+          "usd_raw": 0.15276
+        },
+        "Yeni Zelanda": {
+          "date": "2025-01-01",
+          "currency_code": "NZD",
+          "local_price": 8.4,
+          "dollar_price": 4.77414,
+          "usd_raw": -0.17545
+        },
+        "Pakistan": {
+          "date": "2025-01-01",
+          "currency_code": "PKR",
+          "local_price": 1050.0,
+          "dollar_price": 3.76546530392684,
+          "usd_raw": -0.34966
+        },
+        "Peru": {
+          "date": "2025-01-01",
+          "currency_code": "PEN",
+          "local_price": 16.9,
+          "dollar_price": 4.52919184745467,
+          "usd_raw": -0.21776
+        },
+        "Filipinler": {
+          "date": "2025-01-01",
+          "currency_code": "PHP",
+          "local_price": 169.0,
+          "dollar_price": 2.89210233592881,
+          "usd_raw": -0.5005
+        },
+        "Polonya": {
+          "date": "2025-01-01",
+          "currency_code": "PLN",
+          "local_price": 20.9,
+          "dollar_price": 5.21047579871109,
+          "usd_raw": -0.10009
+        },
+        "Katar": {
+          "date": "2025-01-01",
+          "currency_code": "QAR",
+          "local_price": 15.0,
+          "dollar_price": 4.11974732216424,
+          "usd_raw": -0.28847
+        },
+        "Romanya": {
+          "date": "2025-01-01",
+          "currency_code": "RON",
+          "local_price": 16.25,
+          "dollar_price": 3.4294638428989,
+          "usd_raw": -0.40769
+        },
+        "Suudi Arabistan": {
+          "date": "2025-01-01",
+          "currency_code": "SAR",
+          "local_price": 19.0,
+          "dollar_price": 5.06558600831823,
+          "usd_raw": -0.12511
+        },
+        "Singapur": {
+          "date": "2025-01-01",
+          "currency_code": "SGD",
+          "local_price": 6.95,
+          "dollar_price": 5.16959238321928,
+          "usd_raw": -0.10715
+        },
+        "İsveç": {
+          "date": "2025-01-01",
+          "currency_code": "SEK",
+          "local_price": 62.0,
+          "dollar_price": 5.66896015726793,
+          "usd_raw": -0.0209
+        },
+        "Tayland": {
+          "date": "2025-01-01",
+          "currency_code": "THB",
+          "local_price": 135.0,
+          "dollar_price": 4.00682644505454,
+          "usd_raw": -0.30797
+        },
+        "Türkiye": {
+          "date": "2025-01-01",
+          "currency_code": "TRY",
+          "local_price": 190.0,
+          "dollar_price": 5.31613516973161,
+          "usd_raw": -0.08184
+        },
+        "Ukrayna": {
+          "date": "2025-01-01",
+          "currency_code": "UAH",
+          "local_price": 120.0,
+          "dollar_price": 2.85714285714286,
+          "usd_raw": -0.50654
+        },
+        "Uruguay": {
+          "date": "2025-01-01",
+          "currency_code": "UYU",
+          "local_price": 299.0,
+          "dollar_price": 6.91009937601109,
+          "usd_raw": 0.19345
+        },
+        "ABD": {
+          "date": "2025-01-01",
+          "currency_code": "USD",
+          "local_price": 5.79,
+          "dollar_price": 5.79,
+          "usd_raw": 0.0
+        },
+        "Venezuela": {
+          "date": "2025-01-01",
+          "currency_code": "VES",
+          "local_price": 252.0,
+          "dollar_price": 4.45376042303655,
+          "usd_raw": -0.23078
+        },
+        "Vietnam": {
+          "date": "2025-01-01",
+          "currency_code": "VND",
+          "local_price": 76000.0,
+          "dollar_price": 3.03054470053433,
+          "usd_raw": -0.47659
+        },
+        "Güney Afrika": {
+          "date": "2025-01-01",
+          "currency_code": "ZAR",
+          "local_price": 51.9,
+          "dollar_price": 2.7766928999053,
+          "usd_raw": -0.52043
+        }
+      }
+    }
+  }
+}

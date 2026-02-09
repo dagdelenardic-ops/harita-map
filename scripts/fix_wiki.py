@@ -1,8 +1,8 @@
 import json
-import requests
 import re
+import urllib.parse
+import requests
 from pathlib import Path
-import time
 from concurrent.futures import ThreadPoolExecutor
 
 # Cache for URL statuses
@@ -46,18 +46,19 @@ def fix_wiki_links(json_path):
         list(executor.map(check_url, all_links))
     
     # Apply fixes
-    import urllib.parse
     for event in events:
         desc = event.get('description', '')
         matches = wiki_re.findall(desc)
         
         for url in matches:
             if not url_cache.get(url, True):
+                # TR sayfası yok: aynı başlıkla İngilizce makaleye git, Google Translate ile TR'ye çevir
                 page_name = url.split('/')[-1]
-                title_encoded = urllib.parse.quote(event.get('title', page_name.replace('_', ' ')))
-                search_url = f"https://en.wikipedia.org/wiki/Special:Search?search={title_encoded}"
-                translated_url = f"https://translate.google.com/translate?sl=en&tl=tr&u={search_url}"
-                
+                if '?' in page_name:
+                    page_name = page_name.split('?')[0]
+                page_name = urllib.parse.unquote(page_name)
+                en_wiki_url = f"https://en.wikipedia.org/wiki/{urllib.parse.quote(page_name.replace(' ', '_'))}"
+                translated_url = f"https://translate.google.com/translate?sl=en&tl=tr&u={urllib.parse.quote(en_wiki_url)}"
                 event['description'] = desc.replace(f"({url})", f"({translated_url})")
                 changed = True
                 # Update desc for current event case if multiple links (rare)

@@ -24,6 +24,7 @@ class GeopoliticalMap:
         self.output_dir = self.base_dir / "output"
         self.events = []
         self.categories = {}
+        self.build_info = {}
         self._load_data()
 
     # Mapping of specific events to 32. Gün YouTube video IDs
@@ -56,9 +57,7 @@ class GeopoliticalMap:
         if geojson_path.exists():
             with open(geojson_path, 'r', encoding='utf-8') as f:
                 self.geojson_data = json.load(f)
-        if geojson_path.exists():
-            with open(geojson_path, 'r', encoding='utf-8') as f:
-                self.geojson_data = json.load(f)
+        self._patch_geojson_france()
 
         # Load Country Metadata
         metadata_path = self.base_dir / "data" / "country_metadata.json"
@@ -97,21 +96,82 @@ class GeopoliticalMap:
                         if alias and iso:
                             self.turkish_to_iso[alias] = iso
 
-        # Enrich events with video links
+        # Load external indicators/groups (NATO, G8, minimum wage, Big Mac, etc.)
+        indicators_path = self.base_dir / "data" / "indicators.json"
+        self.indicators = {}
+        if indicators_path.exists():
+            try:
+                with open(indicators_path, 'r', encoding='utf-8') as f:
+                    self.indicators = json.load(f)
+            except Exception as e:
+                print(f"WARNING: Failed to load indicators.json: {e}")
+                self.indicators = {}
+
+        # Enrich events with video links (32. Gün vb.)
         for event in self.events:
             title = event.get('title', '')
             vid_id = self.VIDEO_MAPPINGS.get(title)
-            
             if not vid_id:
-                # Try substring matching (case insensitive)
                 title_lower = title.lower()
                 for key, vid in self.VIDEO_MAPPINGS.items():
                     if key.lower() in title_lower:
                         vid_id = vid
                         break
-            
             if vid_id:
                 event['youtube_video_id'] = vid_id
+        # Mükerrer azalt: aynı (ülke, video) en fazla bir olayda kalsın; en uygun olayda tut
+        self._deduplicate_youtube_per_country()
+
+    def _deduplicate_youtube_per_country(self) -> None:
+        """Aynı (ülke, video) birden fazla olayda varsa videoyu sadece en uygun olayda bırakır."""
+        from collections import defaultdict
+        key_to_events = defaultdict(list)
+        for ev in self.events:
+            vid = ev.get('youtube_video_id')
+            if not vid:
+                continue
+            c = ev.get('country_name', '')
+            key_to_events[(c, vid)].append(ev)
+        for (_, _), group in key_to_events.items():
+            if len(group) <= 1:
+                continue
+            # En iyi: tam başlık VIDEO_MAPPINGS'te varsa, yoksa yıla göre (yeni → eski)
+            def score(e):
+                exact = 2 if self.VIDEO_MAPPINGS.get(e.get('title')) else 0
+                return (exact, -(e.get('year') or 0))
+            group.sort(key=score, reverse=True)
+            for e in group[1:]:
+                e.pop('youtube_video_id', None)
+
+    def _patch_geojson_france(self) -> None:
+        """GeoJSON'da 'France' bazen sadece French Guiana geometrisine sahip. Onu 'French Guiana' yapıp
+        ana Fransa (metropolitan) için yeni feature ekler; böylece Fransa'ya hover'da bayrak çıkar."""
+        if not self.geojson_data or 'features' not in self.geojson_data:
+            return
+        for f in self.geojson_data['features']:
+            props = f.get('properties') or {}
+            if props.get('name') != 'France':
+                continue
+            geom = f.get('geometry')
+            if not geom or geom.get('type') != 'MultiPolygon':
+                continue
+            coords = geom.get('coordinates') or []
+            if not coords or not coords[0] or not coords[0][0]:
+                continue
+            first_lon, first_lat = coords[0][0][0][0], coords[0][0][0][1]
+            # French Guiana: ~(-54, 2)
+            if -60 < first_lon < -50 and 0 < first_lat < 10:
+                props['name'] = 'French Guiana'
+                break
+        # Ana Fransa (metropolitan) için basit kutu geometrisi ekle (Avrupa)
+        self.geojson_data['features'].append({
+            'type': 'Feature',
+            'properties': {'name': 'France', 'ISO3166-1-Alpha-3': 'FRA', 'ISO3166-1-Alpha-2': 'FR'},
+            'geometry': {
+                'type': 'Polygon',
+                'coordinates': [[[-5.5, 41.0], [10.0, 41.0], [10.0, 51.5], [-5.5, 51.5], [-5.5, 41.0]]]
+            }
+        })
 
     def _get_custom_css_js(self) -> str:
         """Get custom CSS and JavaScript for the map."""
@@ -121,6 +181,9 @@ class GeopoliticalMap:
         
         # Safe serialization for metadata
         country_metadata_json = json.dumps(self.country_metadata, ensure_ascii=False) if hasattr(self, 'country_metadata') else '{}'
+
+        # External indicators/groups (NATO, G8, min wage, Big Mac etc.)
+        indicators_json = json.dumps(self.indicators, ensure_ascii=False) if hasattr(self, 'indicators') else '{}'
         
         # Serialize master mappings for JavaScript
         turkish_to_english_json = json.dumps(self.turkish_to_english, ensure_ascii=False)
@@ -363,7 +426,8 @@ function parseMarkdownLinks(text) {
         transform: translateX(420px);
     }}
     .sidebar-header {{
-        padding: 20px;
+        position: relative;
+        padding: 20px 48px 20px 20px;
         background: #2c3e50;
         color: white;
     }}
@@ -378,11 +442,24 @@ function parseMarkdownLinks(text) {
         margin-top: 5px;
     }}
     .close-sidebar {{
-        /* Hidden - sidebar always open */
-        display: none;
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        opacity: 0.8;
     }}
     .close-sidebar:hover {{
         opacity: 1;
+        background: rgba(255,255,255,0.3);
     }}
     .sidebar-content {{
         flex: 1;
@@ -571,6 +648,121 @@ function parseMarkdownLinks(text) {
     .popup-btn:hover {{
         background: #2980b9;
     }}
+
+    /* Mobil: paneller kolay kapansın, daha fazla harita alanı */
+    @media (max-width: 768px) {{
+        .country-sidebar {{
+            width: 100%;
+            left: -100%;
+        }}
+        .country-sidebar.open {{
+            transform: translateX(100%);
+        }}
+        .control-panel {{
+            width: 260px;
+            max-height: 70vh;
+        }}
+        .control-panel.collapsed {{
+            padding: 8px 12px;
+            max-height: none;
+        }}
+        .control-panel.collapsed .control-section,
+        .control-panel.collapsed .instructions,
+        .control-panel.collapsed .stats-box,
+        .control-panel.collapsed h3 {{
+            display: none;
+        }}
+        .panel-toggle {{
+            display: block;
+        }}
+    }}
+    @media (min-width: 769px) {{
+        .panel-toggle {{
+            display: none;
+        }}
+    }}
+    .panel-toggle {{
+        display: none;
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 8px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+    }}
+    .build-info {{
+        position: fixed;
+        right: 8px;
+        bottom: 8px;
+        z-index: 1200;
+        background: rgba(0, 0, 0, 0.7);
+        color: #ecf0f1;
+        padding: 6px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+        letter-spacing: 0.2px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }}
+    .build-info a {{
+        color: #f1c40f;
+        text-decoration: none;
+        margin-left: 6px;
+        font-weight: 600;
+    }}
+    .group-badge {{
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        margin-right: 6px;
+        line-height: 1.4;
+    }}
+    .group-badge.g8 {{
+        background: rgba(241, 196, 15, 0.18);
+        border: 1px solid rgba(241, 196, 15, 0.55);
+        color: #f1c40f;
+    }}
+    .group-badge.nato {{
+        background: rgba(52, 152, 219, 0.18);
+        border: 1px solid rgba(52, 152, 219, 0.55);
+        color: #3498db;
+    }}
+    .indicator-select {{
+        width: 100%;
+        padding: 6px 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: #fff;
+        font-size: 12px;
+        cursor: pointer;
+    }}
+    .indicator-legend {{
+        font-size: 11px;
+        color: #2c3e50;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 8px 10px;
+    }}
+    .legend-bar {{
+        height: 8px;
+        border-radius: 999px;
+        margin: 6px 0 4px 0;
+        background: linear-gradient(90deg, #e8f5e9 0%, #1b5e20 100%);
+    }}
+    .legend-row {{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: #6c757d;
+    }}
 </style>
 
 <!-- Sidebar always visible -->
@@ -584,7 +776,8 @@ function parseMarkdownLinks(text) {
     <div class="sidebar-content" id="sidebarContent"></div>
 </div>
 
-<div class="control-panel">
+<div class="control-panel" id="controlPanel">
+    <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat">Filtreler</button>
     <h3>Jeopolitik Tarih Haritası</h3>
 
     <div class="instructions">
@@ -624,10 +817,44 @@ function parseMarkdownLinks(text) {
         </div>
     </div>
 
-    <div class="stats-box">
-        <div class="count" id="visibleCount">0</div>
-        <div class="label">görünen olay</div>
+    <div class="control-section">
+        <h4>Ülke Grupları</h4>
+        <div class="category-list">
+            <label class="category-item" style="background: #eef8ff; border: 1px solid rgba(52, 152, 219, 0.35);">
+                <input type="checkbox" onchange="toggleCountryGroup('nato')" id="group-nato">
+                <span class="category-color" style="background: #3498db;"></span>
+                NATO Üyeleri
+            </label>
+            <label class="category-item" style="background: #fffbe6; border: 1px solid rgba(241, 196, 15, 0.45);">
+                <input type="checkbox" onchange="toggleCountryGroup('g8')" id="group-g8">
+                <span class="category-color" style="background: #f1c40f;"></span>
+                G8 Ülkeleri
+            </label>
+        </div>
     </div>
+
+    <div class="control-section">
+        <h4>Ekonomi</h4>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+            <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
+                <option value="">Gösterge kapalı</option>
+                <option value="min_wage">Asgari Ücret (USD/saat)</option>
+                <option value="bigmac">Big Mac Endeksi (USD)</option>
+            </select>
+            <div class="indicator-legend" id="indicatorLegend" style="display:none;"></div>
+        </div>
+    </div>
+
+<div class="stats-box">
+    <div class="count" id="visibleCount">0</div>
+    <div class="label">görünen olay</div>
+</div>
+</div>
+
+<div class="build-info" id="buildInfo">
+    Build: {self.build_info.get("build_time_utc", "unknown")}
+    <a href="/healthz.json" target="_blank" rel="noopener">health</a>
+    <div id="indicatorHoverInfo" style="margin-top:2px; color:#bdc3c7;"></div>
 </div>
 
 <script>
@@ -638,6 +865,20 @@ const countryMeta = {country_metadata_json};
 // Filter out special categories from standard list if needed, or handle in toggleCategory
 const categories = {categories_json};
 const decades = ['1920s', '1930s', '1940s', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+
+// External datasets (groups + indicators)
+const externalData = {indicators_json};
+const countryGroups = {{
+    g8: new Set((externalData.groups && externalData.groups.g8) ? externalData.groups.g8 : []),
+    nato: new Set((externalData.groups && externalData.groups.nato) ? externalData.groups.nato : [])
+}};
+const externalIndicators = (externalData && externalData.indicators) ? externalData.indicators : {{}};
+
+// Expose to window for other injected scripts
+window.countryGroups = countryGroups;
+window.externalIndicators = externalIndicators;
+window.activeCountryGroup = null; // 'g8' | 'nato' | null
+window.activeIndicator = ''; // 'min_wage' | 'bigmac' | ''
 
 // State
 let selectedDecades = new Set(decades);
@@ -673,6 +914,253 @@ function initFilters() {{
     }});
 
     updateVisibleCount();
+    updateIndicatorLegend();
+}}
+
+function toggleCountryGroup(groupKey) {{
+    if (!countryGroups[groupKey] || countryGroups[groupKey].size === 0) {{
+        console.warn('Unknown/empty group:', groupKey);
+        return;
+    }}
+
+    window.activeCountryGroup = (window.activeCountryGroup === groupKey) ? null : groupKey;
+
+    const g8Box = document.getElementById('group-g8');
+    const natoBox = document.getElementById('group-nato');
+    if (g8Box) g8Box.checked = window.activeCountryGroup === 'g8';
+    if (natoBox) natoBox.checked = window.activeCountryGroup === 'nato';
+
+    updateVisibleCount();
+    updateMarkerVisibility();
+    updateExternalOverlays();
+}}
+
+function setIndicatorMode(mode) {{
+    window.activeIndicator = mode || '';
+    updateExternalOverlays();
+}}
+
+function getActiveGroupSet() {{
+    if (!window.activeCountryGroup) return null;
+    return countryGroups[window.activeCountryGroup] || null;
+}}
+
+function formatUsd(value, suffix = '') {{
+    if (typeof value !== 'number' || Number.isNaN(value)) return '-';
+    return '$' + value.toFixed(2) + suffix;
+}}
+
+function getIndicatorDetails(countryName, indicatorKey) {{
+    const ind = externalIndicators[indicatorKey];
+    if (!ind || !ind.by_country) return null;
+    return ind.by_country[countryName] || null;
+}}
+
+function getIndicatorValue(countryName, indicatorKey) {{
+    const d = getIndicatorDetails(countryName, indicatorKey);
+    if (!d) return null;
+    if (indicatorKey === 'min_wage') return d.hourly_usd_nominal;
+    if (indicatorKey === 'bigmac') return d.dollar_price;
+    return null;
+}}
+
+function computeIndicatorStats(indicatorKey) {{
+    const ind = externalIndicators[indicatorKey];
+    if (!ind || !ind.by_country) return null;
+    const values = [];
+    Object.entries(ind.by_country).forEach(([country, d]) => {{
+        const v = getIndicatorValue(country, indicatorKey);
+        if (typeof v === 'number' && !Number.isNaN(v)) values.push(v);
+    }});
+    if (values.length === 0) return null;
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    return {{ min, max, count: values.length }};
+}}
+
+function clamp01(x) {{
+    if (x < 0) return 0;
+    if (x > 1) return 1;
+    return x;
+}}
+
+function hexToRgb(hex) {{
+    const h = (hex || '').replace('#', '');
+    if (h.length !== 6) return [0, 0, 0];
+    return [
+        parseInt(h.slice(0, 2), 16),
+        parseInt(h.slice(2, 4), 16),
+        parseInt(h.slice(4, 6), 16)
+    ];
+}}
+
+function rgbToHex(r, g, b) {{
+    const toHex = (n) => n.toString(16).padStart(2, '0');
+    return '#' + toHex(r) + toHex(g) + toHex(b);
+}}
+
+function lerp(a, b, t) {{
+    return a + (b - a) * t;
+}}
+
+function lerpColor(c1, c2, t) {{
+    const [r1, g1, b1] = hexToRgb(c1);
+    const [r2, g2, b2] = hexToRgb(c2);
+    const tt = clamp01(t);
+    return rgbToHex(
+        Math.round(lerp(r1, r2, tt)),
+        Math.round(lerp(g1, g2, tt)),
+        Math.round(lerp(b1, b2, tt))
+    );
+}}
+
+function getIndicatorGradient(indicatorKey) {{
+    if (indicatorKey === 'bigmac') return ['#fff3e0', '#e65100'];
+    // default: min_wage
+    return ['#e8f5e9', '#1b5e20'];
+}}
+
+function indicatorStyle(feature) {{
+    const key = window.activeIndicator;
+    if (!key) {{
+        return {{ fillOpacity: 0, opacity: 0, weight: 0, color: 'transparent' }};
+    }}
+
+    const geoName = (feature.properties && (feature.properties.name || feature.properties.NAME)) || '';
+    const canon = reverseNameMap[geoName] || geoName;
+    const v = getIndicatorValue(canon, key);
+    if (typeof v !== 'number' || Number.isNaN(v)) {{
+        return {{ fillOpacity: 0, opacity: 0, weight: 0, color: 'transparent' }};
+    }}
+
+    const stats = computeIndicatorStats(key);
+    if (!stats) {{
+        return {{ fillOpacity: 0, opacity: 0, weight: 0, color: 'transparent' }};
+    }}
+
+    const denom = (stats.max - stats.min) || 1;
+    const t = (v - stats.min) / denom;
+    const [c1, c2] = getIndicatorGradient(key);
+    const fill = lerpColor(c1, c2, t);
+    return {{
+        fillColor: fill,
+        fillOpacity: 0.28,
+        color: '#111',
+        weight: 0.6,
+        opacity: 0.35
+    }};
+}}
+
+function groupStyle(feature) {{
+    const groupKey = window.activeCountryGroup;
+    if (!groupKey) {{
+        return {{ fillOpacity: 0, opacity: 0, weight: 0, color: 'transparent' }};
+    }}
+    const set = countryGroups[groupKey];
+    if (!set) {{
+        return {{ fillOpacity: 0, opacity: 0, weight: 0, color: 'transparent' }};
+    }}
+    const geoName = (feature.properties && (feature.properties.name || feature.properties.NAME)) || '';
+    const canon = reverseNameMap[geoName] || geoName;
+    if (!set.has(canon)) {{
+        return {{ fillOpacity: 0, opacity: 0, weight: 0, color: 'transparent' }};
+    }}
+    const color = groupKey === 'nato' ? '#3498db' : '#f1c40f';
+    return {{
+        fillColor: color,
+        fillOpacity: 0.12,
+        color: color,
+        weight: 1.2,
+        opacity: 0.65
+    }};
+}}
+
+function initExternalOverlays() {{
+    if (!window.geoMap || typeof countriesGeoJSON === 'undefined' || !countriesGeoJSON) return;
+    if (!window.groupOverlayLayer) {{
+        window.groupOverlayLayer = L.geoJSON(countriesGeoJSON, {{
+            interactive: false,
+            style: groupStyle
+        }}).addTo(window.geoMap);
+    }}
+    if (!window.indicatorOverlayLayer) {{
+        window.indicatorOverlayLayer = L.geoJSON(countriesGeoJSON, {{
+            interactive: false,
+            style: indicatorStyle
+        }}).addTo(window.geoMap);
+    }}
+    updateExternalOverlays();
+}}
+
+function updateIndicatorLegend() {{
+    const el = document.getElementById('indicatorLegend');
+    if (!el) return;
+
+    const key = window.activeIndicator;
+    if (!key) {{
+        el.style.display = 'none';
+        el.innerHTML = '';
+        return;
+    }}
+
+    const ind = externalIndicators[key];
+    const stats = computeIndicatorStats(key);
+    if (!ind || !stats) {{
+        el.style.display = 'none';
+        el.innerHTML = '';
+        return;
+    }}
+
+    const unit = ind.unit || '';
+    const label = ind.label || key;
+    const [c1, c2] = getIndicatorGradient(key);
+    const source = ind.source || {{}};
+    const note = (key === 'bigmac' && source.latest_date) ? `veri tarihi: ${{source.latest_date}}` : '';
+    const fetched = externalData.fetched_at_utc ? `çekildi: ${{externalData.fetched_at_utc}}` : '';
+
+    el.style.display = '';
+    el.innerHTML = `
+        <div style="font-weight:700; margin-bottom:2px;">${{label}}</div>
+        <div class="legend-bar" style="background: linear-gradient(90deg, ${{c1}} 0%, ${{c2}} 100%);"></div>
+        <div class="legend-row">
+            <span>${{stats.min.toFixed(2)}} ${{unit}}</span>
+            <span>${{stats.max.toFixed(2)}} ${{unit}}</span>
+        </div>
+        <div style="margin-top:6px; font-size:10px; color:#6c757d;">
+            ${{note}} ${{fetched}}
+        </div>
+    `;
+}}
+
+function updateExternalOverlays() {{
+    if (window.groupOverlayLayer) window.groupOverlayLayer.setStyle(groupStyle);
+    if (window.indicatorOverlayLayer) window.indicatorOverlayLayer.setStyle(indicatorStyle);
+    updateIndicatorLegend();
+}}
+
+function updateIndicatorHoverInfo(countryName) {{
+    const el = document.getElementById('indicatorHoverInfo');
+    if (!el) return;
+    const key = window.activeIndicator;
+    if (!key) {{
+        el.textContent = '';
+        return;
+    }}
+    const v = getIndicatorValue(countryName, key);
+    if (typeof v !== 'number' || Number.isNaN(v)) {{
+        el.textContent = `${{countryName}}: veri yok`;
+        return;
+    }}
+    if (key === 'min_wage') {{
+        el.textContent = `${{countryName}}: ${{formatUsd(v, '/saat')}}`;
+        return;
+    }}
+    el.textContent = `${{countryName}}: ${{formatUsd(v)}}`;
+}}
+
+function clearIndicatorHoverInfo() {{
+    const el = document.getElementById('indicatorHoverInfo');
+    if (el) el.textContent = '';
 }}
 
 function toggleSpecial(type) {{
@@ -740,7 +1228,9 @@ function selectNoCategories() {{
 }}
 
 function updateVisibleCount() {{
+    const groupSet = getActiveGroupSet();
     const count = allEvents.filter(e => {{
+        if (groupSet && !groupSet.has(e.country_name)) return false;
         // Special category handling
         if (e.category === 'time_100') {{
             return showTime100 && selectedDecades.has(e.decade);
@@ -783,6 +1273,8 @@ function updateMarkerVisibility() {{
 }}
 
 function getFilteredCountryEvents(countryName) {{
+    const groupSet = getActiveGroupSet();
+    if (groupSet && !groupSet.has(countryName)) return [];
     return allEvents.filter(e => {{
         const matchesCountry = e.country_name === countryName;
         let isVisible = false;
@@ -994,6 +1486,70 @@ function highlightCountryWithFlag(countryName) {{
 
 
 // Sidebar functions
+
+function buildEconomyHtml(countryName) {{
+    const badges = [];
+    if (countryGroups.g8 && countryGroups.g8.has(countryName)) {{
+        badges.push('<span class="group-badge g8">G8</span>');
+    }}
+    if (countryGroups.nato && countryGroups.nato.has(countryName)) {{
+        badges.push('<span class="group-badge nato">NATO</span>');
+    }}
+
+    const minw = getIndicatorDetails(countryName, 'min_wage');
+    const bigmac = getIndicatorDetails(countryName, 'bigmac');
+
+    const minwHourly = (minw && typeof minw.hourly_usd_nominal === 'number')
+        ? formatUsd(minw.hourly_usd_nominal, '/saat')
+        : '-';
+    const minwMonthly = (minw && typeof minw.monthly_usd_note === 'number')
+        ? formatUsd(minw.monthly_usd_note, '/ay')
+        : '';
+    const minwText = minwMonthly
+        ? `${{minwMonthly}} <span style="font-size:11px;color:#7f8c8d;">(${{minwHourly}})</span>`
+        : minwHourly;
+    const minwDate = (minw && minw.effective_date)
+        ? `<div style="font-size:11px;color:#7f8c8d;">${{minw.effective_date}}</div>`
+        : '';
+
+    const bigmacText = (bigmac && typeof bigmac.dollar_price === 'number')
+        ? formatUsd(bigmac.dollar_price)
+        : '-';
+    const bigmacExtra = (bigmac && typeof bigmac.local_price === 'number' && bigmac.currency_code)
+        ? `<div style="font-size:11px;color:#7f8c8d;">${{bigmac.local_price}} ${{bigmac.currency_code}}</div>`
+        : '';
+    const bigmacDate = (bigmac && bigmac.date)
+        ? `<div style="font-size:11px;color:#7f8c8d;">${{bigmac.date}}</div>`
+        : '';
+
+    const fetched = (externalData && externalData.fetched_at_utc)
+        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">Veri çekildi: ${{externalData.fetched_at_utc}}</div>`
+        : '';
+
+    return `
+        <details class="country-meta-card" open>
+            <summary>
+                <span>▼ Üyelik & Ekonomi</span>
+            </summary>
+            <div class="country-meta-content">
+                <div class="meta-row">
+                    <span class="meta-label">Üyelik</span>
+                    <div>${{badges.join(' ') || '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Asgari Ücret</span>
+                    <div>${{minwText}}${{minwDate}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Big Mac</span>
+                    <div>${{bigmacText}}${{bigmacExtra}}${{bigmacDate}}</div>
+                </div>
+                ${{fetched}}
+            </div>
+        </details>
+    `;
+}}
+
 function openSidebar(countryName) {{
     console.log("Opening sidebar for:", countryName);
     const countryEvents = getFilteredCountryEvents(countryName);
@@ -1005,7 +1561,7 @@ function openSidebar(countryName) {{
     
     // Update Header
     const titleElem = document.getElementById('sidebarCountryName');
-    if (titleElem) titleElem.innerText = countryName === 'Turkiye' ? 'Türkiye' : countryName;
+    if (titleElem) titleElem.innerText = countryName;
 
     // 1. Highlight
     highlightCountryWithFlag(countryName);
@@ -1050,6 +1606,7 @@ function openSidebar(countryName) {{
     }}
     
     const metaResult = findCountryMeta(countryName);
+    const econHtml = buildEconomyHtml(countryName);
     if (metaContainer && metaResult) {{
         const meta = metaResult.meta;
         const countryKey = metaResult.key; // Use the key that matched for arrow drawing
@@ -1110,6 +1667,7 @@ function openSidebar(countryName) {{
                 </div>
             </details>
         `;
+        metaContainer.innerHTML += econHtml;
         
         // 4. Draw Arrows
         if (meta.rivalries) {{
@@ -1118,7 +1676,7 @@ function openSidebar(countryName) {{
              window.hoi4Layer.setArrows([]);
         }}
     }} else {{
-        if (metaContainer) metaContainer.innerHTML = '';
+        if (metaContainer) metaContainer.innerHTML = econHtml;
         if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
     }}
 
@@ -1165,7 +1723,18 @@ function openSidebar(countryName) {{
     sidebarContent.innerHTML = html;
 }}
 
-// No closeSidebar function - sidebar always open
+function closeSidebar() {{
+    const sidebar = document.getElementById('countrySidebar');
+    if (sidebar) sidebar.classList.remove('open');
+}}
+function toggleFilterPanel() {{
+    const panel = document.getElementById('controlPanel');
+    const btn = document.getElementById('panelToggle');
+    if (panel && btn) {{
+        panel.classList.toggle('collapsed');
+        btn.textContent = panel.classList.contains('collapsed') ? 'Filtreleri aç' : 'Filtreleri kapat';
+    }}
+}}
 function toggleDecadeSection(header) {{
     const events = header.nextElementSibling;
     events.classList.toggle('open');
@@ -1382,6 +1951,26 @@ window.addEventListener('load', function() {{
     def create_map(self, output_path: str = None) -> str:
         """Create the interactive geopolitical map."""
         output_path = output_path or self.output_dir / "geopolitical_map.html"
+        import datetime
+
+        build_time_utc = datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+        self.build_info = {
+            "build_time_utc": build_time_utc,
+            "events": len(self.events),
+        }
+        git_sha = os.environ.get("GIT_SHA") or os.environ.get("COMMIT_SHA")
+        if not git_sha:
+            head_path = self.base_dir / ".git" / "HEAD"
+            if head_path.exists():
+                head_ref = head_path.read_text().strip()
+                if head_ref.startswith("ref:"):
+                    ref_path = self.base_dir / ".git" / head_ref.split(" ", 1)[1]
+                    if ref_path.exists():
+                        git_sha = ref_path.read_text().strip()
+                else:
+                    git_sha = head_ref
+        if git_sha:
+            self.build_info["git_sha"] = git_sha[:12]
 
         m = folium.Map(
             location=[30, 20],
@@ -1436,7 +2025,6 @@ window.addEventListener('load', function() {{
             
         # Create sitemap.xml
         sitemap_path = Path(output_path).parent / "sitemap.xml"
-        import datetime
         now = datetime.datetime.now().strftime("%Y-%m-%d")
         with open(sitemap_path, "w") as f:
             f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n')
@@ -1448,8 +2036,23 @@ window.addEventListener('load', function() {{
             f.write(f'  </url>\n')
             f.write(f'</urlset>')
 
+        # Build metadata and health check files
+        self.build_info["countries"] = len(by_country)
+        self.build_info["status"] = "ok"
+        self.build_info["generated_at_utc"] = build_time_utc
+        self.build_info["site"] = "https://jeopolitik.com.tr/"
+
+        build_info_path = Path(output_path).parent / "build-info.json"
+        with open(build_info_path, "w", encoding="utf-8") as f:
+            json.dump(self.build_info, f, ensure_ascii=False, indent=2)
+
+        health_path = Path(output_path).parent / "healthz.json"
+        with open(health_path, "w", encoding="utf-8") as f:
+            json.dump(self.build_info, f, ensure_ascii=False, indent=2)
+
         print(f"Harita oluşturuldu: {output_path}")
         print(f"SEO dosyaları oluşturuldu: robots.txt, sitemap.xml")
+        print(f"Build info oluşturuldu: build-info.json, healthz.json")
         print(f"Toplam {len(self.events)} olay, {len(by_country)} ülke")
         return str(output_path)
     
@@ -1555,10 +2158,7 @@ window.addEventListener('load', function() {{
                 // Try to find Turkish name using global reverseNameMap, otherwise fallback to GeoJSON name
                 let countryKey = reverseNameMap[geoName] || geoName;
                 
-                // Emergency Fix for Turkey/Romania mismatch & China ISO
-                if (geoName === 'Turkey' || geoName === 'Republic of Turkey' || geoName === 'Türkiye') {{
-                     countryKey = 'Turkiye'; // Match events.json exact spelling
-                }}
+                // reverseNameMap already normalizes to canonical Turkish names (e.g., Turkey -> Türkiye)
                 if (geoName === 'China') {{
                     feature.properties['ISO3166-1-Alpha-2'] = 'cn';
                 }}
@@ -1578,12 +2178,18 @@ window.addEventListener('load', function() {{
                     if (window.highlightCountryWithFlag) {{
                         window.highlightCountryWithFlag(countryKey);
                     }}
+                    if (window.updateIndicatorHoverInfo) {{
+                        window.updateIndicatorHoverInfo(countryKey);
+                    }}
                     L.DomEvent.stopPropagation(e); // Ensure it stops here
                 }})
                 .on('mouseout', function(e) {{
                     // Out: Remove Flag
                     if (window.clearCountryHighlight) {{
                         window.clearCountryHighlight();
+                    }}
+                    if (window.clearIndicatorHoverInfo) {{
+                        window.clearIndicatorHoverInfo();
                     }}
                 }})
                 .on('click', function(e) {{
@@ -1612,6 +2218,11 @@ window.addEventListener('load', function() {{
             }});
         }}
 
+        // External overlays (G8/NATO highlights, economic indicators)
+        if (window.initExternalOverlays) {{
+            window.initExternalOverlays();
+        }}
+
     }}, 1500); // Wait for Folium to finish initialization
 }});
 
@@ -1619,8 +2230,12 @@ window.addEventListener('load', function() {{
 function updateMarkerVisibility() {{
     if (!window.geoMap || !window.markerLayersByCountry) return;
     
+    const groupKey = window.activeCountryGroup;
+    const groupSet = (groupKey && window.countryGroups && window.countryGroups[groupKey]) ? window.countryGroups[groupKey] : null;
+
     const visibleCountries = new Set();
     Object.entries(countryFilterData).forEach(([country, data]) => {{
+        if (groupSet && !groupSet.has(country)) return;
         const hasVisibleDecade = data.decades.some(d => selectedDecades.has(d));
         const hasVisibleCategory = data.categories.some(c => selectedCategories.has(c));
         

@@ -8,7 +8,8 @@
             "iso2": "us",
             "aliases": [
                 "USA",
-                "Amerika"
+                "Amerika",
+                "United States"
             ]
         },
         {
@@ -564,7 +565,7 @@
         {
             "turkish": "Kuzey Kıbrıs",
             "english": "Northern Cyprus",
-            "iso2": "trnc",
+            "iso2": "kktc",
             "aliases": [
                 "KKTC",
                 "Kuzey Kibris"
