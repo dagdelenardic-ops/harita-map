@@ -3,3 +3,4 @@
 # Script backups
 data/events.json.bak.*
 
+*.csv

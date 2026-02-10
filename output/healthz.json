@@ -1,9 +1,9 @@
 {
-  "build_time_utc": "2026-02-10T09:48:43Z",
+  "build_time_utc": "2026-02-10T10:30:46Z",
   "events": 3546,
-  "git_sha": "78175bd45c96",
+  "git_sha": "6f60550dbfc8",
   "countries": 158,
   "status": "ok",
-  "generated_at_utc": "2026-02-10T09:48:43Z",
+  "generated_at_utc": "2026-02-10T10:30:46Z",
   "site": "https://jeopolitik.com.tr/"
 }

@@ -46678,7 +46678,7 @@
       "category": "revolution",
       "title": "Kronstadt Ayaklanması",
       "description": "Denizciler Bolşeviklere karşı ayaklandı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kronstadt_Ayaklanmasi",
       "casualties": 1000,
       "key_figures": [],
       "id": "ev252535e1"
@@ -46710,7 +46710,7 @@
       "category": "politics",
       "title": "SSSR Kuruldu",
       "description": "Sovyet Sosyalist Cumhuriyetler Birliği kuruldu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi",
       "casualties": null,
       "key_figures": [
         "Lenin",
@@ -46728,7 +46728,7 @@
       "category": "politics",
       "title": "Stalin Genel Sekreter",
       "description": "Stalin parti genel sekreteri oldu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Josef_Stalin",
       "casualties": null,
       "key_figures": [
         "Stalin"
@@ -46745,7 +46745,7 @@
       "category": "culture",
       "title": "Mayakovsky Şiirleri",
       "description": "Vladimir Mayakovsky devrimci şiirler yazdı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Mayakovski",
       "casualties": null,
       "key_figures": [
         "Mayakovsky"
@@ -46762,7 +46762,7 @@
       "category": "politics",
       "title": "Lenin Öldü",
       "description": "Lenin öldü, Stalin iktidar mücadelesine başladı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Lenin",
       "casualties": null,
       "key_figures": [
         "Lenin"
@@ -46779,7 +46779,7 @@
       "category": "politics",
       "title": "Lenin Mozolesi",
       "description": "Lenin'in bedeni mumyalandı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Lenin",
       "casualties": null,
       "key_figures": [],
       "id": "ev4b45e071"
@@ -46794,7 +46794,7 @@
       "category": "politics",
       "title": "Stalin İktidarı",
       "description": "Stalin gücünü konsolide etti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Josef_Stalin",
       "casualties": null,
       "key_figures": [
         "Stalin"
@@ -46811,7 +46811,7 @@
       "category": "politics",
       "title": "Trotsky Sürgün",
       "description": "Trotsky Politbüro'dan çıkarıldı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lev_Trotski",
       "casualties": null,
       "key_figures": [
         "Trotsky",
@@ -46861,7 +46861,7 @@
       "category": "politics",
       "title": "Trotsky Sürgüne Gönderildi",
       "description": "Trotsky Kazakistan'a sürgüne gönderildi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lev_Trotski",
       "casualties": null,
       "key_figures": [
         "Trotsky"
@@ -46878,7 +46878,7 @@
       "category": "politics",
       "title": "Trotsky Sürgünde",
       "description": "Trotsky Türkiye'ye sürgüne gitti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lev_Trotski",
       "casualties": null,
       "key_figures": [
         "Trotsky"
@@ -46972,7 +46972,7 @@
       "category": "culture",
       "title": "Eisenstein Sinema",
       "description": "Sergei Eisenstein film teorisi geliştirdi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sergey_Eyzensteyn",
       "casualties": null,
       "key_figures": [
         "Sergei Eisenstein"
@@ -46989,7 +46989,7 @@
       "category": "culture",
       "title": "Battleship Potemkin",
       "description": "Eisenstein filmi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Potemkin_Zirhlisi_(film)",
       "casualties": null,
       "key_figures": [
         "Eisenstein"
@@ -47314,7 +47314,7 @@
       "category": "war",
       "title": "Trotsky'nin Düşüşü",
       "description": "Trotsky ve Zinoviev partiden atıldı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lev_Trotski",
       "casualties": null,
       "key_figures": [],
       "id": "ev4c766e6a"
@@ -47361,7 +47361,7 @@
       "category": "politics",
       "title": "Kollektivizasyon",
       "description": "Özel tarım topraklarına el konuldu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Tarimsal_kollektiflestirme",
       "casualties": 5000000,
       "key_figures": [
         "Stalin"
@@ -47393,7 +47393,7 @@
       "category": "genocide",
       "title": "Holodomor",
       "description": "Yapay kıtlık milyonlarca ölüme yol açtı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Holodomor",
       "casualties": 4000000,
       "key_figures": [
         "Stalin"
@@ -47425,7 +47425,7 @@
       "category": "politics",
       "title": "Kirov Suikastı",
       "description": "Leningrad parti şefi öldürüldü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sergey_Kirov",
       "casualties": 1,
       "key_figures": [
         "Sergei Kirov"
@@ -47442,7 +47442,7 @@
       "category": "politics",
       "title": "GULAG Sistemi",
       "description": "Toplama kampları genişletildi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Gulag",
       "casualties": 1000000,
       "key_figures": [],
       "id": "ev78e7d12a"
@@ -47507,7 +47507,7 @@
       "category": "politics",
       "title": "Trotsky'nin Oğlu Öldürüldü",
       "description": "Lev Sedov öldürüldü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lev_Trotski",
       "casualties": null,
       "key_figures": [],
       "id": "ev24790806"
@@ -47539,7 +47539,7 @@
       "category": "war",
       "title": "Molotov-Ribbentrop Paktı",
       "description": "Nazi-Sovyet saldırmazlık pakti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vyacheslav_Molotov",
       "casualties": null,
       "key_figures": [
         "Molotov",
@@ -47572,7 +47572,7 @@
       "category": "culture",
       "title": "Stalin Eserleri",
       "description": "Stalin'in yazıları yayınlandı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Josef_Stalin",
       "casualties": null,
       "key_figures": [],
       "id": "evfd711b99"
@@ -47977,7 +47977,7 @@
       "category": "politics",
       "title": "Stalin Constitution",
       "description": "Yeni anayasa.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Josef_Stalin",
       "casualties": null,
       "key_figures": [],
       "id": "evff3997c6"
@@ -48069,7 +48069,7 @@
       "category": "war",
       "title": "Barbarossa Operasyonu",
       "description": "Nazi Almanya'sı saldırdı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Barbarossa_Harekati",
       "casualties": 3000000,
       "key_figures": [
         "Hitler"
@@ -48086,7 +48086,7 @@
       "category": "war",
       "title": "Leningrad Kuşatması",
       "description": "872 günlük kuşatma başladı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Lenin",
       "casualties": 1000000,
       "key_figures": [],
       "id": "eve6043c83"
@@ -48101,7 +48101,7 @@
       "category": "war",
       "title": "Kursk Muharebesi",
       "description": "En büyük tank savaşı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kursk_Muharebesi",
       "casualties": 500000,
       "key_figures": [],
       "id": "evdfab162f"
@@ -48116,7 +48116,7 @@
       "category": "war",
       "title": "Stalingrad Zaferi",
       "description": "Generaller esir alındı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Josef_Stalin",
       "casualties": null,
       "key_figures": [
         "Paulus"
@@ -48302,7 +48302,7 @@
       "category": "culture",
       "title": "Shostakovich Leningrad",
       "description": "7. Senfoni.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Lenin",
       "casualties": null,
       "key_figures": [
         "Shostakovich"
@@ -48319,7 +48319,7 @@
       "category": "culture",
       "title": "Prokofiev Alexander Nevsky",
       "description": "Kantat performansı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sergey_Prokofyev",
       "casualties": null,
       "key_figures": [],
       "id": "ev856df05f"
@@ -48426,7 +48426,7 @@
       "category": "politics",
       "title": "Katyn Katliamı",
       "description": "Polonyalı subaylar öldürüldü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Katyn_Katliami",
       "casualties": 22000,
       "key_figures": [],
       "id": "evbe335aeb"
@@ -48505,7 +48505,7 @@
       "category": "politics",
       "title": "Yalta Konferansı",
       "description": "Stalin, Churchill, Roosevelt.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Yalta_Konferansi",
       "casualties": null,
       "key_figures": [],
       "id": "evfd5d37bc"
@@ -48734,7 +48734,7 @@
       "category": "politics",
       "title": "Trotsky Suikastı",
       "description": "Meksika'da öldürüldü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lev_Trotski",
       "casualties": 1,
       "key_figures": [
         "Ramón Mercader"
@@ -48796,7 +48796,7 @@
       "category": "politics",
       "title": "Stalin Öldü",
       "description": "Stalin öldü, Hruşçov yükseldi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Josef_Stalin",
       "casualties": null,
       "key_figures": [
         "Stalin",
@@ -48831,7 +48831,7 @@
       "category": "culture",
       "title": "Prokofiev Öldü",
       "description": "Besteci aynı gün öldü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sergey_Prokofyev",
       "casualties": null,
       "key_figures": [
         "Prokofiev"
@@ -48910,7 +48910,7 @@
       "category": "politics",
       "title": "20. Kongre",
       "description": "Stalin suçlandı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/20._Parti_Kongresi",
       "casualties": null,
       "key_figures": [
         "Khrushchev"
@@ -48927,7 +48927,7 @@
       "category": "revolution",
       "title": "Macaristan Ayaklanması",
       "description": "Sovyet müdahalesi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/1956_Macaristan_ihtilali",
       "casualties": 2500,
       "key_figures": [],
       "id": "eva8bc56c8"
@@ -48942,7 +48942,7 @@
       "category": "war",
       "title": "Sputnik 1",
       "description": "İlk yapay uydu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sputnik_1",
       "casualties": null,
       "key_figures": [],
       "id": "ev88735520"
@@ -48989,7 +48989,7 @@
       "category": "politics",
       "title": "Khrushchev ABD'de",
       "description": "ABD ziyareti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
       "casualties": null,
       "key_figures": [],
       "id": "ev89cdf3b7"
@@ -49036,7 +49036,7 @@
       "category": "culture",
       "title": "Shostakovich 10. Senfoni",
       "description": "Besteci.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Dmitri_Sostakovic",
       "casualties": null,
       "key_figures": [],
       "id": "eva5034ecb"
@@ -49066,7 +49066,7 @@
       "category": "culture",
       "title": "Lenin Ölüm Yıldönümü",
       "description": "Anma.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Lenin",
       "casualties": null,
       "key_figures": [],
       "id": "ev74b7aa3d"
@@ -49081,7 +49081,7 @@
       "category": "culture",
       "title": "Shostakovich 10. Senfoni",
       "description": "Prömiyer.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Dmitri_Sostakovic",
       "casualties": null,
       "key_figures": [],
       "id": "ev848a8ccb"
@@ -49156,7 +49156,7 @@
       "category": "culture",
       "title": "Gagarin Uzayda",
       "description": "İlk insan uzayda.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Yuri_Gagarin",
       "casualties": null,
       "key_figures": [
         "Gagarin"
@@ -49293,7 +49293,7 @@
       "category": "war",
       "title": "Sputnik Crisis",
       "description": "ABD paniği.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sputnik_1",
       "casualties": null,
       "key_figures": [],
       "id": "eve8240c44"
@@ -49323,7 +49323,7 @@
       "category": "politics",
       "title": "Leningrad Affair",
       "description": "Tasfiye.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Lenin",
       "casualties": null,
       "key_figures": [],
       "id": "ev4d2d941a"
@@ -49383,7 +49383,7 @@
       "category": "politics",
       "title": "Khrushchev Rise",
       "description": "Hruşçov yükseliş.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
       "casualties": null,
       "key_figures": [],
       "id": "ev0030e8e2"
@@ -49458,7 +49458,7 @@
       "category": "politics",
       "title": "Khrushchev USA Visit",
       "description": "ABD ziyareti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
       "casualties": null,
       "key_figures": [],
       "id": "eve7f29707"
@@ -49490,7 +49490,7 @@
       "category": "politics",
       "title": "Gagarin Uzayda",
       "description": "İlk insan uzayda.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Yuri_Gagarin",
       "casualties": null,
       "key_figures": [
         "Yuri Gagarin"
@@ -49573,7 +49573,7 @@
       "category": "culture",
       "title": "Shostakovich 13. Senfoni",
       "description": "Babi Yar.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Dmitri_Sostakovic",
       "casualties": null,
       "key_figures": [],
       "id": "evdcda32cb"
@@ -49633,7 +49633,7 @@
       "category": "war",
       "title": "Prag Baharı",
       "description": "Çekoslovakya işgali.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Prag_Bahari",
       "casualties": 100,
       "key_figures": [],
       "id": "ev82160ae7"
@@ -49648,7 +49648,7 @@
       "category": "culture",
       "title": "Andrei Tarkovsky",
       "description": "Solaris filmi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Tarkovski",
       "casualties": null,
       "key_figures": [],
       "id": "eve0191088"
@@ -49738,7 +49738,7 @@
       "category": "culture",
       "title": "Khrushchev Arts",
       "description": "Kültür politikası.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
       "casualties": null,
       "key_figures": [],
       "id": "ev841fac71"
@@ -49783,7 +49783,7 @@
       "category": "culture",
       "title": "Tarkovsky",
       "description": "Film.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Tarkovski",
       "casualties": null,
       "key_figures": [],
       "id": "evec2e165e"
@@ -49903,7 +49903,7 @@
       "category": "war",
       "title": "Khrushchev Ouster",
       "description": "Hruşçov düşürülmesi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
       "casualties": null,
       "key_figures": [],
       "id": "ev7e44c25e"
@@ -50053,7 +50053,7 @@
       "category": "politics",
       "title": "Khrushchev Fall",
       "description": "Hruşçov düşüşü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
       "casualties": null,
       "key_figures": [],
       "id": "ev83e89554"
@@ -50098,7 +50098,7 @@
       "category": "politics",
       "title": "Stalin Revival",
       "description": "Stalin yeniden.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Josef_Stalin",
       "casualties": null,
       "key_figures": [],
       "id": "evccdcf503"
@@ -50143,7 +50143,7 @@
       "category": "culture",
       "title": "Soljenitsin Nobel",
       "description": "Nobel Edebiyat Ödülü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksandr_Soljenitsin",
       "casualties": null,
       "key_figures": [
         "Solzhenitsyn"
@@ -50160,7 +50160,7 @@
       "category": "politics",
       "title": "Soljenitsin",
       "description": "Yazar.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksandr_Soljenitsin",
       "casualties": null,
       "key_figures": [],
       "id": "ev38a8fcaf"
@@ -50238,7 +50238,7 @@
       "category": "politics",
       "title": "Soljenitsin Sürgün",
       "description": "Yazar sürgüne gönderildi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksandr_Soljenitsin",
       "casualties": null,
       "key_figures": [],
       "id": "ev212e8e10"
@@ -50253,7 +50253,7 @@
       "category": "diplomacy",
       "title": "Helsinki Anlaşması",
       "description": "Avrupa güvenlik.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Helsinki_Antlasmalari",
       "casualties": null,
       "key_figures": [],
       "id": "ev460c060a"
@@ -50268,7 +50268,7 @@
       "category": "politics",
       "title": "Sakharov",
       "description": "Aktivist.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Saharov",
       "casualties": null,
       "key_figures": [],
       "id": "ev92b3fac2"
@@ -50313,7 +50313,7 @@
       "category": "war",
       "title": "Afganistan",
       "description": "İşgal.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi_nin_Afganistan_i_isgali",
       "casualties": 15000,
       "key_figures": [],
       "id": "ev46d1d9b8"
@@ -50343,7 +50343,7 @@
       "category": "culture",
       "title": "Shostakovich",
       "description": "Besteci.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Dmitri_Sostakovic",
       "casualties": null,
       "key_figures": [],
       "id": "evbe1e8698"
@@ -50418,7 +50418,7 @@
       "category": "culture",
       "title": "Helsinki Groups",
       "description": "Helsinki grupları.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Helsinki_Antlasmalari",
       "casualties": null,
       "key_figures": [],
       "id": "evc63bad39"
@@ -50433,7 +50433,7 @@
       "category": "culture",
       "title": "Sakharov Human Rights",
       "description": "İnsan hakları.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Saharov",
       "casualties": null,
       "key_figures": [],
       "id": "ev6d2f9f9e"
@@ -50478,7 +50478,7 @@
       "category": "culture",
       "title": "Afganistan War",
       "description": "Savaş kültürü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi_nin_Afganistan_i_isgali",
       "casualties": null,
       "key_figures": [],
       "id": "evfc450653"
@@ -50718,7 +50718,7 @@
       "category": "politics",
       "title": "Helsinki Accords",
       "description": "Helsinki anlaşmaları.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Helsinki_Antlasmalari",
       "casualties": null,
       "key_figures": [],
       "id": "ev32e2eef4"
@@ -50793,7 +50793,7 @@
       "category": "war",
       "title": "Afganistan",
       "description": "Savaş devamı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi_nin_Afganistan_i_isgali",
       "casualties": null,
       "key_figures": [],
       "id": "ev6ba3f145"
@@ -50872,7 +50872,7 @@
       "category": "politics",
       "title": "Gorbachev",
       "description": "Gorbaçov iktidara geldi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mihail_Gorbacov",
       "casualties": null,
       "key_figures": [
         "Gorbachev"
@@ -50889,7 +50889,7 @@
       "category": "politics",
       "title": "Glasnost",
       "description": "Açıklık politikası.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Glasnost",
       "casualties": null,
       "key_figures": [],
       "id": "evcdfd6257"
@@ -50904,7 +50904,7 @@
       "category": "politics",
       "title": "Perestroika",
       "description": "Yeniden yapılanma.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Perestroyka",
       "casualties": null,
       "key_figures": [],
       "id": "ev5db55c23"
@@ -50949,7 +50949,7 @@
       "category": "culture",
       "title": "Sakharov",
       "description": "Saharov serbest bırakıldı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Saharov",
       "casualties": null,
       "key_figures": [],
       "id": "ev230919ee"
@@ -50964,7 +50964,7 @@
       "category": "war",
       "title": "Afganistan Çekilme",
       "description": "Sovyetler çekildi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi_nin_Afganistan_i_isgali",
       "casualties": null,
       "key_figures": [],
       "id": "ev7f257ff0"
@@ -51024,7 +51024,7 @@
       "category": "culture",
       "title": "Tarkovsky Öldü",
       "description": "Yönetmen öldü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Tarkovski",
       "casualties": null,
       "key_figures": [],
       "id": "eva202e673"
@@ -51099,7 +51099,7 @@
       "category": "culture",
       "title": "Gorbachev Era",
       "description": "Dönem.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mihail_Gorbacov",
       "casualties": null,
       "key_figures": [],
       "id": "evb6609e33"
@@ -51114,7 +51114,7 @@
       "category": "politics",
       "title": "Chernobyl",
       "description": "Çernobil.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Cernobil_nukleer_faciasi",
       "casualties": null,
       "key_figures": [],
       "id": "evc22ded8f"
@@ -51129,7 +51129,7 @@
       "category": "culture",
       "title": "Glasnost Arts",
       "description": "Sanat.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Glasnost",
       "casualties": null,
       "key_figures": [],
       "id": "evdfdde6f1"
@@ -51144,7 +51144,7 @@
       "category": "culture",
       "title": "Sakharov Return",
       "description": "Dönüş.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Saharov",
       "casualties": null,
       "key_figures": [],
       "id": "ev6c7030b0"
@@ -51354,7 +51354,7 @@
       "category": "politics",
       "title": "Perestroika",
       "description": "Perestroyka.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Perestroyka",
       "casualties": null,
       "key_figures": [],
       "id": "ev4dba360c"
@@ -51429,7 +51429,7 @@
       "category": "revolution",
       "title": "SSSR Çöküşü",
       "description": "Sovyetler Birliği dağıldı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi",
       "casualties": null,
       "key_figures": [
         "Gorbachev",
@@ -51447,7 +51447,7 @@
       "category": "politics",
       "title": "Yeltsin",
       "description": "Yeltsin Rusya başkanı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Boris_Yeltsin",
       "casualties": null,
       "key_figures": [
         "Yeltsin"
@@ -51464,7 +51464,7 @@
       "category": "politics",
       "title": "Gorbachev İstifa",
       "description": "Gorbaçov istifa etti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mihail_Gorbacov",
       "casualties": null,
       "key_figures": [],
       "id": "ev6d36ba98"
@@ -51479,7 +51479,7 @@
       "category": "politics",
       "title": "Yeltsin Reform",
       "description": "Şok terapi ekonomik reform.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Boris_Yeltsin",
       "casualties": null,
       "key_figures": [],
       "id": "ev834301e7"
@@ -51554,7 +51554,7 @@
       "category": "politics",
       "title": "Yeltsin Yeniden",
       "description": "Seçimleri kazandı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Boris_Yeltsin",
       "casualties": null,
       "key_figures": [],
       "id": "ev3a1212ce"
@@ -51614,7 +51614,7 @@
       "category": "politics",
       "title": "Putin",
       "description": "Putin başbakan.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [
         "Putin"
@@ -51736,7 +51736,7 @@
       "category": "culture",
       "title": "Chechen Culture",
       "description": "Kültür.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Birinci_Cecen_Savasi",
       "casualties": null,
       "key_figures": [],
       "id": "ev16f09006"
@@ -51856,7 +51856,7 @@
       "category": "war",
       "title": "Chechen War",
       "description": "Savaş.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Birinci_Cecen_Savasi",
       "casualties": null,
       "key_figures": [],
       "id": "eve36095ee"
@@ -51931,7 +51931,7 @@
       "category": "politics",
       "title": "Gorbachev",
       "description": "Gorbaçov.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mihail_Gorbacov",
       "casualties": null,
       "key_figures": [],
       "id": "evd8050011"
@@ -52021,7 +52021,7 @@
       "category": "politics",
       "title": "Putin Başkan",
       "description": "Putin başkan seçildi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [
         "Putin"
@@ -52038,7 +52038,7 @@
       "category": "terror",
       "title": "Kursk",
       "description": "Denizaltı faciası.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kursk_Muharebesi",
       "casualties": 118,
       "key_figures": [],
       "id": "ev85ae518e"
@@ -52068,7 +52068,7 @@
       "category": "terror",
       "title": "Moskova Tiyatro",
       "description": "Tiyatro baskını.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Moskova_rehine_krizi",
       "casualties": 170,
       "key_figures": [],
       "id": "ev7c97fa08"
@@ -52113,7 +52113,7 @@
       "category": "politics",
       "title": "Putin Yeniden",
       "description": "İkinci dönem başladı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev9f388078"
@@ -52128,7 +52128,7 @@
       "category": "terror",
       "title": "Beslan",
       "description": "Okul baskını.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Beslan_rehine_krizi",
       "casualties": 334,
       "key_figures": [],
       "id": "evb4311977"
@@ -52188,7 +52188,7 @@
       "category": "politics",
       "title": "Putin Başbakan",
       "description": "Medvedev başkan, Putin başbakan.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev964f21d8"
@@ -52265,7 +52265,7 @@
       "category": "culture",
       "title": "Putin Era",
       "description": "Dönem.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "eva626b853"
@@ -52325,7 +52325,7 @@
       "category": "culture",
       "title": "Putin PM",
       "description": "Putin başbakan.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev89fd7bde"
@@ -52370,7 +52370,7 @@
       "category": "war",
       "title": "Chechen",
       "description": "Çeçen.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Birinci_Cecen_Savasi",
       "casualties": null,
       "key_figures": [],
       "id": "ev150fcfb3"
@@ -52535,7 +52535,7 @@
       "category": "politics",
       "title": "Putin Başbakan",
       "description": "Putin başbakanlığa döndü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "evccf147fa"
@@ -52550,7 +52550,7 @@
       "category": "politics",
       "title": "Putin Başkan",
       "description": "Üçüncü dönem.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev02f876bb"
@@ -52640,7 +52640,7 @@
       "category": "war",
       "title": "Suriye",
       "description": "Suriye müdahalesi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Rusya_nin_Suriye_icsavasina_mudahalesi",
       "casualties": null,
       "key_figures": [],
       "id": "ev2188dc39"
@@ -52685,7 +52685,7 @@
       "category": "politics",
       "title": "Putin Dördüncü",
       "description": "Dördüncü dönem.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev826f7bb6"
@@ -52715,7 +52715,7 @@
       "category": "war",
       "title": "Suriye",
       "description": "Suriye devam.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Rusya_nin_Suriye_icsavasina_mudahalesi",
       "casualties": null,
       "key_figures": [],
       "id": "ev4a062706"
@@ -52730,7 +52730,7 @@
       "category": "culture",
       "title": "Putin Return",
       "description": "Putin dönüş.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "eva8ee836a"
@@ -52775,7 +52775,7 @@
       "category": "war",
       "title": "Crimea",
       "description": "Kırım.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kirim_in_ilhaki",
       "casualties": null,
       "key_figures": [],
       "id": "evccbb2243"
@@ -53030,7 +53030,7 @@
       "category": "politics",
       "title": "Putin Third",
       "description": "Putin üçüncü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev5b9b52e6"
@@ -53060,7 +53060,7 @@
       "category": "politics",
       "title": "Crimea Annexation",
       "description": "İlhak.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kirim_in_ilhaki",
       "casualties": null,
       "key_figures": [],
       "id": "eveaf17745"
@@ -53105,7 +53105,7 @@
       "category": "politics",
       "title": "Putin Fourth",
       "description": "Putin dördüncü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev7f042cdb"
@@ -53165,7 +53165,7 @@
       "category": "politics",
       "title": "Navalny",
       "description": "Navalny zehirlenme ve tutuklama.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksey_Navalny",
       "casualties": null,
       "key_figures": [
         "Navalny"
@@ -53242,7 +53242,7 @@
       "category": "war",
       "title": "Wagner İsyanı",
       "description": "Wagner lideri Prigojin isyanı.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Wagner_isyani",
       "casualties": 13,
       "key_figures": [
         "Prigozhin"
@@ -53289,7 +53289,7 @@
       "category": "politics",
       "title": "Putin Yeniden",
       "description": "Beşinci dönem seçimleri.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev5f3c58a1"
@@ -53304,7 +53304,7 @@
       "category": "politics",
       "title": "Navalny Ölümü",
       "description": "Navalny hapishanede öldü.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksey_Navalny",
       "casualties": 1,
       "key_figures": [
         "Navalny"
@@ -53321,7 +53321,7 @@
       "category": "war",
       "title": "Kursk",
       "description": "Kursk taarruzu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kursk_Muharebesi",
       "casualties": null,
       "key_figures": [],
       "id": "evac3706fc"
@@ -53336,7 +53336,7 @@
       "category": "diplomacy",
       "title": "Trump-Putin",
       "description": "Trump görüşmesi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev0f501d38"
@@ -53381,7 +53381,7 @@
       "category": "politics",
       "title": "Wagner",
       "description": "Wagner.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Wagner_isyani",
       "casualties": null,
       "key_figures": [],
       "id": "eve9c2705b"
@@ -53516,7 +53516,7 @@
       "category": "politics",
       "title": "Navalny Death",
       "description": "Navalny ölüm.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksey_Navalny",
       "casualties": null,
       "key_figures": [],
       "id": "evd4dfb715"
@@ -53531,7 +53531,7 @@
       "category": "politics",
       "title": "Putin",
       "description": "Putin.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
       "casualties": null,
       "key_figures": [],
       "id": "ev9a6ec19e"
@@ -53621,7 +53621,7 @@
       "category": "politics",
       "title": "Cin Komunist Partisi",
       "description": "Sanghay'da kuruldu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Cin_Komunist_Partisi",
       "casualties": null,
       "key_figures": [
         "Chen Duxiu",
@@ -53716,7 +53716,7 @@
       "category": "politics",
       "title": "Kuzey Seferi",
       "description": "KMT ordusu kuzeye ilerledi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kuzey_Seferi",
       "casualties": null,
       "key_figures": [
         "Chiang Kai-shek"
@@ -53733,7 +53733,7 @@
       "category": "politics",
       "title": "Shanghai Katliami",
       "description": "Chiang komunistleri katletti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
       "casualties": 5000,
       "key_figures": [
         "Chiang Kai-shek"
@@ -53750,7 +53750,7 @@
       "category": "revolution",
       "title": "Nanchang Ayaklanmasi",
       "description": "Ilk komunist ayaklanma.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nanchang_Ayaklanmasi",
       "casualties": null,
       "key_figures": [
         "Zhou Enlai"
@@ -53784,7 +53784,7 @@
       "category": "politics",
       "title": "Zhu-Mao Birligi",
       "description": "Zhu De ve Mao birlesti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "ev2af04163"
@@ -53829,7 +53829,7 @@
       "category": "culture",
       "title": "Lu Xun Eserleri",
       "description": "Edebiyat.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lu_Xun",
       "casualties": null,
       "key_figures": [
         "Lu Xun"
@@ -53876,7 +53876,7 @@
       "category": "culture",
       "title": "Sun Yat-sen Konusmalari",
       "description": "Uc Ilke.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sun_Yat-sen",
       "casualties": null,
       "key_figures": [],
       "id": "ev387730ff"
@@ -54026,7 +54026,7 @@
       "category": "war",
       "title": "Shanghai Massacre",
       "description": "Katliam.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
       "casualties": null,
       "key_figures": [],
       "id": "ev13082225"
@@ -54071,7 +54071,7 @@
       "category": "politics",
       "title": "Sun Yat-sen",
       "description": "Sun Yat-sen.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sun_Yat-sen",
       "casualties": null,
       "key_figures": [],
       "id": "ev74680e30"
@@ -54146,7 +54146,7 @@
       "category": "politics",
       "title": "Sun Yat-sen Death",
       "description": "Sun olum.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sun_Yat-sen",
       "casualties": null,
       "key_figures": [],
       "id": "evb4004f69"
@@ -54161,7 +54161,7 @@
       "category": "politics",
       "title": "Chiang Kai-shek",
       "description": "Chiang.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Chiang_Kai-shek",
       "casualties": null,
       "key_figures": [],
       "id": "eva31e0b31"
@@ -54176,7 +54176,7 @@
       "category": "politics",
       "title": "Shanghai",
       "description": "Sanghay.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
       "casualties": null,
       "key_figures": [],
       "id": "ev301543e0"
@@ -54191,7 +54191,7 @@
       "category": "politics",
       "title": "Nanjing",
       "description": "Nanjing.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nankin_Katliami",
       "casualties": null,
       "key_figures": [],
       "id": "ev67d23aac"
@@ -54206,7 +54206,7 @@
       "category": "politics",
       "title": "Mao Zedong",
       "description": "Mao.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "ev0fba7943"
@@ -54221,7 +54221,7 @@
       "category": "culture",
       "title": "Mao Zedong",
       "description": "Mao CPC'ye katildi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "ev643b488e"
@@ -54236,7 +54236,7 @@
       "category": "culture",
       "title": "Sun Yat-sen Oldu",
       "description": "Cumhuriyet kurucusu oldu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sun_Yat-sen",
       "casualties": null,
       "key_figures": [],
       "id": "eve95777ae"
@@ -54266,7 +54266,7 @@
       "category": "war",
       "title": "Mukden Olayi",
       "description": "Japonya Manchuria'yi isgal etti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mukden_Olayi",
       "casualties": null,
       "key_figures": [],
       "id": "ev09f2bb2b"
@@ -54296,7 +54296,7 @@
       "category": "war",
       "title": "Shanghai Savasi",
       "description": "Japon saldirisi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
       "casualties": null,
       "key_figures": [],
       "id": "ev3c813ccb"
@@ -54326,7 +54326,7 @@
       "category": "revolution",
       "title": "Uzun Yuruyus",
       "description": "CPC kacisi basladi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Uzun_Yuruyus",
       "casualties": 100000,
       "key_figures": [
         "Mao Zedong"
@@ -54343,7 +54343,7 @@
       "category": "revolution",
       "title": "Zunyi Konferansi",
       "description": "Mao liderligi ele aldi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Zunyi_Konferansi",
       "casualties": null,
       "key_figures": [],
       "id": "evdbc42ccd"
@@ -54388,7 +54388,7 @@
       "category": "war",
       "title": "Marco Polo Koprusu",
       "description": "Tam olcekli Japon savasi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Marco_Polo_Koprusu_Olayi",
       "casualties": 20000000,
       "key_figures": [],
       "id": "ev0d8ac98b"
@@ -54403,7 +54403,7 @@
       "category": "genocide",
       "title": "Nanjing Katliami",
       "description": "Japon katliami.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nankin_Katliami",
       "casualties": 300000,
       "key_figures": [],
       "id": "ev4aff3289"
@@ -54448,7 +54448,7 @@
       "category": "culture",
       "title": "Lu Xun Oldu",
       "description": "Edebiyatci oldu.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Lu_Xun",
       "casualties": null,
       "key_figures": [],
       "id": "eve6e61dc7"
@@ -54463,7 +54463,7 @@
       "category": "culture",
       "title": "Mukden Incident",
       "description": "Olay.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mukden_Olayi",
       "casualties": null,
       "key_figures": [],
       "id": "ev611283a1"
@@ -54478,7 +54478,7 @@
       "category": "culture",
       "title": "Shanghai",
       "description": "Sanghay.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
       "casualties": null,
       "key_figures": [],
       "id": "eve0e27d08"
@@ -54523,7 +54523,7 @@
       "category": "culture",
       "title": "Zunyi",
       "description": "Zunyi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Zunyi_Konferansi",
       "casualties": null,
       "key_figures": [],
       "id": "ev04b9647e"
@@ -54553,7 +54553,7 @@
       "category": "culture",
       "title": "Nanjing",
       "description": "Nanjing.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nankin_Katliami",
       "casualties": null,
       "key_figures": [],
       "id": "evb1f5804a"
@@ -54673,7 +54673,7 @@
       "category": "war",
       "title": "Marco Polo",
       "description": "Marco Polo.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Marco_Polo_Koprusu_Olayi",
       "casualties": null,
       "key_figures": [],
       "id": "ev26bb1946"
@@ -54778,7 +54778,7 @@
       "category": "politics",
       "title": "Mao",
       "description": "Mao.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "evcc0b65b3"
@@ -54793,7 +54793,7 @@
       "category": "politics",
       "title": "Zhou Enlai",
       "description": "Zhou.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Zhou_Enlai",
       "casualties": null,
       "key_figures": [],
       "id": "ev1cb836df"
@@ -54823,7 +54823,7 @@
       "category": "politics",
       "title": "Chiang Kai-shek",
       "description": "Chiang.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Chiang_Kai-shek",
       "casualties": null,
       "key_figures": [],
       "id": "ev6347f84d"
@@ -54853,7 +54853,7 @@
       "category": "politics",
       "title": "Mao",
       "description": "Mao.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "ev9026fcfb"
@@ -54868,7 +54868,7 @@
       "category": "culture",
       "title": "Mao Zedong",
       "description": "Mao liderligi ele aldi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "evbd9582e6"
@@ -54988,7 +54988,7 @@
       "category": "war",
       "title": "Cin Ic Savasi",
       "description": "Tam olcekli savas basladi.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Cin_Ic_Savasi",
       "casualties": 2000000,
       "key_figures": [],
       "id": "ev3c679588"
@@ -55033,7 +55033,7 @@
       "category": "revolution",
       "title": "Cin Halk Cumhuriyeti",
       "description": "Mao zafer ilan etti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Cin_Halk_Cumhuriyeti",
       "casualties": null,
       "key_figures": [
         "Mao Zedong"
@@ -55050,7 +55050,7 @@
       "category": "politics",
       "title": "KMT Tayvan'a",
       "description": "Chiang Tayvan'a kacti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Tayvan",
       "casualties": null,
       "key_figures": [],
       "id": "evb92a2e9e"
@@ -55110,7 +55110,7 @@
       "category": "culture",
       "title": "Mao Literature",
       "description": "Mao edebiyat.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "eva20fcf92"
@@ -55335,7 +55335,7 @@
       "category": "politics",
       "title": "Mao",
       "description": "Mao.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "ev57859bc1"
@@ -55380,7 +55380,7 @@
       "category": "politics",
       "title": "Mao",
       "description": "Mao.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "ev64c5d258"
@@ -55410,7 +55410,7 @@
       "category": "politics",
       "title": "Mao-Chiang",
       "description": "Mao-Chiang.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Chiang_Kai-shek",
       "casualties": null,
       "key_figures": [],
       "id": "ev4558cbfa"
@@ -55470,7 +55470,7 @@
       "category": "politics",
       "title": "Mao Zedong",
       "description": "Mao Halk Cumhuriyeti ilan etti.",
-      "wikipedia_url": "",
+      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
       "casualties": null,
       "key_figures": [],
       "id": "ev5255135f"
