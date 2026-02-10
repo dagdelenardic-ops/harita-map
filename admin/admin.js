@@ -16,6 +16,8 @@ const categoryLabels = {
     politics: 'Politika',
     diplomacy: 'Diplomasi',
     culture: 'Kultur & Toplum',
+    cinema: 'Sinema',
+    music: 'Muzik',
     time_100: 'Time 100'
 };
 
@@ -74,6 +76,14 @@ function ensureCategoryDefsInPlace() {
         if (cats[key]) return;
         if (key === 'politics') {
             cats[key] = { label: 'Politika', icon: 'fa-landmark', color: '#16a085' };
+            return;
+        }
+        if (key === 'cinema') {
+            cats[key] = { label: 'Sinema', icon: 'fa-film', color: '#95a5a6' };
+            return;
+        }
+        if (key === 'music') {
+            cats[key] = { label: 'Müzik', icon: 'fa-music', color: '#e84393' };
             return;
         }
         cats[key] = { label: categoryLabels[key] || key, icon: 'fa-tag', color: '#7f8c8d' };

@@ -264,25 +264,49 @@ def normalize_events() -> None:
                 ev["decade"] = expected_decade
                 fixed_decades += 1
 
-    # Ensure every used category has a top-level definition.
+    # Ensure every used category has a top-level definition, and populate display metadata
+    # (label/color/icon/tier) so Admin + Map can render consistent hierarchy.
     categories = data.get("categories") or {}
     if not isinstance(categories, dict):
         categories = {}
     before_cats = set(categories.keys())
+
+    category_defaults: Dict[str, Dict[str, Any]] = {
+        "war": {"label": "Savas/Catisma", "icon": "fa-fire", "color": "#e74c3c", "tier": 1},
+        "genocide": {"label": "Soykirim", "icon": "fa-skull", "color": "#2c3e50", "tier": 1},
+        "revolution": {"label": "Devrim/Rejim Degisikligi", "icon": "fa-flag", "color": "#e67e22", "tier": 1},
+        "terror": {"label": "Teror Saldirisi", "icon": "fa-bomb", "color": "#9b59b6", "tier": 2},
+        "politics": {"label": "Politika", "icon": "fa-landmark", "color": "#16a085", "tier": 2},
+        "diplomacy": {"label": "Diplomasi", "icon": "fa-handshake", "color": "#2ecc71", "tier": 2},
+        "leader": {"label": "Onemli Lider", "icon": "fa-user", "color": "#3498db", "tier": 2},
+        "time_100": {"label": "Time 100: Yüzyılın En Önemli Kişileri", "color": "#f1c40f", "tier": 3},
+        "culture": {"label": "Kültür & Toplum", "color": "#9b59b6", "tier": 3},
+        "cinema": {"label": "Sinema", "icon": "fa-film", "color": "#95a5a6", "tier": 3},
+        "music": {"label": "Müzik", "icon": "fa-music", "color": "#e84393", "tier": 3},
+    }
+
+    for k, v in category_defaults.items():
+        categories.setdefault(k, {})
+        if not isinstance(categories[k], dict):
+            categories[k] = {}
+        for kk, vv in v.items():
+            categories[k].setdefault(kk, vv)
+
     used_cats = {
         (ev.get("category") or "").strip()
         for ev in events
         if isinstance(ev, dict)
     }
     used_cats.discard("")
-    default_category_defs = {
-        "politics": {"label": "Politika", "icon": "fa-landmark", "color": "#16a085"},
-    }
     for cat in sorted(used_cats):
-        categories.setdefault(
-            cat,
-            default_category_defs.get(cat, {"label": cat, "icon": "fa-tag", "color": "#7f8c8d"}),
-        )
+        categories.setdefault(cat, {})
+        if not isinstance(categories[cat], dict):
+            categories[cat] = {}
+        categories[cat].setdefault("label", cat)
+        categories[cat].setdefault("icon", "fa-tag")
+        categories[cat].setdefault("color", "#7f8c8d")
+        categories[cat].setdefault("tier", 3)
+
     data["categories"] = categories
     added_categories = len(set(categories.keys()) - before_cats)
 

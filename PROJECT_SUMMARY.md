@@ -29,6 +29,9 @@ Son dönemde projeye eklenen kritik özellikler:
 7.  **Mobil iyileştirmeler:** Ülke paneli (sidebar) kapatma butonu eklendi (`closeSidebar()`). Mobilde (≤768px) filtre paneli varsayılan olarak gizli; sağ üstteki "Filtreler" butonu ile aç/kapat yapılabiliyor, böylece harita alanı kapanmıyor.
 8.  **YouTube mükerrer azaltma:** Aynı video aynı ülkede birden fazla olayda gösterilmesin diye `_deduplicate_youtube_per_country()` eklendi; video en uygun (tam başlık eşleşen veya yıla göre) tek olayda bırakılıyor. 32. Gün videoları `VIDEO_MAPPINGS` ve `scripts/add_youtube_videos.py` ile eventlere/ülkelere atanıyor.
 9.  **Performans (gzip):** Cloud Run üzerinde `output/` statik dosyaları gzip sidecar'ları ile servis edilir. Build aşamasında `scripts/precompress_output.py` dosyaları `.gz` olarak hazırlar, `scripts/serve_output.py` ise client `gzip` destekliyorsa sıkıştırılmış içeriği döner (özellikle ~16MB HTML için).
+10. **Kategori hiyerarşisi + medya ayrımı:**
+    *   Kategorilere `tier` alanı eklendi (1=majör: savaş/devrim/soykırım, 2=politik/diplomasi/terör vb., 3=bağlam/kültür).
+    *   "Kültür & Toplum" içindeki Film/Müzik olayları ayrı kategorilere taşınabilir (`cinema`, `music`). Otomatik sınıflama için: `python3 scripts/reclassify_culture_media.py`.
 
 ## 📂 Önemli Dosyalar
 - `scripts/geopolitical_map.py`: Ana motor. Haritayı oluşturan, CSS/JS enjekte eden kod.

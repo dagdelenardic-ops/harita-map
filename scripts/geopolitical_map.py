@@ -74,14 +74,32 @@ class GeopoliticalMap:
         }
         used_categories.discard("")
         default_category_defs = {
-            "politics": {"label": "Politika", "icon": "fa-landmark", "color": "#16a085"},
+            "war": {"label": "Savas/Catisma", "icon": "fa-fire", "color": "#e74c3c", "tier": 1},
+            "genocide": {"label": "Soykirim", "icon": "fa-skull", "color": "#2c3e50", "tier": 1},
+            "revolution": {"label": "Devrim/Rejim Degisikligi", "icon": "fa-flag", "color": "#e67e22", "tier": 1},
+            "terror": {"label": "Teror Saldirisi", "icon": "fa-bomb", "color": "#9b59b6", "tier": 2},
+            "politics": {"label": "Politika", "icon": "fa-landmark", "color": "#16a085", "tier": 2},
+            "diplomacy": {"label": "Diplomasi", "icon": "fa-handshake", "color": "#2ecc71", "tier": 2},
+            "leader": {"label": "Onemli Lider", "icon": "fa-user", "color": "#3498db", "tier": 2},
+            "time_100": {"label": "Time 100: Yüzyılın En Önemli Kişileri", "color": "#f1c40f", "tier": 3},
+            "culture": {"label": "Kültür & Toplum", "color": "#9b59b6", "tier": 3},
+            "cinema": {"label": "Sinema", "icon": "fa-film", "color": "#95a5a6", "tier": 3},
+            "music": {"label": "Müzik", "icon": "fa-music", "color": "#e84393", "tier": 3},
         }
+        # Backfill missing display metadata for known categories without overwriting user customizations.
+        for k, v in default_category_defs.items():
+            if k not in self.categories:
+                continue
+            if not isinstance(self.categories.get(k), dict):
+                self.categories[k] = {}
+            for kk, vv in v.items():
+                self.categories[k].setdefault(kk, vv)
         for cat in sorted(used_categories):
             if cat in self.categories:
                 continue
             self.categories[cat] = default_category_defs.get(
                 cat,
-                {"label": cat, "icon": "fa-tag", "color": "#7f8c8d"},
+                {"label": cat, "icon": "fa-tag", "color": "#7f8c8d", "tier": 3},
             )
 
         # Load GeoJSON for country boundaries
@@ -611,16 +629,30 @@ function parseMarkdownLinks(text) {
         display: block;
     }}
     .event-item {{
-        padding: 15px 20px;
+        padding: 14px 18px;
         border-bottom: 1px solid #333;
+        border-left: 5px solid var(--cat-color, #636e72);
+        background: rgba(255, 255, 255, 0.02);
     }}
     .event-item:last-child {{
         border-bottom: none;
+    }}
+    .event-item.tier-1 {{
+        border-left-width: 7px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0%, rgba(30, 39, 46, 0.0) 72%);
+    }}
+    .event-item.tier-3 {{
+        border-left-width: 4px;
+        background: rgba(255, 255, 255, 0.015);
+        opacity: 0.92;
     }}
     .event-year {{
         font-size: 12px;
         color: #b2bec3;
         margin-bottom: 4px;
+    }}
+    .event-item.tier-1 .event-year {{
+        color: #dfe6e9;
     }}
     .event-title {{
         font-weight: 600;
@@ -628,19 +660,36 @@ function parseMarkdownLinks(text) {
         color: #dfe6e9;
         margin-bottom: 6px;
     }}
+    .event-item.tier-1 .event-title {{
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+    }}
+    .event-item.tier-3 .event-title {{
+        font-size: 13px;
+        font-weight: 500;
+    }}
     .event-category {{
-        display: inline-block;
-        padding: 2px 8px;
-        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 9px;
+        border-radius: 999px;
         font-size: 10px;
+        font-weight: 600;
         color: white;
-        margin-bottom: 8px;
+        background: var(--cat-color, #636e72);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        margin-bottom: 10px;
     }}
     .event-desc {{
         font-size: 12px;
         color: #bdc3c7;
         line-height: 1.5;
         margin-bottom: 8px;
+    }}
+    .event-item.tier-3 .event-desc {{
+        font-size: 11.5px;
     }}
     .event-links {{
         display: flex;
@@ -1115,7 +1164,17 @@ function initFilters() {{
     }});
 
     const catContainer = document.getElementById('categoryFilters');
-    Object.entries(categories).forEach(([key, cat]) => {{
+    const catEntries = Object.entries(categories)
+        .filter(([key, _cat]) => key !== 'time_100')
+        .sort((a, b) => {{
+            const ta = (a[1] && typeof a[1].tier === 'number') ? a[1].tier : 2;
+            const tb = (b[1] && typeof b[1].tier === 'number') ? b[1].tier : 2;
+            if (ta !== tb) return ta - tb;
+            const la = (a[1] && a[1].label) ? a[1].label : a[0];
+            const lb = (b[1] && b[1].label) ? b[1].label : b[0];
+            return String(la).localeCompare(String(lb), 'tr');
+        }});
+    catEntries.forEach(([key, cat]) => {{
         if (key === 'time_100') return; // Skip Time 100 in standard list
         const item = document.createElement('label');
         item.className = 'category-item';
@@ -1920,7 +1979,14 @@ function openSidebar(countryName) {{
     decades.forEach(decade => {{
         if (byDecade[decade] && byDecade[decade].length > 0) {{
             // Render decade section...
-            const events = byDecade[decade].sort((a, b) => a.year - b.year);
+            const events = byDecade[decade].slice().sort((a, b) => {{
+                const ca = categories[a.category] || {{}};
+                const cb = categories[b.category] || {{}};
+                const ta = (ca && typeof ca.tier === 'number') ? ca.tier : 2;
+                const tb = (cb && typeof cb.tier === 'number') ? cb.tier : 2;
+                if (ta !== tb) return ta - tb;
+                return a.year - b.year;
+            }});
             html += `
                 <div class="decade-section">
                     <div class="decade-header" onclick="toggleDecadeSection(this)">
@@ -1932,16 +1998,21 @@ function openSidebar(countryName) {{
             events.forEach(e => {{
                 // Render event item...
                  const cat = categories[e.category] || {{}};
+                 const catLabel = cat.label || e.category;
+                 const catColor = cat.color || '#636e72';
+                 const tier = (cat && typeof cat.tier === 'number') ? cat.tier : 2;
                  const videoHtml = e.youtube_video_id ? 
                     `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>` : '';
                  const wikiHtml = e.wikipedia_url
                     ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
                     : '';
+                 const categoryHtml = `<div class="event-category">${{catLabel}}</div>`;
                  
                  html += `
-                    <div class="event-item">
+                    <div class="event-item tier-${{tier}}" style="--cat-color:${{catColor}}">
                         <div class="event-year">${{e.year}}</div>
                         <div class="event-title">${{e.title}}</div>
+                        ${{categoryHtml}}
                         <div class="event-desc">${{parseMarkdownLinks(e.description)}}</div>
                         ${{wikiHtml}}
                          ${{videoHtml}}
@@ -2201,6 +2272,8 @@ window.addEventListener('load', function() {{
             '#2ecc71': 'green',
             '#16a085': 'cadetblue',  # politics
             '#f1c40f': 'orange',  # time_100
+            '#95a5a6': 'gray',  # cinema
+            '#e84393': 'pink',  # music
         }
         color = color_map.get(cat.get('color', '#3498db'), 'blue')
         return folium.Icon(color=color, icon=icon, prefix='fa')
