@@ -12,8 +12,112 @@ const categoryLabels = {
     genocide: 'Soykirim',
     revolution: 'Devrim/Rejim Degisikligi',
     terror: 'Teror Saldirisi',
-    leader: 'Onemli Lider'
+    leader: 'Onemli Lider',
+    politics: 'Politika',
+    diplomacy: 'Diplomasi',
+    culture: 'Kultur & Toplum',
+    time_100: 'Time 100'
 };
+
+function decadeFromYear(year) {
+    const y = Number(year);
+    if (!Number.isFinite(y)) return '';
+    const d = Math.floor(y / 10) * 10;
+    return String(d) + 's';
+}
+
+function hexToRgb(hex) {
+    const h = String(hex || '').trim().replace(/^#/, '');
+    if (h.length !== 6) return null;
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    if ([r, g, b].some(x => Number.isNaN(x))) return null;
+    return [r, g, b];
+}
+
+function rgbaFromHex(hex, alpha) {
+    const rgb = hexToRgb(hex);
+    if (!rgb) return '';
+    const a = Number(alpha);
+    const clamped = Number.isFinite(a) ? Math.max(0, Math.min(1, a)) : 1;
+    return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${clamped})`;
+}
+
+function ensureSelectHasOption(selectEl, value, label) {
+    if (!selectEl) return;
+    if (value === null || value === undefined) return;
+    const v = String(value);
+    for (const opt of Array.from(selectEl.options || [])) {
+        if (opt.value === v) return;
+    }
+    const opt = document.createElement('option');
+    opt.value = v;
+    opt.textContent = label || v;
+    selectEl.appendChild(opt);
+}
+
+function ensureCategoryDefsInPlace() {
+    if (!eventsData || typeof eventsData !== 'object') return;
+    if (!eventsData.categories || typeof eventsData.categories !== 'object') {
+        eventsData.categories = {};
+    }
+
+    const cats = eventsData.categories;
+    const used = new Set(
+        (eventsData.events || [])
+            .map(e => String((e && e.category) || '').trim())
+            .filter(Boolean)
+    );
+
+    used.forEach(key => {
+        if (cats[key]) return;
+        if (key === 'politics') {
+            cats[key] = { label: 'Politika', icon: 'fa-landmark', color: '#16a085' };
+            return;
+        }
+        cats[key] = { label: categoryLabels[key] || key, icon: 'fa-tag', color: '#7f8c8d' };
+    });
+}
+
+function getCategoryMeta(key) {
+    const k = String(key || '').trim();
+    const defs = (eventsData && eventsData.categories && typeof eventsData.categories === 'object') ? eventsData.categories : {};
+    const def = defs[k] || {};
+    const label = def.label || categoryLabels[k] || k || 'unknown';
+    const color = def.color || '#7f8c8d';
+    const icon = def.icon || 'fa-tag';
+    return { key: k, label, color, icon };
+}
+
+function renderCategoryBadge(categoryKey) {
+    const meta = getCategoryMeta(categoryKey);
+    const bg = rgbaFromHex(meta.color, 0.15);
+    const border = rgbaFromHex(meta.color, 0.35);
+    const style = bg ? `background:${bg}; color:${meta.color}; border:1px solid ${border};` : '';
+    const cls = meta.key ? `category-${meta.key}` : '';
+    const sAttr = style ? ` style="${style}"` : '';
+    return `<span class="category-badge ${cls}"${sAttr}>${meta.label}</span>`;
+}
+
+function getSortedDecades() {
+    const set = new Set();
+    (eventsData.events || []).forEach(ev => {
+        if (!ev || typeof ev !== 'object') return;
+        const d = String(ev.decade || '').trim();
+        if (d) set.add(d);
+        const dy = decadeFromYear(ev.year);
+        if (dy) set.add(dy);
+    });
+    const out = Array.from(set).filter(Boolean);
+    out.sort((a, b) => {
+        const na = parseInt(a, 10);
+        const nb = parseInt(b, 10);
+        if (!Number.isNaN(na) && !Number.isNaN(nb) && na !== nb) return na - nb;
+        return String(a).localeCompare(String(b));
+    });
+    return out;
+}
 
 // Country normalization index (built from admin/country_mappings.js)
 let _countryIndexCache = null;
@@ -168,8 +272,10 @@ function normalizeEventsDataInPlace() {
     let changedCountries = 0;
     let filledCodes = 0;
     let standardizedCodes = 0;
+    let fixedDecades = 0;
 
     (eventsData.events || []).forEach(ev => {
+        if (!ev || typeof ev !== 'object') return;
         const rawName = String(ev.country_name || '').trim();
         const canon = canonicalizeCountry(rawName);
         if (canon && canon.turkish && canon.turkish !== rawName) {
@@ -191,7 +297,19 @@ function normalizeEventsDataInPlace() {
             ev.country_code = rawCode.toUpperCase();
             standardizedCodes += 1;
         }
+
+        // Keep decade aligned with year for both Admin + Map filters.
+        const dy = decadeFromYear(ev.year);
+        if (dy) {
+            const rawDecade = String(ev.decade || '').trim();
+            if (!rawDecade || rawDecade !== dy) {
+                ev.decade = dy;
+                fixedDecades += 1;
+            }
+        }
     });
+
+    ensureCategoryDefsInPlace();
 
     // Dedupe: same country + year + title after normalization
     const byKey = new Map();
@@ -231,8 +349,8 @@ function normalizeEventsDataInPlace() {
 
     eventsData.events = unique;
 
-    if (changedCountries || filledCodes || standardizedCodes || removed) {
-        console.log('Normalization applied:', { changedCountries, filledCodes, standardizedCodes, removed, mergedOps });
+    if (changedCountries || filledCodes || standardizedCodes || fixedDecades || removed) {
+        console.log('Normalization applied:', { changedCountries, filledCodes, standardizedCodes, fixedDecades, removed, mergedOps });
     }
 }
 
@@ -309,6 +427,8 @@ function saveData() {
 // Initialize UI
 function initializeUI() {
     populateCountryFilter();
+    populateDecadeSelects();
+    populateCategorySelects();
     populateCountryDatalist();
     applyFilters();
     updateStats();
@@ -326,6 +446,56 @@ function populateCountryFilter() {
         option.textContent = country;
         select.appendChild(option);
     });
+}
+
+function populateDecadeSelects() {
+    const decades = getSortedDecades();
+    const filterSel = document.getElementById('filterDecade');
+    const eventSel = document.getElementById('eventDecade');
+
+    const prevFilter = filterSel ? String(filterSel.value || '') : '';
+    const prevEvent = eventSel ? String(eventSel.value || '') : '';
+
+    if (filterSel) {
+        filterSel.innerHTML = '';
+        ensureSelectHasOption(filterSel, '', 'Tumu');
+        decades.forEach(d => ensureSelectHasOption(filterSel, d, d));
+        filterSel.value = prevFilter;
+    }
+
+    if (eventSel) {
+        eventSel.innerHTML = '';
+        ensureSelectHasOption(eventSel, '', 'Secin');
+        decades.forEach(d => ensureSelectHasOption(eventSel, d, d));
+        eventSel.value = prevEvent;
+    }
+}
+
+function populateCategorySelects() {
+    ensureCategoryDefsInPlace();
+    const defs = (eventsData && eventsData.categories) ? eventsData.categories : {};
+    const cats = Object.keys(defs).map(k => getCategoryMeta(k));
+    cats.sort((a, b) => String(a.label).localeCompare(String(b.label), 'tr'));
+
+    const filterSel = document.getElementById('filterCategory');
+    const eventSel = document.getElementById('eventCategory');
+
+    const prevFilter = filterSel ? String(filterSel.value || '') : '';
+    const prevEvent = eventSel ? String(eventSel.value || '') : '';
+
+    if (filterSel) {
+        filterSel.innerHTML = '';
+        ensureSelectHasOption(filterSel, '', 'Tumu');
+        cats.forEach(c => ensureSelectHasOption(filterSel, c.key, c.label));
+        filterSel.value = prevFilter;
+    }
+
+    if (eventSel) {
+        eventSel.innerHTML = '';
+        ensureSelectHasOption(eventSel, '', 'Secin');
+        cats.forEach(c => ensureSelectHasOption(eventSel, c.key, c.label));
+        eventSel.value = prevEvent;
+    }
 }
 
 // Apply filters and render table
@@ -368,7 +538,7 @@ function renderTable() {
         <tr>
             <td><strong>${event.country_name}</strong><br><small style="color:#666">${event.country_code}</small></td>
             <td>${event.year}<br><small style="color:#666">${event.decade}</small></td>
-            <td><span class="category-badge category-${event.category}">${categoryLabels[event.category] || event.category}</span></td>
+            <td>${renderCategoryBadge(event.category)}</td>
             <td><strong>${event.title}</strong></td>
             <td class="truncate" title="${event.description}">${event.description}</td>
             <td>
@@ -485,6 +655,8 @@ function saveEvent(e) {
     saveData();
     closeModal();
     populateCountryFilter();
+    populateDecadeSelects();
+    populateCategorySelects();
     applyFilters();
     updateStats();
 }
@@ -513,8 +685,38 @@ function confirmDelete() {
     saveData();
     closeDeleteModal();
     populateCountryFilter();
+    populateDecadeSelects();
+    populateCategorySelects();
     applyFilters();
     updateStats();
+}
+
+// Reset localStorage state to the repo-embedded data (admin/data.js) or to ../data/events.json.
+async function resetToRepoData() {
+    const ok = confirm("Repo verisi tekrar yüklenecek. Local degisiklikleriniz kaybolabilir. Devam edilsin mi?");
+    if (!ok) return;
+
+    if (window.__EVENTS_DATA__) {
+        // Deep copy so we don't mutate the embedded object reference.
+        eventsData = JSON.parse(JSON.stringify(window.__EVENTS_DATA__));
+        normalizeEventsDataInPlace();
+        saveData();
+        initializeUI();
+        alert("Repo verisi yüklendi!");
+        return;
+    }
+
+    try {
+        const response = await fetch('../data/events.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        eventsData = await response.json();
+        normalizeEventsDataInPlace();
+        saveData();
+        initializeUI();
+        alert("Repo verisi yüklendi!");
+    } catch (e) {
+        alert("Repo verisi yüklenemedi: " + (e && e.message ? e.message : String(e)));
+    }
 }
 
 // Export JSON
@@ -560,11 +762,14 @@ function importJSON(e) {
 
 // Auto-calculate decade from year
 document.getElementById('eventYear')?.addEventListener('change', function() {
-    const year = parseInt(this.value);
-    if (year >= 1920 && year <= 2029) {
-        const decadeStart = Math.floor(year / 10) * 10;
-        document.getElementById('eventDecade').value = decadeStart + 's';
-    }
+    const year = parseInt(this.value, 10);
+    if (!Number.isFinite(year)) return;
+    const decade = decadeFromYear(year);
+    if (!decade) return;
+    const sel = document.getElementById('eventDecade');
+    if (!sel) return;
+    ensureSelectHasOption(sel, decade, decade);
+    sel.value = decade;
 });
 
 // Auto-canonicalize country name + fill ISO2 code from mappings

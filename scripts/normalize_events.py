@@ -7,6 +7,8 @@ Rules:
 - Accept English names + aliases (incl. ASCII Turkish variants) and normalize them to canonical Turkish
 - Fill country_code from iso2 when known
 - Remove duplicates that become visible after normalization (same country + year + title)
+- Normalize decade from year (e.g. 1991 -> 1990s)
+- Ensure every event category has a definition in the top-level `categories` map
 - Regenerate offline Admin embeds (admin/data.js, admin/country_mappings.js)
 """
 
@@ -216,6 +218,7 @@ def normalize_events() -> None:
     changed_country = 0
     filled_codes = 0
     standardized_codes = 0
+    fixed_decades = 0
 
     for ev in events:
         if not isinstance(ev, dict):
@@ -249,6 +252,39 @@ def normalize_events() -> None:
         elif existing_code and existing_code != existing_code.upper():
             ev["country_code"] = existing_code.upper()
             standardized_codes += 1
+
+        # Keep decade aligned with year for consistent filtering in Admin + Map.
+        try:
+            year = int(ev.get("year"))
+        except Exception:
+            year = None
+        if year is not None:
+            expected_decade = f"{(year // 10) * 10}s"
+            if (ev.get("decade") or "").strip() != expected_decade:
+                ev["decade"] = expected_decade
+                fixed_decades += 1
+
+    # Ensure every used category has a top-level definition.
+    categories = data.get("categories") or {}
+    if not isinstance(categories, dict):
+        categories = {}
+    before_cats = set(categories.keys())
+    used_cats = {
+        (ev.get("category") or "").strip()
+        for ev in events
+        if isinstance(ev, dict)
+    }
+    used_cats.discard("")
+    default_category_defs = {
+        "politics": {"label": "Politika", "icon": "fa-landmark", "color": "#16a085"},
+    }
+    for cat in sorted(used_cats):
+        categories.setdefault(
+            cat,
+            default_category_defs.get(cat, {"label": cat, "icon": "fa-tag", "color": "#7f8c8d"}),
+        )
+    data["categories"] = categories
+    added_categories = len(set(categories.keys()) - before_cats)
 
     # Remove duplicates created by canonicalization: same (country_name, year, title)
     grouped: Dict[Tuple[str, Any, str], List[Dict[str, Any]]] = defaultdict(list)
@@ -301,6 +337,8 @@ def normalize_events() -> None:
     print(f"- Country name changes: {changed_country}")
     print(f"- Country codes filled from mappings: {filled_codes}")
     print(f"- Country codes standardized: {standardized_codes}")
+    print(f"- Decades normalized from year: {fixed_decades}")
+    print(f"- Category definitions added: {added_categories}")
     print(f"- Duplicate events removed (country+year+title): {removed}")
     print(f"- Duplicate merge operations (filled/updated fields): {merged_fields}")
     print(f"- Backup: {backup_path}")

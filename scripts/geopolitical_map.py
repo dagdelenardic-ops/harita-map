@@ -51,6 +51,39 @@ class GeopoliticalMap:
             self.events = data.get('events', [])
             self.categories = data.get('categories', {})
 
+        # Keep Admin + Map aligned: normalize decade from year and ensure every used category
+        # has a definition (some datasets include categories that were not added to `categories`).
+        if not isinstance(self.events, list):
+            self.events = []
+        if not isinstance(self.categories, dict):
+            self.categories = {}
+
+        for ev in self.events:
+            if not isinstance(ev, dict):
+                continue
+            try:
+                y = int(ev.get("year"))
+            except Exception:
+                continue
+            ev["decade"] = f"{(y // 10) * 10}s"
+
+        used_categories = {
+            (ev.get("category") or "").strip()
+            for ev in self.events
+            if isinstance(ev, dict)
+        }
+        used_categories.discard("")
+        default_category_defs = {
+            "politics": {"label": "Politika", "icon": "fa-landmark", "color": "#16a085"},
+        }
+        for cat in sorted(used_categories):
+            if cat in self.categories:
+                continue
+            self.categories[cat] = default_category_defs.get(
+                cat,
+                {"label": cat, "icon": "fa-tag", "color": "#7f8c8d"},
+            )
+
         # Load GeoJSON for country boundaries
         geojson_path = self.base_dir / "data" / "countries.geojson"
         self.geojson_data = None
@@ -236,6 +269,23 @@ class GeopoliticalMap:
         events_json = json.dumps(self.events, ensure_ascii=False)
         categories_json = json.dumps(self.categories, ensure_ascii=False)
         geojson_json = json.dumps(self.geojson_data, ensure_ascii=False) if self.geojson_data else 'null'
+
+        # Decades are part of the UI filter; derive from data (do not hardcode).
+        decades_set = {
+            str((e or {}).get("decade") or "").strip()
+            for e in (self.events or [])
+            if isinstance(e, dict)
+        }
+        decades_set.discard("")
+
+        def _decade_sort_key(d: str):
+            try:
+                # "1990s" -> 1990
+                return (0, int(d[:-1]))
+            except Exception:
+                return (1, d)
+
+        decades_json = json.dumps(sorted(decades_set, key=_decade_sort_key), ensure_ascii=False)
         
         # Safe serialization for metadata
         country_metadata_json = json.dumps(self.country_metadata, ensure_ascii=False) if hasattr(self, 'country_metadata') else '{}'
@@ -1027,7 +1077,7 @@ const allEvents = {events_json};
 const countryMeta = {country_metadata_json};
 // Filter out special categories from standard list if needed, or handle in toggleCategory
 const categories = {categories_json};
-const decades = ['1920s', '1930s', '1940s', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+const decades = {decades_json};
 
 // External datasets (groups + indicators)
 const externalData = {indicators_json};
@@ -2149,6 +2199,8 @@ window.addEventListener('load', function() {{
             '#9b59b6': 'purple',
             '#3498db': 'blue',
             '#2ecc71': 'green',
+            '#16a085': 'cadetblue',  # politics
+            '#f1c40f': 'orange',  # time_100
         }
         color = color_map.get(cat.get('color', '#3498db'), 'blue')
         return folium.Icon(color=color, icon=icon, prefix='fa')
@@ -2442,7 +2494,7 @@ function updateMarkerVisibility() {{
     Object.entries(countryFilterData).forEach(([country, data]) => {{
         if (groupSet && !groupSet.has(country)) return;
         const hasVisibleDecade = data.decades.some(d => selectedDecades.has(d));
-        const hasVisibleCategory = data.categories.some(c => selectedCategories.has(c));
+        const hasVisibleCategory = data.categories.some(c => selectedCategories.has(c) || (showTime100 && c === 'time_100'));
         
         if (hasVisibleDecade && hasVisibleCategory) {{
             visibleCountries.add(country);
