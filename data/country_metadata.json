@@ -2937,6 +2937,14 @@
                 "affected": 22656,
                 "damage_usd_millions": 5.0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "ISKP",
+                "text": "IŞİD-Horasan Çatışması",
+                "year": "2015-Devam",
+                "status": "active"
+            }
         ]
     },
     "Algeria": {
@@ -3194,7 +3202,39 @@
     },
     "Almanya": {
         "predecessor": "Alman İmparatorluğu (1871-1918) / Nazi Almanyası (1933-1945)",
-        "demographics": "Alman (%87), Türk (%1.8), Diğer (%11)",
+        "demographics": "Alman (%87), Türk (%1.8)",
+        "rivals": [
+            "Fransa",
+            "Polonya",
+            "Rusya",
+            "Birleşik Krallık"
+        ],
+        "rivalries": [
+            {
+                "rival": "Fransa",
+                "text": "II. Dünya Savaşı (Batı Cephesi)",
+                "status": "historical",
+                "url": "https://tr.wikipedia.org/wiki/Fransa_Muharebesi"
+            },
+            {
+                "rival": "Polonya",
+                "text": "Polonya Seferi (1939)",
+                "status": "historical",
+                "url": "https://tr.wikipedia.org/wiki/Polonya_Seferi"
+            },
+            {
+                "rival": "Rusya",
+                "text": "Doğu Cephesi (II. DS)",
+                "status": "historical",
+                "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fu_Cephesi_(II._D%C3%BCnya_Sava%C5%9F%C4%B1)"
+            },
+            {
+                "rival": "Birleşik Krallık",
+                "text": "Britanya Muharebesi",
+                "status": "historical",
+                "url": "https://tr.wikipedia.org/wiki/Britanya_Muharebesi"
+            }
+        ],
         "felaketler": [
             {
                 "year": 2002,
@@ -3375,30 +3415,6 @@
                 "deaths": 11,
                 "affected": 0,
                 "damage_usd_millions": 1800.0
-            }
-        ],
-        "key_conflict": {
-            "text": "Fransa (Tarihsel Savaşlar)",
-            "url": "https://tr.wikipedia.org/wiki/I._D%C3%BCnya_Sava%C5%9F%C4%B1"
-        },
-        "rivals": [
-            "Fransa"
-        ],
-        "rivalries": [
-            {
-                "rival": "Fransa",
-                "text": "II. Dünya Savaşı",
-                "url": "https://tr.wikipedia.org/wiki/II._D%C3%BCnya_Sava%C5%9F%C4%B1"
-            },
-            {
-                "rival": "Polonya",
-                "text": "II. Dünya Savaşı",
-                "url": "https://tr.wikipedia.org/wiki/II._D%C3%BCnya_Sava%C5%9F%C4%B1"
-            },
-            {
-                "rival": "Rusya",
-                "text": "II. Dünya Savaşı",
-                "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fu_Cephesi_(II._D%C3%BCnya_Sava%C5%9F%C4%B1)"
             }
         ]
     },
@@ -5503,6 +5519,14 @@
                 "affected": 500000,
                 "damage_usd_millions": 0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "Bangladeş Militanları",
+                "text": "İç İstikrarsızlık",
+                "year": "2013-Devam",
+                "status": "active"
+            }
         ]
     },
     "Batı Şeria": {
@@ -7386,6 +7410,12 @@
                 "rival": "Arjantin",
                 "text": "Bölgesel Liderlik",
                 "url": "https://en.wikipedia.org/wiki/Argentina%E2%80%93Brazil_relations"
+            },
+            {
+                "rival": "PCC",
+                "text": "Çete Savaşları (PCC/CV)",
+                "year": "2006-Devam",
+                "status": "active"
             }
         ]
     },
@@ -7614,6 +7644,14 @@
                 "deaths": 0,
                 "affected": 4000000,
                 "damage_usd_millions": 0
+            }
+        ],
+        "rivalries": [
+            {
+                "rival": "Cihatçı Gruplar (Sahel)",
+                "text": "Sahel İslamcı İsyanı",
+                "year": "2015-Devam",
+                "status": "active"
             }
         ]
     },
@@ -13026,6 +13064,14 @@
                 "affected": 186096,
                 "damage_usd_millions": 0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "ELN",
+                "text": "Kolombiya Çatışması",
+                "year": "1964-Devam",
+                "status": "active"
+            }
         ]
     },
     "Côte d’Ivoire": {
@@ -13896,6 +13942,14 @@
                 "affected": 84711,
                 "damage_usd_millions": 0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "M23",
+                "text": "Kivu Çatışması (M23)",
+                "year": "2012-Devam",
+                "status": "active"
+            }
         ]
     },
     "Danimarka": {
@@ -14114,6 +14168,14 @@
                 "deaths": 31,
                 "affected": 54113,
                 "damage_usd_millions": 13.0
+            }
+        ],
+        "rivalries": [
+            {
+                "rival": "Ekvador Çeteleri",
+                "text": "Uyuşturucu Çeteleri Çatışması",
+                "year": "2018-Devam",
+                "status": "active"
             }
         ]
     },
@@ -15784,6 +15846,14 @@
                 "affected": 19,
                 "damage_usd_millions": 0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "Papua Ayrılıkçıları",
+                "text": "Papua Çatışması",
+                "year": "1963-Devam",
+                "status": "active"
+            }
         ]
     },
     "Eritrea": {
@@ -16271,6 +16341,18 @@
                 "rival": "Eritre",
                 "text": "Bağımsızlık Savaşı",
                 "url": "https://tr.wikipedia.org/wiki/Eritre-Etiyopya_Sava%C5%9F%C4%B1"
+            },
+            {
+                "rival": "Amhara",
+                "text": "Fano Milisleri Çatışması",
+                "year": "2023-Devam",
+                "status": "active"
+            },
+            {
+                "rival": "Oromia",
+                "text": "OLA İsyanı",
+                "year": "2018-Devam",
+                "status": "active"
             }
         ]
     },
@@ -18475,6 +18557,20 @@
                 "affected": 1747872,
                 "damage_usd_millions": 31.0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "NPA",
+                "text": "Komünist İsyan",
+                "year": "1969-Devam",
+                "status": "active"
+            },
+            {
+                "rival": "Abu Sayyaf",
+                "text": "Moro Çatışması",
+                "year": "1991-Devam",
+                "status": "active"
+            }
         ]
     },
     "Filistin": {
@@ -18486,6 +18582,14 @@
         },
         "rivals": [
             "İsrail"
+        ],
+        "rivalries": [
+            {
+                "rival": "İsrail",
+                "text": "Bağımsızlık ve Toprak Mücadelesi",
+                "year": "1948-Devam",
+                "status": "active"
+            }
         ]
     },
     "Gazze": {
@@ -18796,224 +18900,6 @@
                 "deaths": 1,
                 "affected": 77845,
                 "damage_usd_millions": 0
-            }
-        ]
-    },
-    "Almanya": {
-        "predecessor": "Alman İmparatorluğu (1871-1918) / Nazi Almanyası (1933-1945)",
-        "demographics": "Alman (%87), Türk (%1.8)",
-        "rivals": [
-            "Fransa",
-            "Polonya",
-            "Rusya",
-            "Birleşik Krallık"
-        ],
-        "rivalries": [
-            {
-                "rival": "Fransa",
-                "text": "II. Dünya Savaşı (Batı Cephesi)",
-                "status": "historical",
-                "url": "https://tr.wikipedia.org/wiki/Fransa_Muharebesi"
-            },
-            {
-                "rival": "Polonya",
-                "text": "Polonya Seferi (1939)",
-                "status": "historical",
-                "url": "https://tr.wikipedia.org/wiki/Polonya_Seferi"
-            },
-            {
-                "rival": "Rusya",
-                "text": "Doğu Cephesi (II. DS)",
-                "status": "historical",
-                "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fu_Cephesi_(II._D%C3%BCnya_Sava%C5%9F%C4%B1)"
-            },
-            {
-                "rival": "Birleşik Krallık",
-                "text": "Britanya Muharebesi",
-                "status": "historical",
-                "url": "https://tr.wikipedia.org/wiki/Britanya_Muharebesi"
-            }
-        ],
-        "felaketler": [
-            {
-                "year": 2002,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Tupolev- Tu154 and Boeing 757",
-                "deaths": 71,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2022,
-                "type": "Fırtına",
-                "subtype": "Ekstra-tropikal Fırtına",
-                "name": "Storm 'Eunice' (Zeynep)",
-                "deaths": 3,
-                "affected": 0,
-                "damage_usd_millions": 1023.156
-            },
-            {
-                "year": 2022,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Sıcak Hava Dalgası",
-                "name": "",
-                "deaths": 8173,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2023,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Sıcak Hava Dalgası",
-                "name": "",
-                "deaths": 6376,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2024,
-                "type": "Sel",
-                "subtype": "Sel",
-                "name": "",
-                "deaths": 12,
-                "affected": 3407,
-                "damage_usd_millions": 4500.0
-            },
-            {
-                "year": 2024,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Sıcak Hava Dalgası",
-                "name": "",
-                "deaths": 6282,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2008,
-                "type": "Fırtına",
-                "subtype": "Şiddetli Hava Koşulları",
-                "name": "Hilal",
-                "deaths": 3,
-                "affected": 0,
-                "damage_usd_millions": 1500.0
-            },
-            {
-                "year": 2013,
-                "type": "Sel",
-                "subtype": "Nehir Taşkını",
-                "name": "",
-                "deaths": 4,
-                "affected": 6350,
-                "damage_usd_millions": 12900.0
-            },
-            {
-                "year": 2020,
-                "type": "Fırtına",
-                "subtype": "Ekstra-tropikal Fırtına",
-                "name": "Storm 'Ciara' (Sabine)",
-                "deaths": 9,
-                "affected": 33,
-                "damage_usd_millions": 1100.0
-            },
-            {
-                "year": 2002,
-                "type": "Sel",
-                "subtype": "Sel",
-                "name": "",
-                "deaths": 27,
-                "affected": 330108,
-                "damage_usd_millions": 11600.0
-            },
-            {
-                "year": 2008,
-                "type": "Fırtına",
-                "subtype": "Ekstra-tropikal Fırtına",
-                "name": "Storm 'Emma'",
-                "deaths": 5,
-                "affected": 0,
-                "damage_usd_millions": 1200.0
-            },
-            {
-                "year": 2010,
-                "type": "Fırtına",
-                "subtype": "Ekstra-tropikal Fırtına",
-                "name": "Storm 'Xynthia'",
-                "deaths": 4,
-                "affected": 0,
-                "damage_usd_millions": 1000.0
-            },
-            {
-                "year": 2013,
-                "type": "Fırtına",
-                "subtype": "Hail",
-                "name": "",
-                "deaths": 0,
-                "affected": 0,
-                "damage_usd_millions": 4800.0
-            },
-            {
-                "year": 2018,
-                "type": "Fırtına",
-                "subtype": "Ekstra-tropikal Fırtına",
-                "name": "'Friederike' (David)",
-                "deaths": 5,
-                "affected": 12,
-                "damage_usd_millions": 588.475
-            },
-            {
-                "year": 2017,
-                "type": "Fırtına",
-                "subtype": "Hail",
-                "name": "",
-                "deaths": 2,
-                "affected": 0,
-                "damage_usd_millions": 740.0
-            },
-            {
-                "year": 2007,
-                "type": "Fırtına",
-                "subtype": "Ekstra-tropikal Fırtına",
-                "name": "Storm 'Kyrill'",
-                "deaths": 11,
-                "affected": 130,
-                "damage_usd_millions": 5500.0
-            },
-            {
-                "year": 2016,
-                "type": "Sel",
-                "subtype": "Nehir Taşkını",
-                "name": "",
-                "deaths": 7,
-                "affected": 0,
-                "damage_usd_millions": 2000.0
-            },
-            {
-                "year": 2021,
-                "type": "Sel",
-                "subtype": "Sel",
-                "name": "",
-                "deaths": 226,
-                "affected": 1000,
-                "damage_usd_millions": 40000.0
-            },
-            {
-                "year": 2003,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Sıcak Hava Dalgası",
-                "name": "",
-                "deaths": 9355,
-                "affected": 0,
-                "damage_usd_millions": 1650.0
-            },
-            {
-                "year": 2002,
-                "type": "Fırtına",
-                "subtype": "Ekstra-tropikal Fırtına",
-                "name": "Storm 'Jeanett'",
-                "deaths": 11,
-                "affected": 0,
-                "damage_usd_millions": 1800.0
             }
         ]
     },
@@ -20456,6 +20342,14 @@
                 "deaths": 2754,
                 "affected": 315594,
                 "damage_usd_millions": 50.0
+            }
+        ],
+        "rivalries": [
+            {
+                "rival": "Haiti Çeteleri",
+                "text": "Çete Savaşları (G9)",
+                "year": "2020-Devam",
+                "status": "active"
             }
         ]
     },
@@ -23001,6 +22895,12 @@
                 "rival": "Çin",
                 "text": "Sınır Çatışmaları",
                 "url": "https://tr.wikipedia.org/wiki/%C3%87in-Hindistan_ili%C5%9Fkileri"
+            },
+            {
+                "rival": "Keşmir Militanları",
+                "text": "Keşmir Çatışması",
+                "year": "1989-Devam",
+                "status": "active"
             }
         ]
     },
@@ -23302,6 +23202,14 @@
         },
         "rivals": [
             "İran"
+        ],
+        "rivalries": [
+            {
+                "rival": "ISIS",
+                "text": "IŞİD Kalıntıları ile Mücadele",
+                "year": "2014-Devam",
+                "status": "active"
+            }
         ]
     },
     "Iraq": {
@@ -23936,6 +23844,26 @@
         },
         "rivals": [
             "Filistin"
+        ],
+        "rivalries": [
+            {
+                "rival": "Hamas",
+                "text": "İsrail-Gazze Savaşı (7,700+ ölüm)",
+                "year": "2023-Devam",
+                "status": "active"
+            },
+            {
+                "rival": "Hizbullah",
+                "text": "Kuzey Cephesi Çatışmaları",
+                "year": "2023-Devam",
+                "status": "active"
+            },
+            {
+                "rival": "Filistin",
+                "text": "Batı Şeria Gerilimi",
+                "year": "1948-Devam",
+                "status": "active"
+            }
         ]
     },
     "Italya": {
@@ -26548,6 +26476,14 @@
                 "affected": 24,
                 "damage_usd_millions": 0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "Libya Doğusu (Haftar)",
+                "text": "Siyasi Bölünme ve Çatışmalar",
+                "year": "2014-Devam",
+                "status": "active"
+            }
         ]
     },
     "Litvanya": {
@@ -26635,6 +26571,14 @@
                 "deaths": 2,
                 "affected": 1000000,
                 "damage_usd_millions": 0
+            }
+        ],
+        "rivalries": [
+            {
+                "rival": "İsrail",
+                "text": "Hizbullah-İsrail Çatışması",
+                "year": "2023-Devam",
+                "status": "active"
             }
         ]
     },
@@ -26746,6 +26690,14 @@
                 "deaths": 0,
                 "affected": 3500000,
                 "damage_usd_millions": 0
+            }
+        ],
+        "rivalries": [
+            {
+                "rival": "JNIM",
+                "text": "Mali Savaşı (Cihatçı Gruplar)",
+                "year": "2012-Devam",
+                "status": "active"
             }
         ]
     },
@@ -27185,11 +27137,27 @@
                 "affected": 55000,
                 "damage_usd_millions": 0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "Meksika Kartelleri",
+                "text": "Meksika Uyuşturucu Savaşı",
+                "year": "2006-Devam",
+                "status": "active"
+            }
         ]
     },
     "Mozambik": {
         "predecessor": "Portekiz Mozambiği (1498-1975)",
-        "demographics": "Makua (%40), Tsonga (%21)"
+        "demographics": "Makua (%40), Tsonga (%21)",
+        "rivalries": [
+            {
+                "rival": "Cabo Delgado İsyancıları",
+                "text": "Cabo Delgado İsyanı",
+                "year": "2017-Devam",
+                "status": "active"
+            }
+        ]
     },
     "Mozambique": {
         "predecessor": "Portekiz Mozambiği (1498-1975)",
@@ -28116,6 +28084,14 @@
                 "affected": 50000,
                 "damage_usd_millions": 0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "Myanmar Direnişi",
+                "text": "Myanmar İç Savaşı",
+                "year": "2021-Devam",
+                "status": "active"
+            }
         ]
     },
     "Namibia": {
@@ -28590,6 +28566,14 @@
                 "deaths": 0,
                 "affected": 3000000,
                 "damage_usd_millions": 0
+            }
+        ],
+        "rivalries": [
+            {
+                "rival": "Cihatçı Gruplar (Sahel)",
+                "text": "Sahel Krizi",
+                "year": "2015-Devam",
+                "status": "active"
             }
         ]
     },
@@ -30385,6 +30369,20 @@
                 "affected": 3004,
                 "damage_usd_millions": 0.147
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "Boko Haram",
+                "text": "Boko Haram İsyanı",
+                "year": "2009-Devam",
+                "status": "active"
+            },
+            {
+                "rival": "ISWAP",
+                "text": "IŞİD Batı Afrika Kolu",
+                "year": "2015-Devam",
+                "status": "active"
+            }
         ]
     },
     "Nikaragua": {
@@ -31078,6 +31076,18 @@
                 "rival": "Hindistan",
                 "text": "Keşmir Sorunu",
                 "url": "https://tr.wikipedia.org/wiki/Ke%C5%9Fmir_Sorunu"
+            },
+            {
+                "rival": "Keşmir Militanları",
+                "text": "Keşmir Sınır Gerilimi",
+                "year": "1947-Devam",
+                "status": "active"
+            },
+            {
+                "rival": "ISKP",
+                "text": "Terör Saldırıları",
+                "year": "2015-Devam",
+                "status": "active"
             }
         ]
     },
@@ -32194,461 +32204,29 @@
     "Rusya": {
         "predecessor": "SSCB (1922-1991) / Rus Çarlığı (1721-1917)",
         "demographics": "Rus (%77), Tatar (%3.7)",
-        "felaketler": [
-            {
-                "year": 2000,
-                "type": "Deniz Kazası",
-                "subtype": "Deniz Kazası",
-                "name": "Submarine \"Kursk\"",
-                "deaths": 108,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2001,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Tu-154",
-                "deaths": 145,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2001,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Tupolev TU-154",
-                "deaths": 78,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2002,
-                "type": "Toprak Kayması (Islak)",
-                "subtype": "Avalanche (wet)",
-                "name": "",
-                "deaths": 122,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2002,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Soğuk Hava Dalgası",
-                "name": "",
-                "deaths": 242,
-                "affected": 25062,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2004,
-                "type": "Explosion (Miscellaneous)",
-                "subtype": "Explosion (Miscellaneous)",
-                "name": "Building",
-                "deaths": 58,
-                "affected": 24,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2004,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Tupolev",
-                "deaths": 90,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2006,
-                "type": "Çökme (Çeşitli)",
-                "subtype": "Çökme (Çeşitli)",
-                "name": "Roof of a market",
-                "deaths": 66,
-                "affected": 31,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2006,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Airbus320",
-                "deaths": 113,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2006,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Airbus A310",
-                "deaths": 131,
-                "affected": 72,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2007,
-                "type": "Yangın (Çeşitli)",
-                "subtype": "Yangın (Çeşitli)",
-                "name": "Old person centre",
-                "deaths": 62,
-                "affected": 30,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2007,
-                "type": "Patlama (Endüstriyel)",
-                "subtype": "Patlama (Endüstriyel)",
-                "name": "Ulyanovskaya Coal mine",
-                "deaths": 108,
-                "affected": 93,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2008,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Boeing-737",
-                "deaths": 88,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2009,
-                "type": "Çökme (Endüstriyel)",
-                "subtype": "Çökme (Endüstriyel)",
-                "name": "Sayano-Shushenskaya Hydro-electric power plant",
-                "deaths": 75,
-                "affected": 14,
-                "damage_usd_millions": 1320.0
-            },
-            {
-                "year": 2009,
-                "type": "Yangın (Çeşitli)",
-                "subtype": "Yangın (Çeşitli)",
-                "name": "Nighclub",
-                "deaths": 146,
-                "affected": 86,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2010,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Tupolev-154",
-                "deaths": 96,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2010,
-                "type": "Patlama (Endüstriyel)",
-                "subtype": "Patlama (Endüstriyel)",
-                "name": "Coal mine",
-                "deaths": 106,
-                "affected": 129,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2011,
-                "type": "Deniz Kazası",
-                "subtype": "Deniz Kazası",
-                "name": "Cruise ship \"Bulgaria\"",
-                "deaths": 130,
-                "affected": 80,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2011,
-                "type": "Deniz Kazası",
-                "subtype": "Deniz Kazası",
-                "name": "Oil platform",
-                "deaths": 53,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2013,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Boeing 737",
-                "deaths": 50,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2014,
-                "type": "Deniz Kazası",
-                "subtype": "Deniz Kazası",
-                "name": "Fishing vessel",
-                "deaths": 53,
-                "affected": 7,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2015,
-                "type": "Deniz Kazası",
-                "subtype": "Deniz Kazası",
-                "name": "Dalni Vostok",
-                "deaths": 69,
-                "affected": 63,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2002,
-                "type": "Sel",
-                "subtype": "Nehir Taşkını",
-                "name": "",
-                "deaths": 82,
-                "affected": 49500,
-                "damage_usd_millions": 32.0
-            },
-            {
-                "year": 2016,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Tupolev",
-                "deaths": 92,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2018,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Antonov An-148",
-                "deaths": 71,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2018,
-                "type": "Yangın (Çeşitli)",
-                "subtype": "Yangın (Çeşitli)",
-                "name": "Shopping centre",
-                "deaths": 64,
-                "affected": 844,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2021,
-                "type": "Industrial accident (General)",
-                "subtype": "Industrial accident (General)",
-                "name": "Coal mine",
-                "deaths": 57,
-                "affected": 237,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2025,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Antonov An-24",
-                "deaths": 50,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2001,
-                "type": "Sel",
-                "subtype": "Kıyı Seli",
-                "name": "",
-                "deaths": 11,
-                "affected": 300000,
-                "damage_usd_millions": 33.0
-            },
-            {
-                "year": 2010,
-                "type": "Kuraklık",
-                "subtype": "Kuraklık",
-                "name": "",
-                "deaths": 0,
-                "affected": 0,
-                "damage_usd_millions": 1400.0
-            },
-            {
-                "year": 2012,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Soğuk Hava Dalgası",
-                "name": "",
-                "deaths": 170,
-                "affected": 1594,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2012,
-                "type": "Kuraklık",
-                "subtype": "Kuraklık",
-                "name": "",
-                "deaths": 0,
-                "affected": 0,
-                "damage_usd_millions": 1140.0
-            },
-            {
-                "year": 2013,
-                "type": "Sel",
-                "subtype": "Nehir Taşkını",
-                "name": "",
-                "deaths": 0,
-                "affected": 34135,
-                "damage_usd_millions": 1000.0
-            },
-            {
-                "year": 2001,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Soğuk Hava Dalgası",
-                "name": "",
-                "deaths": 145,
-                "affected": 6120,
-                "damage_usd_millions": 0.1
-            },
-            {
-                "year": 2003,
-                "type": "Kuraklık",
-                "subtype": "Kuraklık",
-                "name": "",
-                "deaths": 0,
-                "affected": 1000000,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2000,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Soğuk Hava Dalgası",
-                "name": "",
-                "deaths": 232,
-                "affected": 94,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2001,
-                "type": "Sel",
-                "subtype": "Nehir Taşkını",
-                "name": "",
-                "deaths": 10,
-                "affected": 50305,
-                "damage_usd_millions": 241.0
-            },
-            {
-                "year": 2002,
-                "type": "Sel",
-                "subtype": "Ani Sel",
-                "name": "",
-                "deaths": 117,
-                "affected": 330613,
-                "damage_usd_millions": 450.0
-            },
-            {
-                "year": 2006,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Ağır Kış Şartları",
-                "name": "",
-                "deaths": 116,
-                "affected": 14,
-                "damage_usd_millions": 1000.0
-            },
-            {
-                "year": 2010,
-                "type": "Orman Yangını",
-                "subtype": "Arazi Yangını",
-                "name": "",
-                "deaths": 53,
-                "affected": 5996,
-                "damage_usd_millions": 1800.0
-            },
-            {
-                "year": 2012,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Soğuk Hava Dalgası",
-                "name": "",
-                "deaths": 64,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2012,
-                "type": "Sel",
-                "subtype": "Ani Sel",
-                "name": "",
-                "deaths": 172,
-                "affected": 31410,
-                "damage_usd_millions": 600.0
-            },
-            {
-                "year": 2010,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Sıcak Hava Dalgası",
-                "name": "",
-                "deaths": 55736,
-                "affected": 0,
-                "damage_usd_millions": 400.0
-            },
-            {
-                "year": 2013,
-                "type": "Göktaşı/Çarpma",
-                "subtype": "Collision",
-                "name": "",
-                "deaths": 0,
-                "affected": 301491,
-                "damage_usd_millions": 33.0
-            },
-            {
-                "year": 2016,
-                "type": "Hava Kazası",
-                "subtype": "Hava Kazası",
-                "name": "Boeing 737",
-                "deaths": 62,
-                "affected": 0,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2001,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Soğuk Hava Dalgası",
-                "name": "",
-                "deaths": 332,
-                "affected": 174,
-                "damage_usd_millions": 0
-            },
-            {
-                "year": 2001,
-                "type": "Aşırı Sıcaklık",
-                "subtype": "Sıcak Hava Dalgası",
-                "name": "",
-                "deaths": 276,
-                "affected": 0,
-                "damage_usd_millions": 0
-            }
-        ],
         "key_conflict": {
-            "text": "ABD (Soğuk Savaş) ve Ukrayna Savaşı",
+            "text": "Ukrayna Savaşı",
             "url": "https://tr.wikipedia.org/wiki/Rusya-Ukrayna_Sava%C5%9F%C4%B1"
         },
         "rivals": [
-            "ABD",
-            "Ukrayna"
+            "Ukrayna",
+            "ABD"
         ],
         "rivalries": [
             {
                 "rival": "Ukrayna",
-                "text": "Rusya-Ukrayna savaşı 2022-Devam Ediyor",
-                "url": "https://tr.wikipedia.org/wiki/Rusya-Ukrayna_Sava%C5%9F%C4%B1"
+                "text": "Rusya-Ukrayna Savaşı (~28,300 ölüm/yıl)",
+                "year": "2022-Devam",
+                "status": "active"
             },
             {
                 "rival": "ABD",
-                "text": "Soğuk Savaş / Küresel Güç",
-                "url": "https://tr.wikipedia.org/wiki/So%C4%9Fuk_Sava%C5%9F"
-            },
-            {
-                "rival": "Polonya",
-                "text": "Tarihsel Gerilim",
-                "url": "https://tr.wikipedia.org/wiki/Polonya-Rusya_ili%C5%9Fkileri"
-            },
-            {
-                "rival": "Türkiye",
-                "text": "Bölgesel Rekabet",
-                "url": "https://tr.wikipedia.org/wiki/Rusya-T%C3%BCrkiye_ili%C5%9Fkileri"
+                "text": "Soğuk Savaş (Miras)",
+                "year": "1947-1991",
+                "status": "historical"
             }
-        ]
+        ],
+        "felaketler": []
     },
     "Senegal": {
         "predecessor": "Fransız Batı Afrikası (1895-1960)",
@@ -33024,7 +32602,15 @@
     },
     "Somali": {
         "predecessor": "İtalyan/İngiliz Somalisi (1889-1960)",
-        "demographics": "Somali (%85)"
+        "demographics": "Somali (%85)",
+        "rivalries": [
+            {
+                "rival": "Al-Shabaab",
+                "text": "El-Şebab ile İç Savaş",
+                "year": "2006-Devam",
+                "status": "active"
+            }
+        ]
     },
     "Somalia": {
         "predecessor": "İtalyan/İngiliz Somalisi (1889-1960)",
@@ -34068,6 +33654,14 @@
                 "affected": 565335,
                 "damage_usd_millions": 300.0
             }
+        ],
+        "rivalries": [
+            {
+                "rival": "Hızlı Destek Kuvvetleri",
+                "text": "Sudan İç Savaşı (SAF vs RSF)",
+                "year": "2023-Devam",
+                "status": "active"
+            }
         ]
     },
     "Suriname": {
@@ -34220,6 +33814,20 @@
         },
         "rivals": [
             "İsrail"
+        ],
+        "rivalries": [
+            {
+                "rival": "Suriye Muhalifleri",
+                "text": "Suriye İç Savaşı",
+                "year": "2011-Devam",
+                "status": "active"
+            },
+            {
+                "rival": "HTS",
+                "text": "İdlib Çatışmaları",
+                "year": "2017-Devam",
+                "status": "active"
+            }
         ]
     },
     "Syria": {
@@ -35651,10 +35259,9 @@
         "rivalries": [
             {
                 "rival": "Rusya",
-                "text": "RU-UA (2014–)",
-                "url": "https://tr.wikipedia.org/w/index.php?search=Rusya-Ukrayna%20Sava%C5%9F%C4%B1",
-                "desc": "2014’te başlayan süreç 2022’de geniş çaplı savaşa dönüştü; halen sürüyor.",
-                "full_name": "Rusya-Ukrayna Savaşı"
+                "text": "Rusya-Ukrayna Savaşı (Varlık Mücadelesi)",
+                "year": "2022-Devam",
+                "status": "active"
             }
         ]
     },
@@ -35719,6 +35326,14 @@
         "rivals": [
             "Guyana",
             "ABD"
+        ],
+        "rivalries": [
+            {
+                "rival": "ABD",
+                "text": "Siyasi Gerilim ve Yaptırımlar",
+                "year": "2014-Devam",
+                "status": "active"
+            }
         ]
     },
     "Venezüela": {
@@ -36787,6 +36402,14 @@
                 "deaths": 90,
                 "affected": 25064,
                 "damage_usd_millions": 400.0
+            }
+        ],
+        "rivalries": [
+            {
+                "rival": "Husiler",
+                "text": "Yemen İç Savaşı",
+                "year": "2014-Devam",
+                "status": "active"
             }
         ]
     },
@@ -38110,33 +37733,6 @@
             }
         ]
     },
-    "Rusya": {
-        "predecessor": "SSCB (1922-1991) / Rus Çarlığı (1721-1917)",
-        "demographics": "Rus (%77), Tatar (%3.7)",
-        "key_conflict": {
-            "text": "Ukrayna Savaşı",
-            "url": "https://tr.wikipedia.org/wiki/Rusya-Ukrayna_Sava%C5%9F%C4%B1"
-        },
-        "rivals": [
-            "Ukrayna",
-            "ABD"
-        ],
-        "rivalries": [
-            {
-                "rival": "Ukrayna",
-                "text": "Rusya-Ukrayna savaşı 2022-Devam Ediyor",
-                "status": "active",
-                "url": "https://tr.wikipedia.org/wiki/Rusya-Ukrayna_Sava%C5%9F%C4%B1"
-            },
-            {
-                "rival": "ABD",
-                "text": "Soğuk Savaş (Miras)",
-                "status": "historical",
-                "url": "https://tr.wikipedia.org/wiki/So%C4%9Fuk_Sava%C5%9F"
-            }
-        ],
-        "felaketler": []
-    },
     "Israel": {
         "key_conflict": {
             "text": "Palestine (Conflict)",
@@ -38235,5 +37831,18 @@
         ],
         "predecessor": "-",
         "demographics": "-"
+    },
+    "Thailand": {
+        "predecessor": "Kingdom of Siam",
+        "demographics": "Thai",
+        "felaketler": [],
+        "rivalries": [
+            {
+                "rival": "Güney Tayland İsyancıları",
+                "text": "Güney Tayland İsyanı",
+                "year": "2004-Devam",
+                "status": "active"
+            }
+        ]
     }
 }

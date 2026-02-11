@@ -1067,6 +1067,11 @@ function parseMarkdownLinks(text) {
                 <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
                 Time 100: Yüzyılın Kişileri
             </label>
+            <label class="category-item" style="background: #fde8e8; border: 1px solid rgba(231, 76, 60, 0.35);">
+                <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows">
+                <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
+                Çatışma Okları
+            </label>
         </div>
     </div>
 
@@ -1147,6 +1152,7 @@ window.activeIndicator = ''; // 'min_wage' | 'bigmac' | ''
 let selectedDecades = new Set(decades);
 // Initialize special list state
 let showTime100 = true;
+window.showConflictArrows = true;
 // Remove 'time_100' from standard categories set to avoid double toggle issues if it's there
 let selectedCategories = new Set(Object.keys(categories).filter(c => c !== 'time_100'));
 
@@ -1445,8 +1451,25 @@ function clearIndicatorHoverInfo() {{
 function toggleSpecial(type) {{
     if (type === 'time_100') {{
         showTime100 = !showTime100;
-        updateVisibleCount();
-        updateMarkerVisibility();
+    }}
+    updateVisibleCount();
+    updateMarkerVisibility();
+}}
+
+function toggleConflictArrows() {{
+    window.showConflictArrows = !window.showConflictArrows;
+    if (window.showConflictArrows) {{
+        // If sidebar is open and country selected, draw its arrows
+        const sidebar = document.getElementById('countrySidebar');
+        if (sidebar && sidebar.style.display !== 'none' && window._lastArrowCountry && window._lastArrowRivalries) {{
+            drawRivalryArrows(window._lastArrowCountry, window._lastArrowRivalries);
+        }} else {{
+            // Global view disabled per user request
+            if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
+        }}
+    }} else {{
+        // Clear arrows immediately
+        if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
     }}
 }}
 
@@ -2553,6 +2576,33 @@ window.addEventListener('load', function() {{
             window.initExternalOverlays();
         }}
 
+        // --- GLOBAL CONFLICTS INIT ---
+        // (Disabled per user request - no global arrows on load)
+        /*
+        if (window.showConflictArrows && window.drawGlobalActiveArrows) {{
+             console.log("Triggering initial global arrows...");
+             window.drawGlobalActiveArrows();
+        }}
+        */
+        
+        // Map Click to Clear Selection
+        if (window.geoMap) {{
+            window.geoMap.on('click', function(e) {{
+                // If we are currently focused on a country, clear it
+                if (window.activeCountrySelection) {{
+                    console.log("Map background clicked: Clearing Selection");
+                    window.activeCountrySelection = null;
+                    window._lastArrowCountry = null;
+                    window._lastArrowRivalries = null;
+                    
+                    // Clear arrows (do NOT show global)
+                    if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
+                    
+                    if (window.closeSidebar) window.closeSidebar();
+                }}
+            }});
+        }}
+
     }}, 1500); // Wait for Folium to finish initialization
 }});
 
@@ -2595,202 +2645,284 @@ function updateMarkerVisibility() {{
     console.log(`Updated visibility: ${{visibleCountries.size}} countries visible.`);
 }}
 
-function drawRivalryArrows(sourceName, rivalries) {{
-    if (!window.geoMap) return;
-    if (!window.arrowLayers) window.arrowLayers = [];
-    
-    // Clear existing
-    window.arrowLayers.forEach(l => window.geoMap.removeLayer(l));
-    window.arrowLayers = [];
-
-    // Valid inputs: expecting array of objects or strings (backward compat)
-    if (!sourceName || !rivalries || rivalries.length === 0) return;
-
-    // --- VISUAL CENTERS OVERRIDE ---
-    // Fixes issues where centroid is far from the "action" (e.g. Russia -> Siberia)
+    // --- Global Visual Centers (Moved out for reuse) ---
     const VISUAL_CENTERS = {{
         // Russia -> Moscow/West
         "Russia": [55.75, 37.61],
         "Rusya": [55.75, 37.61],
-        // USA -> Central/East (Kansas geographic center approx)
+        // USA -> Central/East
         "United States": [39.8, -98.5],
         "ABD": [39.8, -98.5],
-        // France -> Metro
+        // France
         "France": [46.6, 2.2],
         "Fransa": [46.6, 2.2],
         // UK
         "United Kingdom": [52.5, -1.0],
         "Birleşik Krallık": [52.5, -1.0],
         "Ingiltere": [52.5, -1.0],
-        // China -> East/Populated
+        // China
         "China": [32.0, 110.0],
         "Çin": [32.0, 110.0],
         "Cin": [32.0, 110.0],
-        // Canada -> South
+        // Canada
         "Canada": [50.0, -100.0],
         "Kanada": [50.0, -100.0],
-        // Ukraine -> Central
+        // Ukraine
         "Ukraine": [48.3794, 31.1656],
-        "Ukrayna": [48.3794, 31.1656]
+        "Ukrayna": [48.3794, 31.1656],
+        // Non-State Actor / Internal Conflict Centers
+        "Hızlı Destek Kuvvetleri": [13.5, 24.5], 
+        "Hamas": [31.4, 34.4], 
+        "Gazze": [31.4, 34.4],
+        "Batı Şeria": [31.9, 35.2],
+        "Filistin": [31.9, 35.2], 
+        "Boko Haram": [11.8, 13.5], 
+        "ISWAP": [12.5, 13.8],
+        "M23": [-1.5, 29.3], 
+        "Amhara": [11.5, 38.0], 
+        "Oromia": [8.5, 40.0], 
+        "Al-Shabaab": [2.5, 44.0], 
+        "Suriye Muhalifleri": [36.0, 36.8], 
+        "HTS": [35.9, 36.6], 
+        "Husiler": [15.3, 44.2], 
+        "Cihatçı Gruplar (Sahel)": [14.5, 0.5], 
+        "JNIM": [14.5, -2.0], 
+        "Meksika Kartelleri": [25.0, -107.5], 
+        "Myanmar Direnişi": [22.0, 95.5], 
+        "Haiti Çeteleri": [18.55, -72.3], 
+        "Ekvador Çeteleri": [-2.2, -79.9], 
+        "PCC": [-23.55, -46.63], 
+        "ISKP": [34.2, 70.5], 
+        "Hizbullah": [33.3, 35.4], 
+        "Cabo Delgado İsyancıları": [-12.5, 39.5], 
+        "ELN": [8.5, -73.0], 
+        "ISIS": [35.0, 44.0], 
+        "Libya Doğusu (Haftar)": [32.1, 20.1], 
+        "Keşmir Militanları": [34.0, 74.5], 
+        "Güney Tayland İsyancıları": [6.5, 101.3], 
+        "NPA": [8.0, 125.0], 
+        "Abu Sayyaf": [6.0, 121.0], 
+        "Bangladeş Militanları": [23.5, 90.5], 
+        "Papua Ayrılıkçıları": [-4.0, 138.0], 
+        "Irak Direnişi": [33.3, 44.3]
     }};
 
-    // Helper to find layer
     function findLayer(name) {{
         let found = null;
-        window.geoMap.eachLayer(function(layer) {{
-            if (layer.feature && layer.feature.properties) {{
-                const props = layer.feature.properties;
-                // Check name matches
-                if (props.NAME === name || props.NAME_LONG === name || 
-                    (window.countryCodeMap && window.countryCodeMap[props.NAME] === name) ||
-                    (window.countryMeta && window.countryMeta[name] && window.countryMeta[name].code === props.ISO_A3)) {{
-                    found = layer;
+        if (window.geoMap) {{
+            window.geoMap.eachLayer(function(layer) {{
+                if (layer.feature && layer.feature.properties) {{
+                    const props = layer.feature.properties;
+                    if (props.NAME === name || props.NAME_LONG === name || 
+                        (window.countryCodeMap && window.countryCodeMap[props.NAME] === name) ||
+                        (window.countryMeta && window.countryMeta[name] && window.countryMeta[name].code === props.ISO_A3)) {{
+                        found = layer;
+                    }}
                 }}
-            }}
-        }});
+            }});
+        }}
         return found;
     }}
 
-    // Helper to get Best Center
     function getVisualCenter(name, layer) {{
-        // 1. Check override
         if (VISUAL_CENTERS[name]) {{
             return L.latLng(VISUAL_CENTERS[name]);
         }}
-        // 2. Check override by finding key in VISUAL_CENTERS that matches
-        // (Case insensitive check or mapped name check)
-        // ... simplistic check:
-        
-        // 3. Fallback to bounds center
         if (layer) {{
             return layer.getBounds().getCenter();
         }}
         return null;
     }}
 
-    // Find Source
-    let sourceLayer = null;
-    if (typeof window.findCountryFeature === 'function') {{
-        const feature = window.findCountryFeature(sourceName);
-        if (feature) sourceLayer = L.geoJSON(feature);
-    }}
-    if (!sourceLayer) sourceLayer = findLayer(sourceName);
-
-    if (!sourceLayer && !VISUAL_CENTERS[sourceName]) {{
-        console.warn("Source country layer not found for arrow:", sourceName);
-        return;
-    }}
-
-    const sourceCenter = getVisualCenter(sourceName, sourceLayer);
-    
-
-    // Initialize arrow data
-    const arrowData = [];
-    
-    // Loop through rivalries
-    rivalries.forEach(rivalItem => {{
-        // Handle both object and string format
-        const rivalName = (typeof rivalItem === 'object') ? rivalItem.rival : rivalItem;
-        const conflictText = (typeof rivalItem === 'object') ? rivalItem.text : null;
-
-        let targetLayer = null;
+    function getArrowsForCountry(sourceName, rivalries) {{
+        if (!sourceName || !rivalries || rivalries.length === 0) return [];
+        
+        let sourceLayer = null;
         if (typeof window.findCountryFeature === 'function') {{
-            const feature = window.findCountryFeature(rivalName);
-            if (feature) targetLayer = L.geoJSON(feature);
+            const feature = window.findCountryFeature(sourceName);
+            if (feature) sourceLayer = L.geoJSON(feature);
         }}
-        if (!targetLayer) targetLayer = findLayer(rivalName);
+        if (!sourceLayer) sourceLayer = findLayer(sourceName);
+        if (!sourceLayer && !VISUAL_CENTERS[sourceName]) return [];
 
-        // We can draw if we have a layer OR a visual center override
-        const targetCenter = getVisualCenter(rivalName, targetLayer);
+        const sourceCenter = getVisualCenter(sourceName, sourceLayer);
+        const arrowData = [];
+        
+        rivalries.forEach(rivalItem => {{
+            const rivalName = (typeof rivalItem === 'object') ? rivalItem.rival : rivalItem;
+            const conflictText = (typeof rivalItem === 'object') ? rivalItem.text : null;
+            const status = (typeof rivalItem === 'object') ? (rivalItem.status || 'active') : 'active';
 
-        if (sourceCenter && targetCenter) {{
-            
+            let targetLayer = null;
+            if (typeof window.findCountryFeature === 'function') {{
+                const feature = window.findCountryFeature(rivalName);
+                if (feature) targetLayer = L.geoJSON(feature);
+            }}
+            if (!targetLayer) targetLayer = findLayer(rivalName);
 
-            arrowData.push({{
-                start: sourceCenter,
-                end: targetCenter,
-                label: conflictText
+            const targetCenter = getVisualCenter(rivalName, targetLayer);
+
+            if (sourceCenter && targetCenter) {{
+                arrowData.push({{
+                    start: sourceCenter,
+                    end: targetCenter,
+                    label: conflictText,
+                    status: status
+                }});
+            }}
+        }});
+        return arrowData;
+    }}
+
+    function drawRivalryArrows(sourceName, rivalries) {{
+        if (!window.geoMap) return;
+        if (!window.arrowLayers) window.arrowLayers = [];
+        window.arrowLayers.forEach(l => window.geoMap.removeLayer(l));
+        window.arrowLayers = [];
+        
+        window._lastArrowCountry = sourceName;
+        window._lastArrowRivalries = rivalries;
+        window.activeCountrySelection = sourceName;
+
+        if (!window.showConflictArrows) {{
+            if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
+            return;
+        }}
+        
+        const data = getArrowsForCountry(sourceName, rivalries);
+        window.hoi4Layer.setArrows(data);
+    }}
+
+    function drawGlobalActiveArrows() {{
+        if (!window.showConflictArrows) return;
+        if (window.activeCountrySelection) return; // Don't override selection
+
+        console.log("Drawing global active arrows...");
+        let allArrows = [];
+        if (window.countryMeta) {{
+            Object.keys(window.countryMeta).forEach(country => {{
+                 const meta = window.countryMeta[country];
+                 if (meta.rivalries) {{
+                     const active = meta.rivalries.filter(r => r.status !== 'historical');
+                     if (active.length > 0) {{
+                         allArrows = allArrows.concat(getArrowsForCountry(country, active));
+                     }}
+                 }}
             }});
         }}
-    }});
-    
-    // Update Draw Layer
-    window.hoi4Layer.setArrows(arrowData);
-}}
+        window.hoi4Layer.setArrows(allArrows);
+    }}
+    window.drawGlobalActiveArrows = drawGlobalActiveArrows;
 
-// --- HOI4 Canvas Arrow Implementation ---
 
-function drawHoi4Arrow(ctx, screenPts, opts) {{
+
+// --- Elegant Arrow Implementation ---
+
+function drawElegantArrow(ctx, screenPts, opts) {{
   const {{
-    baseColor = "rgba(76,175,80,0.55)",
-    stripeColor = "rgba(20,60,20,0.35)",
-    outlineColor = "rgba(20,60,20,0.85)",
-    width = 22,
+    color = "rgba(231, 76, 60, 0.85)",
+    glowColor = "rgba(231, 76, 60, 0.3)",
+    width = 3,
     label = "",
+    isHistorical = false,
+    dashPattern = null,
+    pulsePhase = 0,
+    curveOffset = 0,
   }} = opts;
 
-  // 1) Outline
+  const startP = screenPts[0];
+  const endP = screenPts[screenPts.length - 1];
+  
+  const dx = endP.x - startP.x, dy = endP.y - startP.y;
+  const totalLen = Math.sqrt(dx*dx + dy*dy);
+  if (totalLen < 20) return;
+  const headSize = isHistorical ? 8 : 12;
+
+  // Calculate control point for Bézier curve (perpendicular offset)
+  const midX = (startP.x + endP.x) / 2;
+  const midY = (startP.y + endP.y) / 2;
+  const perpX = -dy / totalLen;
+  const perpY = dx / totalLen;
+  const cpX = midX + perpX * curveOffset;
+  const cpY = midY + perpY * curveOffset;
+
+  // Shorten end to leave room for arrowhead
+  // For curves, compute the tangent at t=1 for arrowhead direction
+  const t = 0.98;
+  const nearEndX = (1-t)*(1-t)*startP.x + 2*(1-t)*t*cpX + t*t*endP.x;
+  const nearEndY = (1-t)*(1-t)*startP.y + 2*(1-t)*t*cpY + t*t*endP.y;
+  const tangentDx = endP.x - nearEndX;
+  const tangentDy = endP.y - nearEndY;
+  const tangentLen = Math.sqrt(tangentDx*tangentDx + tangentDy*tangentDy) || 1;
+  const shortenedEnd = {{
+    x: endP.x - (tangentDx / tangentLen) * headSize,
+    y: endP.y - (tangentDy / tangentLen) * headSize
+  }};
+  // Adjusted control point for shortened curve
+  const sCpX = cpX;
+  const sCpY = cpY;
+
+  ctx.save();
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
-  ctx.strokeStyle = outlineColor;
-  ctx.lineWidth = width + 6;
-  strokePolyline(ctx, screenPts);
 
-  // 2) Base
-  ctx.strokeStyle = baseColor;
-  ctx.lineWidth = width;
-  strokePolyline(ctx, screenPts);
-
-  // 3) Stripes pattern
-  const patternCanvas = document.createElement("canvas");
-  patternCanvas.width = 24; patternCanvas.height = 24;
-  const pctx = patternCanvas.getContext("2d");
-
-  // diagonal stripes
-  pctx.strokeStyle = stripeColor;
-  pctx.lineWidth = 6;
-  for (let i=-24; i<48; i+=12) {{
-    pctx.beginPath();
-    pctx.moveTo(i, 24);
-    pctx.lineTo(i+24, 0);
-    pctx.stroke();
-  }}
-  const pat = ctx.createPattern(patternCanvas, "repeat");
-  ctx.strokeStyle = pat;
-  ctx.lineWidth = width;
-  strokePolyline(ctx, screenPts);
-
-  // 4) Arrowhead at end
-  const n = screenPts.length;
-  if (n >= 2) {{
-      const a = screenPts[n-2], b = screenPts[n-1];
-      drawArrowHead(ctx, a, b, width, baseColor, outlineColor);
+  // Glow effect for active arrows
+  if (!isHistorical) {{
+    const glowIntensity = 0.25 + 0.15 * Math.sin(pulsePhase);
+    ctx.shadowColor = glowColor;
+    ctx.shadowBlur = 12 + 4 * Math.sin(pulsePhase);
+    ctx.strokeStyle = color.replace(/[\d.]+\)$/, glowIntensity + ')');
+    ctx.lineWidth = width + 6;
+    ctx.beginPath();
+    ctx.moveTo(startP.x, startP.y);
+    ctx.quadraticCurveTo(sCpX, sCpY, shortenedEnd.x, shortenedEnd.y);
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+    ctx.shadowColor = 'transparent';
   }}
 
-  // 5) Label at mid
-  if (label) drawLabelOnPath(ctx, screenPts, label);
-}}
-
-function strokePolyline(ctx, pts) {{
-  if (pts.length < 2) return;
+  // Main line
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  if (dashPattern) {{
+    ctx.setLineDash(dashPattern);
+  }} else {{
+    ctx.setLineDash([]);
+  }}
   ctx.beginPath();
-  ctx.moveTo(pts[0].x, pts[0].y);
-  for (let i=1; i<pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+  ctx.moveTo(startP.x, startP.y);
+  ctx.quadraticCurveTo(sCpX, sCpY, shortenedEnd.x, shortenedEnd.y);
   ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Arrowhead direction: use tangent at curve end
+  const headFrom = {{ x: nearEndX, y: nearEndY }};
+  drawElegantArrowHead(ctx, headFrom, endP, headSize, color, isHistorical);
+
+  ctx.restore();
+
+  // Label at curve midpoint (t=0.5 on the Bézier)
+  if (label) {{
+    const labelPt = {{
+      x: 0.25*startP.x + 0.5*cpX + 0.25*endP.x,
+      y: 0.25*startP.y + 0.5*cpY + 0.25*endP.y
+    }};
+    drawElegantLabel(ctx, screenPts, label, isHistorical, labelPt);
+  }}
 }}
 
-function drawArrowHead(ctx, a, b, width, fill, stroke) {{
+function drawElegantArrowHead(ctx, a, b, size, color, isHistorical) {{
   const dx = b.x - a.x, dy = b.y - a.y;
   const ang = Math.atan2(dy, dx);
-  const len = Math.max(18, width * 1.5);
+  const spread = isHistorical ? 0.35 : 0.4;
 
   const left = {{
-    x: b.x - len*Math.cos(ang) + (len*0.6)*Math.cos(ang + Math.PI/2),
-    y: b.y - len*Math.sin(ang) + (len*0.6)*Math.sin(ang + Math.PI/2),
+    x: b.x - size * Math.cos(ang - spread),
+    y: b.y - size * Math.sin(ang - spread),
   }};
   const right = {{
-    x: b.x - len*Math.cos(ang) + (len*0.6)*Math.cos(ang - Math.PI/2),
-    y: b.y - len*Math.sin(ang) + (len*0.6)*Math.sin(ang - Math.PI/2),
+    x: b.x - size * Math.cos(ang + spread),
+    y: b.y - size * Math.sin(ang + spread),
   }};
 
   ctx.beginPath();
@@ -2799,56 +2931,63 @@ function drawArrowHead(ctx, a, b, width, fill, stroke) {{
   ctx.lineTo(right.x, right.y);
   ctx.closePath();
 
-  ctx.fillStyle = fill;
+  ctx.fillStyle = color;
   ctx.fill();
-  ctx.strokeStyle = stroke;
-  ctx.lineWidth = 2;
-  ctx.stroke();
 }}
 
-function drawLabelOnPath(ctx, pts, text) {{
-  const midIndex = Math.floor(pts.length * 0.5);
+function drawElegantLabel(ctx, pts, text, isHistorical, customMid) {{
   const startP = pts[0];
-  const endP = pts[pts.length-1];
+  const endP = pts[pts.length - 1];
   const ang = Math.atan2(endP.y - startP.y, endP.x - startP.x);
-  
-  const trueMid = {{
-      x: (startP.x + endP.x) / 2,
-      y: (startP.y + endP.y) / 2
+
+  const trueMid = customMid || {{
+    x: (startP.x + endP.x) / 2,
+    y: (startP.y + endP.y) / 2
   }};
 
-  // Readability Flip
   let drawAngle = ang;
-  if (drawAngle > Math.PI/2 || drawAngle < -Math.PI/2) {{
-      drawAngle += Math.PI;
+  if (drawAngle > Math.PI / 2 || drawAngle < -Math.PI / 2) {{
+    drawAngle += Math.PI;
   }}
 
   ctx.save();
   ctx.translate(trueMid.x, trueMid.y);
   ctx.rotate(drawAngle);
-  ctx.font = "bold 13px 'Oswald', sans-serif"; 
+
+  const fontSize = isHistorical ? 10 : 11;
+  ctx.font = `${{isHistorical ? '500' : '600'}} ${{fontSize}}px 'Inter', 'Segoe UI', sans-serif`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // Measure text for Ribbon
   const metrics = ctx.measureText(text);
   const textW = metrics.width;
-  const padding = 8;
-  const boxH = 22;
-  const yOffset = -22;
+  const px = 6, py = 4;
+  const yOff = -14;
+  const radius = 4;
 
-  // Ribbon Background
-  ctx.fillStyle = "rgba(30, 39, 46, 0.95)"; // Dark Military Grey
-  ctx.fillRect(-textW/2 - padding, yOffset - boxH/2, textW + padding*2, boxH);
-  
-  // Ribbon Border
-  ctx.lineWidth = 1;
-  ctx.strokeStyle = "rgba(120, 140, 150, 0.8)";
-  ctx.strokeRect(-textW/2 - padding, yOffset - boxH/2, textW + padding*2, boxH);
+  // Rounded rect background
+  const x = -textW / 2 - px;
+  const y = yOff - fontSize / 2 - py;
+  const w = textW + px * 2;
+  const h = fontSize + py * 2;
+
+  ctx.fillStyle = isHistorical ? "rgba(40, 44, 52, 0.8)" : "rgba(30, 39, 46, 0.92)";
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + w - radius, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+  ctx.lineTo(x + w, y + h - radius);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+  ctx.lineTo(x + radius, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+  ctx.fill();
 
   // Text
-  ctx.fillStyle = "#ecf0f1"; // Light Text
-  ctx.fillText(text, 0, yOffset);
+  ctx.fillStyle = isHistorical ? "rgba(190, 195, 200, 0.9)" : "#f1f2f6";
+  ctx.fillText(text, 0, yOff);
   ctx.restore();
 }}
 
@@ -2870,11 +3009,11 @@ function drawSingleArrow(sourceName, rivalName) {{
 L.Hoi4Overlay = L.Layer.extend({{
     initialize: function() {{
         this._arrows = [];
-        this._opacity = 0;
-        this._targetOpacity = 1;
         this._animationFrame = null;
         this._debounceTimer = null;
         this._isMoving = false;
+        this._pulsePhase = 0;
+        this._animating = false;
     }},
     
     onAdd: function(map) {{
@@ -2886,11 +3025,10 @@ L.Hoi4Overlay = L.Layer.extend({{
         this._canvas.style.pointerEvents = 'none';
         this._canvas.style.zIndex = 500;
         this._canvas.style.opacity = 0;
-        this._canvas.style.transition = 'opacity 0.4s ease-in-out';
+        this._canvas.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         
         map.getPanes().overlayPane.appendChild(this._canvas);
         
-        // Listen to movement events
         map.on('movestart zoomstart', this._onMoveStart, this);
         map.on('moveend zoomend viewreset', this._onMoveEnd, this);
         
@@ -2900,7 +3038,7 @@ L.Hoi4Overlay = L.Layer.extend({{
     
     onRemove: function(map) {{
         if (this._debounceTimer) clearTimeout(this._debounceTimer);
-        if (this._animationFrame) cancelAnimationFrame(this._animationFrame);
+        this._stopPulse();
         map.getPanes().overlayPane.removeChild(this._canvas);
         map.off('movestart zoomstart', this._onMoveStart, this);
         map.off('moveend zoomend viewreset', this._onMoveEnd, this);
@@ -2908,18 +3046,24 @@ L.Hoi4Overlay = L.Layer.extend({{
     
     setArrows: function(arrows) {{
         this._arrows = arrows;
-        // If not moving, draw and show immediately with fade
         if (!this._isMoving) {{
             this._updateCanvas();
             this._drawArrows();
-            this._fadeInArrows();
+            this._canvas.style.opacity = 1;
+            // Start pulse animation if there are active arrows
+            const hasActive = arrows.some(a => a.status !== 'historical');
+            if (hasActive) {{
+                this._startPulse();
+            }} else {{
+                this._stopPulse();
+            }}
         }}
     }},
     
     _onMoveStart: function() {{
         this._isMoving = true;
-        // Hide arrows during movement for cleaner UX
         this._canvas.style.opacity = 0;
+        this._stopPulse();
         if (this._debounceTimer) {{
             clearTimeout(this._debounceTimer);
             this._debounceTimer = null;
@@ -2927,20 +3071,36 @@ L.Hoi4Overlay = L.Layer.extend({{
     }},
     
     _onMoveEnd: function() {{
-        // Debounce: wait 400ms after movement stops before redrawing
         if (this._debounceTimer) clearTimeout(this._debounceTimer);
-        
         this._debounceTimer = setTimeout(() => {{
             this._isMoving = false;
             this._updateCanvas();
             this._drawArrows();
-            this._fadeInArrows();
-        }}, 400);
+            this._canvas.style.opacity = 1;
+            const hasActive = this._arrows.some(a => a.status !== 'historical');
+            if (hasActive) this._startPulse();
+        }}, 350);
     }},
     
-    _fadeInArrows: function() {{
-        // CSS transition handles the fade
-        this._canvas.style.opacity = 1;
+    _startPulse: function() {{
+        if (this._animating) return;
+        this._animating = true;
+        const self = this;
+        function tick() {{
+            if (!self._animating) return;
+            self._pulsePhase += 0.04;
+            self._drawArrows();
+            self._animationFrame = requestAnimationFrame(tick);
+        }}
+        tick();
+    }},
+    
+    _stopPulse: function() {{
+        this._animating = false;
+        if (this._animationFrame) {{
+            cancelAnimationFrame(this._animationFrame);
+            this._animationFrame = null;
+        }}
     }},
     
     _updateCanvas: function() {{
@@ -2963,30 +3123,65 @@ L.Hoi4Overlay = L.Layer.extend({{
         const dpr = window.devicePixelRatio || 1;
         
         const ctx = this._canvas.getContext('2d');
-        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.scale(dpr, dpr);
-        
-        // Clear
         ctx.clearRect(0, 0, size.x, size.y);
         
-        // Draw Arrows
-        this._arrows.forEach(arrow => {{
+        const phase = this._pulsePhase || 0;
+        
+        // Compute curve offsets for arrows sharing the same endpoints
+        const pairCounts = {{}};
+        const pairIndices = {{}};
+        this._arrows.forEach((arrow, i) => {{
+            // Create a consistent key for each pair (sort lat/lng)
+            const sKey = arrow.start.lat.toFixed(4) + ',' + arrow.start.lng.toFixed(4);
+            const eKey = arrow.end.lat.toFixed(4) + ',' + arrow.end.lng.toFixed(4);
+            const pairKey = sKey < eKey ? sKey + '|' + eKey : eKey + '|' + sKey;
+            if (!pairCounts[pairKey]) pairCounts[pairKey] = [];
+            pairCounts[pairKey].push(i);
+        }});
+        // Assign offset: for N arrows in same pair, spread from -(N-1)/2 to +(N-1)/2
+        const offsets = new Array(this._arrows.length).fill(0);
+        Object.values(pairCounts).forEach(indices => {{
+            if (indices.length <= 1) return;
+            const n = indices.length;
+            indices.forEach((idx, j) => {{
+                offsets[idx] = (j - (n - 1) / 2) * 50;
+            }});
+        }});
+        
+        // Draw historical (passive) arrows first (behind)
+        this._arrows.forEach((arrow, i) => {{
+            if (arrow.status !== 'historical') return;
             const p1 = this._map.latLngToContainerPoint(arrow.start);
             const p2 = this._map.latLngToContainerPoint(arrow.end);
-            
-            // Hoi4 Style Options based on status
-            const isHistorical = arrow.status === 'historical';
-            const opts = {{
-                baseColor: isHistorical ? "rgba(120, 120, 120, 0.4)" : "rgba(60, 180, 75, 0.5)", 
-                stripeColor: isHistorical ? "rgba(80, 80, 80, 0.3)" : "rgba(30, 90, 40, 0.4)",
-                outlineColor: isHistorical ? "rgba(60, 60, 60, 0.8)" : "rgba(20, 60, 20, 0.9)",
-                width: 14,
+            drawElegantArrow(ctx, [p1, p2], {{
+                color: "rgba(140, 150, 160, 0.35)",
+                glowColor: "transparent",
+                width: 2,
                 label: arrow.label,
-                glow: !isHistorical,
-                dashed: isHistorical
-            }};
-            
-            drawHoi4Arrow(ctx, [p1, p2], opts);
+                isHistorical: true,
+                dashPattern: [8, 6],
+                pulsePhase: 0,
+                curveOffset: offsets[i],
+            }});
+        }});
+        
+        // Draw active arrows on top
+        this._arrows.forEach((arrow, i) => {{
+            if (arrow.status === 'historical') return;
+            const p1 = this._map.latLngToContainerPoint(arrow.start);
+            const p2 = this._map.latLngToContainerPoint(arrow.end);
+            drawElegantArrow(ctx, [p1, p2], {{
+                color: "rgba(231, 76, 60, 0.9)",
+                glowColor: "rgba(231, 76, 60, 0.35)",
+                width: 3.5,
+                label: arrow.label,
+                isHistorical: false,
+                dashPattern: null,
+                pulsePhase: phase,
+                curveOffset: offsets[i],
+            }});
         }});
     }}
 }});
