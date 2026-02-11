@@ -975,7 +975,8 @@
       "casualties": null,
       "key_figures": [
         "Adolf Hitler"
-      ]
+      ],
+      "youtube_video_id": "v2SEQHBsNH4"
     },
     {
       "country_code": "DE",
@@ -1020,7 +1021,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev421"
+      "id": "ev421",
+      "youtube_video_id": "ggjZY6lCo_w"
     },
     {
       "id": "ev_de002",
@@ -2059,7 +2061,8 @@
       "key_figures": [
         "Benito Mussolini",
         "Clara Petacci"
-      ]
+      ],
+      "youtube_video_id": "bhh8cGtpueU"
     },
     {
       "id": "ev_vn001",
@@ -7656,7 +7659,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev34658728"
+      "id": "ev34658728",
+      "youtube_video_id": "PHWFM7hIK2E"
     },
     {
       "country_code": "EG",
@@ -8898,7 +8902,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev34658800"
+      "id": "ev34658800",
+      "youtube_video_id": "5t3OurW_bs4"
     },
     {
       "country_code": "BG",
@@ -20491,7 +20496,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev_gap_1989_1"
+      "id": "ev_gap_1989_1",
+      "youtube_video_id": "-ZZGkQe33NI"
     },
     {
       "country_code": "GR",
@@ -29339,7 +29345,8 @@
       "lat": 39.9334,
       "lon": 32.8597,
       "wikipedia_url": "https://tr.wikipedia.org/wiki/K%C4%B1br%C4%B1s_Sorunu",
-      "casualties": null
+      "casualties": null,
+      "youtube_video_id": "IxRponLJ4n4"
     },
     {
       "id": "ev_tr_1970s_01",
@@ -42559,7 +42566,8 @@
       "key_figures": [
         "Ronald Reagan"
       ],
-      "id": "eve1b96912"
+      "id": "eve1b96912",
+      "youtube_video_id": "wPo8s9bagnk"
     },
     {
       "country_code": "US",
