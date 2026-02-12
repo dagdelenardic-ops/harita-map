@@ -646,6 +646,49 @@ function parseMarkdownLinks(text) {
         background: rgba(255, 255, 255, 0.015);
         opacity: 0.92;
     }}
+    .event-item.event-enter {{
+        animation: eventItemIn 0.22s ease both;
+        animation-delay: var(--event-enter-delay, 0ms);
+    }}
+    .event-item.event-removing {{
+        overflow: hidden;
+        pointer-events: none;
+        animation: eventItemOut 0.18s ease forwards;
+    }}
+    @keyframes eventItemIn {{
+        from {{
+            opacity: 0;
+            transform: translateX(-8px);
+        }}
+        to {{
+            opacity: 1;
+            transform: translateX(0);
+        }}
+    }}
+    @keyframes eventItemOut {{
+        from {{
+            opacity: 1;
+            transform: translateX(0);
+        }}
+        to {{
+            opacity: 0;
+            transform: translateX(-10px);
+            max-height: 0;
+            margin: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            border-width: 0;
+        }}
+    }}
+    .sidebar-empty {{
+        padding: 16px 18px;
+        color: #95a5a6;
+        font-size: 13px;
+        font-style: italic;
+        border-left: 3px solid #4b5563;
+        background: rgba(255, 255, 255, 0.02);
+        margin: 12px;
+    }}
     .event-year {{
         font-size: 12px;
         color: #b2bec3;
@@ -1529,15 +1572,17 @@ function selectNoCategories() {{
     updateMarkerVisibility();
 }}
 
+function isEventVisibleByFilters(e) {{
+    if (!selectedDecades.has(e.decade)) return false;
+    if (e.category === 'time_100') return showTime100;
+    return selectedCategories.has(e.category);
+}}
+
 function updateVisibleCount() {{
     const groupSet = getActiveGroupSet();
     const count = allEvents.filter(e => {{
         if (groupSet && !groupSet.has(e.country_name)) return false;
-        // Special category handling
-        if (e.category === 'time_100') {{
-            return showTime100 && selectedDecades.has(e.decade);
-        }}
-        return selectedDecades.has(e.decade) && selectedCategories.has(e.category);
+        return isEventVisibleByFilters(e);
     }}).length;
     document.getElementById('visibleCount').textContent = count;
 }}
@@ -1550,14 +1595,7 @@ function updateMarkerVisibility() {{
     const visibleCountries = new Set();
     
     allEvents.forEach(e => {{
-        let isVisible = false;
-        if (e.category === 'time_100') {{
-            isVisible = showTime100 && selectedDecades.has(e.decade);
-        }} else {{
-            isVisible = selectedDecades.has(e.decade) && selectedCategories.has(e.category);
-        }}
-        
-        if (isVisible) {{
+        if (isEventVisibleByFilters(e)) {{
             visibleCountries.add(e.country_name);
         }}
     }});
@@ -1579,13 +1617,7 @@ function getFilteredCountryEvents(countryName) {{
     if (groupSet && !groupSet.has(countryName)) return [];
     return allEvents.filter(e => {{
         const matchesCountry = e.country_name === countryName;
-        let isVisible = false;
-        if (e.category === 'time_100') {{
-            isVisible = showTime100 && selectedDecades.has(e.decade);
-        }} else {{
-            isVisible = selectedDecades.has(e.decade) && selectedCategories.has(e.category);
-        }}
-        return matchesCountry && isVisible;
+        return matchesCountry && isEventVisibleByFilters(e);
     }}).sort((a, b) => b.year - a.year);
 }}
 
@@ -1861,6 +1893,151 @@ function buildEconomyHtml(countryName) {{
     `;
 }}
 
+let sidebarRefreshTimer = null;
+
+function getSidebarDecadeOpenState() {{
+    const state = {{}};
+    const sidebarContent = document.getElementById('sidebarContent');
+    if (!sidebarContent) return state;
+    sidebarContent.querySelectorAll('.decade-section').forEach(section => {{
+        const decade = section.getAttribute('data-decade');
+        const events = section.querySelector('.decade-events');
+        if (!decade || !events) return;
+        state[decade] = events.classList.contains('open');
+    }});
+    return state;
+}}
+
+function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
+    const sidebarContent = document.getElementById('sidebarContent');
+    if (!sidebarContent) return;
+
+    const preserveOpenState = !!options.preserveOpenState;
+    const animateEnter = !!options.animateEnter;
+    const openState = preserveOpenState ? getSidebarDecadeOpenState() : {{}};
+
+    const byDecade = {{}};
+    countryEvents.forEach(e => {{
+        if (!byDecade[e.decade]) byDecade[e.decade] = [];
+        byDecade[e.decade].push(e);
+    }});
+
+    let html = '';
+    decades.forEach(decade => {{
+        if (!byDecade[decade] || byDecade[decade].length === 0) return;
+
+        const events = byDecade[decade].slice().sort((a, b) => {{
+            const ca = categories[a.category] || {{}};
+            const cb = categories[b.category] || {{}};
+            const ta = (ca && typeof ca.tier === 'number') ? ca.tier : 2;
+            const tb = (cb && typeof cb.tier === 'number') ? cb.tier : 2;
+            if (ta !== tb) return ta - tb;
+            return a.year - b.year;
+        }});
+        const isOpen = (openState[decade] !== undefined) ? openState[decade] : true;
+
+        html += `
+            <div class="decade-section" data-decade="${{decade}}">
+                <div class="decade-header" onclick="toggleDecadeSection(this)">
+                    ${{decade}}
+                    <span class="count">${{events.length}}</span>
+                </div>
+                <div class="decade-events${{isOpen ? ' open' : ''}}">
+        `;
+
+        events.forEach(e => {{
+            const cat = categories[e.category] || {{}};
+            const catLabel = cat.label || e.category;
+            const catColor = cat.color || '#636e72';
+            const tier = (cat && typeof cat.tier === 'number') ? cat.tier : 2;
+            const videoHtml = e.youtube_video_id
+                ? `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>`
+                : '';
+            const wikiHtml = e.wikipedia_url
+                ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
+                : '';
+            const categoryHtml = `<div class="event-category">${{catLabel}}</div>`;
+            const eventId = String(e.id || '');
+
+            html += `
+                <div class="event-item tier-${{tier}}" data-event-id="${{eventId}}" data-category="${{e.category}}" data-decade="${{e.decade}}" style="--cat-color:${{catColor}}">
+                    <div class="event-year">${{e.year}}</div>
+                    <div class="event-title">${{e.title}}</div>
+                    ${{categoryHtml}}
+                    <div class="event-desc">${{parseMarkdownLinks(e.description)}}</div>
+                    ${{wikiHtml}}
+                    ${{videoHtml}}
+                </div>
+            `;
+        }});
+
+        html += '</div></div>';
+    }});
+
+    if (!html) {{
+        html = '<div class="sidebar-empty">Aktif filtrelere göre bu ülke için görünür olay yok.</div>';
+    }}
+
+    sidebarContent.innerHTML = html;
+    const countEl = document.getElementById('sidebarEventCount');
+    if (countEl) countEl.textContent = countryEvents.length + ' olay';
+
+    if (animateEnter) {{
+        const items = sidebarContent.querySelectorAll('.event-item');
+        items.forEach((item, index) => {{
+            item.style.setProperty('--event-enter-delay', `${{Math.min(index, 12) * 16}}ms`);
+            item.classList.add('event-enter');
+        }});
+    }}
+}}
+
+function refreshOpenSidebarEvents(forceImmediate = false) {{
+    const sidebar = document.getElementById('countrySidebar');
+    if (!sidebar || !sidebar.classList.contains('open')) return;
+
+    const nameEl = document.getElementById('sidebarCountryName');
+    const countryName = window.activeCountrySelection || ((nameEl && nameEl.textContent) ? nameEl.textContent.trim() : '');
+    if (!countryName) return;
+
+    const nextEvents = getFilteredCountryEvents(countryName);
+    const sidebarContent = document.getElementById('sidebarContent');
+    if (!sidebarContent) return;
+
+    if (sidebarRefreshTimer) {{
+        clearTimeout(sidebarRefreshTimer);
+        sidebarRefreshTimer = null;
+    }}
+
+    const nextIds = new Set(nextEvents.map(e => String(e.id || '')));
+    let hasRemoval = false;
+
+    if (!forceImmediate) {{
+        sidebarContent.querySelectorAll('.event-item').forEach(item => {{
+            const id = item.getAttribute('data-event-id') || '';
+            if (!id || !nextIds.has(id)) {{
+                item.classList.add('event-removing');
+                hasRemoval = true;
+            }}
+        }});
+    }}
+
+    const applyRender = () => {{
+        renderSidebarEvents(countryName, nextEvents, {{
+            preserveOpenState: true,
+            animateEnter: true
+        }});
+    }};
+
+    if (hasRemoval) {{
+        sidebarRefreshTimer = setTimeout(() => {{
+            sidebarRefreshTimer = null;
+            applyRender();
+        }}, 190);
+    }} else {{
+        applyRender();
+    }}
+}}
+
 function openSidebar(countryName) {{
     console.log("Opening sidebar for:", countryName);
     const countryEvents = getFilteredCountryEvents(countryName);
@@ -1880,6 +2057,7 @@ function openSidebar(countryName) {{
     // 2. Open Sidebar UI
     const sidebar = document.getElementById('countrySidebar');
     sidebar.classList.add('open'); // Slide in
+    window.activeCountrySelection = countryName;
     
     document.getElementById('sidebarCountryName').textContent = countryName;
     document.getElementById('sidebarEventCount').textContent = countryEvents.length + ' olay';
@@ -1992,65 +2170,17 @@ function openSidebar(countryName) {{
     }}
 
     // 5. Render Events List
-    const byDecade = {{}};
-    countryEvents.forEach(e => {{
-        if (!byDecade[e.decade]) byDecade[e.decade] = [];
-        byDecade[e.decade].push(e);
+    renderSidebarEvents(countryName, countryEvents, {{
+        preserveOpenState: false,
+        animateEnter: false
     }});
-
-    let html = '';
-    decades.forEach(decade => {{
-        if (byDecade[decade] && byDecade[decade].length > 0) {{
-            // Render decade section...
-            const events = byDecade[decade].slice().sort((a, b) => {{
-                const ca = categories[a.category] || {{}};
-                const cb = categories[b.category] || {{}};
-                const ta = (ca && typeof ca.tier === 'number') ? ca.tier : 2;
-                const tb = (cb && typeof cb.tier === 'number') ? cb.tier : 2;
-                if (ta !== tb) return ta - tb;
-                return a.year - b.year;
-            }});
-            html += `
-                <div class="decade-section">
-                    <div class="decade-header" onclick="toggleDecadeSection(this)">
-                        ${{decade}}
-                        <span class="count">${{events.length}}</span>
-                    </div>
-                    <div class="decade-events open">
-            `;
-            events.forEach(e => {{
-                // Render event item...
-                 const cat = categories[e.category] || {{}};
-                 const catLabel = cat.label || e.category;
-                 const catColor = cat.color || '#636e72';
-                 const tier = (cat && typeof cat.tier === 'number') ? cat.tier : 2;
-                 const videoHtml = e.youtube_video_id ? 
-                    `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>` : '';
-                 const wikiHtml = e.wikipedia_url
-                    ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
-                    : '';
-                 const categoryHtml = `<div class="event-category">${{catLabel}}</div>`;
-                 
-                 html += `
-                    <div class="event-item tier-${{tier}}" style="--cat-color:${{catColor}}">
-                        <div class="event-year">${{e.year}}</div>
-                        <div class="event-title">${{e.title}}</div>
-                        ${{categoryHtml}}
-                        <div class="event-desc">${{parseMarkdownLinks(e.description)}}</div>
-                        ${{wikiHtml}}
-                         ${{videoHtml}}
-                    </div>
-                 `;
-            }});
-            html += '</div></div>';
-        }}
-    }});
-
-    const sidebarContent = document.getElementById('sidebarContent');
-    sidebarContent.innerHTML = html;
 }}
 
 function closeSidebar() {{
+    if (sidebarRefreshTimer) {{
+        clearTimeout(sidebarRefreshTimer);
+        sidebarRefreshTimer = null;
+    }}
     const sidebar = document.getElementById('countrySidebar');
     if (sidebar) sidebar.classList.remove('open');
 }}
@@ -2205,6 +2335,7 @@ document.addEventListener('DOMContentLoaded', function() {{
 
 window.openSidebar = openSidebar;
 window.getFilteredCountryEvents = getFilteredCountryEvents;
+window.refreshOpenSidebarEvents = refreshOpenSidebarEvents;
 window.highlightCountryWithFlag = highlightCountryWithFlag;
 window.clearCountryHighlight = clearCountryHighlight;
 window.findCountryFeature = findCountryFeature;
@@ -2643,6 +2774,9 @@ function updateMarkerVisibility() {{
     }});
     
     console.log(`Updated visibility: ${{visibleCountries.size}} countries visible.`);
+    if (window.refreshOpenSidebarEvents) {{
+        window.refreshOpenSidebarEvents();
+    }}
 }}
 
     // --- Global Visual Centers (Moved out for reuse) ---
