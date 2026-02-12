@@ -948,8 +948,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "1930s",
       "year": 1932,
       "category": "revolution",
@@ -991,7 +991,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev357"
+      "id": "ev357",
+      "youtube_video_id": "RPMBiNlCFHM"
     },
     {
       "country_code": "US",
@@ -1153,7 +1154,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev34658685"
+      "id": "ev34658685",
+      "youtube_video_id": "esczqaVKf-I"
     },
     {
       "id": "ev010",
@@ -1763,8 +1765,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "1940s",
       "year": 1941,
       "category": "war",
@@ -2319,8 +2321,8 @@
     {
       "country_code": "PH",
       "country_name": "Filipinler",
-      "lat": 0,
-      "lon": 0,
+      "lat": 14.5995,
+      "lon": 120.9842,
       "decade": "1940s",
       "year": 1946,
       "category": "revolution",
@@ -2966,8 +2968,8 @@
     {
       "country_code": "IR",
       "country_name": "İran",
-      "lat": 0,
-      "lon": 0,
+      "lat": 35.6892,
+      "lon": 51.389,
       "decade": "1950s",
       "year": 1953,
       "category": "revolution",
@@ -3113,8 +3115,8 @@
     {
       "country_code": "VN",
       "country_name": "Vietnam",
-      "lat": 0,
-      "lon": 0,
+      "lat": 21.0285,
+      "lon": 105.8542,
       "decade": "1950s",
       "year": 1954,
       "category": "war",
@@ -3190,8 +3192,8 @@
     {
       "country_code": "VN",
       "country_name": "Vietnam",
-      "lat": 0,
-      "lon": 0,
+      "lat": 21.0285,
+      "lon": 105.8542,
       "decade": "1950s",
       "year": 1955,
       "category": "war",
@@ -3575,8 +3577,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "1950s",
       "year": 1958,
       "category": "revolution",
@@ -3851,8 +3853,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "1960s",
       "year": 1960,
       "category": "revolution",
@@ -4177,8 +4179,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "1960s",
       "year": 1963,
       "category": "revolution",
@@ -4271,8 +4273,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "1960s",
       "year": 1963,
       "category": "revolution",
@@ -4509,8 +4511,8 @@
     {
       "country_code": "PH",
       "country_name": "Filipinler",
-      "lat": 0,
-      "lon": 0,
+      "lat": 14.5995,
+      "lon": 120.9842,
       "decade": "1960s",
       "year": 1965,
       "category": "revolution",
@@ -4539,8 +4541,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "1960s",
       "year": 1965,
       "category": "culture",
@@ -4762,8 +4764,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "1960s",
       "year": 1967,
       "category": "war",
@@ -4784,7 +4786,7 @@
       "year": 1967,
       "category": "war",
       "title": "Altı Gün Savaşı",
-      "description": "İsrail'in Mısır, Ürdün ve Suriye'ye karşı kazandığı hızlı zafer.",
+      "description": "İsrail'in Mısır, Ürdün ve Suriye'ye karşı ani saldırısıyla Sina, Batı Şeria ve Golan Tepeleri'ni ele geçirdiği savaş.",
       "wikipedia_url": "https://tr.wikipedia.org/wiki/Alt%C4%B1_G%C3%BCn_Sava%C5%9F%C4%B1",
       "casualties": 20000,
       "key_figures": [
@@ -4919,8 +4921,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "1960s",
       "year": 1967,
       "category": "culture",
@@ -5255,8 +5257,8 @@
     {
       "country_code": "PE",
       "country_name": "Peru",
-      "lat": 0,
-      "lon": 0,
+      "lat": -12.0464,
+      "lon": -77.0428,
       "decade": "1960s",
       "year": 1969,
       "category": "revolution",
@@ -5398,8 +5400,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "1970s",
       "year": 1970,
       "category": "leader",
@@ -5428,8 +5430,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "1970s",
       "year": 1970,
       "category": "revolution",
@@ -5443,8 +5445,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "1970s",
       "year": 1970,
       "category": "terror",
@@ -6110,8 +6112,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "1970s",
       "year": 1974,
       "category": "revolution",
@@ -6858,8 +6860,8 @@
     {
       "country_code": "VN",
       "country_name": "Vietnam",
-      "lat": 0,
-      "lon": 0,
+      "lat": 21.0285,
+      "lon": 105.8542,
       "decade": "1970s",
       "year": 1978,
       "category": "war",
@@ -7014,7 +7016,8 @@
       "key_figures": [
         "Ayetullah Humeyni",
         "Muhammed Rıza Pehlevi"
-      ]
+      ],
+      "youtube_video_id": "YWK0ZnBwAO4"
     },
     {
       "id": "ev_ir003",
@@ -7131,8 +7134,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "1970s",
       "year": 1979,
       "category": "leader",
@@ -7161,8 +7164,8 @@
     {
       "country_code": "IR",
       "country_name": "İran",
-      "lat": 0,
-      "lon": 0,
+      "lat": 35.6892,
+      "lon": 51.389,
       "decade": "1970s",
       "year": 1979,
       "category": "war",
@@ -7176,8 +7179,8 @@
     {
       "country_code": "AF",
       "country_name": "Afganistan",
-      "lat": 0,
-      "lon": 0,
+      "lat": 34.5553,
+      "lon": 69.2075,
       "decade": "1970s",
       "year": 1979,
       "category": "war",
@@ -7259,8 +7262,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "1980s",
       "year": 1980,
       "category": "war",
@@ -7493,8 +7496,8 @@
     {
       "country_code": "PE",
       "country_name": "Peru",
-      "lat": 0,
-      "lon": 0,
+      "lat": -12.0464,
+      "lon": -77.0428,
       "decade": "1980s",
       "year": 1980,
       "category": "terror",
@@ -7839,8 +7842,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "1980s",
       "year": 1982,
       "category": "war",
@@ -7854,8 +7857,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "1980s",
       "year": 1982,
       "category": "revolution",
@@ -7950,8 +7953,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "1980s",
       "year": 1983,
       "category": "culture",
@@ -8323,8 +8326,8 @@
     {
       "country_code": "VN",
       "country_name": "Vietnam",
-      "lat": 0,
-      "lon": 0,
+      "lat": 21.0285,
+      "lon": 105.8542,
       "decade": "1980s",
       "year": 1986,
       "category": "revolution",
@@ -8338,8 +8341,8 @@
     {
       "country_code": "PH",
       "country_name": "Filipinler",
-      "lat": 0,
-      "lon": 0,
+      "lat": 14.5995,
+      "lon": 120.9842,
       "decade": "1980s",
       "year": 1986,
       "category": "revolution",
@@ -8556,8 +8559,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "1980s",
       "year": 1988,
       "category": "genocide",
@@ -8953,8 +8956,8 @@
     {
       "country_code": "IR",
       "country_name": "İran",
-      "lat": 0,
-      "lon": 0,
+      "lat": 35.6892,
+      "lon": 51.389,
       "decade": "1980s",
       "year": 1989,
       "category": "leader",
@@ -9289,8 +9292,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "1990s",
       "year": 1990,
       "category": "war",
@@ -9697,8 +9700,8 @@
     {
       "country_code": "PH",
       "country_name": "Filipinler",
-      "lat": 0,
-      "lon": 0,
+      "lat": 14.5995,
+      "lon": 120.9842,
       "decade": "1990s",
       "year": 1991,
       "category": "culture",
@@ -9712,8 +9715,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "1990s",
       "year": 1991,
       "category": "revolution",
@@ -10085,8 +10088,8 @@
     {
       "country_code": "PE",
       "country_name": "Peru",
-      "lat": 0,
-      "lon": 0,
+      "lat": -12.0464,
+      "lon": -77.0428,
       "decade": "1990s",
       "year": 1992,
       "category": "revolution",
@@ -10100,8 +10103,8 @@
     {
       "country_code": "PE",
       "country_name": "Peru",
-      "lat": 0,
-      "lon": 0,
+      "lat": -12.0464,
+      "lon": -77.0428,
       "decade": "1990s",
       "year": 1992,
       "category": "war",
@@ -10960,8 +10963,8 @@
     {
       "country_code": "VN",
       "country_name": "Vietnam",
-      "lat": 0,
-      "lon": 0,
+      "lat": 21.0285,
+      "lon": 105.8542,
       "decade": "1990s",
       "year": 1995,
       "category": "revolution",
@@ -10975,8 +10978,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "1990s",
       "year": 1995,
       "category": "revolution",
@@ -11144,8 +11147,8 @@
     {
       "country_code": "AF",
       "country_name": "Afganistan",
-      "lat": 0,
-      "lon": 0,
+      "lat": 34.5553,
+      "lon": 69.2075,
       "decade": "1990s",
       "year": 1996,
       "category": "revolution",
@@ -11358,8 +11361,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "1990s",
       "year": 1998,
       "category": "war",
@@ -11572,8 +11575,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "1990s",
       "year": 1999,
       "category": "revolution",
@@ -11617,8 +11620,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "1990s",
       "year": 1999,
       "category": "revolution",
@@ -11755,8 +11758,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "2000s",
       "year": 2000,
       "category": "leader",
@@ -11770,8 +11773,8 @@
     {
       "country_code": "PE",
       "country_name": "Peru",
-      "lat": 0,
-      "lon": 0,
+      "lat": -12.0464,
+      "lon": -77.0428,
       "decade": "2000s",
       "year": 2000,
       "category": "revolution",
@@ -11896,8 +11899,8 @@
     {
       "country_code": "AF",
       "country_name": "Afganistan",
-      "lat": 0,
-      "lon": 0,
+      "lat": 34.5553,
+      "lon": 69.2075,
       "decade": "2000s",
       "year": 2001,
       "category": "war",
@@ -12251,8 +12254,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "2000s",
       "year": 2003,
       "category": "war",
@@ -12573,8 +12576,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "2000s",
       "year": 2004,
       "category": "war",
@@ -12588,8 +12591,8 @@
     {
       "country_code": "AF",
       "country_name": "Afganistan",
-      "lat": 0,
-      "lon": 0,
+      "lat": 34.5553,
+      "lon": 69.2075,
       "decade": "2000s",
       "year": 2004,
       "category": "revolution",
@@ -13507,8 +13510,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "2000s",
       "year": 2009,
       "category": "terror",
@@ -14080,7 +14083,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev258"
+      "id": "ev258",
+      "youtube_video_id": "NUr-FqAg-9w"
     },
     {
       "country_code": "MA",
@@ -14190,8 +14194,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "2010s",
       "year": 2011,
       "category": "war",
@@ -14220,8 +14224,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "2010s",
       "year": 2011,
       "category": "revolution",
@@ -14505,8 +14509,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "2010s",
       "year": 2013,
       "category": "genocide",
@@ -14640,7 +14644,8 @@
       "key_figures": [
         "Vladimir Putin",
         "Petro Poroshenko"
-      ]
+      ],
+      "youtube_video_id": "mH2ZPPkeqh0"
     },
     {
       "country_code": "IQ",
@@ -14965,8 +14970,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "2010s",
       "year": 2014,
       "category": "terror",
@@ -14980,8 +14985,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "2010s",
       "year": 2014,
       "category": "terror",
@@ -15430,8 +15435,8 @@
     {
       "country_code": "IR",
       "country_name": "İran",
-      "lat": 0,
-      "lon": 0,
+      "lat": 35.6892,
+      "lon": 51.389,
       "decade": "2010s",
       "year": 2015,
       "category": "revolution",
@@ -15445,8 +15450,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "2010s",
       "year": 2015,
       "category": "war",
@@ -15475,8 +15480,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "2010s",
       "year": 2015,
       "category": "leader",
@@ -15660,7 +15665,8 @@
       "key_figures": [
         "David Cameron",
         "Boris Johnson"
-      ]
+      ],
+      "youtube_video_id": "8hGw8fuQfqs"
     },
     {
       "country_code": "BE",
@@ -15815,8 +15821,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "2010s",
       "year": 2016,
       "category": "war",
@@ -15830,8 +15836,8 @@
     {
       "country_code": "PH",
       "country_name": "Filipinler",
-      "lat": 0,
-      "lon": 0,
+      "lat": 14.5995,
+      "lon": 120.9842,
       "decade": "2010s",
       "year": 2016,
       "category": "war",
@@ -16228,8 +16234,8 @@
     {
       "country_code": "IQ",
       "country_name": "Irak",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.3152,
+      "lon": 44.3661,
       "decade": "2010s",
       "year": 2017,
       "category": "revolution",
@@ -16258,8 +16264,8 @@
     {
       "country_code": "VN",
       "country_name": "Vietnam",
-      "lat": 0,
-      "lon": 0,
+      "lat": 21.0285,
+      "lon": 105.8542,
       "decade": "2010s",
       "year": 2017,
       "category": "revolution",
@@ -16453,8 +16459,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "2010s",
       "year": 2018,
       "category": "revolution",
@@ -16483,8 +16489,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "2010s",
       "year": 2018,
       "category": "leader",
@@ -16613,7 +16619,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev34659720"
+      "id": "ev34659720",
+      "youtube_video_id": "V_cXzIRbN-Y"
     },
     {
       "id": "ev_cn009",
@@ -16707,7 +16714,8 @@
       "wikipedia_url": "",
       "casualties": null,
       "key_figures": [],
-      "id": "ev34658723"
+      "id": "ev34658723",
+      "youtube_video_id": "9C52JyHJocc"
     },
     {
       "country_code": "BR",
@@ -16862,8 +16870,8 @@
     {
       "country_code": "PE",
       "country_name": "Peru",
-      "lat": 0,
-      "lon": 0,
+      "lat": -12.0464,
+      "lon": -77.0428,
       "decade": "2010s",
       "year": 2019,
       "category": "revolution",
@@ -17212,8 +17220,8 @@
     {
       "country_code": "IR",
       "country_name": "İran",
-      "lat": 0,
-      "lon": 0,
+      "lat": 35.6892,
+      "lon": 51.389,
       "decade": "2020s",
       "year": 2020,
       "category": "war",
@@ -17257,8 +17265,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "2020s",
       "year": 2020,
       "category": "culture",
@@ -17272,8 +17280,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "2020s",
       "year": 2020,
       "category": "war",
@@ -17687,8 +17695,8 @@
     {
       "country_code": "AF",
       "country_name": "Afganistan",
-      "lat": 0,
-      "lon": 0,
+      "lat": 34.5553,
+      "lon": 69.2075,
       "decade": "2020s",
       "year": 2021,
       "category": "revolution",
@@ -17702,8 +17710,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "2020s",
       "year": 2021,
       "category": "culture",
@@ -17805,7 +17813,8 @@
       "key_figures": [
         "Vladimir Putin",
         "Volodymyr Zelenskyy"
-      ]
+      ],
+      "youtube_video_id": "KUOTbbt5mBs"
     },
     {
       "country_code": "EC",
@@ -18234,8 +18243,8 @@
     {
       "country_code": "PH",
       "country_name": "Filipinler",
-      "lat": 0,
-      "lon": 0,
+      "lat": 14.5995,
+      "lon": 120.9842,
       "decade": "2020s",
       "year": 2022,
       "category": "revolution",
@@ -18294,8 +18303,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "2020s",
       "year": 2022,
       "category": "culture",
@@ -18309,8 +18318,8 @@
     {
       "country_code": "PE",
       "country_name": "Peru",
-      "lat": 0,
-      "lon": 0,
+      "lat": -12.0464,
+      "lon": -77.0428,
       "decade": "2020s",
       "year": 2022,
       "category": "revolution",
@@ -18997,8 +19006,8 @@
     {
       "country_code": "SY",
       "country_name": "Suriye",
-      "lat": 0,
-      "lon": 0,
+      "lat": 33.5138,
+      "lon": 36.2765,
       "decade": "2020s",
       "year": 2023,
       "category": "revolution",
@@ -19042,8 +19051,8 @@
     {
       "country_code": "NG",
       "country_name": "Nijerya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 9.0765,
+      "lon": 7.3986,
       "decade": "2020s",
       "year": 2023,
       "category": "revolution",
@@ -19072,8 +19081,8 @@
     {
       "country_code": "CA",
       "country_name": "Kanada",
-      "lat": 0,
-      "lon": 0,
+      "lat": 45.4215,
+      "lon": -75.6972,
       "decade": "2020s",
       "year": 2023,
       "category": "culture",
@@ -19480,8 +19489,8 @@
     {
       "country_code": "IR",
       "country_name": "İran",
-      "lat": 0,
-      "lon": 0,
+      "lat": 35.6892,
+      "lon": 51.389,
       "decade": "2020s",
       "year": 2024,
       "category": "war",
@@ -19495,8 +19504,8 @@
     {
       "country_code": "IR",
       "country_name": "İran",
-      "lat": 0,
-      "lon": 0,
+      "lat": 35.6892,
+      "lon": 51.389,
       "decade": "2020s",
       "year": 2024,
       "category": "leader",
@@ -19555,8 +19564,8 @@
     {
       "country_code": "ET",
       "country_name": "Etiyopya",
-      "lat": 0,
-      "lon": 0,
+      "lat": 13.4967,
+      "lon": 39.4753,
       "decade": "2020s",
       "year": 2024,
       "category": "revolution",
@@ -20620,19 +20629,19 @@
       "id": "ev_gap_2004_2"
     },
     {
-      "country_code": "FI",
+      "id": "ev_gap_fa5b5f1a",
       "country_name": "Finlandiya",
+      "country_code": "FI",
       "lat": 61.9241,
       "lon": 25.7482,
-      "decade": "1990s",
       "year": 1995,
+      "decade": "1990s",
       "category": "revolution",
       "title": "AB Üyeliği",
       "description": "Tarafsızlık politikasının yumuşaması.",
       "wikipedia_url": "",
       "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1995_3"
+      "key_figures": []
     },
     {
       "country_code": "LY",
@@ -32582,7 +32591,8 @@
       "wikipedia_url": "",
       "casualties": 10,
       "key_figures": [],
-      "id": "ev0ac48282"
+      "id": "ev0ac48282",
+      "youtube_video_id": "MyZPMBN9VIM"
     },
     {
       "country_code": "FR",
@@ -55510,6 +55520,1459 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev5255135f"
+    },
+    {
+      "id": "ev_gb_206eb555a6",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1920,
+      "category": "war",
+      "title": "İrlanda Bağımsızlık Savaşı'nın Tırmanışı",
+      "description": "İrlanda'daki çatışmalar Londra'nın güvenlik ve anayasal çözüm arayışını hızlandırdı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "David Lloyd George",
+        "Michael Collins"
+      ]
+    },
+    {
+      "id": "ev_gb_f068c34823",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1921,
+      "category": "diplomacy",
+      "title": "Anglo-İrlanda Antlaşması",
+      "description": "Londra ile Dublin arasında imzalanan anlaşma İrlanda Serbest Devleti'nin yolunu açtı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "David Lloyd George",
+        "Arthur Griffith"
+      ]
+    },
+    {
+      "id": "ev_gb_552e37c601",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1922,
+      "category": "revolution",
+      "title": "İrlanda Serbest Devleti'nin Kuruluşu",
+      "description": "Birleşik Krallık içindeki anayasal yapı köklü biçimde değişti; ada siyasetinde yeni dönem başladı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Michael Collins"
+      ]
+    },
+    {
+      "id": "ev_gb_7c0bbd2caa",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1922,
+      "category": "culture",
+      "title": "BBC'nin Kuruluşu",
+      "description": "British Broadcasting Company'nin kuruluşu, kamusal yayıncılık modelinin temelini attı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "John Reith"
+      ]
+    },
+    {
+      "id": "ev_gb_f7e21d029c",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1924,
+      "category": "politics",
+      "title": "İlk İşçi Partisi Hükümeti",
+      "description": "Ramsay MacDonald liderliğinde İşçi Partisi ilk kez iktidara gelerek iki partili sistemin dengesini değiştirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Ramsay MacDonald"
+      ]
+    },
+    {
+      "id": "ev_gb_d7f40e0ea8",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1925,
+      "category": "diplomacy",
+      "title": "Locarno Sürecinde İngiltere'nin Güvenlik Rolü",
+      "description": "Londra, kıta Avrupa'sında statükoyu korumaya dönük diplomatik mimarinin garantörlerinden biri oldu.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Austen Chamberlain"
+      ]
+    },
+    {
+      "id": "ev_gb_eff5142e04",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1926,
+      "category": "diplomacy",
+      "title": "Balfour Deklarasyonu (Dominyon Eşitliği)",
+      "description": "İmparatorluk Konferansı, dominyonları Birleşik Krallık ile eşit statülü topluluklar olarak tanımladı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Stanley Baldwin"
+      ]
+    },
+    {
+      "id": "ev_gb_e537d5abe0",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1920s",
+      "year": 1928,
+      "category": "revolution",
+      "title": "Equal Franchise Act ile Eşit Oy Hakkı",
+      "description": "21 yaş üstü kadınlara erkeklerle eşit oy hakkı tanınarak temsil rejimi genişletildi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Stanley Baldwin"
+      ]
+    },
+    {
+      "id": "ev_gb_cbedb8afb7",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1931,
+      "category": "revolution",
+      "title": "Westminster Statüsü",
+      "description": "Dominyonların yasama bağımsızlığını tanıyan statü, İngiliz İmparatorluğu'nun Commonwealth'e evrimini hızlandırdı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "George V"
+      ]
+    },
+    {
+      "id": "ev_gb_c9f8c9500d",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1931,
+      "category": "politics",
+      "title": "Ulusal Hükümetin Kurulması",
+      "description": "Ekonomik kriz karşısında kurulan geniş tabanlı hükümet, parti sisteminde uzun süreli etki bıraktı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Ramsay MacDonald"
+      ]
+    },
+    {
+      "id": "ev_gb_45834f523d",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1932,
+      "category": "diplomacy",
+      "title": "Ottawa Konferansı ve İmparatorluk Tercih Sistemi",
+      "description": "İmparatorluk içi ticareti önceleyen gümrük rejimi kabul edildi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Neville Chamberlain"
+      ]
+    },
+    {
+      "id": "ev_gb_998e94c435",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1935,
+      "category": "diplomacy",
+      "title": "Hindistan Yönetim Yasası",
+      "description": "Britanya-Hindistan idaresini yeniden düzenleyen yasa, sömürge sonrası dönüşümün ön adımlarından biri oldu.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Stanley Baldwin"
+      ]
+    },
+    {
+      "id": "ev_gb_dea3368c93",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1936,
+      "category": "revolution",
+      "title": "Jarrow Yürüyüşü",
+      "description": "İşsizliğe karşı kitlesel yürüyüş, sosyal politika tartışmalarında sembolik dönüm noktasına dönüştü.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Ellen Wilkinson"
+      ]
+    },
+    {
+      "id": "ev_gb_90b2a80de9",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1937,
+      "category": "leader",
+      "title": "Kral VI. George'un Taç Giymesi",
+      "description": "Abdication krizinin ardından monarşi kurumsal meşruiyetini yeniden tesis etti.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "George VI"
+      ]
+    },
+    {
+      "id": "ev_gb_94269cb141",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1938,
+      "category": "diplomacy",
+      "title": "Münih Anlaşması",
+      "description": "Yatıştırma politikası Avrupa güvenlik düzeninde kısa vadeli sakinlik, uzun vadeli kırılganlık yarattı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Neville Chamberlain"
+      ]
+    },
+    {
+      "id": "ev_gb_d4344e3dfb",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1939,
+      "category": "diplomacy",
+      "title": "Polonya'ya Güvence Politikası",
+      "description": "Londra'nın güvenlik garantisi, kıta savaşına doğrudan angajmanın çerçevesini belirledi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Neville Chamberlain"
+      ]
+    },
+    {
+      "id": "ev_gb_3d1e96d111",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1930s",
+      "year": 1939,
+      "category": "war",
+      "title": "Almanya'ya Savaş İlanı",
+      "description": "Polonya'nın işgali sonrasında Birleşik Krallık II. Dünya Savaşı'na girdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Neville Chamberlain"
+      ]
+    },
+    {
+      "id": "ev_gb_759239ca66",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1940s",
+      "year": 1941,
+      "category": "diplomacy",
+      "title": "Atlantik Bildirisi",
+      "description": "İngiltere-ABD ortak vizyonu savaş sonrası düzenin normatif çerçevesini şekillendirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Winston Churchill",
+        "Franklin D. Roosevelt"
+      ]
+    },
+    {
+      "id": "ev_gb_b513d7f78e",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1940s",
+      "year": 1942,
+      "category": "politics",
+      "title": "Beveridge Raporu",
+      "description": "Refah devleti mimarisinin ana ilkelerini belirleyen rapor, savaş sonrası sosyal reformları yönlendirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "William Beveridge"
+      ]
+    },
+    {
+      "id": "ev_gb_77cfa29cf1",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1940s",
+      "year": 1943,
+      "category": "war",
+      "title": "Akdeniz Stratejisinde İngiliz Ağırlığı",
+      "description": "Müttefiklerin Sicilya ve İtalya hattına yönelişinde Londra belirleyici bir planlama rolü üstlendi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Winston Churchill"
+      ]
+    },
+    {
+      "id": "ev_gb_b08ddcbb06",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1940s",
+      "year": 1944,
+      "category": "war",
+      "title": "Normandiya Çıkarmasında Komuta ve Lojistik Rol",
+      "description": "Birleşik Krallık, D-Day operasyonlarının komuta, ikmal ve üs kapasitesinde merkezi işlev gördü.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Bernard Montgomery"
+      ]
+    },
+    {
+      "id": "ev_gb_3c8ceb7557",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1940s",
+      "year": 1945,
+      "category": "politics",
+      "title": "Attlee Hükümeti ve Refah Devleti Programı",
+      "description": "Savaş sonrası dönemde kapsamlı kamusal sağlık, konut ve sosyal güvenlik reformları başlatıldı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Clement Attlee"
+      ]
+    },
+    {
+      "id": "ev_gb_5f9f6d07fb",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1940s",
+      "year": 1945,
+      "category": "diplomacy",
+      "title": "BM Güvenlik Konseyi Daimi Üyeliği",
+      "description": "Birleşik Krallık, savaş sonrası uluslararası düzenin kurucu güçlerinden biri olarak daimi üyelik elde etti.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Clement Attlee"
+      ]
+    },
+    {
+      "id": "ev_gb_66f4e9f3d9",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1940s",
+      "year": 1947,
+      "category": "revolution",
+      "title": "Hindistan ve Pakistan'ın Bağımsızlığı",
+      "description": "Sömürge imparatorluğunun çözülmesini hızlandıran kritik eşik geçildi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Louis Mountbatten"
+      ]
+    },
+    {
+      "id": "ev_gb_b1678fc563",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1950,
+      "category": "war",
+      "title": "Kore Savaşı'na İngiliz Katılımı",
+      "description": "Birleşik Krallık, BM komutası altında Kore Savaşı'na kuvvet gönderdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Clement Attlee"
+      ]
+    },
+    {
+      "id": "ev_gb_c97ea23068",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1951,
+      "category": "culture",
+      "title": "Festival of Britain",
+      "description": "Savaş sonrası yeniden yapılanma ve bilim-teknoloji vizyonunu kamusal alana taşıyan ulusal sergi düzenlendi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Herbert Morrison"
+      ]
+    },
+    {
+      "id": "ev_gb_00ab24da84",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1952,
+      "category": "leader",
+      "title": "Kraliçe II. Elizabeth'in Tahta Çıkışı",
+      "description": "Monarşide kuşak değişimi, Soğuk Savaş döneminde sembolik süreklilik sağladı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Elizabeth II"
+      ]
+    },
+    {
+      "id": "ev_gb_df6a97c027",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1952,
+      "category": "war",
+      "title": "Operation Hurricane: İlk İngiliz Nükleer Testi",
+      "description": "Birleşik Krallık bağımsız nükleer caydırıcılık kapasitesini fiilen devreye aldı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Winston Churchill"
+      ]
+    },
+    {
+      "id": "ev_gb_6e5db590f4",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1953,
+      "category": "leader",
+      "title": "II. Elizabeth'in Taç Giyme Töreni",
+      "description": "Canlı yayınla geniş kitlelere ulaşan tören, modern monarşi iletişiminin dönüm noktası oldu.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Elizabeth II"
+      ]
+    },
+    {
+      "id": "ev_gb_d6b55ae2a4",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1954,
+      "category": "politics",
+      "title": "Karne Uygulamasının Sona Ermesi",
+      "description": "Savaş dönemi kıtlık ekonomisinin kapanışı ve tüketim toplumuna geçiş hızlandı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Winston Churchill"
+      ]
+    },
+    {
+      "id": "ev_gb_c453ee9451",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1956,
+      "category": "war",
+      "title": "Süveyş Krizi",
+      "description": "Mısır müdahalesi sonrasında geri adım, Birleşik Krallık'ın küresel güç statüsünün sınırlarını görünür kıldı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Anthony Eden"
+      ]
+    },
+    {
+      "id": "ev_gb_b1eccf6b5f",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1957,
+      "category": "politics",
+      "title": "Windscale Nükleer Kazası",
+      "description": "Nükleer güvenlik standartları ve devlet şeffaflığı tartışmalarını kalıcı biçimde etkiledi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Harold Macmillan"
+      ]
+    },
+    {
+      "id": "ev_gb_9917f8badb",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1958,
+      "category": "terror",
+      "title": "Notting Hill Irk Çatışmaları",
+      "description": "Göç, entegrasyon ve polislik pratikleri etrafında uzun vadeli toplumsal gerilimler görünür hale geldi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_547dec1fba",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1950s",
+      "year": 1959,
+      "category": "politics",
+      "title": "Macmillan Dönemi Muhafazakar Seçim Zaferi",
+      "description": "Refah ve büyüme söylemi, iç politikada muhafazakar hegemonyayı pekiştirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Harold Macmillan"
+      ]
+    },
+    {
+      "id": "ev_gb_d26bbcc4b3",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1960s",
+      "year": 1960,
+      "category": "diplomacy",
+      "title": "Wind of Change Konuşması",
+      "description": "Dekolonizasyonun hızlanacağını ilan eden çizgi, Afrika politikasında stratejik yön değişimi yarattı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Harold Macmillan"
+      ]
+    },
+    {
+      "id": "ev_gb_e50082d77f",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1960s",
+      "year": 1961,
+      "category": "diplomacy",
+      "title": "Berlin Krizi ve NATO Alarm Düzeyi",
+      "description": "Soğuk Savaş geriliminde Londra, ittifak caydırıcılığını güçlendiren askeri-siyasi koordinasyon yürüttü.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Harold Macmillan"
+      ]
+    },
+    {
+      "id": "ev_gb_5f6377757c",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1960s",
+      "year": 1963,
+      "category": "politics",
+      "title": "Profumo Skandalı",
+      "description": "Hükümet güvenilirliğini sarsan skandal, siyasal elit ve güvenlik kurumları tartışmasını derinleştirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "John Profumo"
+      ]
+    },
+    {
+      "id": "ev_gb_8e205596e7",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1960s",
+      "year": 1964,
+      "category": "politics",
+      "title": "Harold Wilson Hükümeti",
+      "description": "Teknolojik modernizasyon ve planlama söylemiyle İşçi Partisi yeniden iktidara geldi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Harold Wilson"
+      ]
+    },
+    {
+      "id": "ev_gb_a7a888eafe",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1960s",
+      "year": 1966,
+      "category": "culture",
+      "title": "İngiltere'nin Dünya Kupası Zaferi",
+      "description": "1966 FIFA Dünya Kupası zaferi ulusal kimlik anlatısında merkezi bir referans haline geldi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Alf Ramsey"
+      ]
+    },
+    {
+      "id": "ev_gb_add4d2047a",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1960s",
+      "year": 1967,
+      "category": "politics",
+      "title": "Sterlin Devalüasyonu",
+      "description": "Ödemeler dengesi baskıları karşısında alınan karar ekonomik yönetim tartışmalarını keskinleştirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Harold Wilson"
+      ]
+    },
+    {
+      "id": "ev_gb_dfa214193a",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1971,
+      "category": "politics",
+      "title": "Decimal Day: Ondalık Para Sistemine Geçiş",
+      "description": "Sterlin sistemi modernize edilerek ekonomik işlemlerde standardizasyon sağlandı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Edward Heath"
+      ]
+    },
+    {
+      "id": "ev_gb_f3486f65ab",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1972,
+      "category": "war",
+      "title": "Bloody Sunday",
+      "description": "Derry'deki olay, Kuzey İrlanda çatışmasını uluslararası kamuoyunun merkezine taşıdı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_3b958fd0dd",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1972,
+      "category": "politics",
+      "title": "Kuzey İrlanda'da Doğrudan Yönetim",
+      "description": "Stormont'un askıya alınmasıyla Londra, güvenlik ve yönetimde doğrudan sorumluluk üstlendi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Edward Heath"
+      ]
+    },
+    {
+      "id": "ev_gb_bb1cd62dfe",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1973,
+      "category": "diplomacy",
+      "title": "AET'ye Katılım",
+      "description": "Birleşik Krallık Avrupa Ekonomik Topluluğu'na girerek ticaret ve hukuk düzenini yeniden konumlandırdı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Edward Heath"
+      ]
+    },
+    {
+      "id": "ev_gb_55444cc6ce",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1974,
+      "category": "revolution",
+      "title": "Madenciler Grevi ve Üç Günlük Çalışma Haftası",
+      "description": "Enerji krizi ve endüstriyel çatışma, hükümetin meşruiyetini ve ekonomik yönetişimi sarstı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Edward Heath"
+      ]
+    },
+    {
+      "id": "ev_gb_b387dd7cd0",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1974,
+      "category": "diplomacy",
+      "title": "Sunningdale Düzeninin Çöküşü",
+      "description": "Kuzey İrlanda'da güç paylaşımı girişiminin başarısızlığı, çatışmanın uzamasına yol açtı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Merlyn Rees"
+      ]
+    },
+    {
+      "id": "ev_gb_0050fe2856",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1975,
+      "category": "revolution",
+      "title": "AET Üyelik Referandumu",
+      "description": "Halkoylamasıyla Avrupa entegrasyonu onaylandı ve dış politika hattı kısa vadede netleşti.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Harold Wilson"
+      ]
+    },
+    {
+      "id": "ev_gb_f6a6e1c7b1",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1976,
+      "category": "politics",
+      "title": "IMF Kurtarma Kredisi",
+      "description": "Makroekonomik kriz döneminde dış finansmana başvuru, mali disiplin ve sosyal harcama dengesini yeniden tanımladı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "James Callaghan"
+      ]
+    },
+    {
+      "id": "ev_gb_7936edaa99",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1970s",
+      "year": 1978,
+      "category": "revolution",
+      "title": "Winter of Discontent",
+      "description": "Yaygın grevler kamu hizmetlerini aksatarak siyasal iktidar değişimini hızlandırdı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "James Callaghan"
+      ]
+    },
+    {
+      "id": "ev_gb_5fcb55866f",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1980s",
+      "year": 1981,
+      "category": "revolution",
+      "title": "Brixton Ayaklanmaları",
+      "description": "Polis-toplum ilişkileri ve kentsel eşitsizlikler etrafında kapsamlı reform tartışmaları doğdu.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_69004563c9",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1980s",
+      "year": 1981,
+      "category": "revolution",
+      "title": "Toxteth Ayaklanmaları",
+      "description": "Kent içi işsizlik ve dışlanma dinamikleri ulusal güvenlik ve sosyal politika gündemine taşındı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_0fbb534ae7",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1980s",
+      "year": 1983,
+      "category": "politics",
+      "title": "Falkland Sonrası Seçim Zaferi",
+      "description": "Dış politika başarısının etkisiyle Thatcher hükümeti güçlü bir parlamento çoğunluğu elde etti.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Margaret Thatcher"
+      ]
+    },
+    {
+      "id": "ev_gb_ad36687a98",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1980s",
+      "year": 1984,
+      "category": "revolution",
+      "title": "Madenci Grevi (1984-85)",
+      "description": "Sendikal güç dengesi ve sanayi politikasını kalıcı biçimde değiştiren uzun bir endüstriyel çatışma yaşandı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Arthur Scargill",
+        "Margaret Thatcher"
+      ]
+    },
+    {
+      "id": "ev_gb_1dd9054910",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1980s",
+      "year": 1985,
+      "category": "diplomacy",
+      "title": "Anglo-İrlanda Anlaşması",
+      "description": "Dublin'e danışma rolü tanıyan anlaşma, Kuzey İrlanda sürecinde diplomatik çerçeveyi güncelledi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Margaret Thatcher",
+        "Garret FitzGerald"
+      ]
+    },
+    {
+      "id": "ev_gb_2446074c0b",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1990,
+      "category": "revolution",
+      "title": "Poll Tax İsyanları",
+      "description": "Londra merkezli kitlesel protestolar vergi reformunu sürdürülemez hale getirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_964d005737",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1990,
+      "category": "leader",
+      "title": "Thatcher'ın İstifası ve Major Dönemi",
+      "description": "Parti içi liderlik krizi sonucunda başbakanlık el değiştirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Margaret Thatcher",
+        "John Major"
+      ]
+    },
+    {
+      "id": "ev_gb_e900af3c50",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1991,
+      "category": "war",
+      "title": "Körfez Savaşı'nda Operasyon Granby",
+      "description": "Birleşik Krallık, Irak'a karşı koalisyonda geniş askeri kuvvetle yer aldı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "John Major"
+      ]
+    },
+    {
+      "id": "ev_gb_dbfd7852b3",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1992,
+      "category": "politics",
+      "title": "Black Wednesday",
+      "description": "ERM'den çıkış, para politikası ve merkez bankacılığı rejimini kalıcı biçimde değiştirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Norman Lamont"
+      ]
+    },
+    {
+      "id": "ev_gb_4e97e94183",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1993,
+      "category": "diplomacy",
+      "title": "Maastricht Antlaşması'nın Onayı",
+      "description": "AB ile ilişkilerde egemenlik tartışmaları iç siyasetin merkezine yerleşti.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "John Major"
+      ]
+    },
+    {
+      "id": "ev_gb_b5f4406cf8",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1997,
+      "category": "leader",
+      "title": "Tony Blair'in Seçim Zaferi",
+      "description": "New Labour dönemiyle kamu hizmetleri, dış politika ve anayasal reform gündemi yenilendi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Tony Blair"
+      ]
+    },
+    {
+      "id": "ev_gb_521fda3f7f",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1997,
+      "category": "diplomacy",
+      "title": "Hong Kong'un Çin'e Devri",
+      "description": "Asya'daki sömürge mirasının en kritik dosyalarından biri resmen kapandı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Chris Patten"
+      ]
+    },
+    {
+      "id": "ev_gb_c69b55278d",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "1990s",
+      "year": 1998,
+      "category": "revolution",
+      "title": "Good Friday Referandumu",
+      "description": "Kuzey İrlanda'da güç paylaşımı modeline toplumsal onay verilerek barış süreci kurumsallaştı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Tony Blair",
+        "Bertie Ahern"
+      ]
+    },
+    {
+      "id": "ev_gb_6c7fc3c29d",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2001,
+      "category": "war",
+      "title": "11 Eylül Sonrası Afganistan Operasyonları",
+      "description": "Birleşik Krallık, ABD öncülüğündeki askeri operasyona erken ve kapsamlı destek verdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Tony Blair"
+      ]
+    },
+    {
+      "id": "ev_gb_5eed9d8f22",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2001,
+      "category": "politics",
+      "title": "Şap Hastalığı Krizi",
+      "description": "Tarım ve kırsal ekonomiyi etkileyen salgın, olağanüstü kamu müdahalesini zorunlu kıldı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Tony Blair"
+      ]
+    },
+    {
+      "id": "ev_gb_e7d4ac3045",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2003,
+      "category": "war",
+      "title": "Irak Savaşı'na Katılım",
+      "description": "Müdahale kararı iç siyasette meşruiyet, istihbarat ve hukuk tartışmalarını kalıcılaştırdı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Tony Blair"
+      ]
+    },
+    {
+      "id": "ev_gb_1032fa830d",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2005,
+      "category": "culture",
+      "title": "Londra'nın 2012 Olimpiyatlarını Alması",
+      "description": "Mega etkinlik stratejisi kentsel dönüşüm ve uluslararası görünürlük hedefleriyle birleştirildi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Sebastian Coe"
+      ]
+    },
+    {
+      "id": "ev_gb_43a65c52a4",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2005,
+      "category": "politics",
+      "title": "Terörle Mücadele Yasalarının Genişletilmesi",
+      "description": "7/7 sonrası güvenlik mevzuatındaki sertleşme, özgürlük-güvenlik dengesini tartışmalı hale getirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Tony Blair"
+      ]
+    },
+    {
+      "id": "ev_gb_d91b496d2b",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2007,
+      "category": "politics",
+      "title": "Northern Rock Krizi",
+      "description": "Bankacılık sistemindeki kırılganlık ilk büyük mevduat paniğiyle görünür hale geldi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Gordon Brown"
+      ]
+    },
+    {
+      "id": "ev_gb_2592a0fae9",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2007,
+      "category": "politics",
+      "title": "İskoçya'da SNP Hükümeti",
+      "description": "Edinburgh'da milliyetçi iktidarın yükselişi, birlik tartışmalarına yeni ivme verdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Alex Salmond"
+      ]
+    },
+    {
+      "id": "ev_gb_aa19c9f343",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2008,
+      "category": "politics",
+      "title": "Küresel Krizde Banka Kurtarma Programı",
+      "description": "Kamu sermaye enjeksiyonu ve garanti mekanizmaları finansal sistemi ayakta tuttu.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Gordon Brown"
+      ]
+    },
+    {
+      "id": "ev_gb_63ff16bc48",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2000s",
+      "year": 2009,
+      "category": "politics",
+      "title": "Milletvekili Harcamaları Skandalı",
+      "description": "Şeffaflık krizi parlamentoya güveni zedeledi ve kurumsal etik reformlarını hızlandırdı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_bf9c469ba7",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2010,
+      "category": "politics",
+      "title": "Muhafazakar-Liberal Demokrat Koalisyonu",
+      "description": "Asılı parlamento sonrası kurulan koalisyon, kemer sıkma ve anayasal reform gündemini öne çıkardı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "David Cameron",
+        "Nick Clegg"
+      ]
+    },
+    {
+      "id": "ev_gb_2a1b92f26e",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2011,
+      "category": "revolution",
+      "title": "Londra Ayaklanmaları",
+      "description": "Kısa sürede ülke geneline yayılan olaylar polislik, genç işsizliği ve sosyal eşitsizlik tartışmalarını derinleştirdi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_40003872d3",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2013,
+      "category": "revolution",
+      "title": "Eşcinsel Evlilik Yasası (İngiltere ve Galler)",
+      "description": "Aile hukuku reformu ile medeni haklar alanında genişleme sağlandı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "David Cameron"
+      ]
+    },
+    {
+      "id": "ev_gb_6c14b44560",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2014,
+      "category": "revolution",
+      "title": "İskoçya Bağımsızlık Referandumu",
+      "description": "Birlik sürse de anayasal düzen ve mali yetkiler yeniden müzakere edildi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Alex Salmond",
+        "David Cameron"
+      ]
+    },
+    {
+      "id": "ev_gb_0b9e139314",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2015,
+      "category": "war",
+      "title": "Suriye Hava Operasyonları Kararı",
+      "description": "Parlamento kararıyla Birleşik Krallık'ın IŞİD hedeflerine yönelik askeri angajmanı genişledi.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "David Cameron"
+      ]
+    },
+    {
+      "id": "ev_gb_8ba1fa890e",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2017,
+      "category": "terror",
+      "title": "Manchester Arena Saldırısı",
+      "description": "Saldırı, şehir güvenliği ve radikalleşme karşıtı stratejilerin yeniden yapılandırılmasına yol açtı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_baf51585d8",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2017,
+      "category": "terror",
+      "title": "Grenfell Tower Yangını",
+      "description": "Konut güvenliği, denetim rejimi ve sosyal adalet tartışmaları ulusal gündemin merkezine taşındı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": []
+    },
+    {
+      "id": "ev_gb_80c555f7ca",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2010s",
+      "year": 2018,
+      "category": "terror",
+      "title": "Salisbury Zehirlenmesi Krizi",
+      "description": "Kimyasal saldırı iddiaları Rusya ile ilişkilerde keskin diplomatik gerilim yarattı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Theresa May"
+      ]
+    },
+    {
+      "id": "ev_gb_b8c659deaa",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2020s",
+      "year": 2020,
+      "category": "politics",
+      "title": "COVID-19 Ulusal Kapanmaları",
+      "description": "Salgın yönetimi sağlık sistemi kapasitesi, ekonomik destek paketleri ve özgürlük-güvenlik dengesi üzerinde belirleyici oldu.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Boris Johnson"
+      ]
+    },
+    {
+      "id": "ev_gb_b29892e010",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2020s",
+      "year": 2020,
+      "category": "revolution",
+      "title": "AB'den Resmi Ayrılık ve Geçiş Süreci",
+      "description": "31 Ocak 2020'de AB'den ayrılık ve yıl sonundaki yeni ticaret rejimi, dış ekonomik konumlanmayı yeniden tanımladı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Boris Johnson"
+      ]
+    },
+    {
+      "id": "ev_gb_8efc3a3904",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2020s",
+      "year": 2021,
+      "category": "diplomacy",
+      "title": "AUKUS Güvenlik Ortaklığı",
+      "description": "İngiltere, Hint-Pasifik denklemi içinde ABD ve Avustralya ile uzun vadeli savunma işbirliği başlattı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Boris Johnson"
+      ]
+    },
+    {
+      "id": "ev_gb_3a5b8185a9",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2020s",
+      "year": 2021,
+      "category": "diplomacy",
+      "title": "COP26 Glasgow Zirvesi",
+      "description": "İklim diplomasisinde finansman ve emisyon hedefleri etrafında yüksek yoğunluklu müzakere trafiği yürütüldü.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Boris Johnson"
+      ]
+    },
+    {
+      "id": "ev_gb_eb45067bfb",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2020s",
+      "year": 2022,
+      "category": "leader",
+      "title": "Kral III. Charles'ın Tahta Çıkışı",
+      "description": "II. Elizabeth'in vefatı sonrası monarşide yeni dönem başladı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Charles III"
+      ]
+    },
+    {
+      "id": "ev_gb_38927186cc",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2020s",
+      "year": 2022,
+      "category": "politics",
+      "title": "Liz Truss Mini-Bütçe Krizi",
+      "description": "Piyasa şoku sonrası maliye politikası geri çekildi ve hükümetin ömrü kısa sürdü.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Liz Truss"
+      ]
+    },
+    {
+      "id": "ev_gb_b6469eec86",
+      "country_code": "GB",
+      "country_name": "Birleşik Krallık",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "decade": "2020s",
+      "year": 2022,
+      "category": "politics",
+      "title": "Yaşam Maliyeti ve Enerji Krizi",
+      "description": "Enerji fiyatlarındaki sert artış hane gelirleri ve ücret pazarlıkları üzerinde sistemik baskı yarattı.",
+      "wikipedia_url": "",
+      "casualties": null,
+      "key_figures": [
+        "Rishi Sunak"
+      ]
     }
   ]
 }

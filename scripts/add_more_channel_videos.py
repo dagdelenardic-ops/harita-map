@@ -3,7 +3,7 @@
 Add suitable videos from selected YouTube channels to matching events.
 
 Approach:
-- Pull latest uploads from channel RSS feeds.
+- Pull broader channel history with `yt-dlp` (fallback to RSS).
 - Use conservative, event-id-based rules for high-confidence title matches.
 - Never overwrite an existing `youtube_video_id`.
 """
@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
+import sys
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -27,14 +29,30 @@ CHANNEL_IDS: Dict[str, str] = {
     "cnklgl": "UC-xTvXTm-lrLWYk308-Km3A",
 }
 
+CHANNEL_URLS: Dict[str, str] = {
+    "49w": "https://www.youtube.com/@49W/videos",
+    "omnibuslive": "https://www.youtube.com/@OMNIBUSLIVE/videos",
+    "cnklgl": "https://www.youtube.com/@cnklgl/videos",
+}
+
 # Curated high-confidence mappings:
 # event_id -> (channel_key, keyword list expected in video title)
 EVENT_VIDEO_RULES: Dict[str, Tuple[str, List[str]]] = {
     # 49W
     "eve1b96912": ("49w", ["ronald", "reagan"]),
+    "ev_gb009": ("49w", ["brexit", "kordugum"]),
+    "ev_ir002": ("49w", ["1979", "iran", "devrimi"]),
+    "ev051": ("49w", ["ukrayna", "ic", "savasi"]),
+    "ev055": ("49w", ["rusya", "ukrayna", "bitmiyor"]),
+    "ev258": ("49w", ["kaddafi", "dusmani"]),
+    "ev34659720": ("49w", ["venezuela", "neler", "oluyor"]),
+    "ev0ac48282": ("49w", ["sari", "yelekliler"]),
+    "ev34658723": ("49w", ["kesmir"]),
+    "ev357": ("49w", ["hitler", "nazilerin", "iktidara"]),
     # OMNIBUSLIVE
     "ev006": ("omnibuslive", ["hitler", "iktidara", "gelmesi"]),
     "ev421": ("omnibuslive", ["hitler", "delinin", "teki"]),
+    "ev34658685": ("omnibuslive", ["franco", "ispanya", "ic", "savasi"]),
     # cnklgl
     "ev_tr_1960s_05": ("cnklgl", ["demirel"]),
 }
@@ -93,8 +111,64 @@ def fetch_latest_videos(channel_id: str) -> List[Dict[str, str]]:
     return out
 
 
+def parse_ytdlp_print_line(line: str) -> Tuple[str, str, str]:
+    # yt-dlp may return either real tabs or literal '\t' escapes.
+    parts = line.split("\t")
+    if len(parts) < 3:
+        parts = line.split("\\t")
+    if len(parts) < 3:
+        return "", "", ""
+    video_id = parts[0].strip()
+    upload_date = parts[1].strip()
+    title = "\t".join(parts[2:]).strip()
+    return video_id, upload_date, title
+
+
+def fetch_channel_history(channel_url: str, playlist_end: int = 500) -> List[Dict[str, str]]:
+    cmd = [
+        sys.executable,
+        "-m",
+        "yt_dlp",
+        "--flat-playlist",
+        "--playlist-end",
+        str(playlist_end),
+        "--print",
+        "%(id)s\\t%(upload_date)s\\t%(title)s",
+        channel_url,
+    ]
+    try:
+        proc = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=180,
+            check=False,
+        )
+    except Exception:
+        return []
+
+    if proc.returncode != 0 or not proc.stdout.strip():
+        return []
+
+    out: List[Dict[str, str]] = []
+    seen_ids = set()
+    for raw in proc.stdout.splitlines():
+        video_id, upload_date, title = parse_ytdlp_print_line(raw.strip())
+        if not video_id or not title or video_id in seen_ids:
+            continue
+        seen_ids.add(video_id)
+        out.append(
+            {
+                "video_id": video_id,
+                "title": title,
+                "published": upload_date,
+            }
+        )
+    return out
+
+
 def find_video_id_by_keywords(videos: List[Dict[str, str]], keywords: List[str]) -> str:
-    # Latest-first RSS list: first matching title wins.
+    # Input list is latest-first. First matching title wins.
     kws = [normalize_text(k) for k in keywords]
     for v in videos:
         t = normalize_text(v.get("title") or "")
@@ -109,10 +183,14 @@ def main() -> None:
     if not isinstance(events, list):
         raise SystemExit("events.json: `events` must be a list")
 
-    # Fetch each channel once.
+    # Fetch each channel once (history first, RSS fallback).
     videos_by_channel: Dict[str, List[Dict[str, str]]] = {}
     for channel_key, channel_id in CHANNEL_IDS.items():
-        videos_by_channel[channel_key] = fetch_latest_videos(channel_id)
+        channel_url = CHANNEL_URLS.get(channel_key, "")
+        videos = fetch_channel_history(channel_url, playlist_end=500) if channel_url else []
+        if not videos:
+            videos = fetch_latest_videos(channel_id)
+        videos_by_channel[channel_key] = videos
 
     event_by_id: Dict[str, dict] = {
         str(e.get("id")): e for e in events if isinstance(e, dict) and e.get("id")
@@ -162,7 +240,7 @@ def main() -> None:
     if missing_event_ids:
         print(f"- missing event ids: {len(missing_event_ids)} ({', '.join(missing_event_ids)})")
     if missing_video_match:
-        print(f"- no matching video in current feed for: {len(missing_video_match)} ({', '.join(missing_video_match)})")
+        print(f"- no matching video in fetched channel history for: {len(missing_video_match)} ({', '.join(missing_video_match)})")
     if changed:
         print("- changes:")
         for event_id, title, video_id in changed:
