@@ -2084,41 +2084,6 @@
       ]
     },
     {
-      "id": "ev_jp005",
-      "country_code": "JP",
-      "country_name": "Japonya",
-      "lat": 34.3853,
-      "lon": 132.4553,
-      "decade": "1940s",
-      "year": 1945,
-      "category": "war",
-      "title": "Hiroşima Atom Bombası",
-      "description": "ABD'nin Hiroşima'ya atom bombası atması.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Hiro%C5%9Fima_ve_Nagasaki%27ye_atom_bombas%C4%B1_sald%C4%B1r%C4%B1s%C4%B1",
-      "casualties": 140000,
-      "key_figures": [
-        "Harry S. Truman"
-      ]
-    },
-    {
-      "id": "ev_jp006",
-      "country_code": "JP",
-      "country_name": "Japonya",
-      "lat": 32.7503,
-      "lon": 129.8777,
-      "decade": "1940s",
-      "year": 1945,
-      "category": "war",
-      "title": "Nagasaki Atom Bombası",
-      "description": "ABD'nin Nagasaki'ye atom bombası atması ve Japonya'nın teslim olması.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Hiro%C5%9Fima_ve_Nagasaki%27ye_atom_bombas%C4%B1_sald%C4%B1r%C4%B1s%C4%B1",
-      "casualties": 70000,
-      "key_figures": [
-        "Harry S. Truman",
-        "Hirohito"
-      ]
-    },
-    {
       "id": "ev_de004",
       "country_code": "DE",
       "country_name": "Almanya",
@@ -2460,23 +2425,6 @@
       "id": "ev351"
     },
     {
-      "id": "ev_il001",
-      "country_code": "IL",
-      "country_name": "İsrail",
-      "lat": 31.7683,
-      "lon": 35.2137,
-      "decade": "1940s",
-      "year": 1948,
-      "category": "war",
-      "title": "İsrail'in Kurulması ve Arap-İsrail Savaşı",
-      "description": "İsrail Devleti'nin ilanı ve ilk Arap-İsrail Savaşı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/1948_Arap-%C4%B0srail_Sava%C5%9F%C4%B1",
-      "casualties": 20000,
-      "key_figures": [
-        "David Ben-Gurion"
-      ]
-    },
-    {
       "id": "ev_cz002",
       "country_code": "CZ",
       "country_name": "Çek Cumhuriyeti",
@@ -2679,23 +2627,6 @@
       "id": "ev358"
     },
     {
-      "id": "ev_cn004",
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 39.9042,
-      "lon": 116.4074,
-      "decade": "1940s",
-      "year": 1949,
-      "category": "revolution",
-      "title": "Çin Halk Cumhuriyeti'nin Kurulması",
-      "description": "Komünist Parti'nin zaferi ve ÇHC'nin ilanı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/%C3%87in_Kom%C3%BCnist_Devrimi",
-      "casualties": null,
-      "key_figures": [
-        "Mao Zedong"
-      ]
-    },
-    {
       "id": "ev016",
       "country_code": "KR",
       "country_name": "Güney Kore",
@@ -2711,7 +2642,8 @@
       "key_figures": [
         "Kim Il-sung",
         "Douglas MacArthur",
-        "Harry S. Truman"
+        "Harry S. Truman",
+        "Syngman Rhee"
       ]
     },
     {
@@ -2728,24 +2660,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev431"
-    },
-    {
-      "id": "ev_kr001",
-      "country_code": "KR",
-      "country_name": "Güney Kore",
-      "lat": 37.5665,
-      "lon": 126.978,
-      "decade": "1950s",
-      "year": 1950,
-      "category": "war",
-      "title": "Kore Savaşı",
-      "description": "Kuzey Kore'nin Güney Kore'yi işgali ve BM müdahalesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kore_Sava%C5%9F%C4%B1",
-      "casualties": 3000000,
-      "key_figures": [
-        "Kim Il-sung",
-        "Syngman Rhee"
-      ]
     },
     {
       "country_code": "BE",
@@ -3340,23 +3254,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev365"
-    },
-    {
-      "id": "ev_hu002",
-      "country_code": "HU",
-      "country_name": "Macaristan",
-      "lat": 47.4979,
-      "lon": 19.0402,
-      "decade": "1950s",
-      "year": 1956,
-      "category": "revolution",
-      "title": "Macaristan Ayaklanması",
-      "description": "Sovyet yönetimine karşı halk ayaklanması ve Sovyet müdahalesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/1956_Macaristan_Ayaklanmas%C4%B1",
-      "casualties": 3000,
-      "key_figures": [
-        "Imre Nagy"
-      ]
     },
     {
       "country_code": "IL",
@@ -4619,24 +4516,6 @@
       "id": "ev34659638"
     },
     {
-      "id": "ev024",
-      "country_code": "IL",
-      "country_name": "İsrail",
-      "lat": 31.7683,
-      "lon": 35.2137,
-      "decade": "1960s",
-      "year": 1967,
-      "category": "war",
-      "title": "Alti Gun Savasi",
-      "description": "Israil'in Misir, Urdun ve Suriye'ye karsi kazandigi hizli zafer.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Alt%C4%B1_G%C3%BCn_Sava%C5%9F%C4%B1",
-      "casualties": 20000,
-      "key_figures": [
-        "Moshe Dayan",
-        "Gamal Abdel Nasser"
-      ]
-    },
-    {
       "id": "ev070",
       "country_code": "GR",
       "country_name": "Yunanistan",
@@ -4760,7 +4639,8 @@
       "wikipedia_url": "https://tr.wikipedia.org/wiki/Alt%C4%B1_G%C3%BCn_Sava%C5%9F%C4%B1",
       "casualties": 20000,
       "key_figures": [
-        "Moshe Dayan"
+        "Moshe Dayan",
+        "Gamal Abdel Nasser"
       ]
     },
     {
@@ -4904,23 +4784,6 @@
       "id": "ev34659037"
     },
     {
-      "id": "ev023",
-      "country_code": "CZ",
-      "country_name": "Çek Cumhuriyeti",
-      "lat": 50.0755,
-      "lon": 14.4378,
-      "decade": "1960s",
-      "year": 1968,
-      "category": "revolution",
-      "title": "Prag Bahari",
-      "description": "Liberallesme hareketine Sovyet askeri mudahalesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Prag_Bahar%C4%B1",
-      "casualties": 137,
-      "key_figures": [
-        "Alexander Dubcek"
-      ]
-    },
-    {
       "id": "ev065",
       "country_code": "ES",
       "country_name": "İspanya",
@@ -5030,7 +4893,8 @@
       "wikipedia_url": "https://tr.wikipedia.org/wiki/Prag_Bahar%C4%B1",
       "casualties": 137,
       "key_figures": [
-        "Alexander Dubček"
+        "Alexander Dubček",
+        "Alexander Dubcek"
       ]
     },
     {
@@ -5630,39 +5494,6 @@
       ]
     },
     {
-      "id": "ev_zw001",
-      "country_code": "ZW",
-      "country_name": "Zimbabve",
-      "lat": -17.8252,
-      "lon": 31.0335,
-      "decade": "1970s",
-      "year": 1972,
-      "category": "war",
-      "title": "Rhodesia Bush Savaşı",
-      "description": "Siyah çoğunluk yönetimi için gerilla savaşı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Rodezya_%C4%B0%C3%A7_Sava%C5%9F%C4%B1",
-      "casualties": 30000,
-      "key_figures": [
-        "Robert Mugabe",
-        "Ian Smith"
-      ]
-    },
-    {
-      "id": "ev_de006",
-      "country_code": "DE",
-      "country_name": "Almanya",
-      "lat": 48.1351,
-      "lon": 11.582,
-      "decade": "1970s",
-      "year": 1972,
-      "category": "terror",
-      "title": "Münih Olimpiyat Katliamı",
-      "description": "Filistinli militanların İsrailli sporcuları öldürmesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/M%C3%BCnih_Katliam%C4%B1",
-      "casualties": 17,
-      "key_figures": []
-    },
-    {
       "country_code": "IE",
       "country_name": "İrlanda",
       "lat": 0,
@@ -5915,24 +5746,6 @@
       ]
     },
     {
-      "id": "ev072",
-      "country_code": "CY",
-      "country_name": "Kıbrıs",
-      "lat": 35.1856,
-      "lon": 33.3823,
-      "decade": "1970s",
-      "year": 1974,
-      "category": "war",
-      "title": "Kibris Barıs Harekati",
-      "description": "Türkiye'nin Kıbrıs'a askeri müdahalesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/K%C4%B1br%C4%B1s_Harek%C3%A2t%C4%B1",
-      "casualties": 6000,
-      "key_figures": [
-        "Bulent Ecevit",
-        "Makarios III"
-      ]
-    },
-    {
       "country_code": "ET",
       "country_name": "Etiyopya",
       "lat": 0,
@@ -5977,7 +5790,8 @@
       "casualties": 6000,
       "key_figures": [
         "Bülent Ecevit",
-        "Makarios III"
+        "Makarios III",
+        "Bulent Ecevit"
       ]
     },
     {
@@ -6283,23 +6097,6 @@
         "Duong Van Minh"
       ],
       "youtube_video_id": "T8CNo97GNo0"
-    },
-    {
-      "id": "ev_kh002",
-      "country_code": "KH",
-      "country_name": "Kamboçya",
-      "lat": 11.5564,
-      "lon": 104.9282,
-      "decade": "1970s",
-      "year": 1975,
-      "category": "genocide",
-      "title": "Kamboçya Soykırımı",
-      "description": "Kızıl Kmerler rejimi altında yaklaşık 2 milyon insanın öldürülmesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kambo%C3%A7ya_Soyk%C4%B1r%C4%B1m%C4%B1",
-      "casualties": 2000000,
-      "key_figures": [
-        "Pol Pot"
-      ]
     },
     {
       "id": "ev_mz002",
@@ -6638,21 +6435,6 @@
       "key_figures": [
         "Siad Barre"
       ]
-    },
-    {
-      "id": "ev_mz003",
-      "country_code": "MZ",
-      "country_name": "Mozambik",
-      "lat": -25.9692,
-      "lon": 32.5732,
-      "decade": "1970s",
-      "year": 1977,
-      "category": "war",
-      "title": "Mozambik İç Savaşı",
-      "description": "FRELIMO ve RENAMO arasında iç savaş.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mozambik_%C4%B0%C3%A7_Sava%C5%9F%C4%B1",
-      "casualties": 1000000,
-      "key_figures": []
     },
     {
       "id": "ev_de007",
@@ -7096,21 +6878,6 @@
       "id": "ev34658930"
     },
     {
-      "country_code": "IR",
-      "country_name": "İran",
-      "lat": 35.6892,
-      "lon": 51.389,
-      "decade": "1970s",
-      "year": 1979,
-      "category": "war",
-      "title": "ABD Büyükelçiliği Rehin Krizi",
-      "description": "Diplomatik ilişkilerin kopmasına neden olan olay.",
-      "wikipedia_url": "",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev34658931"
-    },
-    {
       "country_code": "AF",
       "country_name": "Afganistan",
       "lat": 34.5553,
@@ -7333,21 +7100,6 @@
       "key_figures": [
         "Samuel Doe"
       ]
-    },
-    {
-      "id": "ev_sv001",
-      "country_code": "SV",
-      "country_name": "El Salvador",
-      "lat": 13.6929,
-      "lon": -89.2182,
-      "decade": "1980s",
-      "year": 1980,
-      "category": "war",
-      "title": "El Salvador İç Savaşı",
-      "description": "FMLN gerillaları ile hükümet arasındaki iç savaş.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/El_Salvador_%C4%B0%C3%A7_Sava%C5%9F%C4%B1",
-      "casualties": 75000,
-      "key_figures": []
     },
     {
       "country_code": "SV",
@@ -7646,7 +7398,8 @@
       "wikipedia_url": "https://tr.wikipedia.org/wiki/Guatemala_Soyk%C4%B1r%C4%B1m%C4%B1",
       "casualties": 200000,
       "key_figures": [
-        "Efrain Rios Montt"
+        "Efrain Rios Montt",
+        "Efraín Ríos Montt"
       ]
     },
     {
@@ -7693,23 +7446,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev309"
-    },
-    {
-      "id": "ev_gt003",
-      "country_code": "GT",
-      "country_name": "Guatemala",
-      "lat": 14.6349,
-      "lon": -90.5069,
-      "decade": "1980s",
-      "year": 1982,
-      "category": "genocide",
-      "title": "Guatemala Soykırımı",
-      "description": "Maya halkına yönelik soykırım.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Guatemala_Soyk%C4%B1r%C4%B1m%C4%B1",
-      "casualties": 200000,
-      "key_figures": [
-        "Efraín Ríos Montt"
-      ]
     },
     {
       "id": "ev_gb007",
@@ -7943,21 +7679,6 @@
       "wikipedia_url": "https://en.wikipedia.org/wiki/Civic-military_dictatorship_of_Uruguay",
       "casualties": null,
       "key_figures": []
-    },
-    {
-      "country_code": "IN",
-      "country_name": "Hindistan",
-      "lat": 28.6139,
-      "lon": 77.209,
-      "decade": "1980s",
-      "year": 1984,
-      "category": "war",
-      "title": "Indira Gandi Suikastı",
-      "description": "Altın Tapınak baskını sonrası Sih korumalarca öldürülmesi.",
-      "wikipedia_url": "",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev34658718"
     },
     {
       "country_code": "PY",
@@ -8536,7 +8257,8 @@
       "wikipedia_url": "https://en.wikipedia.org/wiki/First_Liberian_Civil_War",
       "casualties": 250000,
       "key_figures": [
-        "Charles Taylor"
+        "Charles Taylor",
+        "Samuel Doe"
       ]
     },
     {
@@ -8678,24 +8400,6 @@
       ]
     },
     {
-      "id": "ev_lr002",
-      "country_code": "LR",
-      "country_name": "Liberya",
-      "lat": 6.4281,
-      "lon": -9.4295,
-      "decade": "1980s",
-      "year": 1989,
-      "category": "war",
-      "title": "Birinci Liberya İç Savaşı",
-      "description": "Charles Taylor liderliğindeki isyan ve iç savaş.",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/First_Liberian_Civil_War",
-      "casualties": 250000,
-      "key_figures": [
-        "Charles Taylor",
-        "Samuel Doe"
-      ]
-    },
-    {
       "id": "ev_py002",
       "country_code": "PY",
       "country_name": "Paraguay",
@@ -8711,41 +8415,6 @@
       "key_figures": [
         "Alfredo Stroessner",
         "Andrés Rodríguez"
-      ]
-    },
-    {
-      "id": "ev_cn008",
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 39.9042,
-      "lon": 116.4074,
-      "decade": "1980s",
-      "year": 1989,
-      "category": "revolution",
-      "title": "Tiananmen Meydanı Katliamı",
-      "description": "Demokrasi yanlısı protestoculara askeri müdahale.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/1989_Tiananmen_Meydan%C4%B1_protestolar%C4%B1",
-      "casualties": 2600,
-      "key_figures": [
-        "Deng Xiaoping"
-      ]
-    },
-    {
-      "id": "ev_de008",
-      "country_code": "DE",
-      "country_name": "Almanya",
-      "lat": 52.52,
-      "lon": 13.405,
-      "decade": "1980s",
-      "year": 1989,
-      "category": "revolution",
-      "title": "Berlin Duvarı'nın Yıkılması",
-      "description": "Doğu ve Batı Almanya'yı ayıran duvarın yıkılması.",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
-      "casualties": null,
-      "key_figures": [
-        "Mikhail Gorbachev",
-        "Helmut Kohl"
       ]
     },
     {
@@ -9442,41 +9111,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev283"
-    },
-    {
-      "id": "ev_so003",
-      "country_code": "SO",
-      "country_name": "Somali",
-      "lat": 2.0469,
-      "lon": 45.3182,
-      "decade": "1990s",
-      "year": 1991,
-      "category": "war",
-      "title": "Somali İç Savaşı",
-      "description": "Barre rejiminin çöküşü ve devam eden kaos.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Somali_%C4%B0%C3%A7_Sava%C5%9F%C4%B1",
-      "casualties": 500000,
-      "key_figures": [
-        "Siad Barre"
-      ]
-    },
-    {
-      "id": "ev_ru007",
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 55.7558,
-      "lon": 37.6173,
-      "decade": "1990s",
-      "year": 1991,
-      "category": "revolution",
-      "title": "Sovyetler Birliği'nin Dağılması",
-      "description": "SSCB'nin resmi olarak sona ermesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birli%C4%9Fi%27nin_da%C4%9F%C4%B1lmas%C4%B1",
-      "casualties": null,
-      "key_figures": [
-        "Mikhail Gorbachev",
-        "Boris Yeltsin"
-      ]
     },
     {
       "country_code": "IN",
@@ -17239,21 +16873,6 @@
       "id": "ev34659409"
     },
     {
-      "country_code": "LB",
-      "country_name": "Lübnan",
-      "lat": 33.8547,
-      "lon": 35.8623,
-      "decade": "2020s",
-      "year": 2020,
-      "category": "culture",
-      "title": "Beyrut Liman Patlaması",
-      "description": "Büyük yıkıma yol açan amonyum nitrat patlaması.",
-      "wikipedia_url": "",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev34659648"
-    },
-    {
       "country_code": "HR",
       "country_name": "Hırvatistan",
       "lat": 0,
@@ -18521,24 +18140,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev331"
-    },
-    {
-      "id": "ev_il006",
-      "country_code": "IL",
-      "country_name": "İsrail",
-      "lat": 31.5,
-      "lon": 34.47,
-      "decade": "2020s",
-      "year": 2023,
-      "category": "war",
-      "title": "İsrail-Hamas Savaşı",
-      "description": "Hamas'ın 7 Ekim saldırısı ve İsrail'in Gazze operasyonu.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Gazze_Sava%C5%9F%C4%B1",
-      "casualties": 40000,
-      "key_figures": [
-        "Benjamin Netanyahu",
-        "Yahya Sinwar"
-      ]
     },
     {
       "country_code": "PS",
@@ -21917,21 +21518,6 @@
       "decade": "2010s",
       "year": 2011,
       "category": "revolution",
-      "title": "Bağımsızlık Referandumu",
-      "description": "%98.83 evet oyuyla ayrılık kararı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/2011_G%C3%BCney_Sudan_ba%C4%9F%C4%B1ms%C4%B1zl%C4%B1k_referandumu",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_2011_11"
-    },
-    {
-      "country_code": "SS",
-      "country_name": "Güney Sudan",
-      "lat": 0,
-      "lon": 0,
-      "decade": "2010s",
-      "year": 2011,
-      "category": "revolution",
       "title": "Bağımsızlık İlanı",
       "description": "Dünyanın en genç ülkesi.",
       "wikipedia_url": "",
@@ -23250,21 +22836,6 @@
       "country_name": "Demokratik Kongo Cumhuriyeti",
       "lat": -4.4419,
       "lon": 15.2663,
-      "decade": "1990s",
-      "year": 1997,
-      "category": "war",
-      "title": "1997 İç Savaşı",
-      "description": "Sassou Nguesso'nun dönüşü.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kongo_Demokratik_Cumhuriyeti",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1997_3"
-    },
-    {
-      "country_code": "CD",
-      "country_name": "Demokratik Kongo Cumhuriyeti",
-      "lat": -4.4419,
-      "lon": 15.2663,
       "decade": "2010s",
       "year": 2015,
       "category": "revolution",
@@ -23835,21 +23406,6 @@
       "country_name": "Togo",
       "lat": 0,
       "lon": 0,
-      "decade": "1960s",
-      "year": 1967,
-      "category": "leader",
-      "title": "Eyadema Dönemi",
-      "description": "38 yıllık iktidar.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Togo",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1967_5"
-    },
-    {
-      "country_code": "TG",
-      "country_name": "Togo",
-      "lat": 0,
-      "lon": 0,
       "decade": "1970s",
       "year": 1975,
       "category": "revolution",
@@ -24255,21 +23811,6 @@
       "country_name": "Gambiya",
       "lat": 0,
       "lon": 0,
-      "decade": "1990s",
-      "year": 1994,
-      "category": "war",
-      "title": "Jammeh Darbesi",
-      "description": "Yahya Jammeh'in 22 yıllık iktidarı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Gambiya",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1994_5"
-    },
-    {
-      "country_code": "GM",
-      "country_name": "Gambiya",
-      "lat": 0,
-      "lon": 0,
       "decade": "2010s",
       "year": 2017,
       "category": "war",
@@ -24399,21 +23940,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev_gap_1973_3"
-    },
-    {
-      "country_code": "GW",
-      "country_name": "Gine-Bissau",
-      "lat": 0,
-      "lon": 0,
-      "decade": "1990s",
-      "year": 1998,
-      "category": "war",
-      "title": "1998 İç Savaşı",
-      "description": "Vieira yönetimine karşı isyan.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Gine-Bissau",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1998_4"
     },
     {
       "country_code": "GW",
@@ -24676,21 +24202,6 @@
       "lat": 0,
       "lon": 0,
       "decade": "2010s",
-      "year": 2010,
-      "category": "war",
-      "title": "Gbagbo Krizi",
-      "description": "Seçim sonuçlarını reddetme ve çatışma.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Fildi%C5%9Fi_Sahili",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_2010_10"
-    },
-    {
-      "country_code": "CI",
-      "country_name": "Fildişi Sahili",
-      "lat": 0,
-      "lon": 0,
-      "decade": "2010s",
       "year": 2016,
       "category": "terror",
       "title": "Grand-Bassam Saldırısı",
@@ -24946,21 +24457,6 @@
       "lat": 2.0469,
       "lon": 45.3182,
       "decade": "1990s",
-      "year": 1991,
-      "category": "revolution",
-      "title": "Siad Barre'nin Düşüşü",
-      "description": "İç savaşın ve devlet çöküşünün başlangıcı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Somali_%C4%B0%C3%A7_Sava%C5%9F%C4%B1",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1991_18"
-    },
-    {
-      "country_code": "SO",
-      "country_name": "Somali",
-      "lat": 2.0469,
-      "lon": 45.3182,
-      "decade": "1990s",
       "year": 1993,
       "category": "war",
       "title": "Black Hawk Down",
@@ -25074,21 +24570,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev_gap_1986_4"
-    },
-    {
-      "country_code": "RW",
-      "country_name": "Ruanda",
-      "lat": -1.9403,
-      "lon": 29.8739,
-      "decade": "1990s",
-      "year": 1994,
-      "category": "war",
-      "title": "1994 Soykırımı",
-      "description": "Tutsilere yönelik 100 gün süren katliam.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Ruanda_Soyk%C4%B1r%C4%B1m%C4%B1",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1994_6"
     },
     {
       "country_code": "BI",
@@ -25224,21 +24705,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev_gap_1975_13"
-    },
-    {
-      "country_code": "AO",
-      "country_name": "Angola",
-      "lat": -8.839,
-      "lon": 13.2894,
-      "decade": "1970s",
-      "year": 1975,
-      "category": "war",
-      "title": "İç Savaş",
-      "description": "MPLA ve UNITA arasında 27 yıl savaş.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Angola_%C4%B0%C3%A7_Sava%C5%9F%C4%B1",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1975_14"
     },
     {
       "country_code": "AO",
@@ -25466,21 +24932,6 @@
       "id": "ev_gap_2008_6"
     },
     {
-      "country_code": "ZW",
-      "country_name": "Zimbabve",
-      "lat": -17.8252,
-      "lon": 31.0335,
-      "decade": "2010s",
-      "year": 2017,
-      "category": "revolution",
-      "title": "Mugabe'nin Darbesi",
-      "description": "Askeri müdahale ve istifa.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/2017_Zimbabve_asker%C3%AE_darbesi",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_2017_10"
-    },
-    {
       "country_code": "MW",
       "country_name": "Malavi",
       "lat": 0,
@@ -25494,21 +24945,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev_gap_1964_5"
-    },
-    {
-      "country_code": "MZ",
-      "country_name": "Mozambik",
-      "lat": 0,
-      "lon": 0,
-      "decade": "1960s",
-      "year": 1964,
-      "category": "war",
-      "title": "Bağımsızlık Savaşları",
-      "description": "FRELIMO mücadelesi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mozambik_Ba%C4%9F%C4%B1ms%C4%B1zl%C4%B1k_Sava%C5%9F%C4%B1",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1964_6"
     },
     {
       "country_code": "MZ",
@@ -27360,21 +26796,6 @@
       "country_name": "Gambiya",
       "lat": 0,
       "lon": 0,
-      "decade": "1980s",
-      "year": 1982,
-      "category": "diplomacy",
-      "title": "Senegambia Konfederasyonu",
-      "description": "Senegal ile kısa süreli birlik.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Senegambiya%27daki_Ta%C5%9F_%C3%87emberler",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1982_5"
-    },
-    {
-      "country_code": "GM",
-      "country_name": "Gambiya",
-      "lat": 0,
-      "lon": 0,
       "decade": "1990s",
       "year": 1994,
       "category": "war",
@@ -27564,21 +26985,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev_gap_1960_5"
-    },
-    {
-      "country_code": "CD",
-      "country_name": "Demokratik Kongo Cumhuriyeti",
-      "lat": -4.4419,
-      "lon": 15.2663,
-      "decade": "1970s",
-      "year": 1979,
-      "category": "leader",
-      "title": "Sassou Nguesso Dönemi",
-      "description": "Uzun süreli liderlik (aralıklı).",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kongo_Cumhuriyeti",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1979_10"
     },
     {
       "country_code": "CD",
@@ -27806,21 +27212,6 @@
       "id": "ev_gap_2010_12"
     },
     {
-      "country_code": "CI",
-      "country_name": "Fildişi Sahili",
-      "lat": 0,
-      "lon": 0,
-      "decade": "2010s",
-      "year": 2016,
-      "category": "terror",
-      "title": "Grand Bassam Saldırısı",
-      "description": "El-Kaide otel saldırısı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/2016_Grand-Bassam_sald%C4%B1r%C4%B1s%C4%B1",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_2016_12"
-    },
-    {
       "country_code": "SL",
       "country_name": "Sierra Leone",
       "lat": 8.4657,
@@ -27894,21 +27285,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev_gap_2020_13"
-    },
-    {
-      "country_code": "SN",
-      "country_name": "Senegal",
-      "lat": 0,
-      "lon": 0,
-      "decade": "1960s",
-      "year": 1960,
-      "category": "revolution",
-      "title": "Bağımsızlık",
-      "description": "Mali Federasyonu'ndan ayrılma.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Senegal",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_1960_19"
     },
     {
       "country_code": "SN",
@@ -28284,21 +27660,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev_gap_1966_7"
-    },
-    {
-      "country_code": "GQ",
-      "country_name": "Ekvator Ginesi",
-      "lat": 0,
-      "lon": 0,
-      "decade": "2010s",
-      "year": 2011,
-      "category": "diplomacy",
-      "title": "Afrika Birliği Zirvesi",
-      "description": "Malabo'da ev sahipliği.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Ekvator_Ginesi-T%C3%BCrkiye_ili%C5%9Fkileri",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev_gap_2011_12"
     },
     {
       "country_code": "GQ",
@@ -36586,21 +35947,6 @@
       "lat": 46.2276,
       "lon": 2.2137,
       "decade": "2020s",
-      "year": 2024,
-      "category": "culture",
-      "title": "Notre-Dame Açılış",
-      "description": "Katedral yeniden açılacak.",
-      "wikipedia_url": "",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev8ea6d91c"
-    },
-    {
-      "country_code": "FR",
-      "country_name": "Fransa",
-      "lat": 46.2276,
-      "lon": 2.2137,
-      "decade": "2020s",
       "year": 2020,
       "category": "culture",
       "title": "Tenet",
@@ -43911,21 +43257,6 @@
       "lat": 37.0902,
       "lon": -95.7129,
       "decade": "1990s",
-      "year": 1991,
-      "category": "culture",
-      "title": "The Silence of the Lambs",
-      "description": "Jonathan Demme filmi.",
-      "wikipedia_url": "",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evc92a0087"
-    },
-    {
-      "country_code": "US",
-      "country_name": "ABD",
-      "lat": 37.0902,
-      "lon": -95.7129,
-      "decade": "1990s",
       "year": 1992,
       "category": "culture",
       "title": "Reservoir Dogs",
@@ -46662,21 +45993,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "1920s",
-      "year": 1924,
-      "category": "politics",
-      "title": "Lenin Mozolesi",
-      "description": "Lenin'in bedeni mumyalandı.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Lenin",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev4b45e071"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1920s",
       "year": 1925,
       "category": "politics",
       "title": "Stalin İktidarı",
@@ -49176,21 +48492,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "1950s",
-      "year": 1957,
-      "category": "war",
-      "title": "Sputnik Crisis",
-      "description": "ABD paniği.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sputnik_1",
-      "casualties": null,
-      "key_figures": [],
-      "id": "eve8240c44"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1950s",
       "year": 1958,
       "category": "war",
       "title": "Berlin Crisis",
@@ -49334,21 +48635,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev95cf1e39"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1950s",
-      "year": 1959,
-      "category": "politics",
-      "title": "Khrushchev USA Visit",
-      "description": "ABD ziyareti.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
-      "casualties": null,
-      "key_figures": [],
-      "id": "eve7f29707"
     },
     {
       "country_code": "RU",
@@ -49936,21 +49222,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "1960s",
-      "year": 1964,
-      "category": "politics",
-      "title": "Khrushchev Fall",
-      "description": "Hruşçov düşüşü.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nikita_Hrusov",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev83e89554"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1960s",
       "year": 1965,
       "category": "politics",
       "title": "Kosygin Reforms",
@@ -50043,21 +49314,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "1970s",
-      "year": 1970,
-      "category": "politics",
-      "title": "Soljenitsin",
-      "description": "Yazar.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksandr_Soljenitsin",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev38a8fcaf"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1970s",
       "year": 1971,
       "category": "war",
       "title": "Indo-Pakistani",
@@ -50136,36 +49392,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "1970s",
-      "year": 1975,
-      "category": "diplomacy",
-      "title": "Helsinki Anlaşması",
-      "description": "Avrupa güvenlik.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Helsinki_Antlasmalari",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev460c060a"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1970s",
-      "year": 1976,
-      "category": "politics",
-      "title": "Sakharov",
-      "description": "Aktivist.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Andrey_Saharov",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev92b3fac2"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1970s",
       "year": 1977,
       "category": "war",
       "title": "SALT II",
@@ -50199,7 +49425,7 @@
       "year": 1979,
       "category": "war",
       "title": "Afganistan",
-      "description": "İşgal.",
+      "description": "Savaş kültürü.",
       "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi_nin_Afganistan_i_isgali",
       "casualties": 15000,
       "key_figures": [],
@@ -50301,21 +49527,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "1970s",
-      "year": 1975,
-      "category": "culture",
-      "title": "Helsinki Groups",
-      "description": "Helsinki grupları.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Helsinki_Antlasmalari",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evc63bad39"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1970s",
       "year": 1976,
       "category": "culture",
       "title": "Sakharov Human Rights",
@@ -50354,21 +49565,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev41cdce4a"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1970s",
-      "year": 1979,
-      "category": "culture",
-      "title": "Afganistan War",
-      "description": "Savaş kültürü.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sovyetler_Birligi_nin_Afganistan_i_isgali",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evfc450653"
     },
     {
       "country_code": "RU",
@@ -50774,21 +49970,6 @@
       "decade": "1980s",
       "year": 1985,
       "category": "politics",
-      "title": "Glasnost",
-      "description": "Açıklık politikası.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Glasnost",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evcdfd6257"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1980s",
-      "year": 1985,
-      "category": "politics",
       "title": "Perestroika",
       "description": "Yeniden yapılanma.",
       "wikipedia_url": "https://tr.wikipedia.org/wiki/Perestroyka",
@@ -50975,21 +50156,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev35eba823"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1980s",
-      "year": 1985,
-      "category": "culture",
-      "title": "Gorbachev Era",
-      "description": "Dönem.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mihail_Gorbacov",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evb6609e33"
     },
     {
       "country_code": "RU",
@@ -51739,21 +50905,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "1990s",
-      "year": 1994,
-      "category": "war",
-      "title": "Chechen War",
-      "description": "Savaş.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Birinci_Cecen_Savasi",
-      "casualties": null,
-      "key_figures": [],
-      "id": "eve36095ee"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "1990s",
       "year": 1995,
       "category": "war",
       "title": "Budyonnovsk",
@@ -52208,21 +51359,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "2000s",
-      "year": 2007,
-      "category": "culture",
-      "title": "Putin PM",
-      "description": "Putin başbakan.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev89fd7bde"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2000s",
       "year": 2008,
       "category": "culture",
       "title": "Georgia",
@@ -52613,21 +51749,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "2010s",
-      "year": 2011,
-      "category": "culture",
-      "title": "Putin Return",
-      "description": "Putin dönüş.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
-      "casualties": null,
-      "key_figures": [],
-      "id": "eva8ee836a"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2010s",
       "year": 2012,
       "category": "culture",
       "title": "Pussy Riot",
@@ -52913,21 +52034,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "2010s",
-      "year": 2012,
-      "category": "politics",
-      "title": "Putin Third",
-      "description": "Putin üçüncü.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev5b9b52e6"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2010s",
       "year": 2013,
       "category": "politics",
       "title": "Anti-Gay",
@@ -52936,21 +52042,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "evbe249534"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2010s",
-      "year": 2014,
-      "category": "politics",
-      "title": "Crimea Annexation",
-      "description": "İlhak.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Kirim_in_ilhaki",
-      "casualties": null,
-      "key_figures": [],
-      "id": "eveaf17745"
     },
     {
       "country_code": "RU",
@@ -52981,21 +52072,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "evaaf923fe"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2010s",
-      "year": 2018,
-      "category": "politics",
-      "title": "Putin Fourth",
-      "description": "Putin dördüncü.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev7f042cdb"
     },
     {
       "country_code": "RU",
@@ -53264,21 +52340,6 @@
       "lat": 61.524,
       "lon": 105.3188,
       "decade": "2020s",
-      "year": 2023,
-      "category": "politics",
-      "title": "Wagner",
-      "description": "Wagner.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Wagner_isyani",
-      "casualties": null,
-      "key_figures": [],
-      "id": "eve9c2705b"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2020s",
       "year": 2024,
       "category": "politics",
       "title": "Elections",
@@ -53392,36 +52453,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev9afe0346"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2020s",
-      "year": 2024,
-      "category": "politics",
-      "title": "Navalny Death",
-      "description": "Navalny ölüm.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Aleksey_Navalny",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evd4dfb715"
-    },
-    {
-      "country_code": "RU",
-      "country_name": "Rusya",
-      "lat": 61.524,
-      "lon": 105.3188,
-      "decade": "2020s",
-      "year": 2025,
-      "category": "politics",
-      "title": "Putin",
-      "description": "Putin.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Vladimir_Putin",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev9a6ec19e"
     },
     {
       "country_code": "RU",
@@ -53609,23 +52640,6 @@
         "Chiang Kai-shek"
       ],
       "id": "ev4c77a361"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1920s",
-      "year": 1927,
-      "category": "politics",
-      "title": "Shanghai Katliami",
-      "description": "Chiang komunistleri katletti.",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
-      "casualties": 5000,
-      "key_figures": [
-        "Chiang Kai-shek"
-      ],
-      "id": "ev184c96f1"
     },
     {
       "country_code": "CN",
@@ -53909,21 +52923,6 @@
       "lat": 35.8617,
       "lon": 104.1954,
       "decade": "1920s",
-      "year": 1927,
-      "category": "war",
-      "title": "Shanghai Massacre",
-      "description": "Katliam.",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev13082225"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1920s",
       "year": 1928,
       "category": "war",
       "title": "Jinan Incident",
@@ -54029,21 +53028,6 @@
       "lat": 35.8617,
       "lon": 104.1954,
       "decade": "1920s",
-      "year": 1925,
-      "category": "politics",
-      "title": "Sun Yat-sen Death",
-      "description": "Sun olum.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Sun_Yat-sen",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evb4004f69"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1920s",
       "year": 1926,
       "category": "politics",
       "title": "Chiang Kai-shek",
@@ -54052,21 +53036,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "eva31e0b31"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1920s",
-      "year": 1927,
-      "category": "politics",
-      "title": "Shanghai",
-      "description": "Sanghay.",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev301543e0"
     },
     {
       "country_code": "CN",
@@ -54329,36 +53298,6 @@
       "lat": 35.8617,
       "lon": 104.1954,
       "decade": "1930s",
-      "year": 1931,
-      "category": "culture",
-      "title": "Mukden Incident",
-      "description": "Olay.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mukden_Olayi",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev611283a1"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1930s",
-      "year": 1932,
-      "category": "culture",
-      "title": "Shanghai",
-      "description": "Sanghay.",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Shanghai_massacre",
-      "casualties": null,
-      "key_figures": [],
-      "id": "eve0e27d08"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1930s",
       "year": 1933,
       "category": "culture",
       "title": "Jiangxi",
@@ -54389,21 +53328,6 @@
       "lat": 35.8617,
       "lon": 104.1954,
       "decade": "1930s",
-      "year": 1935,
-      "category": "culture",
-      "title": "Zunyi",
-      "description": "Zunyi.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Zunyi_Konferansi",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev04b9647e"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1930s",
       "year": 1936,
       "category": "culture",
       "title": "Xi'an",
@@ -54412,21 +53336,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev6473efd2"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1930s",
-      "year": 1937,
-      "category": "culture",
-      "title": "Nanjing",
-      "description": "Nanjing.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Nankin_Katliami",
-      "casualties": null,
-      "key_figures": [],
-      "id": "evb1f5804a"
     },
     {
       "country_code": "CN",
@@ -54532,21 +53441,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "evb6f83db5"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1930s",
-      "year": 1937,
-      "category": "war",
-      "title": "Marco Polo",
-      "description": "Marco Polo.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Marco_Polo_Koprusu_Olayi",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev26bb1946"
     },
     {
       "country_code": "CN",
@@ -55239,21 +54133,6 @@
       "casualties": null,
       "key_figures": [],
       "id": "ev1032ff51"
-    },
-    {
-      "country_code": "CN",
-      "country_name": "Çin",
-      "lat": 35.8617,
-      "lon": 104.1954,
-      "decade": "1940s",
-      "year": 1943,
-      "category": "politics",
-      "title": "Mao",
-      "description": "Mao.",
-      "wikipedia_url": "https://tr.wikipedia.org/wiki/Mao_Zedong",
-      "casualties": null,
-      "key_figures": [],
-      "id": "ev64c5d258"
     },
     {
       "country_code": "CN",
