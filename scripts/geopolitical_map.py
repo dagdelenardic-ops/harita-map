@@ -999,6 +999,23 @@ function parseMarkdownLinks(text) {
         margin-left: 6px;
         font-weight: 600;
     }}
+    .app-footer {{
+        position: fixed;
+        left: 8px;
+        bottom: 8px;
+        z-index: 1200;
+        background: rgba(0, 0, 0, 0.55);
+        color: rgba(236, 240, 241, 0.92);
+        padding: 5px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        letter-spacing: 0.2px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+        pointer-events: none;
+        user-select: none;
+        backdrop-filter: blur(2px);
+    }}
     .group-badge {{
         display: inline-block;
         padding: 2px 8px;
@@ -1162,6 +1179,8 @@ function parseMarkdownLinks(text) {
     <a href="/healthz.json" target="_blank" rel="noopener">health</a>
     <div id="indicatorHoverInfo" style="margin-top:2px; color:#bdc3c7;"></div>
 </div>
+
+<div class="app-footer" id="appFooter">Jeopolitik harita Alpha 1.0 - Gurur Sönmez</div>
 
 <button class="panel-handle" id="panelHandle" onclick="toggleFilterPanel()" aria-label="Filtre panelini aç/kapat" aria-expanded="true">
     <span class="panel-handle-icon" id="panelHandleIcon" aria-hidden="true">›</span>
