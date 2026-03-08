@@ -1277,6 +1277,25 @@ function parseMarkdownLinks(text) {
         border-radius: 8px;
         padding: 8px 10px;
     }}
+    .indicator-legend-title {{
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: #12263a;
+    }}
+    .indicator-legend-desc {{
+        margin-top: 4px;
+        font-size: 11px;
+        line-height: 1.45;
+        color: #516170;
+    }}
+    .indicator-legend-detail {{
+        margin-top: 6px;
+        font-size: 10px;
+        line-height: 1.4;
+        color: #607080;
+    }}
     .legend-bar {{
         height: 8px;
         border-radius: 999px;
@@ -1290,6 +1309,78 @@ function parseMarkdownLinks(text) {
         gap: 8px;
         font-size: 11px;
         color: #6c757d;
+    }}
+    .active-indicator-banner {{
+        position: fixed;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1250;
+        width: min(620px, calc(100vw - 560px));
+        min-width: 360px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(7, 18, 31, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(10px);
+        color: #f4f7fb;
+    }}
+    .active-indicator-kicker {{
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        color: rgba(255, 255, 255, 0.62);
+        text-transform: uppercase;
+    }}
+    .active-indicator-title {{
+        margin-top: 4px;
+        font-size: 28px;
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #ffffff;
+    }}
+    .active-indicator-desc {{
+        margin-top: 6px;
+        font-size: 13px;
+        line-height: 1.45;
+        color: rgba(230, 236, 242, 0.9);
+    }}
+    .active-indicator-meta {{
+        margin-top: 10px;
+        font-size: 11px;
+        line-height: 1.45;
+        color: rgba(190, 206, 221, 0.92);
+    }}
+    .active-indicator-hover {{
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        font-size: 12px;
+        line-height: 1.45;
+        color: #ffffff;
+    }}
+    .active-indicator-hover.empty {{
+        color: rgba(190, 206, 221, 0.7);
+    }}
+    @media (max-width: 768px) {{
+        .active-indicator-banner {{
+            top: 12px;
+            left: 16px;
+            right: 16px;
+            transform: none;
+            width: auto;
+            min-width: 0;
+            padding: 12px 14px;
+        }}
+        .active-indicator-title {{
+            font-size: 22px;
+        }}
+        .active-indicator-desc {{
+            font-size: 12px;
+        }}
     }}
 </style>
 
@@ -1408,6 +1499,14 @@ function parseMarkdownLinks(text) {
     Build: {self.build_info.get("build_time_utc", "unknown")}
     <a href="/healthz.json" target="_blank" rel="noopener">health</a>
     <div id="indicatorHoverInfo" style="margin-top:2px; color:#bdc3c7;"></div>
+</div>
+
+<div class="active-indicator-banner" id="activeIndicatorBanner" style="display:none;">
+    <div class="active-indicator-kicker">Aktif Gosterge</div>
+    <div class="active-indicator-title" id="activeIndicatorTitle"></div>
+    <div class="active-indicator-desc" id="activeIndicatorDesc"></div>
+    <div class="active-indicator-meta" id="activeIndicatorMeta"></div>
+    <div class="active-indicator-hover empty" id="activeIndicatorHover">Bir ulkenin uzerine gelin.</div>
 </div>
 
 <div class="app-footer" id="appFooter">Jeopolitik harita Alpha 1.0 - Gurur Sönmez</div>
@@ -1603,6 +1702,317 @@ function formatIndicatorValue(indicatorKey, value) {{
         return `$${{raw}}${{indicatorKey === 'min_wage' ? '/saat' : ''}}`;
     }}
     return unit ? `${{raw}} ${{unit}}` : raw;
+}}
+
+function escapeHtml(value) {{
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}}
+
+function formatIndicatorTimestamp(value) {{
+    if (!value) return '';
+    return String(value).replace('T', ' ').replace('Z', ' UTC');
+}}
+
+function getIndicatorSourceLabel(sourceType) {{
+    const labels = {{
+        worldbank: 'World Bank',
+        'open-meteo': 'Open-Meteo',
+        'open-meteo-air': 'Open-Meteo Air',
+        openaq: 'OpenAQ',
+        frankfurter: 'Frankfurter',
+        opensanctions: 'OpenSanctions'
+    }};
+    return labels[sourceType] || sourceType || '';
+}}
+
+function getIndicatorDisplayLabel(indicatorKey) {{
+    const labels = {{
+        sanctions_risk_score: 'Yaptırım / Risk',
+        weather_pressure_score: 'İklim Baskısı',
+        air_quality_pm25: 'Hava Kalitesi (PM2.5)',
+        fx_pressure_score: 'Kur Baskısı (30g USD)',
+        min_wage: 'Asgari Ücret (USD/saat)',
+        bigmac: 'Big Mac Endeksi (USD)',
+        water_internal_total: 'İç Tatlı Su (milyar m3)',
+        water_internal_per_capita: 'İç Tatlı Su / Kişi',
+        water_stress: 'Su Stresi',
+        water_withdrawal_pct_internal: 'Su Çekimi / İç Kaynak',
+        water_use_agriculture: 'Su Kullanımı: Tarım',
+        water_use_industry: 'Su Kullanımı: Sanayi',
+        water_use_domestic: 'Su Kullanımı: Evsel'
+    }};
+    return labels[indicatorKey] || ((externalIndicators[indicatorKey] || {{}}).label || indicatorKey);
+}}
+
+function getIndicatorNarrative(indicatorKey) {{
+    const notes = {{
+        sanctions_risk_score: {{
+            description: 'Ulke bazli yaptirim yogunlugunu ve liste temasini renk skalasina cevirir.',
+            detail: 'Koyu tonlar daha yuksek yaptirim/risk birikimini, acik tonlar daha dusuk gorunurlugu gosterir.'
+        }},
+        weather_pressure_score: {{
+            description: 'Baskent veya merkez noktadaki guncel hava kosullarindan uretilen iklim baskisi skorudur.',
+            detail: 'Sicaklik, hissedilen sicaklik, ruzgar ve bulutluluk birlikte okunur.'
+        }},
+        air_quality_pm25: {{
+            description: 'PM2.5 yogunlugu ulkelerin merkez noktasinda hava kalitesini karsilastirir.',
+            detail: 'Ek satirda PM10, NO2, O3 ve AQI bilgileri varsa birlikte gosterilir.'
+        }},
+        fx_pressure_score: {{
+            description: 'Yerel para biriminin USD karsisinda son 30 gundeki baskisini izler.',
+            detail: 'Koyu tonlar daha sert kur hareketi, acik tonlar daha sinirli baski anlamina gelir.'
+        }},
+        min_wage: {{
+            description: 'Saatlik nominal asgari ucret seviyesini ulkeler arasinda karsilastirir.',
+            detail: 'Yan kartta yillik nominal karsilik ve veri tarihi yazilir.'
+        }},
+        bigmac: {{
+            description: 'Big Mac fiyatini dolar cinsinden ulkeler arasinda karsilastirir.',
+            detail: 'Yerel fiyat ve para birimi bilgisi hover detayinda gorulur.'
+        }},
+        water_internal_total: {{
+            description: 'Ulkenin ic yenilenebilir tatli su hacmini toplu buyukluk olarak gosterir.',
+            detail: 'Detay satirinda yil, varsa ana su kaynaklari ve bagimlilik notu yazilir.'
+        }},
+        water_internal_per_capita: {{
+            description: 'Kisi basina dusen ic yenilenebilir tatli su miktarini karsilastirir.',
+            detail: 'Dusuk degerler kisitli tatli su tabanina isaret eder.'
+        }},
+        water_stress: {{
+            description: 'Su cekiminin mevcut yenilenebilir kaynaga bindirdigi baskiyi gosterir.',
+            detail: 'Koyu tonlar daha yuksek su stresi ve kirilganlik anlamina gelir.'
+        }},
+        water_withdrawal_pct_internal: {{
+            description: 'Toplam su cekiminin ic kaynaklara gore ne kadar yuksek oldugunu olcer.',
+            detail: 'Yuksek oran, yenilenebilir ic tabanin daha sert kullanildigini ima eder.'
+        }},
+        water_use_agriculture: {{
+            description: 'Toplam cekilen suyun ne kadarinin tarimda kullanildigini gosterir.',
+            detail: 'Talimat baskisi, kuraklik ve sulama bagimliligini okumak icin yararlidir.'
+        }},
+        water_use_industry: {{
+            description: 'Toplam cekilen suyun sanayi kullanimina ayrilan payini gosterir.',
+            detail: 'Uretim ve enerji yogun ekonomilerde daha belirgin olabilir.'
+        }},
+        water_use_domestic: {{
+            description: 'Toplam cekilen suyun evsel kullanim payini gosterir.',
+            detail: 'Sehirlesme ve altyapi baskisini anlamak icin yardimci bir gostergedir.'
+        }}
+    }};
+    return notes[indicatorKey] || {{
+        description: 'Secili gosterge ulkeler arasindaki goreli farki renk skalasi ile gosterir.',
+        detail: 'Hover satirinda secili ulke icin ayrintili aciklama verilir.'
+    }};
+}}
+
+function buildIndicatorMetaText(indicatorKey, stats) {{
+    const ind = externalIndicators[indicatorKey] || {{}};
+    const source = ind.source || {{}};
+    const sourceLabel = getIndicatorSourceLabel(source.type);
+    const parts = [];
+    const minText = formatIndicatorValue(indicatorKey, stats.min);
+    const maxText = formatIndicatorValue(indicatorKey, stats.max);
+
+    parts.push(`Renk araligi: ${{minText}} - ${{maxText}}`);
+    parts.push(`Kapsam: ${{formatNumberTr(stats.count, 0)}} ulke`);
+    if (sourceLabel) parts.push(`Kaynak: ${{sourceLabel}}`);
+    if (source.dataset_updated_at) {{
+        parts.push(`Dataset: ${{formatIndicatorTimestamp(source.dataset_updated_at)}}`);
+    }}
+    if (source.latest_date) {{
+        parts.push(`Veri tarihi: ${{formatIndicatorTimestamp(source.latest_date)}}`);
+    }}
+    if (source.current_date) {{
+        const comparisonText = source.comparison_date_resolved
+            ? ` / ${{formatIndicatorTimestamp(source.comparison_date_resolved)}}`
+            : '';
+        parts.push(`Karsilastirma: ${{formatIndicatorTimestamp(source.current_date)}}${{comparisonText}}`);
+    }}
+    if (source.lastupdated) {{
+        parts.push(`Kaynak guncelleme: ${{formatIndicatorTimestamp(source.lastupdated)}}`);
+    }}
+    if (source.updated_at_utc) {{
+        parts.push(`Snapshot: ${{formatIndicatorTimestamp(source.updated_at_utc)}}`);
+    }}
+    if (source.note) {{
+        parts.push(String(source.note));
+    }}
+    return parts.filter(Boolean).join(' · ');
+}}
+
+function getWaterContext(countryName) {{
+    const note = waterSourceNotes[countryName];
+    if (!note) return '';
+    const parts = [];
+    if (Array.isArray(note.primary_sources) && note.primary_sources.length) {{
+        parts.push(`Baslica kaynaklar: ${{note.primary_sources.join(', ')}}.`);
+    }}
+    if (note.dependency) {{
+        parts.push(`Bagimlilik: ${{note.dependency}}`);
+    }}
+    if (note.risk) {{
+        parts.push(`Risk: ${{note.risk}}`);
+    }}
+    return parts.join(' ');
+}}
+
+function buildIndicatorCompactText(countryName, indicatorKey) {{
+    const label = getIndicatorDisplayLabel(indicatorKey);
+    const details = getIndicatorDetails(countryName, indicatorKey);
+    const value = getIndicatorValue(countryName, indicatorKey);
+    if (!details || typeof value !== 'number' || Number.isNaN(value)) {{
+        return `${{label}} · ${{countryName}}: veri yok`;
+    }}
+    const status = details.risk_label || details.pressure_label || details.aqi_label || details.pressure_label || '';
+    return status
+        ? `${{label}} · ${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}} (${{status}})`
+        : `${{label}} · ${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}}`;
+}}
+
+function buildIndicatorCountryDetail(countryName, indicatorKey) {{
+    const label = getIndicatorDisplayLabel(indicatorKey);
+    const details = getIndicatorDetails(countryName, indicatorKey);
+    const value = getIndicatorValue(countryName, indicatorKey);
+    if (!details || typeof value !== 'number' || Number.isNaN(value)) {{
+        return `${{countryName}}: ${{label}} icin veri yok.`;
+    }}
+
+    if (indicatorKey === 'sanctions_risk_score') {{
+        const parts = [`${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}} (${{details.risk_label || 'Belirsiz'}}).`];
+        const density = [];
+        if (typeof details.matches_count === 'number') density.push(`${{formatNumberTr(details.matches_count, 0)}} eslesme`);
+        if (typeof details.dataset_count === 'number') density.push(`${{formatNumberTr(details.dataset_count, 0)}} liste`);
+        if (density.length) parts.push(`Yogunluk: ${{density.join(', ')}}.`);
+        if (Array.isArray(details.top_datasets) && details.top_datasets.length) {{
+            const datasets = details.top_datasets
+                .slice(0, 2)
+                .map(row => `${{row.name}} (${{formatNumberTr(row.count || 0, 0)}})`)
+                .join(', ');
+            parts.push(`En yogun listeler: ${{datasets}}.`);
+        }}
+        return parts.join(' ');
+    }}
+
+    if (indicatorKey === 'weather_pressure_score') {{
+        const current = details.current || {{}};
+        const parts = [`${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}} (${{details.pressure_label || 'Belirsiz'}}).`];
+        if (details.location_name) parts.push(`Konum: ${{details.location_name}}.`);
+        const weatherBits = [];
+        if (typeof current.temperature_2m === 'number') weatherBits.push(`sicaklik ${{formatNumberTr(current.temperature_2m, 1)}} C`);
+        if (typeof current.apparent_temperature === 'number') weatherBits.push(`hissedilen ${{formatNumberTr(current.apparent_temperature, 1)}} C`);
+        if (typeof current.wind_speed_10m === 'number') weatherBits.push(`ruzgar ${{formatNumberTr(current.wind_speed_10m, 1)}} km/s`);
+        if (typeof current.cloud_cover === 'number') weatherBits.push(`bulut ${{formatNumberTr(current.cloud_cover, 0)}}%`);
+        if (current.weather_label) weatherBits.push(`durum ${{current.weather_label}}`);
+        if (weatherBits.length) parts.push(`Kosullar: ${{weatherBits.join(', ')}}.`);
+        if (current.time) parts.push(`Olcum: ${{formatIndicatorTimestamp(current.time)}}.`);
+        return parts.join(' ');
+    }}
+
+    if (indicatorKey === 'air_quality_pm25') {{
+        const current = details.current || {{}};
+        const parts = [`${{countryName}}: PM2.5 ${{formatIndicatorValue(indicatorKey, value)}} (${{details.aqi_label || 'Belirsiz'}}).`];
+        if (details.location_name) parts.push(`Konum: ${{details.location_name}}.`);
+        const airBits = [];
+        if (typeof current.pm10 === 'number') airBits.push(`PM10 ${{formatNumberTr(current.pm10, 1)}}`);
+        if (typeof current.nitrogen_dioxide === 'number') airBits.push(`NO2 ${{formatNumberTr(current.nitrogen_dioxide, 1)}}`);
+        if (typeof current.ozone === 'number') airBits.push(`O3 ${{formatNumberTr(current.ozone, 1)}}`);
+        if (typeof current.european_aqi === 'number') airBits.push(`AQI ${{formatNumberTr(current.european_aqi, 0)}}`);
+        if (airBits.length) parts.push(`Ek olcumler: ${{airBits.join(', ')}}.`);
+        if (details.data_source) parts.push(`Saglayici: ${{getIndicatorSourceLabel(details.data_source)}}.`);
+        if (current.time) parts.push(`Olcum: ${{formatIndicatorTimestamp(current.time)}}.`);
+        return parts.join(' ');
+    }}
+
+    if (indicatorKey === 'fx_pressure_score') {{
+        const parts = [`${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}} kur baskisi (${{details.pressure_label || 'Belirsiz'}}).`];
+        if (details.currency_code) parts.push(`Para birimi: ${{details.currency_code}}.`);
+        const rateBits = [];
+        if (typeof details.current_rate_local_per_usd === 'number') {{
+            rateBits.push(`1 USD = ${{formatNumberTr(details.current_rate_local_per_usd, 4)}} ${{details.currency_code || ''}}`);
+        }}
+        if (typeof details.previous_rate_local_per_usd === 'number') {{
+            rateBits.push(`30 gun once ${{formatNumberTr(details.previous_rate_local_per_usd, 4)}} ${{details.currency_code || ''}}`);
+        }}
+        if (rateBits.length) parts.push(`Kur: ${{rateBits.join(', ')}}.`);
+        return parts.join(' ');
+    }}
+
+    if (indicatorKey === 'min_wage') {{
+        const parts = [`${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}}.`];
+        if (typeof details.annual_usd_nominal === 'number') parts.push(`Yillik nominal: $${{formatNumberTr(details.annual_usd_nominal, 0)}}.`);
+        if (details.effective_date) parts.push(`Gecerlilik: ${{details.effective_date}}.`);
+        return parts.join(' ');
+    }}
+
+    if (indicatorKey === 'bigmac') {{
+        const parts = [`${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}}.`];
+        if (typeof details.local_price === 'number') {{
+            parts.push(`Yerel fiyat: ${{formatNumberTr(details.local_price, 2)}} ${{details.currency_code || ''}}.`);
+        }}
+        if (details.date) parts.push(`Tarih: ${{details.date}}.`);
+        return parts.join(' ');
+    }}
+
+    if (indicatorKey.startsWith('water_')) {{
+        const parts = [`${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}}.`];
+        if (details.year) parts.push(`Yil: ${{details.year}}.`);
+        const context = getWaterContext(countryName);
+        if (context) parts.push(context);
+        return parts.join(' ');
+    }}
+
+    return `${{countryName}}: ${{formatIndicatorValue(indicatorKey, value)}}.`;
+}}
+
+function setActiveIndicatorHoverText(text, isEmpty = false) {{
+    const el = document.getElementById('activeIndicatorHover');
+    if (!el) return;
+    el.textContent = text;
+    if (isEmpty) {{
+        el.classList.add('empty');
+    }} else {{
+        el.classList.remove('empty');
+    }}
+}}
+
+function updateActiveIndicatorBanner() {{
+    const banner = document.getElementById('activeIndicatorBanner');
+    const titleEl = document.getElementById('activeIndicatorTitle');
+    const descEl = document.getElementById('activeIndicatorDesc');
+    const metaEl = document.getElementById('activeIndicatorMeta');
+    if (!banner || !titleEl || !descEl || !metaEl) return;
+
+    const key = window.activeIndicator;
+    if (!key) {{
+        banner.style.display = 'none';
+        setActiveIndicatorHoverText('Bir ulkenin uzerine gelin.', true);
+        return;
+    }}
+
+    const ind = externalIndicators[key];
+    const stats = computeIndicatorStats(key);
+    if (!ind || !stats) {{
+        banner.style.display = 'none';
+        setActiveIndicatorHoverText('Bir ulkenin uzerine gelin.', true);
+        return;
+    }}
+
+    const narrative = getIndicatorNarrative(key);
+    titleEl.textContent = getIndicatorDisplayLabel(key).toLocaleUpperCase('tr-TR');
+    descEl.textContent = narrative.description;
+    metaEl.textContent = [narrative.detail, buildIndicatorMetaText(key, stats)].filter(Boolean).join(' ');
+    banner.style.display = '';
+
+    if (window.activeIndicatorHoverCountry) {{
+        setActiveIndicatorHoverText(buildIndicatorCountryDetail(window.activeIndicatorHoverCountry, key), false);
+    }} else {{
+        setActiveIndicatorHoverText('Bir ulkenin uzerine gelin.', true);
+    }}
 }}
 
 function getCountryConflicts(countryName) {{
@@ -1875,31 +2285,22 @@ function updateIndicatorLegend() {{
         return;
     }}
 
-    const unit = ind.unit || '';
-    const label = ind.label || key;
     const [c1, c2] = getIndicatorGradient(key);
-    const source = ind.source || {{}};
-    const note = (key === 'bigmac' && source.latest_date)
-        ? `veri tarihi: ${{source.latest_date}}`
-        : (key === 'fx_pressure_score' && source.current_date)
-            ? `mevcut: ${{source.current_date}} · karsilastirma: ${{source.comparison_date_resolved || '-' }}`
-            : (source.lastupdated ? `kaynak guncelleme: ${{source.lastupdated}}` : '');
-    const fetched = source.updated_at_utc
-        ? `snapshot: ${{source.updated_at_utc}}`
-        : (externalData.fetched_at_utc ? `çekildi: ${{externalData.fetched_at_utc}}` : '');
-    const decimals = getIndicatorDecimals(key);
+    const label = getIndicatorDisplayLabel(key);
+    const narrative = getIndicatorNarrative(key);
+    const metaText = buildIndicatorMetaText(key, stats);
 
     el.style.display = '';
     el.innerHTML = `
-        <div style="font-weight:700; margin-bottom:2px;">${{label}}</div>
+        <div class="indicator-legend-title">${{escapeHtml(String(label).toLocaleUpperCase('tr-TR'))}}</div>
+        <div class="indicator-legend-desc">${{escapeHtml(narrative.description)}}</div>
         <div class="legend-bar" style="background: linear-gradient(90deg, ${{c1}} 0%, ${{c2}} 100%);"></div>
         <div class="legend-row">
-            <span>${{formatNumberTr(stats.min, decimals)}} ${{unit}}</span>
-            <span>${{formatNumberTr(stats.max, decimals)}} ${{unit}}</span>
+            <span>${{escapeHtml(formatIndicatorValue(key, stats.min))}}</span>
+            <span>${{escapeHtml(formatIndicatorValue(key, stats.max))}}</span>
         </div>
-        <div style="margin-top:6px; font-size:10px; color:#6c757d;">
-            ${{note}} ${{fetched}}
-        </div>
+        <div class="indicator-legend-detail">${{escapeHtml(narrative.detail)}}</div>
+        <div class="indicator-legend-detail">${{escapeHtml(metaText)}}</div>
     `;
 }}
 
@@ -1907,27 +2308,28 @@ function updateExternalOverlays() {{
     if (window.groupOverlayLayer) window.groupOverlayLayer.setStyle(groupStyle);
     if (window.indicatorOverlayLayer) window.indicatorOverlayLayer.setStyle(indicatorStyle);
     updateIndicatorLegend();
+    updateActiveIndicatorBanner();
 }}
 
 function updateIndicatorHoverInfo(countryName) {{
     const el = document.getElementById('indicatorHoverInfo');
     if (!el) return;
+    window.activeIndicatorHoverCountry = countryName || '';
     const key = window.activeIndicator;
     if (!key) {{
         el.textContent = '';
+        updateActiveIndicatorBanner();
         return;
     }}
-    const v = getIndicatorValue(countryName, key);
-    if (typeof v !== 'number' || Number.isNaN(v)) {{
-        el.textContent = `${{countryName}}: veri yok`;
-        return;
-    }}
-    el.textContent = `${{countryName}}: ${{formatIndicatorValue(key, v)}}`;
+    el.textContent = buildIndicatorCompactText(countryName, key);
+    updateActiveIndicatorBanner();
 }}
 
 function clearIndicatorHoverInfo() {{
     const el = document.getElementById('indicatorHoverInfo');
     if (el) el.textContent = '';
+    window.activeIndicatorHoverCountry = '';
+    setActiveIndicatorHoverText('Bir ulkenin uzerine gelin.', true);
 }}
 
 function toggleSpecial(type) {{
