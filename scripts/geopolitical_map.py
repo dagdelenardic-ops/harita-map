@@ -189,6 +189,24 @@ class GeopoliticalMap:
                 print(f"WARNING: Failed to load indicators.json: {e}")
                 self.indicators = {}
 
+        # Strategic build-time snapshots
+        self.strategic_snapshots = {
+            "sanctions": {"provider": "opensanctions", "updated_at_utc": "", "countries": {}},
+            "weather": {"provider": "open-meteo", "updated_at_utc": "", "countries": {}},
+            "air_quality": {"provider": "air-quality", "updated_at_utc": "", "countries": {}},
+            "fx": {"provider": "frankfurter", "updated_at_utc": "", "countries": {}},
+        }
+        for key in list(self.strategic_snapshots.keys()):
+            snapshot_path = self.base_dir / "data" / f"{key}.json"
+            if not snapshot_path.exists():
+                continue
+            try:
+                with open(snapshot_path, 'r', encoding='utf-8') as f:
+                    raw_snapshot = json.load(f)
+                self.strategic_snapshots[key] = self._normalize_country_keyed_payload(raw_snapshot)
+            except Exception as e:
+                print(f"WARNING: Failed to load {snapshot_path.name}: {e}")
+
         # Enrich events with video links (32. Gün vb.)
         for event in self.events:
             title = event.get('title', '')
@@ -427,7 +445,9 @@ class GeopoliticalMap:
         return normalized
 
     def _normalize_country_keyed_payload(self, payload: Dict[str, Any]) -> Dict[str, Any]:
-        countries = payload.get("countries") if isinstance(payload, dict) else {}
+        if not isinstance(payload, dict):
+            return {"updated_at_utc": "", "countries": {}}
+        countries = payload.get("countries") or {}
         normalized_countries = {}
         for raw_name, raw_note in (countries or {}).items():
             if not isinstance(raw_note, dict):
@@ -436,10 +456,10 @@ class GeopoliticalMap:
             if not country:
                 continue
             normalized_countries[country] = raw_note
-        return {
-            "updated_at_utc": payload.get("updated_at_utc", ""),
-            "countries": normalized_countries,
-        }
+        normalized = dict(payload)
+        normalized["countries"] = normalized_countries
+        normalized.setdefault("updated_at_utc", "")
+        return normalized
 
     def _normalize_current_conflicts(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         normalized_conflicts = []
@@ -508,7 +528,8 @@ class GeopoliticalMap:
 
         # External indicators/groups (NATO, G8, min wage, Big Mac etc.)
         indicators_json = json.dumps(self.indicators, ensure_ascii=False) if hasattr(self, 'indicators') else '{}'
-        
+        strategic_snapshots_json = json.dumps(self.strategic_snapshots, ensure_ascii=False) if hasattr(self, 'strategic_snapshots') else '{"sanctions":{"countries":{}},"weather":{"countries":{}},"air_quality":{"countries":{}},"fx":{"countries":{}}}'
+
         # Serialize master mappings for JavaScript
         turkish_to_english_json = json.dumps(self.turkish_to_english, ensure_ascii=False)
         english_to_turkish_json = json.dumps(self.english_to_turkish, ensure_ascii=False)
@@ -1359,6 +1380,10 @@ function parseMarkdownLinks(text) {
         <div style="display:flex; flex-direction:column; gap:6px;">
             <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
                 <option value="">Gösterge kapalı</option>
+                <option value="sanctions_risk_score">Yaptırım / Risk</option>
+                <option value="weather_pressure_score">İklim Baskısı</option>
+                <option value="air_quality_pm25">Hava Kalitesi (PM2.5)</option>
+                <option value="fx_pressure_score">Kur Baskısı (30g USD)</option>
                 <option value="min_wage">Asgari Ücret (USD/saat)</option>
                 <option value="bigmac">Big Mac Endeksi (USD)</option>
                 <option value="water_internal_total">Ic Tatli Su (milyar m3)</option>
@@ -1404,14 +1429,113 @@ const decades = {decades_json};
 
 // External datasets (groups + indicators)
 const externalData = {indicators_json};
+const strategicSnapshotData = {strategic_snapshots_json};
 const countryGroups = {{
     g8: new Set((externalData.groups && externalData.groups.g8) ? externalData.groups.g8 : []),
     nato: new Set((externalData.groups && externalData.groups.nato) ? externalData.groups.nato : []),
     brics_plus: new Set((externalData.groups && externalData.groups.brics_plus) ? externalData.groups.brics_plus : [])
 }};
-const externalIndicators = (externalData && externalData.indicators) ? externalData.indicators : {{}};
+const baseIndicators = (externalData && externalData.indicators) ? externalData.indicators : {{}};
 const waterSourceNotes = (waterSourceData && waterSourceData.countries) ? waterSourceData.countries : {{}};
 const activeConflicts = Array.isArray(currentConflictData && currentConflictData.conflicts) ? currentConflictData.conflicts : [];
+
+function buildStrategicIndicators(snapshots) {{
+    const sanctions = (snapshots && snapshots.sanctions) ? snapshots.sanctions : {{}};
+    const weather = (snapshots && snapshots.weather) ? snapshots.weather : {{}};
+    const airQuality = (snapshots && snapshots.air_quality) ? snapshots.air_quality : {{}};
+    const fx = (snapshots && snapshots.fx) ? snapshots.fx : {{}};
+    const out = {{}};
+
+    out.sanctions_risk_score = {{
+        label: 'Yaptirim / Risk',
+        unit: 'puan',
+        decimals: 0,
+        source: {{
+            type: sanctions.provider || 'opensanctions',
+            updated_at_utc: sanctions.updated_at_utc || '',
+            dataset_updated_at: sanctions.source && sanctions.source.dataset_updated_at ? sanctions.source.dataset_updated_at : '',
+            note: sanctions.source_note || ''
+        }},
+        by_country: Object.fromEntries(
+            Object.entries((sanctions && sanctions.countries) ? sanctions.countries : {{}}).map(([country, row]) => [
+                country,
+                Object.assign({{}}, row || {{}}, {{
+                    value: (row && typeof row.risk_score === 'number') ? row.risk_score : null
+                }})
+            ])
+        )
+    }};
+
+    out.weather_pressure_score = {{
+        label: 'Iklim Baskisi',
+        unit: 'puan',
+        decimals: 0,
+        source: {{
+            type: weather.provider || 'open-meteo',
+            updated_at_utc: weather.updated_at_utc || '',
+            note: weather.source_note || ''
+        }},
+        by_country: Object.fromEntries(
+            Object.entries((weather && weather.countries) ? weather.countries : {{}}).map(([country, row]) => [
+                country,
+                Object.assign({{}}, row || {{}}, {{
+                    value: (row && typeof row.pressure_score === 'number') ? row.pressure_score : null
+                }})
+            ])
+        )
+    }};
+
+    out.air_quality_pm25 = {{
+        label: 'Hava Kalitesi (PM2.5)',
+        unit: 'µg/m³',
+        decimals: 1,
+        source: {{
+            type: airQuality.provider || 'air-quality',
+            updated_at_utc: airQuality.updated_at_utc || '',
+            note: airQuality.source_note || ''
+        }},
+        by_country: Object.fromEntries(
+            Object.entries((airQuality && airQuality.countries) ? airQuality.countries : {{}}).map(([country, row]) => [
+                country,
+                Object.assign({{}}, row || {{}}, {{
+                    value: (row && row.current && typeof row.current.pm2_5 === 'number') ? row.current.pm2_5 : null
+                }})
+            ])
+        )
+    }};
+
+    out.fx_pressure_score = {{
+        label: 'Kur Baskisi (30 gun USD)',
+        unit: '%',
+        decimals: 1,
+        source: {{
+            type: fx.provider || 'frankfurter',
+            updated_at_utc: fx.updated_at_utc || '',
+            current_date: fx.source && fx.source.current_date ? fx.source.current_date : '',
+            comparison_date_resolved: fx.source && fx.source.comparison_date_resolved ? fx.source.comparison_date_resolved : '',
+            note: fx.source_note || ''
+        }},
+        by_country: Object.fromEntries(
+            Object.entries((fx && fx.countries) ? fx.countries : {{}}).map(([country, row]) => [
+                country,
+                Object.assign({{}}, row || {{}}, {{
+                    value: (row && typeof row.pressure_pct_30d === 'number') ? row.pressure_pct_30d : null
+                }})
+            ])
+        )
+    }};
+
+    return out;
+}}
+
+const strategicIndicators = buildStrategicIndicators(strategicSnapshotData);
+const externalIndicators = Object.assign({{}}, baseIndicators, strategicIndicators);
+const strategicCountries = {{
+    sanctions: (strategicSnapshotData && strategicSnapshotData.sanctions && strategicSnapshotData.sanctions.countries) ? strategicSnapshotData.sanctions.countries : {{}},
+    weather: (strategicSnapshotData && strategicSnapshotData.weather && strategicSnapshotData.weather.countries) ? strategicSnapshotData.weather.countries : {{}},
+    air_quality: (strategicSnapshotData && strategicSnapshotData.air_quality && strategicSnapshotData.air_quality.countries) ? strategicSnapshotData.air_quality.countries : {{}},
+    fx: (strategicSnapshotData && strategicSnapshotData.fx && strategicSnapshotData.fx.countries) ? strategicSnapshotData.fx.countries : {{}}
+}};
 
 // Expose to window for other injected scripts
 window.countryGroups = countryGroups;
@@ -1640,6 +1764,10 @@ function lerpColor(c1, c2, t) {{
 }}
 
 function getIndicatorGradient(indicatorKey) {{
+    if (indicatorKey === 'sanctions_risk_score') return ['#fff4cc', '#7f1d1d'];
+    if (indicatorKey === 'weather_pressure_score') return ['#e0f2fe', '#1d4ed8'];
+    if (indicatorKey === 'air_quality_pm25') return ['#ecfdf5', '#b91c1c'];
+    if (indicatorKey === 'fx_pressure_score') return ['#fff7ed', '#9a3412'];
     if (indicatorKey === 'water_internal_total') return ['#edf8fb', '#005b96'];
     if (indicatorKey === 'water_internal_per_capita') return ['#f1fbff', '#0b7285'];
     if (indicatorKey === 'water_stress') return ['#fff4cc', '#c0392b'];
@@ -1753,8 +1881,12 @@ function updateIndicatorLegend() {{
     const source = ind.source || {{}};
     const note = (key === 'bigmac' && source.latest_date)
         ? `veri tarihi: ${{source.latest_date}}`
-        : (source.lastupdated ? `kaynak guncelleme: ${{source.lastupdated}}` : '');
-    const fetched = externalData.fetched_at_utc ? `çekildi: ${{externalData.fetched_at_utc}}` : '';
+        : (key === 'fx_pressure_score' && source.current_date)
+            ? `mevcut: ${{source.current_date}} · karsilastirma: ${{source.comparison_date_resolved || '-' }}`
+            : (source.lastupdated ? `kaynak guncelleme: ${{source.lastupdated}}` : '');
+    const fetched = source.updated_at_utc
+        ? `snapshot: ${{source.updated_at_utc}}`
+        : (externalData.fetched_at_utc ? `çekildi: ${{externalData.fetched_at_utc}}` : '');
     const decimals = getIndicatorDecimals(key);
 
     el.style.display = '';
@@ -2251,6 +2383,196 @@ function buildCurrentConflictHtml(countryName) {{
     `;
 }}
 
+function formatSignedNumber(value, digits = 1, suffix = '') {{
+    if (typeof value !== 'number' || Number.isNaN(value)) return '-';
+    const sign = value > 0 ? '+' : '';
+    return `${{sign}}${{formatNumberTr(value, digits)}}${{suffix}}`;
+}}
+
+function buildSanctionsHtml(countryName) {{
+    const row = strategicCountries.sanctions[countryName] || null;
+    const snapshot = strategicSnapshotData && strategicSnapshotData.sanctions ? strategicSnapshotData.sanctions : {{}};
+    const datasets = row && Array.isArray(row.top_datasets) && row.top_datasets.length > 0
+        ? `<ul style="margin:6px 0 0 18px; padding:0;">${{row.top_datasets.map(item => `<li>${{item.name}} <span style="color:#7f8c8d;">(${{item.count}})</span></li>`).join('')}}</ul>`
+        : '<div style="color:#7f8c8d;font-style:italic;">Veri yok</div>';
+    const samples = row && Array.isArray(row.sample_targets) && row.sample_targets.length > 0
+        ? `<div style="font-size:11px;color:#bdc3c7;">${{row.sample_targets.join(' · ')}}</div>`
+        : '<div style="color:#7f8c8d;font-style:italic;">Ornek hedef yok</div>';
+    const updated = snapshot.updated_at_utc
+        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">Snapshot: ${{snapshot.updated_at_utc}}</div>`
+        : '';
+
+    return `
+        <details class="country-meta-card" open>
+            <summary>
+                <span>▼ Yaptirim / Risk</span>
+            </summary>
+            <div class="country-meta-content">
+                <div class="meta-row">
+                    <span class="meta-label">Risk Skoru</span>
+                    <div>${{row ? `${{row.risk_score || 0}}/100 <span style="font-size:11px;color:#7f8c8d;">${{row.risk_label || '-'}}</span>` : 'Veri yok'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Ilgili Kayit</span>
+                    <div>${{row ? formatNumberTr(row.matches_count || 0, 0) : '-'}}</div>
+                </div>
+                <div class="meta-row" style="align-items:flex-start;">
+                    <span class="meta-label">Baslica Listeler</span>
+                    <div>${{datasets}}</div>
+                </div>
+                <div class="meta-row" style="align-items:flex-start;">
+                    <span class="meta-label">Ornekler</span>
+                    <div>${{samples}}</div>
+                </div>
+                ${{
+                    snapshot.source_note
+                        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">${{snapshot.source_note}}</div>`
+                        : ''
+                }}
+                ${{updated}}
+            </div>
+        </details>
+    `;
+}}
+
+function buildWeatherRiskHtml(countryName) {{
+    const row = strategicCountries.weather[countryName] || null;
+    const snapshot = strategicSnapshotData && strategicSnapshotData.weather ? strategicSnapshotData.weather : {{}};
+    const current = row && row.current ? row.current : null;
+    const updated = snapshot.updated_at_utc
+        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">Snapshot: ${{snapshot.updated_at_utc}}</div>`
+        : '';
+
+    return `
+        <details class="country-meta-card" open>
+            <summary>
+                <span>▼ Iklim Baskisi</span>
+            </summary>
+            <div class="country-meta-content">
+                <div class="meta-row">
+                    <span class="meta-label">Durum</span>
+                    <div>${{current ? `${{current.weather_label || '-'}} <span style="font-size:11px;color:#7f8c8d;">${{current.time || '-'}}</span>` : 'Veri yok'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Skor</span>
+                    <div>${{row ? `${{row.pressure_score || 0}}/100 <span style="font-size:11px;color:#7f8c8d;">${{row.pressure_label || '-'}}</span>` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Sicaklik</span>
+                    <div>${{current && typeof current.temperature_2m === 'number' ? `${{formatNumberTr(current.temperature_2m, 1)}} °C` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Hissedilen</span>
+                    <div>${{current && typeof current.apparent_temperature === 'number' ? `${{formatNumberTr(current.apparent_temperature, 1)}} °C` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Ruzgar</span>
+                    <div>${{current && typeof current.wind_speed_10m === 'number' ? `${{formatNumberTr(current.wind_speed_10m, 1)}} km/sa` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Yagis</span>
+                    <div>${{current && typeof current.precipitation === 'number' ? `${{formatNumberTr(current.precipitation, 1)}} mm` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Nokta</span>
+                    <div>${{row ? `${{row.location_name || countryName}} <span style="font-size:11px;color:#7f8c8d;">(${{row.coord_source || '-'}})</span>` : '-'}}</div>
+                </div>
+                ${{updated}}
+            </div>
+        </details>
+    `;
+}}
+
+function buildAirQualityHtml(countryName) {{
+    const row = strategicCountries.air_quality[countryName] || null;
+    const snapshot = strategicSnapshotData && strategicSnapshotData.air_quality ? strategicSnapshotData.air_quality : {{}};
+    const current = row && row.current ? row.current : null;
+    const updated = snapshot.updated_at_utc
+        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">Snapshot: ${{snapshot.updated_at_utc}}</div>`
+        : '';
+
+    return `
+        <details class="country-meta-card" open>
+            <summary>
+                <span>▼ Hava Kalitesi</span>
+            </summary>
+            <div class="country-meta-content">
+                <div class="meta-row">
+                    <span class="meta-label">EAQI</span>
+                    <div>${{current && typeof current.european_aqi === 'number' ? `${{formatNumberTr(current.european_aqi, 0)}} <span style="font-size:11px;color:#7f8c8d;">${{row.aqi_label || '-'}}</span>` : 'Veri yok'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">PM2.5</span>
+                    <div>${{current && typeof current.pm2_5 === 'number' ? `${{formatNumberTr(current.pm2_5, 1)}} µg/m³` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">PM10</span>
+                    <div>${{current && typeof current.pm10 === 'number' ? `${{formatNumberTr(current.pm10, 1)}} µg/m³` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">NO2</span>
+                    <div>${{current && typeof current.nitrogen_dioxide === 'number' ? `${{formatNumberTr(current.nitrogen_dioxide, 1)}} µg/m³` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Ozon</span>
+                    <div>${{current && typeof current.ozone === 'number' ? `${{formatNumberTr(current.ozone, 1)}} µg/m³` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Kaynak</span>
+                    <div>${{row ? `${{row.data_source || snapshot.provider || '-'}} <span style="font-size:11px;color:#7f8c8d;">${{current && current.time ? current.time : ''}}</span>` : '-'}}</div>
+                </div>
+                ${{updated}}
+            </div>
+        </details>
+    `;
+}}
+
+function buildFxPressureHtml(countryName) {{
+    const row = strategicCountries.fx[countryName] || null;
+    const snapshot = strategicSnapshotData && strategicSnapshotData.fx ? strategicSnapshotData.fx : {{}};
+    const updated = snapshot.updated_at_utc
+        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">Snapshot: ${{snapshot.updated_at_utc}}</div>`
+        : '';
+    const sourceDates = snapshot.source && snapshot.source.current_date
+        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:4px;">${{snapshot.source.current_date}} vs ${{snapshot.source.comparison_date_resolved || '-'}}</div>`
+        : '';
+    const changeText = row
+        ? `${{formatSignedNumber(row.change_pct_30d, 1, '%')}} <span style="font-size:11px;color:#7f8c8d;">${{row.pressure_label || '-'}}</span>`
+        : 'Veri yok';
+
+    return `
+        <details class="country-meta-card" open>
+            <summary>
+                <span>▼ Kur Baskisi</span>
+            </summary>
+            <div class="country-meta-content">
+                <div class="meta-row">
+                    <span class="meta-label">30 Gunluk Degisim</span>
+                    <div>${{changeText}}${{sourceDates}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">1 USD</span>
+                    <div>${{row && typeof row.current_rate_local_per_usd === 'number' ? `${{formatNumberTr(row.current_rate_local_per_usd, 3)}} ${{row.currency_code || ''}}` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">30 Gun Once</span>
+                    <div>${{row && typeof row.previous_rate_local_per_usd === 'number' ? `${{formatNumberTr(row.previous_rate_local_per_usd, 3)}} ${{row.currency_code || ''}}` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Yerel Para</span>
+                    <div>${{row ? `${{row.currency_name || '-'}} <span style="font-size:11px;color:#7f8c8d;">(${{row.currency_code || ''}})</span>` : '-'}}</div>
+                </div>
+                ${{
+                    snapshot.source_note
+                        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">${{snapshot.source_note}}</div>`
+                        : ''
+                }}
+                ${{updated}}
+            </div>
+        </details>
+    `;
+}}
+
 function buildEconomyHtml(countryName) {{
     const badges = [];
     if (countryGroups.g8 && countryGroups.g8.has(countryName)) {{
@@ -2521,6 +2843,10 @@ function openSidebar(countryName) {{
     const metaResult = findCountryMeta(countryName);
     const conflictHtml = buildCurrentConflictHtml(countryName);
     const waterHtml = buildWaterHtml(countryName);
+    const sanctionsHtml = buildSanctionsHtml(countryName);
+    const weatherRiskHtml = buildWeatherRiskHtml(countryName);
+    const airQualityHtml = buildAirQualityHtml(countryName);
+    const fxHtml = buildFxPressureHtml(countryName);
     const econHtml = buildEconomyHtml(countryName);
     const countryConflicts = getCountryConflicts(countryName);
     if (metaContainer && metaResult) {{
@@ -2589,7 +2915,7 @@ function openSidebar(countryName) {{
                 </div>
             </details>
         `;
-        metaContainer.innerHTML += conflictHtml + waterHtml + econHtml;
+        metaContainer.innerHTML += conflictHtml + sanctionsHtml + weatherRiskHtml + airQualityHtml + fxHtml + waterHtml + econHtml;
         
         // 4. Draw Arrows
         if (countryConflicts.length > 0) {{
@@ -2600,7 +2926,7 @@ function openSidebar(countryName) {{
              window.hoi4Layer.setArrows([]);
         }}
     }} else {{
-        if (metaContainer) metaContainer.innerHTML = conflictHtml + waterHtml + econHtml;
+        if (metaContainer) metaContainer.innerHTML = conflictHtml + sanctionsHtml + weatherRiskHtml + airQualityHtml + fxHtml + waterHtml + econHtml;
         if (countryConflicts.length > 0) {{
             drawCountryConflicts(countryName, countryConflicts);
         }} else if (window.hoi4Layer) {{

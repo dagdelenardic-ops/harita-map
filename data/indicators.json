@@ -1,5 +1,5 @@
 {
-  "fetched_at_utc": "2026-02-11T05:13:33Z",
+  "fetched_at_utc": "2026-03-08T14:35:25Z",
   "groups": {
     "g8": [
       "ABD",
@@ -213,6 +213,12 @@
           "annual_usd_nominal": 24128.0,
           "monthly_usd_note": null,
           "effective_date": "1 June 2022"
+        },
+        "Cabo Verde": {
+          "hourly_usd_nominal": 0.73,
+          "annual_usd_nominal": 1673.0,
+          "monthly_usd_note": 141.0,
+          "effective_date": "1 Jan 2018"
         },
         "Orta Afrika Cumhuriyeti": {
           "hourly_usd_nominal": 0.39,
@@ -1321,6 +1327,5294 @@
           "local_price": 51.9,
           "dollar_price": 2.7766928999053,
           "usd_raw": -0.52043
+        }
+      }
+    },
+    "water_internal_total": {
+      "label": "Yenilenebilir İç Tatlı Su (milyar m3)",
+      "unit": "milyar m3",
+      "decimals": 1,
+      "source": {
+        "type": "worldbank",
+        "indicator_code": "ER.H2O.INTR.K3",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.INTR.K3?format=json&per_page=20000&mrv=1",
+        "lastupdated": "2026-02-24",
+        "total": 266
+      },
+      "by_country": {
+        "Afganistan": {
+          "value": 47.15,
+          "year": "2022",
+          "countryiso3code": "AFG"
+        },
+        "Arnavutluk": {
+          "value": 26.9,
+          "year": "2022",
+          "countryiso3code": "ALB"
+        },
+        "Cezayir": {
+          "value": 11.247,
+          "year": "2022",
+          "countryiso3code": "DZA"
+        },
+        "Angola": {
+          "value": 148.0,
+          "year": "2022",
+          "countryiso3code": "AGO"
+        },
+        "Arjantin": {
+          "value": 292.0,
+          "year": "2022",
+          "countryiso3code": "ARG"
+        },
+        "Ermenistan": {
+          "value": 6.859,
+          "year": "2022",
+          "countryiso3code": "ARM"
+        },
+        "Avustralya": {
+          "value": 492.0,
+          "year": "2022",
+          "countryiso3code": "AUS"
+        },
+        "Avusturya": {
+          "value": 55.0,
+          "year": "2022",
+          "countryiso3code": "AUT"
+        },
+        "Azerbaycan": {
+          "value": 8.115,
+          "year": "2022",
+          "countryiso3code": "AZE"
+        },
+        "Bangladeş": {
+          "value": 105.0,
+          "year": "2022",
+          "countryiso3code": "BGD"
+        },
+        "Belarus": {
+          "value": 34.0,
+          "year": "2022",
+          "countryiso3code": "BLR"
+        },
+        "Belçika": {
+          "value": 12.0,
+          "year": "2022",
+          "countryiso3code": "BEL"
+        },
+        "Benin": {
+          "value": 10.3,
+          "year": "2022",
+          "countryiso3code": "BEN"
+        },
+        "Bolivya": {
+          "value": 303.5,
+          "year": "2022",
+          "countryiso3code": "BOL"
+        },
+        "Bosna Hersek": {
+          "value": 35.5,
+          "year": "2022",
+          "countryiso3code": "BIH"
+        },
+        "Botsvana": {
+          "value": 2.4,
+          "year": "2022",
+          "countryiso3code": "BWA"
+        },
+        "Brezilya": {
+          "value": 5661.0,
+          "year": "2022",
+          "countryiso3code": "BRA"
+        },
+        "Bulgaristan": {
+          "value": 21.0,
+          "year": "2022",
+          "countryiso3code": "BGR"
+        },
+        "Burkina Faso": {
+          "value": 12.5,
+          "year": "2022",
+          "countryiso3code": "BFA"
+        },
+        "Burundi": {
+          "value": 10.06,
+          "year": "2022",
+          "countryiso3code": "BDI"
+        },
+        "Cabo Verde": {
+          "value": 0.3,
+          "year": "2022",
+          "countryiso3code": "CPV"
+        },
+        "Kamboçya": {
+          "value": 120.6,
+          "year": "2022",
+          "countryiso3code": "KHM"
+        },
+        "Kamerun": {
+          "value": 273.0,
+          "year": "2022",
+          "countryiso3code": "CMR"
+        },
+        "Kanada": {
+          "value": 2850.0,
+          "year": "2022",
+          "countryiso3code": "CAN"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "value": 141.0,
+          "year": "2022",
+          "countryiso3code": "CAF"
+        },
+        "Çad": {
+          "value": 15.0,
+          "year": "2022",
+          "countryiso3code": "TCD"
+        },
+        "Şili": {
+          "value": 885.0,
+          "year": "2022",
+          "countryiso3code": "CHL"
+        },
+        "Çin": {
+          "value": 2812.9,
+          "year": "2022",
+          "countryiso3code": "CHN"
+        },
+        "Kolombiya": {
+          "value": 2145.0,
+          "year": "2022",
+          "countryiso3code": "COL"
+        },
+        "Komorlar": {
+          "value": 1.2,
+          "year": "2022",
+          "countryiso3code": "COM"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "value": 900.0,
+          "year": "2022",
+          "countryiso3code": "COD"
+        },
+        "Fildişi Sahili": {
+          "value": 76.84,
+          "year": "2022",
+          "countryiso3code": "CIV"
+        },
+        "Hırvatistan": {
+          "value": 37.7,
+          "year": "2022",
+          "countryiso3code": "HRV"
+        },
+        "Küba": {
+          "value": 38.12,
+          "year": "2022",
+          "countryiso3code": "CUB"
+        },
+        "Kıbrıs": {
+          "value": 0.78,
+          "year": "2022",
+          "countryiso3code": "CYP"
+        },
+        "Çek Cumhuriyeti": {
+          "value": 13.15,
+          "year": "2022",
+          "countryiso3code": "CZE"
+        },
+        "Danimarka": {
+          "value": 6.0,
+          "year": "2022",
+          "countryiso3code": "DNK"
+        },
+        "Cibuti": {
+          "value": 0.3,
+          "year": "2022",
+          "countryiso3code": "DJI"
+        },
+        "Ekvador": {
+          "value": 442.4,
+          "year": "2022",
+          "countryiso3code": "ECU"
+        },
+        "Mısır": {
+          "value": 1.0,
+          "year": "2022",
+          "countryiso3code": "EGY"
+        },
+        "El Salvador": {
+          "value": 15.63,
+          "year": "2022",
+          "countryiso3code": "SLV"
+        },
+        "Ekvator Ginesi": {
+          "value": 26.0,
+          "year": "2022",
+          "countryiso3code": "GNQ"
+        },
+        "Eritre": {
+          "value": 2.8,
+          "year": "2022",
+          "countryiso3code": "ERI"
+        },
+        "Estonya": {
+          "value": 12.71,
+          "year": "2022",
+          "countryiso3code": "EST"
+        },
+        "Esvatini": {
+          "value": 2.64,
+          "year": "2022",
+          "countryiso3code": "SWZ"
+        },
+        "Etiyopya": {
+          "value": 122.0,
+          "year": "2022",
+          "countryiso3code": "ETH"
+        },
+        "Finlandiya": {
+          "value": 107.0,
+          "year": "2022",
+          "countryiso3code": "FIN"
+        },
+        "Fransa": {
+          "value": 200.0,
+          "year": "2022",
+          "countryiso3code": "FRA"
+        },
+        "Gabon": {
+          "value": 164.0,
+          "year": "2022",
+          "countryiso3code": "GAB"
+        },
+        "Gambiya": {
+          "value": 3.0,
+          "year": "2022",
+          "countryiso3code": "GMB"
+        },
+        "Gürcistan": {
+          "value": 58.13,
+          "year": "2022",
+          "countryiso3code": "GEO"
+        },
+        "Almanya": {
+          "value": 107.0,
+          "year": "2022",
+          "countryiso3code": "DEU"
+        },
+        "Gana": {
+          "value": 30.3,
+          "year": "2022",
+          "countryiso3code": "GHA"
+        },
+        "Yunanistan": {
+          "value": 58.0,
+          "year": "2022",
+          "countryiso3code": "GRC"
+        },
+        "Guatemala": {
+          "value": 109.2,
+          "year": "2022",
+          "countryiso3code": "GTM"
+        },
+        "Gine": {
+          "value": 226.0,
+          "year": "2022",
+          "countryiso3code": "GIN"
+        },
+        "Gine-Bissau": {
+          "value": 16.0,
+          "year": "2022",
+          "countryiso3code": "GNB"
+        },
+        "Guyana": {
+          "value": 241.0,
+          "year": "2022",
+          "countryiso3code": "GUY"
+        },
+        "Haiti": {
+          "value": 13.007,
+          "year": "2022",
+          "countryiso3code": "HTI"
+        },
+        "Macaristan": {
+          "value": 6.0,
+          "year": "2022",
+          "countryiso3code": "HUN"
+        },
+        "İzlanda": {
+          "value": 170.0,
+          "year": "2022",
+          "countryiso3code": "ISL"
+        },
+        "Hindistan": {
+          "value": 1446.0,
+          "year": "2022",
+          "countryiso3code": "IND"
+        },
+        "Endonezya": {
+          "value": 2018.7,
+          "year": "2022",
+          "countryiso3code": "IDN"
+        },
+        "İran": {
+          "value": 128.5,
+          "year": "2022",
+          "countryiso3code": "IRN"
+        },
+        "Irak": {
+          "value": 35.2,
+          "year": "2022",
+          "countryiso3code": "IRQ"
+        },
+        "İrlanda": {
+          "value": 49.0,
+          "year": "2022",
+          "countryiso3code": "IRL"
+        },
+        "İtalya": {
+          "value": 182.5,
+          "year": "2022",
+          "countryiso3code": "ITA"
+        },
+        "Jamaika": {
+          "value": 10.823,
+          "year": "2022",
+          "countryiso3code": "JAM"
+        },
+        "Japonya": {
+          "value": 430.0,
+          "year": "2022",
+          "countryiso3code": "JPN"
+        },
+        "Ürdün": {
+          "value": 0.682,
+          "year": "2022",
+          "countryiso3code": "JOR"
+        },
+        "Kazakistan": {
+          "value": 64.35,
+          "year": "2022",
+          "countryiso3code": "KAZ"
+        },
+        "Kenya": {
+          "value": 20.7,
+          "year": "2022",
+          "countryiso3code": "KEN"
+        },
+        "Kuveyt": {
+          "value": 0.0,
+          "year": "2022",
+          "countryiso3code": "KWT"
+        },
+        "Kırgızistan": {
+          "value": 48.93,
+          "year": "2022",
+          "countryiso3code": "KGZ"
+        },
+        "Letonya": {
+          "value": 16.94,
+          "year": "2022",
+          "countryiso3code": "LVA"
+        },
+        "Lübnan": {
+          "value": 4.8,
+          "year": "2022",
+          "countryiso3code": "LBN"
+        },
+        "Lesoto": {
+          "value": 5.23,
+          "year": "2022",
+          "countryiso3code": "LSO"
+        },
+        "Liberya": {
+          "value": 200.0,
+          "year": "2022",
+          "countryiso3code": "LBR"
+        },
+        "Libya": {
+          "value": 0.7,
+          "year": "2022",
+          "countryiso3code": "LBY"
+        },
+        "Litvanya": {
+          "value": 15.46,
+          "year": "2022",
+          "countryiso3code": "LTU"
+        },
+        "Lüksemburg": {
+          "value": 1.0,
+          "year": "2022",
+          "countryiso3code": "LUX"
+        },
+        "Madagaskar": {
+          "value": 337.0,
+          "year": "2022",
+          "countryiso3code": "MDG"
+        },
+        "Malavi": {
+          "value": 16.14,
+          "year": "2022",
+          "countryiso3code": "MWI"
+        },
+        "Malezya": {
+          "value": 580.0,
+          "year": "2022",
+          "countryiso3code": "MYS"
+        },
+        "Maldivler": {
+          "value": 0.03,
+          "year": "2022",
+          "countryiso3code": "MDV"
+        },
+        "Mali": {
+          "value": 60.0,
+          "year": "2022",
+          "countryiso3code": "MLI"
+        },
+        "Moritanya": {
+          "value": 0.4,
+          "year": "2022",
+          "countryiso3code": "MRT"
+        },
+        "Mauritius": {
+          "value": 2.751,
+          "year": "2022",
+          "countryiso3code": "MUS"
+        },
+        "Meksika": {
+          "value": 409.0,
+          "year": "2022",
+          "countryiso3code": "MEX"
+        },
+        "Moldova": {
+          "value": 1.62,
+          "year": "2022",
+          "countryiso3code": "MDA"
+        },
+        "Moğolistan": {
+          "value": 34.8,
+          "year": "2022",
+          "countryiso3code": "MNG"
+        },
+        "Fas": {
+          "value": 29.0,
+          "year": "2022",
+          "countryiso3code": "MAR"
+        },
+        "Mozambik": {
+          "value": 100.3,
+          "year": "2022",
+          "countryiso3code": "MOZ"
+        },
+        "Myanmar": {
+          "value": 1002.8,
+          "year": "2022",
+          "countryiso3code": "MMR"
+        },
+        "Namibya": {
+          "value": 6.16,
+          "year": "2022",
+          "countryiso3code": "NAM"
+        },
+        "Nepal": {
+          "value": 198.2,
+          "year": "2022",
+          "countryiso3code": "NPL"
+        },
+        "Hollanda": {
+          "value": 11.0,
+          "year": "2022",
+          "countryiso3code": "NLD"
+        },
+        "Yeni Zelanda": {
+          "value": 327.0,
+          "year": "2022",
+          "countryiso3code": "NZL"
+        },
+        "Nikaragua": {
+          "value": 156.21,
+          "year": "2022",
+          "countryiso3code": "NIC"
+        },
+        "Nijer": {
+          "value": 3.5,
+          "year": "2022",
+          "countryiso3code": "NER"
+        },
+        "Nijerya": {
+          "value": 221.0,
+          "year": "2022",
+          "countryiso3code": "NGA"
+        },
+        "Makedonya": {
+          "value": 5.4,
+          "year": "2022",
+          "countryiso3code": "MKD"
+        },
+        "Norveç": {
+          "value": 382.0,
+          "year": "2022",
+          "countryiso3code": "NOR"
+        },
+        "Pakistan": {
+          "value": 55.0,
+          "year": "2022",
+          "countryiso3code": "PAK"
+        },
+        "Papua Yeni Gine": {
+          "value": 801.0,
+          "year": "2022",
+          "countryiso3code": "PNG"
+        },
+        "Paraguay": {
+          "value": 117.0,
+          "year": "2022",
+          "countryiso3code": "PRY"
+        },
+        "Peru": {
+          "value": 1641.0,
+          "year": "2022",
+          "countryiso3code": "PER"
+        },
+        "Filipinler": {
+          "value": 479.0,
+          "year": "2022",
+          "countryiso3code": "PHL"
+        },
+        "Polonya": {
+          "value": 53.6,
+          "year": "2022",
+          "countryiso3code": "POL"
+        },
+        "Portekiz": {
+          "value": 38.0,
+          "year": "2022",
+          "countryiso3code": "PRT"
+        },
+        "Katar": {
+          "value": 0.056,
+          "year": "2022",
+          "countryiso3code": "QAT"
+        },
+        "Romanya": {
+          "value": 42.38,
+          "year": "2022",
+          "countryiso3code": "ROU"
+        },
+        "Rusya": {
+          "value": 4312.0,
+          "year": "2022",
+          "countryiso3code": "RUS"
+        },
+        "Ruanda": {
+          "value": 9.5,
+          "year": "2022",
+          "countryiso3code": "RWA"
+        },
+        "Suudi Arabistan": {
+          "value": 2.4,
+          "year": "2022",
+          "countryiso3code": "SAU"
+        },
+        "Senegal": {
+          "value": 25.8,
+          "year": "2022",
+          "countryiso3code": "SEN"
+        },
+        "Sierra Leone": {
+          "value": 160.0,
+          "year": "2022",
+          "countryiso3code": "SLE"
+        },
+        "Singapur": {
+          "value": 0.6,
+          "year": "2022",
+          "countryiso3code": "SGP"
+        },
+        "Slovakya": {
+          "value": 12.6,
+          "year": "2022",
+          "countryiso3code": "SVK"
+        },
+        "Slovenya": {
+          "value": 18.67,
+          "year": "2022",
+          "countryiso3code": "SVN"
+        },
+        "Güney Afrika": {
+          "value": 44.8,
+          "year": "2022",
+          "countryiso3code": "ZAF"
+        },
+        "Güney Sudan": {
+          "value": 26.0,
+          "year": "2022",
+          "countryiso3code": "SSD"
+        },
+        "İspanya": {
+          "value": 111.2,
+          "year": "2022",
+          "countryiso3code": "ESP"
+        },
+        "Sri Lanka": {
+          "value": 52.8,
+          "year": "2022",
+          "countryiso3code": "LKA"
+        },
+        "Sudan": {
+          "value": 4.0,
+          "year": "2022",
+          "countryiso3code": "SDN"
+        },
+        "Surinam": {
+          "value": 99.0,
+          "year": "2022",
+          "countryiso3code": "SUR"
+        },
+        "İsveç": {
+          "value": 171.0,
+          "year": "2022",
+          "countryiso3code": "SWE"
+        },
+        "İsviçre": {
+          "value": 40.4,
+          "year": "2022",
+          "countryiso3code": "CHE"
+        },
+        "Suriye": {
+          "value": 7.132,
+          "year": "2022",
+          "countryiso3code": "SYR"
+        },
+        "Tacikistan": {
+          "value": 63.46,
+          "year": "2022",
+          "countryiso3code": "TJK"
+        },
+        "Tayland": {
+          "value": 224.51,
+          "year": "2022",
+          "countryiso3code": "THA"
+        },
+        "Togo": {
+          "value": 11.5,
+          "year": "2022",
+          "countryiso3code": "TGO"
+        },
+        "Trinidad ve Tobago": {
+          "value": 3.84,
+          "year": "2022",
+          "countryiso3code": "TTO"
+        },
+        "Tunus": {
+          "value": 4.195,
+          "year": "2022",
+          "countryiso3code": "TUN"
+        },
+        "Türkiye": {
+          "value": 227.0,
+          "year": "2022",
+          "countryiso3code": "TUR"
+        },
+        "Türkmenistan": {
+          "value": 1.405,
+          "year": "2022",
+          "countryiso3code": "TKM"
+        },
+        "Uganda": {
+          "value": 39.0,
+          "year": "2022",
+          "countryiso3code": "UGA"
+        },
+        "Ukrayna": {
+          "value": 55.1,
+          "year": "2022",
+          "countryiso3code": "UKR"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "value": 0.15,
+          "year": "2022",
+          "countryiso3code": "ARE"
+        },
+        "Birleşik Krallık": {
+          "value": 145.0,
+          "year": "2022",
+          "countryiso3code": "GBR"
+        },
+        "ABD": {
+          "value": 2818.0,
+          "year": "2022",
+          "countryiso3code": "USA"
+        },
+        "Uruguay": {
+          "value": 92.2,
+          "year": "2022",
+          "countryiso3code": "URY"
+        },
+        "Özbekistan": {
+          "value": 16.34,
+          "year": "2022",
+          "countryiso3code": "UZB"
+        },
+        "Venezuela": {
+          "value": 805.0,
+          "year": "2022",
+          "countryiso3code": "VEN"
+        },
+        "Vietnam": {
+          "value": 359.42,
+          "year": "2022",
+          "countryiso3code": "VNM"
+        },
+        "Yemen": {
+          "value": 2.1,
+          "year": "2022",
+          "countryiso3code": "YEM"
+        },
+        "Zambiya": {
+          "value": 80.2,
+          "year": "2022",
+          "countryiso3code": "ZMB"
+        },
+        "Zimbabve": {
+          "value": 12.26,
+          "year": "2022",
+          "countryiso3code": "ZWE"
+        }
+      }
+    },
+    "water_internal_per_capita": {
+      "label": "Yenilenebilir İç Tatlı Su / Kişi",
+      "unit": "m3/kişi",
+      "decimals": 0,
+      "source": {
+        "type": "worldbank",
+        "indicator_code": "ER.H2O.INTR.PC",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.INTR.PC?format=json&per_page=20000&mrv=1",
+        "lastupdated": "2026-02-24",
+        "total": 266
+      },
+      "by_country": {
+        "Afganistan": {
+          "value": 1161.93557223737,
+          "year": "2022",
+          "countryiso3code": "AFG"
+        },
+        "Arnavutluk": {
+          "value": 10972.2650507661,
+          "year": "2022",
+          "countryiso3code": "ALB"
+        },
+        "Cezayir": {
+          "value": 247.309712525493,
+          "year": "2022",
+          "countryiso3code": "DZA"
+        },
+        "Angola": {
+          "value": 4153.21676881475,
+          "year": "2022",
+          "countryiso3code": "AGO"
+        },
+        "Arjantin": {
+          "value": 6430.59851430271,
+          "year": "2022",
+          "countryiso3code": "ARG"
+        },
+        "Ermenistan": {
+          "value": 2310.04984507611,
+          "year": "2022",
+          "countryiso3code": "ARM"
+        },
+        "Avustralya": {
+          "value": 18909.4613835938,
+          "year": "2022",
+          "countryiso3code": "AUS"
+        },
+        "Avusturya": {
+          "value": 6082.82529760776,
+          "year": "2022",
+          "countryiso3code": "AUT"
+        },
+        "Azerbaycan": {
+          "value": 800.157290315405,
+          "year": "2022",
+          "countryiso3code": "AZE"
+        },
+        "Bangladeş": {
+          "value": 619.889977558035,
+          "year": "2022",
+          "countryiso3code": "BGD"
+        },
+        "Belarus": {
+          "value": 3684.41031717246,
+          "year": "2022",
+          "countryiso3code": "BLR"
+        },
+        "Belçika": {
+          "value": 1027.3787885663,
+          "year": "2022",
+          "countryiso3code": "BEL"
+        },
+        "Benin": {
+          "value": 748.573658303452,
+          "year": "2022",
+          "countryiso3code": "BEN"
+        },
+        "Bolivya": {
+          "value": 25130.0927354243,
+          "year": "2022",
+          "countryiso3code": "BOL"
+        },
+        "Bosna Hersek": {
+          "value": 11077.1273857168,
+          "year": "2022",
+          "countryiso3code": "BIH"
+        },
+        "Botsvana": {
+          "value": 983.650095987855,
+          "year": "2022",
+          "countryiso3code": "BWA"
+        },
+        "Brezilya": {
+          "value": 26917.8664854327,
+          "year": "2022",
+          "countryiso3code": "BRA"
+        },
+        "Bulgaristan": {
+          "value": 3248.21112506123,
+          "year": "2022",
+          "countryiso3code": "BGR"
+        },
+        "Burkina Faso": {
+          "value": 555.332484666826,
+          "year": "2022",
+          "countryiso3code": "BFA"
+        },
+        "Burundi": {
+          "value": 755.193059550576,
+          "year": "2022",
+          "countryiso3code": "BDI"
+        },
+        "Cabo Verde": {
+          "value": 577.21057218884,
+          "year": "2022",
+          "countryiso3code": "CPV"
+        },
+        "Kamboçya": {
+          "value": 7010.92518401063,
+          "year": "2022",
+          "countryiso3code": "KHM"
+        },
+        "Kamerun": {
+          "value": 9879.57378577776,
+          "year": "2022",
+          "countryiso3code": "CMR"
+        },
+        "Kanada": {
+          "value": 73197.1653742787,
+          "year": "2022",
+          "countryiso3code": "CAN"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "value": 27657.6934778255,
+          "year": "2022",
+          "countryiso3code": "CAF"
+        },
+        "Çad": {
+          "value": 812.773945458317,
+          "year": "2022",
+          "countryiso3code": "TCD"
+        },
+        "Şili": {
+          "value": 45261.513352709,
+          "year": "2022",
+          "countryiso3code": "CHL"
+        },
+        "Çin": {
+          "value": 1991.89193973835,
+          "year": "2022",
+          "countryiso3code": "CHN"
+        },
+        "Kolombiya": {
+          "value": 41458.9338919227,
+          "year": "2022",
+          "countryiso3code": "COL"
+        },
+        "Komorlar": {
+          "value": 1438.52464911986,
+          "year": "2022",
+          "countryiso3code": "COM"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "value": 8789.32274635319,
+          "year": "2022",
+          "countryiso3code": "COD"
+        },
+        "Fildişi Sahili": {
+          "value": 2528.04720986694,
+          "year": "2022",
+          "countryiso3code": "CIV"
+        },
+        "Hırvatistan": {
+          "value": 9777.88129133392,
+          "year": "2022",
+          "countryiso3code": "HRV"
+        },
+        "Küba": {
+          "value": 3446.71070596086,
+          "year": "2022",
+          "countryiso3code": "CUB"
+        },
+        "Kıbrıs": {
+          "value": 585.862682800424,
+          "year": "2022",
+          "countryiso3code": "CYP"
+        },
+        "Çek Cumhuriyeti": {
+          "value": 1232.18277758923,
+          "year": "2022",
+          "countryiso3code": "CZE"
+        },
+        "Danimarka": {
+          "value": 1016.42595159068,
+          "year": "2022",
+          "countryiso3code": "DNK"
+        },
+        "Cibuti": {
+          "value": 263.829966862956,
+          "year": "2022",
+          "countryiso3code": "DJI"
+        },
+        "Ekvador": {
+          "value": 24820.6102178441,
+          "year": "2022",
+          "countryiso3code": "ECU"
+        },
+        "Mısır": {
+          "value": 8.8795554894522,
+          "year": "2022",
+          "countryiso3code": "EGY"
+        },
+        "El Salvador": {
+          "value": 2488.72708535984,
+          "year": "2022",
+          "countryiso3code": "SLV"
+        },
+        "Ekvator Ginesi": {
+          "value": 14416.052829289,
+          "year": "2022",
+          "countryiso3code": "GNQ"
+        },
+        "Eritre": {
+          "value": 821.247551289109,
+          "year": "2022",
+          "countryiso3code": "ERI"
+        },
+        "Estonya": {
+          "value": 9422.91153880371,
+          "year": "2022",
+          "countryiso3code": "EST"
+        },
+        "Esvatini": {
+          "value": 2165.85706820071,
+          "year": "2022",
+          "countryiso3code": "SWZ"
+        },
+        "Etiyopya": {
+          "value": 973.008683296975,
+          "year": "2022",
+          "countryiso3code": "ETH"
+        },
+        "Finlandiya": {
+          "value": 19258.0919082537,
+          "year": "2022",
+          "countryiso3code": "FIN"
+        },
+        "Fransa": {
+          "value": 2933.21980990477,
+          "year": "2022",
+          "countryiso3code": "FRA"
+        },
+        "Gabon": {
+          "value": 67468.9714725556,
+          "year": "2022",
+          "countryiso3code": "GAB"
+        },
+        "Gambiya": {
+          "value": 1137.88512670351,
+          "year": "2022",
+          "countryiso3code": "GMB"
+        },
+        "Gürcistan": {
+          "value": 15657.904022678,
+          "year": "2022",
+          "countryiso3code": "GEO"
+        },
+        "Almanya": {
+          "value": 1286.40073765825,
+          "year": "2022",
+          "countryiso3code": "DEU"
+        },
+        "Gana": {
+          "value": 914.050531368042,
+          "year": "2022",
+          "countryiso3code": "GHA"
+        },
+        "Yunanistan": {
+          "value": 5557.21526793155,
+          "year": "2022",
+          "countryiso3code": "GRC"
+        },
+        "Guatemala": {
+          "value": 6118.37475123792,
+          "year": "2022",
+          "countryiso3code": "GTM"
+        },
+        "Gine": {
+          "value": 16079.5302102,
+          "year": "2022",
+          "countryiso3code": "GIN"
+        },
+        "Gine-Bissau": {
+          "value": 7599.04043116955,
+          "year": "2022",
+          "countryiso3code": "GNB"
+        },
+        "Guyana": {
+          "value": 293316.878378165,
+          "year": "2022",
+          "countryiso3code": "GUY"
+        },
+        "Haiti": {
+          "value": 1130.68893353962,
+          "year": "2022",
+          "countryiso3code": "HTI"
+        },
+        "Macaristan": {
+          "value": 624.669835963783,
+          "year": "2022",
+          "countryiso3code": "HUN"
+        },
+        "İzlanda": {
+          "value": 445022.683067934,
+          "year": "2022",
+          "countryiso3code": "ISL"
+        },
+        "Hindistan": {
+          "value": 1014.43556399726,
+          "year": "2022",
+          "countryiso3code": "IND"
+        },
+        "Endonezya": {
+          "value": 7239.88154109194,
+          "year": "2022",
+          "countryiso3code": "IDN"
+        },
+        "İran": {
+          "value": 1435.365342256,
+          "year": "2022",
+          "countryiso3code": "IRN"
+        },
+        "Irak": {
+          "value": 798.71930804768,
+          "year": "2022",
+          "countryiso3code": "IRQ"
+        },
+        "İrlanda": {
+          "value": 9399.87369639099,
+          "year": "2022",
+          "countryiso3code": "IRL"
+        },
+        "İtalya": {
+          "value": 3092.50397878173,
+          "year": "2022",
+          "countryiso3code": "ITA"
+        },
+        "Jamaika": {
+          "value": 3812.06448140707,
+          "year": "2022",
+          "countryiso3code": "JAM"
+        },
+        "Japonya": {
+          "value": 3436.56373867893,
+          "year": "2022",
+          "countryiso3code": "JPN"
+        },
+        "Ürdün": {
+          "value": 60.5884919355562,
+          "year": "2022",
+          "countryiso3code": "JOR"
+        },
+        "Kazakistan": {
+          "value": 3211.94189514754,
+          "year": "2022",
+          "countryiso3code": "KAZ"
+        },
+        "Kenya": {
+          "value": 381.549511643352,
+          "year": "2022",
+          "countryiso3code": "KEN"
+        },
+        "Kuveyt": {
+          "value": 0.0,
+          "year": "2022",
+          "countryiso3code": "KWT"
+        },
+        "Kırgızistan": {
+          "value": 7014.83250707505,
+          "year": "2022",
+          "countryiso3code": "KGZ"
+        },
+        "Letonya": {
+          "value": 9013.59648352678,
+          "year": "2022",
+          "countryiso3code": "LVA"
+        },
+        "Lübnan": {
+          "value": 835.583460948398,
+          "year": "2022",
+          "countryiso3code": "LBN"
+        },
+        "Lesoto": {
+          "value": 2287.72893692779,
+          "year": "2022",
+          "countryiso3code": "LSO"
+        },
+        "Liberya": {
+          "value": 37221.1161347211,
+          "year": "2022",
+          "countryiso3code": "LBR"
+        },
+        "Libya": {
+          "value": 96.9018405120293,
+          "year": "2022",
+          "countryiso3code": "LBY"
+        },
+        "Litvanya": {
+          "value": 5459.73551007032,
+          "year": "2022",
+          "countryiso3code": "LTU"
+        },
+        "Lüksemburg": {
+          "value": 1531.15205411704,
+          "year": "2022",
+          "countryiso3code": "LUX"
+        },
+        "Madagaskar": {
+          "value": 11071.9555218848,
+          "year": "2022",
+          "countryiso3code": "MDG"
+        },
+        "Malavi": {
+          "value": 784.686345212985,
+          "year": "2022",
+          "countryiso3code": "MWI"
+        },
+        "Malezya": {
+          "value": 16716.8686722509,
+          "year": "2022",
+          "countryiso3code": "MYS"
+        },
+        "Maldivler": {
+          "value": 57.2403292463738,
+          "year": "2022",
+          "countryiso3code": "MDV"
+        },
+        "Mali": {
+          "value": 2600.48264957976,
+          "year": "2022",
+          "countryiso3code": "MLI"
+        },
+        "Moritanya": {
+          "value": 82.040562084503,
+          "year": "2022",
+          "countryiso3code": "MRT"
+        },
+        "Mauritius": {
+          "value": 2178.97020489924,
+          "year": "2022",
+          "countryiso3code": "MUS"
+        },
+        "Meksika": {
+          "value": 3180.07999137444,
+          "year": "2022",
+          "countryiso3code": "MEX"
+        },
+        "Moldova": {
+          "value": 640.657045210614,
+          "year": "2022",
+          "countryiso3code": "MDA"
+        },
+        "Moğolistan": {
+          "value": 10134.6982946914,
+          "year": "2022",
+          "countryiso3code": "MNG"
+        },
+        "Fas": {
+          "value": 776.874555440233,
+          "year": "2022",
+          "countryiso3code": "MAR"
+        },
+        "Mozambik": {
+          "value": 3071.3879360169,
+          "year": "2022",
+          "countryiso3code": "MOZ"
+        },
+        "Myanmar": {
+          "value": 18654.3887007235,
+          "year": "2022",
+          "countryiso3code": "MMR"
+        },
+        "Namibya": {
+          "value": 2131.73720663524,
+          "year": "2022",
+          "countryiso3code": "NAM"
+        },
+        "Nepal": {
+          "value": 6669.93410428169,
+          "year": "2022",
+          "countryiso3code": "NPL"
+        },
+        "Hollanda": {
+          "value": 621.434449229992,
+          "year": "2022",
+          "countryiso3code": "NLD"
+        },
+        "Yeni Zelanda": {
+          "value": 64348.5447783222,
+          "year": "2022",
+          "countryiso3code": "NZL"
+        },
+        "Nikaragua": {
+          "value": 23208.7401907749,
+          "year": "2022",
+          "countryiso3code": "NIC"
+        },
+        "Nijer": {
+          "value": 138.274483778882,
+          "year": "2022",
+          "countryiso3code": "NER"
+        },
+        "Nijerya": {
+          "value": 990.36124865033,
+          "year": "2022",
+          "countryiso3code": "NGA"
+        },
+        "Makedonya": {
+          "value": 2948.06170402334,
+          "year": "2022",
+          "countryiso3code": "MKD"
+        },
+        "Norveç": {
+          "value": 70000.2034037324,
+          "year": "2022",
+          "countryiso3code": "NOR"
+        },
+        "Pakistan": {
+          "value": 225.68670277788,
+          "year": "2022",
+          "countryiso3code": "PAK"
+        },
+        "Papua Yeni Gine": {
+          "value": 78505.0213320979,
+          "year": "2022",
+          "countryiso3code": "PNG"
+        },
+        "Paraguay": {
+          "value": 17306.5044056148,
+          "year": "2022",
+          "countryiso3code": "PRY"
+        },
+        "Peru": {
+          "value": 49021.0165435326,
+          "year": "2022",
+          "countryiso3code": "PER"
+        },
+        "Filipinler": {
+          "value": 4203.06920924684,
+          "year": "2022",
+          "countryiso3code": "PHL"
+        },
+        "Polonya": {
+          "value": 1455.66143531096,
+          "year": "2022",
+          "countryiso3code": "POL"
+        },
+        "Portekiz": {
+          "value": 3641.8239327635,
+          "year": "2022",
+          "countryiso3code": "PRT"
+        },
+        "Katar": {
+          "value": 21.0737607970096,
+          "year": "2022",
+          "countryiso3code": "QAT"
+        },
+        "Romanya": {
+          "value": 2224.84686722347,
+          "year": "2022",
+          "countryiso3code": "ROU"
+        },
+        "Rusya": {
+          "value": 29895.2557456279,
+          "year": "2022",
+          "countryiso3code": "RUS"
+        },
+        "Ruanda": {
+          "value": 695.918183463079,
+          "year": "2022",
+          "countryiso3code": "RWA"
+        },
+        "Suudi Arabistan": {
+          "value": 74.5915552911147,
+          "year": "2022",
+          "countryiso3code": "SAU"
+        },
+        "Senegal": {
+          "value": 1461.66503022502,
+          "year": "2022",
+          "countryiso3code": "SEN"
+        },
+        "Sierra Leone": {
+          "value": 19331.1261214621,
+          "year": "2022",
+          "countryiso3code": "SLE"
+        },
+        "Singapur": {
+          "value": 106.439180120283,
+          "year": "2022",
+          "countryiso3code": "SGP"
+        },
+        "Slovakya": {
+          "value": 2319.6935353455,
+          "year": "2022",
+          "countryiso3code": "SVK"
+        },
+        "Slovenya": {
+          "value": 8839.64402796112,
+          "year": "2022",
+          "countryiso3code": "SVN"
+        },
+        "Güney Afrika": {
+          "value": 718.197209579404,
+          "year": "2022",
+          "countryiso3code": "ZAF"
+        },
+        "Güney Sudan": {
+          "value": 2359.09467745596,
+          "year": "2022",
+          "countryiso3code": "SSD"
+        },
+        "İspanya": {
+          "value": 2327.03642577919,
+          "year": "2022",
+          "countryiso3code": "ESP"
+        },
+        "Sri Lanka": {
+          "value": 2380.41567106983,
+          "year": "2022",
+          "countryiso3code": "LKA"
+        },
+        "Sudan": {
+          "value": 80.9989667366808,
+          "year": "2022",
+          "countryiso3code": "SDN"
+        },
+        "Surinam": {
+          "value": 158866.686779082,
+          "year": "2022",
+          "countryiso3code": "SUR"
+        },
+        "İsveç": {
+          "value": 16305.9942837478,
+          "year": "2022",
+          "countryiso3code": "SWE"
+        },
+        "İsviçre": {
+          "value": 4602.89335141678,
+          "year": "2022",
+          "countryiso3code": "CHE"
+        },
+        "Suriye": {
+          "value": 317.51157824312,
+          "year": "2022",
+          "countryiso3code": "SYR"
+        },
+        "Tacikistan": {
+          "value": 6232.43138874796,
+          "year": "2022",
+          "countryiso3code": "TJK"
+        },
+        "Tayland": {
+          "value": 3129.69917514423,
+          "year": "2022",
+          "countryiso3code": "THA"
+        },
+        "Togo": {
+          "value": 1265.16297829486,
+          "year": "2022",
+          "countryiso3code": "TGO"
+        },
+        "Trinidad ve Tobago": {
+          "value": 2811.52873213965,
+          "year": "2022",
+          "countryiso3code": "TTO"
+        },
+        "Tunus": {
+          "value": 346.141132837828,
+          "year": "2022",
+          "countryiso3code": "TUN"
+        },
+        "Türkiye": {
+          "value": 2671.21949159915,
+          "year": "2022",
+          "countryiso3code": "TUR"
+        },
+        "Türkmenistan": {
+          "value": 194.323996607006,
+          "year": "2022",
+          "countryiso3code": "TKM"
+        },
+        "Uganda": {
+          "value": 824.302657389021,
+          "year": "2022",
+          "countryiso3code": "UGA"
+        },
+        "Ukrayna": {
+          "value": 1342.30588076631,
+          "year": "2022",
+          "countryiso3code": "UKR"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "value": 14.8883714573244,
+          "year": "2022",
+          "countryiso3code": "ARE"
+        },
+        "Birleşik Krallık": {
+          "value": 2144.84350038459,
+          "year": "2022",
+          "countryiso3code": "GBR"
+        },
+        "ABD": {
+          "value": 8436.68822791378,
+          "year": "2022",
+          "countryiso3code": "USA"
+        },
+        "Uruguay": {
+          "value": 27190.3171800633,
+          "year": "2022",
+          "countryiso3code": "URY"
+        },
+        "Özbekistan": {
+          "value": 467.672831084959,
+          "year": "2022",
+          "countryiso3code": "UZB"
+        },
+        "Venezuela": {
+          "value": 28532.9286123494,
+          "year": "2022",
+          "countryiso3code": "VEN"
+        },
+        "Vietnam": {
+          "value": 3605.71466951135,
+          "year": "2022",
+          "countryiso3code": "VNM"
+        },
+        "Yemen": {
+          "value": 54.9409207198328,
+          "year": "2022",
+          "countryiso3code": "YEM"
+        },
+        "Zambiya": {
+          "value": 3979.56863659284,
+          "year": "2022",
+          "countryiso3code": "ZMB"
+        },
+        "Zimbabve": {
+          "value": 762.957077254569,
+          "year": "2022",
+          "countryiso3code": "ZWE"
+        }
+      }
+    },
+    "water_stress": {
+      "label": "Su Stresi",
+      "unit": "%",
+      "decimals": 1,
+      "source": {
+        "type": "worldbank",
+        "indicator_code": "ER.H2O.FWST.ZS",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.FWST.ZS?format=json&per_page=20000&mrv=1",
+        "lastupdated": "2026-02-24",
+        "total": 266
+      },
+      "by_country": {
+        "Afganistan": {
+          "value": 54.75701944,
+          "year": "2022",
+          "countryiso3code": "AFG"
+        },
+        "Arnavutluk": {
+          "value": 4.789663462,
+          "year": "2022",
+          "countryiso3code": "ALB"
+        },
+        "Cezayir": {
+          "value": 144.8149712,
+          "year": "2022",
+          "countryiso3code": "DZA"
+        },
+        "Angola": {
+          "value": 1.871883289,
+          "year": "2022",
+          "countryiso3code": "AGO"
+        },
+        "Arjantin": {
+          "value": 10.45666408,
+          "year": "2022",
+          "countryiso3code": "ARG"
+        },
+        "Ermenistan": {
+          "value": 61.97296752,
+          "year": "2022",
+          "countryiso3code": "ARM"
+        },
+        "Avustralya": {
+          "value": 4.672295939,
+          "year": "2022",
+          "countryiso3code": "AUS"
+        },
+        "Avusturya": {
+          "value": 8.676429953,
+          "year": "2022",
+          "countryiso3code": "AUT"
+        },
+        "Azerbaycan": {
+          "value": 57.52704791,
+          "year": "2022",
+          "countryiso3code": "AZE"
+        },
+        "Bangladeş": {
+          "value": 5.723339482,
+          "year": "2022",
+          "countryiso3code": "BGD"
+        },
+        "Belarus": {
+          "value": 4.660514173,
+          "year": "2022",
+          "countryiso3code": "BLR"
+        },
+        "Belçika": {
+          "value": 52.82574225,
+          "year": "2022",
+          "countryiso3code": "BEL"
+        },
+        "Benin": {
+          "value": 0.975243811,
+          "year": "2022",
+          "countryiso3code": "BEN"
+        },
+        "Bolivya": {
+          "value": 0.202979589,
+          "year": "2022",
+          "countryiso3code": "BOL"
+        },
+        "Bosna Hersek": {
+          "value": 2.071713147,
+          "year": "2022",
+          "countryiso3code": "BIH"
+        },
+        "Botsvana": {
+          "value": 2.230009819,
+          "year": "2022",
+          "countryiso3code": "BWA"
+        },
+        "Brezilya": {
+          "value": 1.495816821,
+          "year": "2022",
+          "countryiso3code": "BRA"
+        },
+        "Bulgaristan": {
+          "value": 40.23530092,
+          "year": "2022",
+          "countryiso3code": "BGR"
+        },
+        "Burkina Faso": {
+          "value": 7.820267686,
+          "year": "2022",
+          "countryiso3code": "BFA"
+        },
+        "Burundi": {
+          "value": 10.19286754,
+          "year": "2022",
+          "countryiso3code": "BDI"
+        },
+        "Cabo Verde": {
+          "value": 59.68371,
+          "year": "2022",
+          "countryiso3code": "CPV"
+        },
+        "Kamboçya": {
+          "value": 1.036544851,
+          "year": "2022",
+          "countryiso3code": "KHM"
+        },
+        "Kamerun": {
+          "value": 1.560430108,
+          "year": "2022",
+          "countryiso3code": "CMR"
+        },
+        "Kanada": {
+          "value": 3.720700309,
+          "year": "2022",
+          "countryiso3code": "CAN"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "value": 0.335648148,
+          "year": "2022",
+          "countryiso3code": "CAF"
+        },
+        "Çad": {
+          "value": 4.294921875,
+          "year": "2022",
+          "countryiso3code": "TCD"
+        },
+        "Şili": {
+          "value": 8.982121089,
+          "year": "2022",
+          "countryiso3code": "CHL"
+        },
+        "Çin": {
+          "value": 41.5185288,
+          "year": "2022",
+          "countryiso3code": "CHN"
+        },
+        "Kolombiya": {
+          "value": 3.632281437,
+          "year": "2022",
+          "countryiso3code": "COL"
+        },
+        "Komorlar": {
+          "value": 0.833333333,
+          "year": "2022",
+          "countryiso3code": "COM"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "value": 0.226883505,
+          "year": "2022",
+          "countryiso3code": "COD"
+        },
+        "Fildişi Sahili": {
+          "value": 5.087565674,
+          "year": "2022",
+          "countryiso3code": "CIV"
+        },
+        "Hırvatistan": {
+          "value": 1.509559804,
+          "year": "2022",
+          "countryiso3code": "HRV"
+        },
+        "Küba": {
+          "value": 23.93944607,
+          "year": "2022",
+          "countryiso3code": "CUB"
+        },
+        "Kıbrıs": {
+          "value": 30.48113723,
+          "year": "2022",
+          "countryiso3code": "CYP"
+        },
+        "Çek Cumhuriyeti": {
+          "value": 21.97384428,
+          "year": "2022",
+          "countryiso3code": "CZE"
+        },
+        "Danimarka": {
+          "value": 25.26636019,
+          "year": "2022",
+          "countryiso3code": "DNK"
+        },
+        "Cibuti": {
+          "value": 6.333333333,
+          "year": "2022",
+          "countryiso3code": "DJI"
+        },
+        "Ekvador": {
+          "value": 6.782352941,
+          "year": "2022",
+          "countryiso3code": "ECU"
+        },
+        "Mısır": {
+          "value": 141.1657559,
+          "year": "2022",
+          "countryiso3code": "EGY"
+        },
+        "El Salvador": {
+          "value": 12.09309202,
+          "year": "2022",
+          "countryiso3code": "SLV"
+        },
+        "Ekvator Ginesi": {
+          "value": 0.183503244,
+          "year": "2022",
+          "countryiso3code": "GNQ"
+        },
+        "Eritre": {
+          "value": 11.17511521,
+          "year": "2022",
+          "countryiso3code": "ERI"
+        },
+        "Estonya": {
+          "value": 13.04628519,
+          "year": "2022",
+          "countryiso3code": "EST"
+        },
+        "Esvatini": {
+          "value": 77.55991285,
+          "year": "2022",
+          "countryiso3code": "SWZ"
+        },
+        "Etiyopya": {
+          "value": 32.25718654,
+          "year": "2022",
+          "countryiso3code": "ETH"
+        },
+        "Finlandiya": {
+          "value": 7.11406213,
+          "year": "2022",
+          "countryiso3code": "FIN"
+        },
+        "Fransa": {
+          "value": 21.38462716,
+          "year": "2022",
+          "countryiso3code": "FRA"
+        },
+        "Gabon": {
+          "value": 0.502166065,
+          "year": "2022",
+          "countryiso3code": "GAB"
+        },
+        "Gambiya": {
+          "value": 2.209656372,
+          "year": "2022",
+          "countryiso3code": "GMB"
+        },
+        "Gürcistan": {
+          "value": 4.212964169,
+          "year": "2022",
+          "countryiso3code": "GEO"
+        },
+        "Almanya": {
+          "value": 35.35165707,
+          "year": "2022",
+          "countryiso3code": "DEU"
+        },
+        "Gana": {
+          "value": 6.314734089,
+          "year": "2022",
+          "countryiso3code": "GHA"
+        },
+        "Yunanistan": {
+          "value": 20.32571313,
+          "year": "2022",
+          "countryiso3code": "GRC"
+        },
+        "Guatemala": {
+          "value": 5.742097081,
+          "year": "2022",
+          "countryiso3code": "GTM"
+        },
+        "Gine": {
+          "value": 1.369230769,
+          "year": "2022",
+          "countryiso3code": "GIN"
+        },
+        "Gine-Bissau": {
+          "value": 1.495726496,
+          "year": "2022",
+          "countryiso3code": "GNB"
+        },
+        "Guyana": {
+          "value": 3.298401827,
+          "year": "2022",
+          "countryiso3code": "GUY"
+        },
+        "Haiti": {
+          "value": 13.38379177,
+          "year": "2022",
+          "countryiso3code": "HTI"
+        },
+        "Macaristan": {
+          "value": 8.108497409,
+          "year": "2022",
+          "countryiso3code": "HUN"
+        },
+        "İzlanda": {
+          "value": 0.394075282,
+          "year": "2022",
+          "countryiso3code": "ISL"
+        },
+        "Hindistan": {
+          "value": 66.49209283,
+          "year": "2022",
+          "countryiso3code": "IND"
+        },
+        "Endonezya": {
+          "value": 29.69654528,
+          "year": "2022",
+          "countryiso3code": "IDN"
+        },
+        "İran": {
+          "value": 81.28908129,
+          "year": "2022",
+          "countryiso3code": "IRN"
+        },
+        "Irak": {
+          "value": 59.58384831,
+          "year": "2022",
+          "countryiso3code": "IRQ"
+        },
+        "İrlanda": {
+          "value": 8.051010587,
+          "year": "2022",
+          "countryiso3code": "IRL"
+        },
+        "İtalya": {
+          "value": 29.76738039,
+          "year": "2022",
+          "countryiso3code": "ITA"
+        },
+        "Jamaika": {
+          "value": 12.38281888,
+          "year": "2022",
+          "countryiso3code": "JAM"
+        },
+        "Japonya": {
+          "value": 36.64367816,
+          "year": "2022",
+          "countryiso3code": "JPN"
+        },
+        "Ürdün": {
+          "value": 105.2021265,
+          "year": "2022",
+          "countryiso3code": "JOR"
+        },
+        "Kazakistan": {
+          "value": 34.62690707,
+          "year": "2022",
+          "countryiso3code": "KAZ"
+        },
+        "Kenya": {
+          "value": 33.23990107,
+          "year": "2022",
+          "countryiso3code": "KEN"
+        },
+        "Kuveyt": {
+          "value": 3850.5,
+          "year": "2022",
+          "countryiso3code": "KWT"
+        },
+        "Kırgızistan": {
+          "value": 50.03895598,
+          "year": "2022",
+          "countryiso3code": "KGZ"
+        },
+        "Letonya": {
+          "value": 1.015521509,
+          "year": "2022",
+          "countryiso3code": "LVA"
+        },
+        "Lübnan": {
+          "value": 58.79299156,
+          "year": "2022",
+          "countryiso3code": "LBN"
+        },
+        "Lesoto": {
+          "value": 2.565905097,
+          "year": "2022",
+          "countryiso3code": "LSO"
+        },
+        "Liberya": {
+          "value": 0.264311594,
+          "year": "2022",
+          "countryiso3code": "LBR"
+        },
+        "Libya": {
+          "value": 817.1428571,
+          "year": "2022",
+          "countryiso3code": "LBY"
+        },
+        "Litvanya": {
+          "value": 2.165537131,
+          "year": "2022",
+          "countryiso3code": "LTU"
+        },
+        "Lüksemburg": {
+          "value": 3.95854063,
+          "year": "2022",
+          "countryiso3code": "LUX"
+        },
+        "Madagaskar": {
+          "value": 11.26150628,
+          "year": "2022",
+          "countryiso3code": "MDG"
+        },
+        "Malavi": {
+          "value": 17.50483809,
+          "year": "2022",
+          "countryiso3code": "MWI"
+        },
+        "Malezya": {
+          "value": 3.43948718,
+          "year": "2022",
+          "countryiso3code": "MYS"
+        },
+        "Maldivler": {
+          "value": 15.66666667,
+          "year": "2022",
+          "countryiso3code": "MDV"
+        },
+        "Mali": {
+          "value": 8.00308642,
+          "year": "2022",
+          "countryiso3code": "MLI"
+        },
+        "Moritanya": {
+          "value": 13.24621733,
+          "year": "2022",
+          "countryiso3code": "MRT"
+        },
+        "Mauritius": {
+          "value": 22.97346419,
+          "year": "2022",
+          "countryiso3code": "MUS"
+        },
+        "Meksika": {
+          "value": 44.94514734,
+          "year": "2022",
+          "countryiso3code": "MEX"
+        },
+        "Moldova": {
+          "value": 12.56311256,
+          "year": "2022",
+          "countryiso3code": "MDA"
+        },
+        "Moğolistan": {
+          "value": 3.395007342,
+          "year": "2022",
+          "countryiso3code": "MNG"
+        },
+        "Fas": {
+          "value": 50.75121202,
+          "year": "2022",
+          "countryiso3code": "MAR"
+        },
+        "Mozambik": {
+          "value": 1.751486326,
+          "year": "2022",
+          "countryiso3code": "MOZ"
+        },
+        "Myanmar": {
+          "value": 5.801501397,
+          "year": "2022",
+          "countryiso3code": "MMR"
+        },
+        "Namibya": {
+          "value": 0.314668328,
+          "year": "2022",
+          "countryiso3code": "NAM"
+        },
+        "Nepal": {
+          "value": 8.311832662,
+          "year": "2022",
+          "countryiso3code": "NPL"
+        },
+        "Hollanda": {
+          "value": 16.65850698,
+          "year": "2022",
+          "countryiso3code": "NLD"
+        },
+        "Yeni Zelanda": {
+          "value": 8.04808476,
+          "year": "2022",
+          "countryiso3code": "NZL"
+        },
+        "Nikaragua": {
+          "value": 2.220900209,
+          "year": "2022",
+          "countryiso3code": "NIC"
+        },
+        "Nijer": {
+          "value": 11.02093771,
+          "year": "2022",
+          "countryiso3code": "NER"
+        },
+        "Nijerya": {
+          "value": 9.668217054,
+          "year": "2022",
+          "countryiso3code": "NGA"
+        },
+        "Makedonya": {
+          "value": 52.55324298,
+          "year": "2022",
+          "countryiso3code": "MKD"
+        },
+        "Norveç": {
+          "value": 2.044007605,
+          "year": "2022",
+          "countryiso3code": "NOR"
+        },
+        "Pakistan": {
+          "value": 109.9932519,
+          "year": "2022",
+          "countryiso3code": "PAK"
+        },
+        "Papua Yeni Gine": {
+          "value": 0.132242833,
+          "year": "2022",
+          "countryiso3code": "PNG"
+        },
+        "Paraguay": {
+          "value": 1.835399711,
+          "year": "2022",
+          "countryiso3code": "PRY"
+        },
+        "Peru": {
+          "value": 4.82842772,
+          "year": "2022",
+          "countryiso3code": "PER"
+        },
+        "Filipinler": {
+          "value": 27.83151711,
+          "year": "2022",
+          "countryiso3code": "PHL"
+        },
+        "Polonya": {
+          "value": 32.48528903,
+          "year": "2022",
+          "countryiso3code": "POL"
+        },
+        "Portekiz": {
+          "value": 12.31571228,
+          "year": "2022",
+          "countryiso3code": "PRT"
+        },
+        "Katar": {
+          "value": 431.0344828,
+          "year": "2022",
+          "countryiso3code": "QAT"
+        },
+        "Romanya": {
+          "value": 7.63130793,
+          "year": "2022",
+          "countryiso3code": "ROU"
+        },
+        "Rusya": {
+          "value": 4.122242749,
+          "year": "2022",
+          "countryiso3code": "RUS"
+        },
+        "Ruanda": {
+          "value": 20.1986755,
+          "year": "2022",
+          "countryiso3code": "RWA"
+        },
+        "Suudi Arabistan": {
+          "value": 974.1666667,
+          "year": "2022",
+          "countryiso3code": "SAU"
+        },
+        "Senegal": {
+          "value": 16.2764487,
+          "year": "2022",
+          "countryiso3code": "SEN"
+        },
+        "Sierra Leone": {
+          "value": 0.495794393,
+          "year": "2022",
+          "countryiso3code": "SLE"
+        },
+        "Singapur": {
+          "value": 33.25522267,
+          "year": "2022",
+          "countryiso3code": "SGP"
+        },
+        "Slovakya": {
+          "value": 2.425230293,
+          "year": "2022",
+          "countryiso3code": "SVK"
+        },
+        "Slovenya": {
+          "value": 5.591615957,
+          "year": "2022",
+          "countryiso3code": "SVN"
+        },
+        "Güney Afrika": {
+          "value": 67.59526097,
+          "year": "2022",
+          "countryiso3code": "ZAF"
+        },
+        "Güney Sudan": {
+          "value": 4.226075787,
+          "year": "2022",
+          "countryiso3code": "SSD"
+        },
+        "İspanya": {
+          "value": 43.25403923,
+          "year": "2022",
+          "countryiso3code": "ESP"
+        },
+        "Sri Lanka": {
+          "value": 90.78541374,
+          "year": "2022",
+          "countryiso3code": "LKA"
+        },
+        "Sudan": {
+          "value": 118.6563877,
+          "year": "2022",
+          "countryiso3code": "SDN"
+        },
+        "Surinam": {
+          "value": 3.950609365,
+          "year": "2022",
+          "countryiso3code": "SUR"
+        },
+        "İsveç": {
+          "value": 3.582972583,
+          "year": "2022",
+          "countryiso3code": "SWE"
+        },
+        "İsviçre": {
+          "value": 6.498855835,
+          "year": "2022",
+          "countryiso3code": "CHE"
+        },
+        "Suriye": {
+          "value": 124.3601389,
+          "year": "2022",
+          "countryiso3code": "SYR"
+        },
+        "Tacikistan": {
+          "value": 69.94326428,
+          "year": "2022",
+          "countryiso3code": "TJK"
+        },
+        "Tayland": {
+          "value": 23.01393518,
+          "year": "2022",
+          "countryiso3code": "THA"
+        },
+        "Togo": {
+          "value": 3.391634981,
+          "year": "2022",
+          "countryiso3code": "TGO"
+        },
+        "Trinidad ve Tobago": {
+          "value": 20.32648126,
+          "year": "2022",
+          "countryiso3code": "TTO"
+        },
+        "Tunus": {
+          "value": 98.11339918,
+          "year": "2022",
+          "countryiso3code": "TUN"
+        },
+        "Türkiye": {
+          "value": 47.88653346,
+          "year": "2022",
+          "countryiso3code": "TUR"
+        },
+        "Türkmenistan": {
+          "value": 135.2138073,
+          "year": "2022",
+          "countryiso3code": "TKM"
+        },
+        "Uganda": {
+          "value": 5.82799634,
+          "year": "2022",
+          "countryiso3code": "UGA"
+        },
+        "Ukrayna": {
+          "value": 6.298134232,
+          "year": "2022",
+          "countryiso3code": "UKR"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "value": 1509.933333,
+          "year": "2022",
+          "countryiso3code": "ARE"
+        },
+        "Birleşik Krallık": {
+          "value": 14.35464621,
+          "year": "2022",
+          "countryiso3code": "GBR"
+        },
+        "ABD": {
+          "value": 28.15525982,
+          "year": "2022",
+          "countryiso3code": "USA"
+        },
+        "Uruguay": {
+          "value": 12.05201437,
+          "year": "2022",
+          "countryiso3code": "URY"
+        },
+        "Özbekistan": {
+          "value": 123.0283912,
+          "year": "2022",
+          "countryiso3code": "UZB"
+        },
+        "Venezuela": {
+          "value": 7.540366667,
+          "year": "2022",
+          "countryiso3code": "VEN"
+        },
+        "Vietnam": {
+          "value": 18.13031538,
+          "year": "2022",
+          "countryiso3code": "VNM"
+        },
+        "Yemen": {
+          "value": 169.7619048,
+          "year": "2022",
+          "countryiso3code": "YEM"
+        },
+        "Zambiya": {
+          "value": 2.835497836,
+          "year": "2022",
+          "countryiso3code": "ZMB"
+        },
+        "Zimbabve": {
+          "value": 46.09162031,
+          "year": "2022",
+          "countryiso3code": "ZWE"
+        }
+      }
+    },
+    "water_withdrawal_pct_internal": {
+      "label": "Su Çekimi / İç Kaynak",
+      "unit": "%",
+      "decimals": 1,
+      "source": {
+        "type": "worldbank",
+        "indicator_code": "ER.H2O.FWTL.ZS",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.FWTL.ZS?format=json&per_page=20000&mrv=1",
+        "lastupdated": "2026-02-24",
+        "total": 266
+      },
+      "by_country": {
+        "Afganistan": {
+          "value": 43.0159066808059,
+          "year": "2022",
+          "countryiso3code": "AFG"
+        },
+        "Arnavutluk": {
+          "value": 2.96282527881041,
+          "year": "2022",
+          "countryiso3code": "ALB"
+        },
+        "Cezayir": {
+          "value": 91.5088468035921,
+          "year": "2022",
+          "countryiso3code": "DZA"
+        },
+        "Angola": {
+          "value": 0.476824324324324,
+          "year": "2022",
+          "countryiso3code": "AGO"
+        },
+        "Arjantin": {
+          "value": 12.9075342465753,
+          "year": "2022",
+          "countryiso3code": "ARG"
+        },
+        "Ermenistan": {
+          "value": 44.787869951888,
+          "year": "2022",
+          "countryiso3code": "ARM"
+        },
+        "Avustralya": {
+          "value": 2.36178861788618,
+          "year": "2022",
+          "countryiso3code": "AUS"
+        },
+        "Avusturya": {
+          "value": 5.70909090909091,
+          "year": "2022",
+          "countryiso3code": "AUT"
+        },
+        "Azerbaycan": {
+          "value": 160.52988293284,
+          "year": "2022",
+          "countryiso3code": "AZE"
+        },
+        "Bangladeş": {
+          "value": 34.1619047619048,
+          "year": "2022",
+          "countryiso3code": "BGD"
+        },
+        "Belarus": {
+          "value": 4.15882352941177,
+          "year": "2022",
+          "countryiso3code": "BLR"
+        },
+        "Belçika": {
+          "value": 35.833461825,
+          "year": "2022",
+          "countryiso3code": "BEL"
+        },
+        "Benin": {
+          "value": 1.2621359223301,
+          "year": "2022",
+          "countryiso3code": "BEN"
+        },
+        "Bolivya": {
+          "value": 0.118644412191104,
+          "year": "2022",
+          "countryiso3code": "BOL"
+        },
+        "Bosna Hersek": {
+          "value": 0.878971830985916,
+          "year": "2022",
+          "countryiso3code": "BIH"
+        },
+        "Botsvana": {
+          "value": 8.88565995833333,
+          "year": "2022",
+          "countryiso3code": "BWA"
+        },
+        "Brezilya": {
+          "value": 1.20014131778838,
+          "year": "2022",
+          "countryiso3code": "BRA"
+        },
+        "Bulgaristan": {
+          "value": 25.9211136285714,
+          "year": "2022",
+          "countryiso3code": "BGR"
+        },
+        "Burkina Faso": {
+          "value": 6.544,
+          "year": "2022",
+          "countryiso3code": "BFA"
+        },
+        "Burundi": {
+          "value": 2.78429423459245,
+          "year": "2022",
+          "countryiso3code": "BDI"
+        },
+        "Cabo Verde": {
+          "value": 59.68371,
+          "year": "2022",
+          "countryiso3code": "CPV"
+        },
+        "Kamboçya": {
+          "value": 1.81094527363184,
+          "year": "2022",
+          "countryiso3code": "KHM"
+        },
+        "Kamerun": {
+          "value": 0.398681318681319,
+          "year": "2022",
+          "countryiso3code": "CMR"
+        },
+        "Kanada": {
+          "value": 1.26764912280702,
+          "year": "2022",
+          "countryiso3code": "CAN"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "value": 0.0514184397163121,
+          "year": "2022",
+          "countryiso3code": "CAF"
+        },
+        "Çad": {
+          "value": 5.864,
+          "year": "2022",
+          "countryiso3code": "TCD"
+        },
+        "Şili": {
+          "value": 3.99638418079096,
+          "year": "2022",
+          "countryiso3code": "CHL"
+        },
+        "Çin": {
+          "value": 20.2097479469587,
+          "year": "2022",
+          "countryiso3code": "CHN"
+        },
+        "Kolombiya": {
+          "value": 1.13117202797203,
+          "year": "2022",
+          "countryiso3code": "COL"
+        },
+        "Komorlar": {
+          "value": 0.833333333333333,
+          "year": "2022",
+          "countryiso3code": "COM"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "value": 0.0759555555555556,
+          "year": "2022",
+          "countryiso3code": "COD"
+        },
+        "Fildişi Sahili": {
+          "value": 1.51223321186882,
+          "year": "2022",
+          "countryiso3code": "CIV"
+        },
+        "Hırvatistan": {
+          "value": 1.80106100795756,
+          "year": "2022",
+          "countryiso3code": "HRV"
+        },
+        "Küba": {
+          "value": 18.2528856243442,
+          "year": "2022",
+          "countryiso3code": "CUB"
+        },
+        "Kıbrıs": {
+          "value": 28.5897435897436,
+          "year": "2022",
+          "countryiso3code": "CYP"
+        },
+        "Çek Cumhuriyeti": {
+          "value": 10.9885931558935,
+          "year": "2022",
+          "countryiso3code": "CZE"
+        },
+        "Danimarka": {
+          "value": 15.5725,
+          "year": "2022",
+          "countryiso3code": "DNK"
+        },
+        "Cibuti": {
+          "value": 6.33333333333333,
+          "year": "2022",
+          "countryiso3code": "DJI"
+        },
+        "Ekvador": {
+          "value": 2.24136528028933,
+          "year": "2022",
+          "countryiso3code": "ECU"
+        },
+        "Mısır": {
+          "value": 7750.0,
+          "year": "2022",
+          "countryiso3code": "EGY"
+        },
+        "El Salvador": {
+          "value": 12.4025761356366,
+          "year": "2022",
+          "countryiso3code": "SLV"
+        },
+        "Ekvator Ginesi": {
+          "value": 0.0761538461538462,
+          "year": "2022",
+          "countryiso3code": "GNQ"
+        },
+        "Eritre": {
+          "value": 20.7857142857143,
+          "year": "2022",
+          "countryiso3code": "ERI"
+        },
+        "Estonya": {
+          "value": 9.48447483870968,
+          "year": "2022",
+          "countryiso3code": "EST"
+        },
+        "Esvatini": {
+          "value": 40.4545454545455,
+          "year": "2022",
+          "countryiso3code": "SWZ"
+        },
+        "Etiyopya": {
+          "value": 8.64598360655738,
+          "year": "2022",
+          "countryiso3code": "ETH"
+        },
+        "Finlandiya": {
+          "value": 2.80373831775701,
+          "year": "2022",
+          "countryiso3code": "FIN"
+        },
+        "Fransa": {
+          "value": 12.2138298,
+          "year": "2022",
+          "countryiso3code": "FRA"
+        },
+        "Gabon": {
+          "value": 0.0848170731707317,
+          "year": "2022",
+          "countryiso3code": "GAB"
+        },
+        "Gambiya": {
+          "value": 3.38666666666667,
+          "year": "2022",
+          "countryiso3code": "GMB"
+        },
+        "Gürcistan": {
+          "value": 2.22497849647342,
+          "year": "2022",
+          "countryiso3code": "GEO"
+        },
+        "Almanya": {
+          "value": 24.1052046728972,
+          "year": "2022",
+          "countryiso3code": "DEU"
+        },
+        "Gana": {
+          "value": 4.78085808580858,
+          "year": "2022",
+          "countryiso3code": "GHA"
+        },
+        "Yunanistan": {
+          "value": 17.3224137931035,
+          "year": "2022",
+          "countryiso3code": "GRC"
+        },
+        "Guatemala": {
+          "value": 3.04404761904762,
+          "year": "2022",
+          "countryiso3code": "GTM"
+        },
+        "Gine": {
+          "value": 0.393805309734513,
+          "year": "2022",
+          "countryiso3code": "GIN"
+        },
+        "Gine-Bissau": {
+          "value": 1.09375,
+          "year": "2022",
+          "countryiso3code": "GNB"
+        },
+        "Guyana": {
+          "value": 0.599460580912863,
+          "year": "2022",
+          "countryiso3code": "GUY"
+        },
+        "Haiti": {
+          "value": 11.1478434689014,
+          "year": "2022",
+          "countryiso3code": "HTI"
+        },
+        "Macaristan": {
+          "value": 78.247,
+          "year": "2022",
+          "countryiso3code": "HUN"
+        },
+        "İzlanda": {
+          "value": 0.170588235294118,
+          "year": "2022",
+          "countryiso3code": "ISL"
+        },
+        "Hindistan": {
+          "value": 44.7786998616874,
+          "year": "2022",
+          "countryiso3code": "IND"
+        },
+        "Endonezya": {
+          "value": 11.0286322881062,
+          "year": "2022",
+          "countryiso3code": "IDN"
+        },
+        "İran": {
+          "value": 72.3346303501945,
+          "year": "2022",
+          "countryiso3code": "IRN"
+        },
+        "Irak": {
+          "value": 120.521875,
+          "year": "2022",
+          "countryiso3code": "IRQ"
+        },
+        "İrlanda": {
+          "value": 3.41428571428571,
+          "year": "2022",
+          "countryiso3code": "IRL"
+        },
+        "İtalya": {
+          "value": 18.5112328767123,
+          "year": "2022",
+          "countryiso3code": "ITA"
+        },
+        "Jamaika": {
+          "value": 12.3828188764668,
+          "year": "2022",
+          "countryiso3code": "JAM"
+        },
+        "Japonya": {
+          "value": 18.5348837209302,
+          "year": "2022",
+          "countryiso3code": "JPN"
+        },
+        "Ürdün": {
+          "value": 139.277126099707,
+          "year": "2022",
+          "countryiso3code": "JOR"
+        },
+        "Kazakistan": {
+          "value": 38.7972027972028,
+          "year": "2022",
+          "countryiso3code": "KAZ"
+        },
+        "Kenya": {
+          "value": 19.4782608695652,
+          "year": "2022",
+          "countryiso3code": "KEN"
+        },
+        "Kırgızistan": {
+          "value": 15.7510729613734,
+          "year": "2022",
+          "countryiso3code": "KGZ"
+        },
+        "Letonya": {
+          "value": 1.0173199527745,
+          "year": "2022",
+          "countryiso3code": "LVA"
+        },
+        "Lübnan": {
+          "value": 37.75,
+          "year": "2022",
+          "countryiso3code": "LBN"
+        },
+        "Lesoto": {
+          "value": 0.837476099426386,
+          "year": "2022",
+          "countryiso3code": "LSO"
+        },
+        "Liberya": {
+          "value": 0.07295,
+          "year": "2022",
+          "countryiso3code": "LBR"
+        },
+        "Libya": {
+          "value": 817.142857142857,
+          "year": "2022",
+          "countryiso3code": "LBY"
+        },
+        "Litvanya": {
+          "value": 1.94282018111255,
+          "year": "2022",
+          "countryiso3code": "LTU"
+        },
+        "Lüksemburg": {
+          "value": 4.774,
+          "year": "2022",
+          "countryiso3code": "LUX"
+        },
+        "Madagaskar": {
+          "value": 3.9933234421365,
+          "year": "2022",
+          "countryiso3code": "MDG"
+        },
+        "Malavi": {
+          "value": 8.40644361833953,
+          "year": "2022",
+          "countryiso3code": "MWI"
+        },
+        "Malezya": {
+          "value": 1.15637931034483,
+          "year": "2022",
+          "countryiso3code": "MYS"
+        },
+        "Maldivler": {
+          "value": 15.6666666666667,
+          "year": "2022",
+          "countryiso3code": "MDV"
+        },
+        "Mali": {
+          "value": 8.64333333333333,
+          "year": "2022",
+          "countryiso3code": "MLI"
+        },
+        "Moritanya": {
+          "value": 337.05,
+          "year": "2022",
+          "countryiso3code": "MRT"
+        },
+        "Mauritius": {
+          "value": 22.9734641948382,
+          "year": "2022",
+          "countryiso3code": "MUS"
+        },
+        "Meksika": {
+          "value": 21.9569682151589,
+          "year": "2022",
+          "countryiso3code": "MEX"
+        },
+        "Moldova": {
+          "value": 52.2222222222222,
+          "year": "2022",
+          "countryiso3code": "MDA"
+        },
+        "Moğolistan": {
+          "value": 1.32873563218391,
+          "year": "2022",
+          "countryiso3code": "MNG"
+        },
+        "Fas": {
+          "value": 36.4586206896552,
+          "year": "2022",
+          "countryiso3code": "MAR"
+        },
+        "Mozambik": {
+          "value": 1.46859421734796,
+          "year": "2022",
+          "countryiso3code": "MOZ"
+        },
+        "Myanmar": {
+          "value": 3.313821300359,
+          "year": "2022",
+          "countryiso3code": "MMR"
+        },
+        "Namibya": {
+          "value": 1.67142008116883,
+          "year": "2022",
+          "countryiso3code": "NAM"
+        },
+        "Nepal": {
+          "value": 4.79167507568113,
+          "year": "2022",
+          "countryiso3code": "NPL"
+        },
+        "Hollanda": {
+          "value": 74.8572727272727,
+          "year": "2022",
+          "countryiso3code": "NLD"
+        },
+        "Yeni Zelanda": {
+          "value": 3.01987767584098,
+          "year": "2022",
+          "countryiso3code": "NZL"
+        },
+        "Nikaragua": {
+          "value": 0.814941425004801,
+          "year": "2022",
+          "countryiso3code": "NIC"
+        },
+        "Nijer": {
+          "value": 73.8087942857143,
+          "year": "2022",
+          "countryiso3code": "NER"
+        },
+        "Nijerya": {
+          "value": 5.64343891402715,
+          "year": "2022",
+          "countryiso3code": "NGA"
+        },
+        "Makedonya": {
+          "value": 40.212962962963,
+          "year": "2022",
+          "countryiso3code": "MKD"
+        },
+        "Norveç": {
+          "value": 0.703630890052356,
+          "year": "2022",
+          "countryiso3code": "NOR"
+        },
+        "Pakistan": {
+          "value": 326.0,
+          "year": "2022",
+          "countryiso3code": "PAK"
+        },
+        "Papua Yeni Gine": {
+          "value": 0.0489513108614232,
+          "year": "2022",
+          "countryiso3code": "PNG"
+        },
+        "Paraguay": {
+          "value": 2.06239316239316,
+          "year": "2022",
+          "countryiso3code": "PRY"
+        },
+        "Peru": {
+          "value": 1.57946374162096,
+          "year": "2022",
+          "countryiso3code": "PER"
+        },
+        "Filipinler": {
+          "value": 19.0056142943633,
+          "year": "2022",
+          "countryiso3code": "PHL"
+        },
+        "Polonya": {
+          "value": 17.509328358209,
+          "year": "2022",
+          "countryiso3code": "POL"
+        },
+        "Portekiz": {
+          "value": 16.1303421052632,
+          "year": "2022",
+          "countryiso3code": "PRT"
+        },
+        "Katar": {
+          "value": 446.428571428571,
+          "year": "2022",
+          "countryiso3code": "QAT"
+        },
+        "Romanya": {
+          "value": 19.2331288343558,
+          "year": "2022",
+          "countryiso3code": "ROU"
+        },
+        "Rusya": {
+          "value": 1.50324675324675,
+          "year": "2022",
+          "countryiso3code": "RUS"
+        },
+        "Ruanda": {
+          "value": 6.42105263157895,
+          "year": "2022",
+          "countryiso3code": "RWA"
+        },
+        "Suudi Arabistan": {
+          "value": 974.166666666667,
+          "year": "2022",
+          "countryiso3code": "SAU"
+        },
+        "Senegal": {
+          "value": 11.8666666666667,
+          "year": "2022",
+          "countryiso3code": "SEN"
+        },
+        "Sierra Leone": {
+          "value": 0.132625,
+          "year": "2022",
+          "countryiso3code": "SLE"
+        },
+        "Singapur": {
+          "value": 33.2552226666667,
+          "year": "2022",
+          "countryiso3code": "SGP"
+        },
+        "Slovakya": {
+          "value": 4.47320253968254,
+          "year": "2022",
+          "countryiso3code": "SVK"
+        },
+        "Slovenya": {
+          "value": 4.42956614890198,
+          "year": "2022",
+          "countryiso3code": "SVN"
+        },
+        "Güney Afrika": {
+          "value": 47.1205357142857,
+          "year": "2022",
+          "countryiso3code": "ZAF"
+        },
+        "Güney Sudan": {
+          "value": 2.53076923076923,
+          "year": "2022",
+          "countryiso3code": "SSD"
+        },
+        "İspanya": {
+          "value": 26.0971223021583,
+          "year": "2022",
+          "countryiso3code": "ESP"
+        },
+        "Sri Lanka": {
+          "value": 24.5189393939394,
+          "year": "2022",
+          "countryiso3code": "LKA"
+        },
+        "Sudan": {
+          "value": 673.375,
+          "year": "2022",
+          "countryiso3code": "SDN"
+        },
+        "Surinam": {
+          "value": 0.622121212121212,
+          "year": "2022",
+          "countryiso3code": "SUR"
+        },
+        "İsveç": {
+          "value": 1.45204678362573,
+          "year": "2022",
+          "countryiso3code": "SWE"
+        },
+        "İsviçre": {
+          "value": 4.21782178217822,
+          "year": "2022",
+          "countryiso3code": "CHE"
+        },
+        "Suriye": {
+          "value": 195.799214806506,
+          "year": "2022",
+          "countryiso3code": "SYR"
+        },
+        "Tacikistan": {
+          "value": 16.7065868263473,
+          "year": "2022",
+          "countryiso3code": "TJK"
+        },
+        "Tayland": {
+          "value": 25.5253663533918,
+          "year": "2022",
+          "countryiso3code": "THA"
+        },
+        "Togo": {
+          "value": 1.93913043478261,
+          "year": "2022",
+          "countryiso3code": "TGO"
+        },
+        "Trinidad ve Tobago": {
+          "value": 8.75520833333333,
+          "year": "2022",
+          "countryiso3code": "TTO"
+        },
+        "Tunus": {
+          "value": 92.1096543504172,
+          "year": "2022",
+          "countryiso3code": "TUN"
+        },
+        "Türkiye": {
+          "value": 28.4007224669604,
+          "year": "2022",
+          "countryiso3code": "TUR"
+        },
+        "Türkmenistan": {
+          "value": 1867.97153024911,
+          "year": "2022",
+          "countryiso3code": "TKM"
+        },
+        "Uganda": {
+          "value": 1.63333333333333,
+          "year": "2022",
+          "countryiso3code": "UGA"
+        },
+        "Ukrayna": {
+          "value": 8.82196007259528,
+          "year": "2022",
+          "countryiso3code": "UKR"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "value": 1509.93333333333,
+          "year": "2022",
+          "countryiso3code": "ARE"
+        },
+        "Birleşik Krallık": {
+          "value": 5.80620689655172,
+          "year": "2022",
+          "countryiso3code": "GBR"
+        },
+        "ABD": {
+          "value": 15.7661462029808,
+          "year": "2022",
+          "countryiso3code": "USA"
+        },
+        "Uruguay": {
+          "value": 4.88877806399132,
+          "year": "2022",
+          "countryiso3code": "URY"
+        },
+        "Özbekistan": {
+          "value": 262.545899632803,
+          "year": "2022",
+          "countryiso3code": "UZB"
+        },
+        "Venezuela": {
+          "value": 2.81007453416149,
+          "year": "2022",
+          "countryiso3code": "VEN"
+        },
+        "Vietnam": {
+          "value": 22.7761393355962,
+          "year": "2022",
+          "countryiso3code": "VNM"
+        },
+        "Yemen": {
+          "value": 169.761904761905,
+          "year": "2022",
+          "countryiso3code": "YEM"
+        },
+        "Zambiya": {
+          "value": 1.96009975062344,
+          "year": "2022",
+          "countryiso3code": "ZMB"
+        },
+        "Zimbabve": {
+          "value": 40.0463245921697,
+          "year": "2022",
+          "countryiso3code": "ZWE"
+        }
+      }
+    },
+    "water_use_agriculture": {
+      "label": "Su Kullanımı: Tarım Payı",
+      "unit": "%",
+      "decimals": 1,
+      "source": {
+        "type": "worldbank",
+        "indicator_code": "ER.H2O.FWAG.ZS",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.FWAG.ZS?format=json&per_page=20000&mrv=1",
+        "lastupdated": "2026-02-24",
+        "total": 266
+      },
+      "by_country": {
+        "Afganistan": {
+          "value": 98.1696273,
+          "year": "2022",
+          "countryiso3code": "AFG"
+        },
+        "Arnavutluk": {
+          "value": 70.89084065,
+          "year": "2022",
+          "countryiso3code": "ALB"
+        },
+        "Cezayir": {
+          "value": 67.42997902,
+          "year": "2022",
+          "countryiso3code": "DZA"
+        },
+        "Angola": {
+          "value": 20.78492491,
+          "year": "2022",
+          "countryiso3code": "AGO"
+        },
+        "Arjantin": {
+          "value": 73.92800424,
+          "year": "2022",
+          "countryiso3code": "ARG"
+        },
+        "Ermenistan": {
+          "value": 77.47395833,
+          "year": "2022",
+          "countryiso3code": "ARM"
+        },
+        "Avustralya": {
+          "value": 66.88583383,
+          "year": "2022",
+          "countryiso3code": "AUS"
+        },
+        "Avusturya": {
+          "value": 5.23569052,
+          "year": "2022",
+          "countryiso3code": "AUT"
+        },
+        "Azerbaycan": {
+          "value": 92.24244294,
+          "year": "2022",
+          "countryiso3code": "AZE"
+        },
+        "Bangladeş": {
+          "value": 87.81711737,
+          "year": "2022",
+          "countryiso3code": "BGD"
+        },
+        "Belarus": {
+          "value": 27.22772277,
+          "year": "2022",
+          "countryiso3code": "BLR"
+        },
+        "Belçika": {
+          "value": 0.852681365,
+          "year": "2022",
+          "countryiso3code": "BEL"
+        },
+        "Benin": {
+          "value": 25.21367521,
+          "year": "2022",
+          "countryiso3code": "BEN"
+        },
+        "Bolivya": {
+          "value": 87.07838123,
+          "year": "2022",
+          "countryiso3code": "BOL"
+        },
+        "Botsvana": {
+          "value": 27.97257339,
+          "year": "2022",
+          "countryiso3code": "BWA"
+        },
+        "Brezilya": {
+          "value": 60.84191934,
+          "year": "2022",
+          "countryiso3code": "BRA"
+        },
+        "Bulgaristan": {
+          "value": 13.34513986,
+          "year": "2022",
+          "countryiso3code": "BGR"
+        },
+        "Burkina Faso": {
+          "value": 51.43031785,
+          "year": "2022",
+          "countryiso3code": "BFA"
+        },
+        "Burundi": {
+          "value": 79.25740807,
+          "year": "2022",
+          "countryiso3code": "BDI"
+        },
+        "Cabo Verde": {
+          "value": 38.99022186,
+          "year": "2022",
+          "countryiso3code": "CPV"
+        },
+        "Kamboçya": {
+          "value": 94.0018315,
+          "year": "2022",
+          "countryiso3code": "KHM"
+        },
+        "Kamerun": {
+          "value": 67.71407571,
+          "year": "2022",
+          "countryiso3code": "CMR"
+        },
+        "Kanada": {
+          "value": 10.69419426,
+          "year": "2022",
+          "countryiso3code": "CAN"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "value": 0.551724138,
+          "year": "2022",
+          "countryiso3code": "CAF"
+        },
+        "Çad": {
+          "value": 76.4211005,
+          "year": "2022",
+          "countryiso3code": "TCD"
+        },
+        "Şili": {
+          "value": 90.88662342,
+          "year": "2022",
+          "countryiso3code": "CHL"
+        },
+        "Çin": {
+          "value": 62.14454059,
+          "year": "2022",
+          "countryiso3code": "CHN"
+        },
+        "Kolombiya": {
+          "value": 82.17445509,
+          "year": "2022",
+          "countryiso3code": "COL"
+        },
+        "Komorlar": {
+          "value": 47.0,
+          "year": "2022",
+          "countryiso3code": "COM"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "value": 10.51784669,
+          "year": "2022",
+          "countryiso3code": "COD"
+        },
+        "Fildişi Sahili": {
+          "value": 51.63511188,
+          "year": "2022",
+          "countryiso3code": "CIV"
+        },
+        "Hırvatistan": {
+          "value": 7.480314961,
+          "year": "2022",
+          "countryiso3code": "HRV"
+        },
+        "Küba": {
+          "value": 64.93749102,
+          "year": "2022",
+          "countryiso3code": "CUB"
+        },
+        "Kıbrıs": {
+          "value": 61.24567474,
+          "year": "2022",
+          "countryiso3code": "CYP"
+        },
+        "Çek Cumhuriyeti": {
+          "value": 3.042876902,
+          "year": "2022",
+          "countryiso3code": "CZE"
+        },
+        "Danimarka": {
+          "value": 54.20741692,
+          "year": "2022",
+          "countryiso3code": "DNK"
+        },
+        "Cibuti": {
+          "value": 15.78947368,
+          "year": "2022",
+          "countryiso3code": "DJI"
+        },
+        "Ekvador": {
+          "value": 81.4277072,
+          "year": "2022",
+          "countryiso3code": "ECU"
+        },
+        "Mısır": {
+          "value": 79.16129032,
+          "year": "2022",
+          "countryiso3code": "EGY"
+        },
+        "El Salvador": {
+          "value": 72.78630208,
+          "year": "2022",
+          "countryiso3code": "SLV"
+        },
+        "Ekvator Ginesi": {
+          "value": 5.050505051,
+          "year": "2022",
+          "countryiso3code": "GNQ"
+        },
+        "Eritre": {
+          "value": 94.50171821,
+          "year": "2022",
+          "countryiso3code": "ERI"
+        },
+        "Estonya": {
+          "value": 0.414783445,
+          "year": "2022",
+          "countryiso3code": "EST"
+        },
+        "Esvatini": {
+          "value": 94.19475655,
+          "year": "2022",
+          "countryiso3code": "SWZ"
+        },
+        "Etiyopya": {
+          "value": 91.83644448,
+          "year": "2022",
+          "countryiso3code": "ETH"
+        },
+        "Finlandiya": {
+          "value": 35.72602427,
+          "year": "2022",
+          "countryiso3code": "FIN"
+        },
+        "Fransa": {
+          "value": 10.29637556,
+          "year": "2022",
+          "countryiso3code": "FRA"
+        },
+        "Gabon": {
+          "value": 28.97196262,
+          "year": "2022",
+          "countryiso3code": "GAB"
+        },
+        "Gambiya": {
+          "value": 38.58267717,
+          "year": "2022",
+          "countryiso3code": "GMB"
+        },
+        "Gürcistan": {
+          "value": 33.55239759,
+          "year": "2022",
+          "countryiso3code": "GEO"
+        },
+        "Almanya": {
+          "value": 4.166591548,
+          "year": "2022",
+          "countryiso3code": "DEU"
+        },
+        "Gana": {
+          "value": 73.0574901,
+          "year": "2022",
+          "countryiso3code": "GHA"
+        },
+        "Yunanistan": {
+          "value": 80.47448878,
+          "year": "2022",
+          "countryiso3code": "GRC"
+        },
+        "Guatemala": {
+          "value": 56.73716194,
+          "year": "2022",
+          "countryiso3code": "GTM"
+        },
+        "Gine": {
+          "value": 67.41573034,
+          "year": "2022",
+          "countryiso3code": "GIN"
+        },
+        "Gine-Bissau": {
+          "value": 75.78947368,
+          "year": "2022",
+          "countryiso3code": "GNB"
+        },
+        "Guyana": {
+          "value": 94.34484668,
+          "year": "2022",
+          "countryiso3code": "GUY"
+        },
+        "Haiti": {
+          "value": 83.37931034,
+          "year": "2022",
+          "countryiso3code": "HTI"
+        },
+        "Macaristan": {
+          "value": 11.04662266,
+          "year": "2022",
+          "countryiso3code": "HUN"
+        },
+        "İzlanda": {
+          "value": 0.107797341,
+          "year": "2022",
+          "countryiso3code": "ISL"
+        },
+        "Hindistan": {
+          "value": 90.40735874,
+          "year": "2022",
+          "countryiso3code": "IND"
+        },
+        "Endonezya": {
+          "value": 85.2067285,
+          "year": "2022",
+          "countryiso3code": "IDN"
+        },
+        "İran": {
+          "value": 92.17577706,
+          "year": "2022",
+          "countryiso3code": "IRN"
+        },
+        "Irak": {
+          "value": 73.47020554,
+          "year": "2022",
+          "countryiso3code": "IRQ"
+        },
+        "İrlanda": {
+          "value": 2.368798566,
+          "year": "2022",
+          "countryiso3code": "IRL"
+        },
+        "İtalya": {
+          "value": 50.22453321,
+          "year": "2022",
+          "countryiso3code": "ITA"
+        },
+        "Jamaika": {
+          "value": 17.06287064,
+          "year": "2022",
+          "countryiso3code": "JAM"
+        },
+        "Japonya": {
+          "value": 66.66666667,
+          "year": "2022",
+          "countryiso3code": "JPN"
+        },
+        "Ürdün": {
+          "value": 51.64545734,
+          "year": "2022",
+          "countryiso3code": "JOR"
+        },
+        "Kazakistan": {
+          "value": 56.74729472,
+          "year": "2022",
+          "countryiso3code": "KAZ"
+        },
+        "Kenya": {
+          "value": 80.20833333,
+          "year": "2022",
+          "countryiso3code": "KEN"
+        },
+        "Kuveyt": {
+          "value": 62.272,
+          "year": "2022",
+          "countryiso3code": "KWT"
+        },
+        "Kırgızistan": {
+          "value": 92.68929504,
+          "year": "2022",
+          "countryiso3code": "KGZ"
+        },
+        "Letonya": {
+          "value": 29.07029373,
+          "year": "2022",
+          "countryiso3code": "LVA"
+        },
+        "Lübnan": {
+          "value": 38.04347826,
+          "year": "2022",
+          "countryiso3code": "LBN"
+        },
+        "Lesoto": {
+          "value": 8.675799087,
+          "year": "2022",
+          "countryiso3code": "LSO"
+        },
+        "Liberya": {
+          "value": 8.430431803,
+          "year": "2022",
+          "countryiso3code": "LBR"
+        },
+        "Libya": {
+          "value": 83.19039451,
+          "year": "2022",
+          "countryiso3code": "LBY"
+        },
+        "Litvanya": {
+          "value": 19.55653216,
+          "year": "2022",
+          "countryiso3code": "LTU"
+        },
+        "Lüksemburg": {
+          "value": 1.026392962,
+          "year": "2022",
+          "countryiso3code": "LUX"
+        },
+        "Madagaskar": {
+          "value": 95.89212873,
+          "year": "2022",
+          "countryiso3code": "MDG"
+        },
+        "Malavi": {
+          "value": 85.9375,
+          "year": "2022",
+          "countryiso3code": "MWI"
+        },
+        "Malezya": {
+          "value": 45.64504373,
+          "year": "2022",
+          "countryiso3code": "MYS"
+        },
+        "Maldivler": {
+          "value": 4.545666102,
+          "year": "2022",
+          "countryiso3code": "MDV"
+        },
+        "Mali": {
+          "value": 97.85962206,
+          "year": "2022",
+          "countryiso3code": "MLI"
+        },
+        "Moritanya": {
+          "value": 90.57917346,
+          "year": "2022",
+          "countryiso3code": "MRT"
+        },
+        "Mauritius": {
+          "value": 47.86729858,
+          "year": "2022",
+          "countryiso3code": "MUS"
+        },
+        "Meksika": {
+          "value": 76.30113801,
+          "year": "2022",
+          "countryiso3code": "MEX"
+        },
+        "Moldova": {
+          "value": 6.892230576,
+          "year": "2022",
+          "countryiso3code": "MDA"
+        },
+        "Moğolistan": {
+          "value": 54.26038062,
+          "year": "2022",
+          "countryiso3code": "MNG"
+        },
+        "Karadağ": {
+          "value": 0.306292591,
+          "year": "2022",
+          "countryiso3code": "MNE"
+        },
+        "Fas": {
+          "value": 87.7768191,
+          "year": "2022",
+          "countryiso3code": "MAR"
+        },
+        "Mozambik": {
+          "value": 73.04820095,
+          "year": "2022",
+          "countryiso3code": "MOZ"
+        },
+        "Myanmar": {
+          "value": 88.55573591,
+          "year": "2022",
+          "countryiso3code": "MMR"
+        },
+        "Namibya": {
+          "value": 71.48492106,
+          "year": "2022",
+          "countryiso3code": "NAM"
+        },
+        "Nepal": {
+          "value": 98.13522023,
+          "year": "2022",
+          "countryiso3code": "NPL"
+        },
+        "Hollanda": {
+          "value": 3.219295516,
+          "year": "2022",
+          "countryiso3code": "NLD"
+        },
+        "Yeni Zelanda": {
+          "value": 64.94532199,
+          "year": "2022",
+          "countryiso3code": "NZL"
+        },
+        "Nikaragua": {
+          "value": 85.04495457,
+          "year": "2022",
+          "countryiso3code": "NIC"
+        },
+        "Nijer": {
+          "value": 91.02310611,
+          "year": "2022",
+          "countryiso3code": "NER"
+        },
+        "Nijerya": {
+          "value": 44.16833667,
+          "year": "2022",
+          "countryiso3code": "NGA"
+        },
+        "Makedonya": {
+          "value": 6.401105227,
+          "year": "2022",
+          "countryiso3code": "MKD"
+        },
+        "Norveç": {
+          "value": 31.41698056,
+          "year": "2022",
+          "countryiso3code": "NOR"
+        },
+        "Pakistan": {
+          "value": 93.97656037,
+          "year": "2022",
+          "countryiso3code": "PAK"
+        },
+        "Papua Yeni Gine": {
+          "value": 0.25503698,
+          "year": "2022",
+          "countryiso3code": "PNG"
+        },
+        "Paraguay": {
+          "value": 78.61583092,
+          "year": "2022",
+          "countryiso3code": "PRY"
+        },
+        "Peru": {
+          "value": 81.45375979,
+          "year": "2022",
+          "countryiso3code": "PER"
+        },
+        "Filipinler": {
+          "value": 74.62601713,
+          "year": "2022",
+          "countryiso3code": "PHL"
+        },
+        "Polonya": {
+          "value": 13.01933649,
+          "year": "2022",
+          "countryiso3code": "POL"
+        },
+        "Portekiz": {
+          "value": 55.42852604,
+          "year": "2022",
+          "countryiso3code": "PRT"
+        },
+        "Katar": {
+          "value": 33.30727837,
+          "year": "2022",
+          "countryiso3code": "QAT"
+        },
+        "Romanya": {
+          "value": 36.25322046,
+          "year": "2022",
+          "countryiso3code": "ROU"
+        },
+        "Rusya": {
+          "value": 28.75655662,
+          "year": "2022",
+          "countryiso3code": "RUS"
+        },
+        "Ruanda": {
+          "value": 60.06655574,
+          "year": "2022",
+          "countryiso3code": "RWA"
+        },
+        "Suudi Arabistan": {
+          "value": 81.56355802,
+          "year": "2022",
+          "countryiso3code": "SAU"
+        },
+        "Senegal": {
+          "value": 91.31389425,
+          "year": "2022",
+          "countryiso3code": "SEN"
+        },
+        "Seyseller": {
+          "value": 6.569343066,
+          "year": "2022",
+          "countryiso3code": "SYC"
+        },
+        "Sierra Leone": {
+          "value": 21.53628652,
+          "year": "2022",
+          "countryiso3code": "SLE"
+        },
+        "Singapur": {
+          "value": 0.0,
+          "year": "2022",
+          "countryiso3code": "SGP"
+        },
+        "Slovakya": {
+          "value": 5.828544912,
+          "year": "2022",
+          "countryiso3code": "SVK"
+        },
+        "Slovenya": {
+          "value": 0.411124547,
+          "year": "2022",
+          "countryiso3code": "SVN"
+        },
+        "Güney Afrika": {
+          "value": 59.39992976,
+          "year": "2022",
+          "countryiso3code": "ZAF"
+        },
+        "Güney Sudan": {
+          "value": 36.47416413,
+          "year": "2022",
+          "countryiso3code": "SSD"
+        },
+        "İspanya": {
+          "value": 65.33425224,
+          "year": "2022",
+          "countryiso3code": "ESP"
+        },
+        "Sri Lanka": {
+          "value": 87.36289201,
+          "year": "2022",
+          "countryiso3code": "LKA"
+        },
+        "Sudan": {
+          "value": 96.19454242,
+          "year": "2022",
+          "countryiso3code": "SDN"
+        },
+        "Surinam": {
+          "value": 69.99512908,
+          "year": "2022",
+          "countryiso3code": "SUR"
+        },
+        "İsveç": {
+          "value": 4.932301741,
+          "year": "2022",
+          "countryiso3code": "SWE"
+        },
+        "İsviçre": {
+          "value": 9.239381348,
+          "year": "2022",
+          "countryiso3code": "CHE"
+        },
+        "Suriye": {
+          "value": 87.52774397,
+          "year": "2022",
+          "countryiso3code": "SYR"
+        },
+        "Tacikistan": {
+          "value": 74.52525253,
+          "year": "2022",
+          "countryiso3code": "TJK"
+        },
+        "Tayland": {
+          "value": 90.37448086,
+          "year": "2022",
+          "countryiso3code": "THA"
+        },
+        "Togo": {
+          "value": 34.08071749,
+          "year": "2022",
+          "countryiso3code": "TGO"
+        },
+        "Trinidad ve Tobago": {
+          "value": 4.358037578,
+          "year": "2022",
+          "countryiso3code": "TTO"
+        },
+        "Tunus": {
+          "value": 75.54217539,
+          "year": "2022",
+          "countryiso3code": "TUN"
+        },
+        "Türkiye": {
+          "value": 86.92701174,
+          "year": "2022",
+          "countryiso3code": "TUR"
+        },
+        "Türkmenistan": {
+          "value": 92.74870448,
+          "year": "2022",
+          "countryiso3code": "TKM"
+        },
+        "Uganda": {
+          "value": 40.65934066,
+          "year": "2022",
+          "countryiso3code": "UGA"
+        },
+        "Ukrayna": {
+          "value": 21.1318125,
+          "year": "2022",
+          "countryiso3code": "UKR"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "value": 51.1797143,
+          "year": "2022",
+          "countryiso3code": "ARE"
+        },
+        "Birleşik Krallık": {
+          "value": 14.04988124,
+          "year": "2022",
+          "countryiso3code": "GBR"
+        },
+        "ABD": {
+          "value": 39.65878143,
+          "year": "2022",
+          "countryiso3code": "USA"
+        },
+        "Uruguay": {
+          "value": 77.19047446,
+          "year": "2022",
+          "countryiso3code": "URY"
+        },
+        "Özbekistan": {
+          "value": 92.13483146,
+          "year": "2022",
+          "countryiso3code": "UZB"
+        },
+        "Venezuela": {
+          "value": 73.85211016,
+          "year": "2022",
+          "countryiso3code": "VEN"
+        },
+        "Vietnam": {
+          "value": 94.78239668,
+          "year": "2022",
+          "countryiso3code": "VNM"
+        },
+        "Yemen": {
+          "value": 90.74333801,
+          "year": "2022",
+          "countryiso3code": "YEM"
+        },
+        "Zambiya": {
+          "value": 73.28244275,
+          "year": "2022",
+          "countryiso3code": "ZMB"
+        },
+        "Zimbabve": {
+          "value": 87.20018255,
+          "year": "2022",
+          "countryiso3code": "ZWE"
+        }
+      }
+    },
+    "water_use_industry": {
+      "label": "Su Kullanımı: Sanayi Payı",
+      "unit": "%",
+      "decimals": 1,
+      "source": {
+        "type": "worldbank",
+        "indicator_code": "ER.H2O.FWIN.ZS",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.FWIN.ZS?format=json&per_page=20000&mrv=1",
+        "lastupdated": "2026-02-24",
+        "total": 266
+      },
+      "by_country": {
+        "Afganistan": {
+          "value": 0.831987591,
+          "year": "2022",
+          "countryiso3code": "AFG"
+        },
+        "Arnavutluk": {
+          "value": 1.380175659,
+          "year": "2022",
+          "countryiso3code": "ALB"
+        },
+        "Cezayir": {
+          "value": 1.651309187,
+          "year": "2022",
+          "countryiso3code": "DZA"
+        },
+        "Angola": {
+          "value": 33.94729385,
+          "year": "2022",
+          "countryiso3code": "AGO"
+        },
+        "Arjantin": {
+          "value": 10.58761249,
+          "year": "2022",
+          "countryiso3code": "ARG"
+        },
+        "Ermenistan": {
+          "value": 4.8828125,
+          "year": "2022",
+          "countryiso3code": "ARM"
+        },
+        "Avustralya": {
+          "value": 18.58936043,
+          "year": "2022",
+          "countryiso3code": "AUS"
+        },
+        "Avusturya": {
+          "value": 93.31351653,
+          "year": "2022",
+          "countryiso3code": "AUT"
+        },
+        "Azerbaycan": {
+          "value": 4.611351018,
+          "year": "2022",
+          "countryiso3code": "AZE"
+        },
+        "Bangladeş": {
+          "value": 2.146640647,
+          "year": "2022",
+          "countryiso3code": "BGD"
+        },
+        "Belarus": {
+          "value": 30.41018388,
+          "year": "2022",
+          "countryiso3code": "BLR"
+        },
+        "Belçika": {
+          "value": 84.10928624,
+          "year": "2022",
+          "countryiso3code": "BEL"
+        },
+        "Benin": {
+          "value": 12.82051282,
+          "year": "2022",
+          "countryiso3code": "BEN"
+        },
+        "Bolivya": {
+          "value": 1.451306354,
+          "year": "2022",
+          "countryiso3code": "BOL"
+        },
+        "Botsvana": {
+          "value": 11.39097625,
+          "year": "2022",
+          "countryiso3code": "BWA"
+        },
+        "Brezilya": {
+          "value": 15.01324698,
+          "year": "2022",
+          "countryiso3code": "BRA"
+        },
+        "Bulgaristan": {
+          "value": 71.26016589,
+          "year": "2022",
+          "countryiso3code": "BGR"
+        },
+        "Burkina Faso": {
+          "value": 2.652811736,
+          "year": "2022",
+          "countryiso3code": "BFA"
+        },
+        "Burundi": {
+          "value": 5.355230275,
+          "year": "2022",
+          "countryiso3code": "BDI"
+        },
+        "Cabo Verde": {
+          "value": 2.12059045,
+          "year": "2022",
+          "countryiso3code": "CPV"
+        },
+        "Kamboçya": {
+          "value": 1.510989011,
+          "year": "2022",
+          "countryiso3code": "KHM"
+        },
+        "Kamerun": {
+          "value": 9.610437339,
+          "year": "2022",
+          "countryiso3code": "CMR"
+        },
+        "Kanada": {
+          "value": 75.81266454,
+          "year": "2022",
+          "countryiso3code": "CAN"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "value": 16.55172414,
+          "year": "2022",
+          "countryiso3code": "CAF"
+        },
+        "Çad": {
+          "value": 11.78944975,
+          "year": "2022",
+          "countryiso3code": "TCD"
+        },
+        "Şili": {
+          "value": 5.128205128,
+          "year": "2022",
+          "countryiso3code": "CHL"
+        },
+        "Çin": {
+          "value": 17.72609197,
+          "year": "2022",
+          "countryiso3code": "CHN"
+        },
+        "Kolombiya": {
+          "value": 4.149108108,
+          "year": "2022",
+          "countryiso3code": "COL"
+        },
+        "Komorlar": {
+          "value": 5.0,
+          "year": "2022",
+          "countryiso3code": "COM"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "value": 21.47454652,
+          "year": "2022",
+          "countryiso3code": "COD"
+        },
+        "Fildişi Sahili": {
+          "value": 20.82616179,
+          "year": "2022",
+          "countryiso3code": "CIV"
+        },
+        "Hırvatistan": {
+          "value": 46.7519685,
+          "year": "2022",
+          "countryiso3code": "HRV"
+        },
+        "Küba": {
+          "value": 10.63371174,
+          "year": "2022",
+          "countryiso3code": "CUB"
+        },
+        "Kıbrıs": {
+          "value": 5.882352941,
+          "year": "2022",
+          "countryiso3code": "CYP"
+        },
+        "Çek Cumhuriyeti": {
+          "value": 53.66528354,
+          "year": "2022",
+          "countryiso3code": "CZE"
+        },
+        "Danimarka": {
+          "value": 4.82431637,
+          "year": "2022",
+          "countryiso3code": "DNK"
+        },
+        "Cibuti": {
+          "value": 0.0,
+          "year": "2022",
+          "countryiso3code": "DJI"
+        },
+        "Ekvador": {
+          "value": 5.5353902,
+          "year": "2022",
+          "countryiso3code": "ECU"
+        },
+        "Mısır": {
+          "value": 6.967741936,
+          "year": "2022",
+          "countryiso3code": "EGY"
+        },
+        "El Salvador": {
+          "value": 4.865325145,
+          "year": "2022",
+          "countryiso3code": "SLV"
+        },
+        "Ekvator Ginesi": {
+          "value": 15.15151515,
+          "year": "2022",
+          "countryiso3code": "GNQ"
+        },
+        "Eritre": {
+          "value": 0.171821306,
+          "year": "2022",
+          "countryiso3code": "ERI"
+        },
+        "Estonya": {
+          "value": 94.19331423,
+          "year": "2022",
+          "countryiso3code": "EST"
+        },
+        "Esvatini": {
+          "value": 1.938202247,
+          "year": "2022",
+          "countryiso3code": "SWZ"
+        },
+        "Etiyopya": {
+          "value": 0.484447436,
+          "year": "2022",
+          "countryiso3code": "ETH"
+        },
+        "Finlandiya": {
+          "value": 46.4109636,
+          "year": "2022",
+          "countryiso3code": "FIN"
+        },
+        "Fransa": {
+          "value": 68.12522285,
+          "year": "2022",
+          "countryiso3code": "FRA"
+        },
+        "Gabon": {
+          "value": 10.13659238,
+          "year": "2022",
+          "countryiso3code": "GAB"
+        },
+        "Gambiya": {
+          "value": 20.86614173,
+          "year": "2022",
+          "countryiso3code": "GMB"
+        },
+        "Gürcistan": {
+          "value": 27.40571217,
+          "year": "2022",
+          "countryiso3code": "GEO"
+        },
+        "Almanya": {
+          "value": 54.2996667,
+          "year": "2022",
+          "countryiso3code": "DEU"
+        },
+        "Gana": {
+          "value": 6.486412672,
+          "year": "2022",
+          "countryiso3code": "GHA"
+        },
+        "Yunanistan": {
+          "value": 2.777446893,
+          "year": "2022",
+          "countryiso3code": "GRC"
+        },
+        "Guatemala": {
+          "value": 18.14325682,
+          "year": "2022",
+          "countryiso3code": "GTM"
+        },
+        "Gine": {
+          "value": 6.741573034,
+          "year": "2022",
+          "countryiso3code": "GIN"
+        },
+        "Gine-Bissau": {
+          "value": 6.263157895,
+          "year": "2022",
+          "countryiso3code": "GNB"
+        },
+        "Guyana": {
+          "value": 1.412057867,
+          "year": "2022",
+          "countryiso3code": "GUY"
+        },
+        "Haiti": {
+          "value": 3.517241379,
+          "year": "2022",
+          "countryiso3code": "HTI"
+        },
+        "Macaristan": {
+          "value": 75.66391655,
+          "year": "2022",
+          "countryiso3code": "HUN"
+        },
+        "İzlanda": {
+          "value": 71.14624506,
+          "year": "2022",
+          "countryiso3code": "ISL"
+        },
+        "Hindistan": {
+          "value": 2.23390276,
+          "year": "2022",
+          "countryiso3code": "IND"
+        },
+        "Endonezya": {
+          "value": 4.103128439,
+          "year": "2022",
+          "countryiso3code": "IDN"
+        },
+        "İran": {
+          "value": 1.178992497,
+          "year": "2022",
+          "countryiso3code": "IRN"
+        },
+        "Irak": {
+          "value": 10.6543466,
+          "year": "2022",
+          "countryiso3code": "IRQ"
+        },
+        "İrlanda": {
+          "value": 31.78840406,
+          "year": "2022",
+          "countryiso3code": "IRL"
+        },
+        "İtalya": {
+          "value": 22.74875916,
+          "year": "2022",
+          "countryiso3code": "ITA"
+        },
+        "Jamaika": {
+          "value": 9.504381981,
+          "year": "2022",
+          "countryiso3code": "JAM"
+        },
+        "Japonya": {
+          "value": 16.35220126,
+          "year": "2022",
+          "countryiso3code": "JPN"
+        },
+        "Ürdün": {
+          "value": 3.337979473,
+          "year": "2022",
+          "countryiso3code": "JOR"
+        },
+        "Kazakistan": {
+          "value": 23.85025461,
+          "year": "2022",
+          "countryiso3code": "KAZ"
+        },
+        "Kenya": {
+          "value": 7.514880952,
+          "year": "2022",
+          "countryiso3code": "KEN"
+        },
+        "Kuveyt": {
+          "value": 1.864,
+          "year": "2022",
+          "countryiso3code": "KWT"
+        },
+        "Kırgızistan": {
+          "value": 4.386422977,
+          "year": "2022",
+          "countryiso3code": "KGZ"
+        },
+        "Letonya": {
+          "value": 17.5769146,
+          "year": "2022",
+          "countryiso3code": "LVA"
+        },
+        "Lübnan": {
+          "value": 48.91304348,
+          "year": "2022",
+          "countryiso3code": "LBN"
+        },
+        "Lesoto": {
+          "value": 45.66210046,
+          "year": "2022",
+          "countryiso3code": "LSO"
+        },
+        "Liberya": {
+          "value": 36.60041124,
+          "year": "2022",
+          "countryiso3code": "LBR"
+        },
+        "Libya": {
+          "value": 4.802744425,
+          "year": "2022",
+          "countryiso3code": "LBY"
+        },
+        "Litvanya": {
+          "value": 29.28485817,
+          "year": "2022",
+          "countryiso3code": "LTU"
+        },
+        "Lüksemburg": {
+          "value": 3.833263511,
+          "year": "2022",
+          "countryiso3code": "LUX"
+        },
+        "Madagaskar": {
+          "value": 1.194225819,
+          "year": "2022",
+          "countryiso3code": "MDG"
+        },
+        "Malavi": {
+          "value": 3.515625,
+          "year": "2022",
+          "countryiso3code": "MWI"
+        },
+        "Malezya": {
+          "value": 29.9016035,
+          "year": "2022",
+          "countryiso3code": "MYS"
+        },
+        "Maldivler": {
+          "value": 5.084745763,
+          "year": "2022",
+          "countryiso3code": "MDV"
+        },
+        "Mali": {
+          "value": 0.077130737,
+          "year": "2022",
+          "countryiso3code": "MLI"
+        },
+        "Moritanya": {
+          "value": 2.355206636,
+          "year": "2022",
+          "countryiso3code": "MRT"
+        },
+        "Mauritius": {
+          "value": 1.579778831,
+          "year": "2022",
+          "countryiso3code": "MUS"
+        },
+        "Meksika": {
+          "value": 8.85575574,
+          "year": "2022",
+          "countryiso3code": "MEX"
+        },
+        "Moldova": {
+          "value": 73.05764411,
+          "year": "2022",
+          "countryiso3code": "MDA"
+        },
+        "Moğolistan": {
+          "value": 35.94290657,
+          "year": "2022",
+          "countryiso3code": "MNG"
+        },
+        "Karadağ": {
+          "value": 94.19720531,
+          "year": "2022",
+          "countryiso3code": "MNE"
+        },
+        "Fas": {
+          "value": 2.032403413,
+          "year": "2022",
+          "countryiso3code": "MAR"
+        },
+        "Mozambik": {
+          "value": 1.697216565,
+          "year": "2022",
+          "countryiso3code": "MOZ"
+        },
+        "Myanmar": {
+          "value": 1.492599891,
+          "year": "2022",
+          "countryiso3code": "MMR"
+        },
+        "Namibya": {
+          "value": 6.618579009,
+          "year": "2022",
+          "countryiso3code": "NAM"
+        },
+        "Nepal": {
+          "value": 0.310621137,
+          "year": "2022",
+          "countryiso3code": "NPL"
+        },
+        "Hollanda": {
+          "value": 70.24895662,
+          "year": "2022",
+          "countryiso3code": "NLD"
+        },
+        "Yeni Zelanda": {
+          "value": 23.97731875,
+          "year": "2022",
+          "countryiso3code": "NZL"
+        },
+        "Nikaragua": {
+          "value": 0.04866562,
+          "year": "2022",
+          "countryiso3code": "NIC"
+        },
+        "Nijer": {
+          "value": 1.496290918,
+          "year": "2022",
+          "countryiso3code": "NER"
+        },
+        "Nijerya": {
+          "value": 15.75150301,
+          "year": "2022",
+          "countryiso3code": "NGA"
+        },
+        "Makedonya": {
+          "value": 1.452452222,
+          "year": "2022",
+          "countryiso3code": "MKD"
+        },
+        "Norveç": {
+          "value": 39.82434156,
+          "year": "2022",
+          "countryiso3code": "NOR"
+        },
+        "Pakistan": {
+          "value": 0.763150722,
+          "year": "2022",
+          "countryiso3code": "PAK"
+        },
+        "Papua Yeni Gine": {
+          "value": 42.74419791,
+          "year": "2022",
+          "countryiso3code": "PNG"
+        },
+        "Paraguay": {
+          "value": 6.382096975,
+          "year": "2022",
+          "countryiso3code": "PRY"
+        },
+        "Peru": {
+          "value": 6.427717119,
+          "year": "2022",
+          "countryiso3code": "PER"
+        },
+        "Filipinler": {
+          "value": 14.94095987,
+          "year": "2022",
+          "countryiso3code": "PHL"
+        },
+        "Polonya": {
+          "value": 65.49228025,
+          "year": "2022",
+          "countryiso3code": "POL"
+        },
+        "Portekiz": {
+          "value": 29.65812257,
+          "year": "2022",
+          "countryiso3code": "PRT"
+        },
+        "Katar": {
+          "value": 4.301014427,
+          "year": "2022",
+          "countryiso3code": "QAT"
+        },
+        "Romanya": {
+          "value": 48.33762729,
+          "year": "2022",
+          "countryiso3code": "ROU"
+        },
+        "Rusya": {
+          "value": 44.78556001,
+          "year": "2022",
+          "countryiso3code": "RUS"
+        },
+        "Ruanda": {
+          "value": 1.663893511,
+          "year": "2022",
+          "countryiso3code": "RWA"
+        },
+        "Suudi Arabistan": {
+          "value": 5.386272699,
+          "year": "2022",
+          "countryiso3code": "SAU"
+        },
+        "Senegal": {
+          "value": 0.046760411,
+          "year": "2022",
+          "countryiso3code": "SEN"
+        },
+        "Seyseller": {
+          "value": 27.73722628,
+          "year": "2022",
+          "countryiso3code": "SYC"
+        },
+        "Sierra Leone": {
+          "value": 26.15457116,
+          "year": "2022",
+          "countryiso3code": "SLE"
+        },
+        "Singapur": {
+          "value": 45.0693085,
+          "year": "2022",
+          "countryiso3code": "SGP"
+        },
+        "Slovakya": {
+          "value": 39.84264177,
+          "year": "2022",
+          "countryiso3code": "SVK"
+        },
+        "Slovenya": {
+          "value": 77.99274486,
+          "year": "2022",
+          "countryiso3code": "SVN"
+        },
+        "Güney Afrika": {
+          "value": 23.15990166,
+          "year": "2022",
+          "countryiso3code": "ZAF"
+        },
+        "Güney Sudan": {
+          "value": 34.19452888,
+          "year": "2022",
+          "countryiso3code": "SSD"
+        },
+        "İspanya": {
+          "value": 18.95244659,
+          "year": "2022",
+          "countryiso3code": "ESP"
+        },
+        "Sri Lanka": {
+          "value": 6.418971111,
+          "year": "2022",
+          "countryiso3code": "LKA"
+        },
+        "Sudan": {
+          "value": 0.278448116,
+          "year": "2022",
+          "countryiso3code": "SDN"
+        },
+        "Surinam": {
+          "value": 22.00032473,
+          "year": "2022",
+          "countryiso3code": "SUR"
+        },
+        "İsveç": {
+          "value": 61.26692456,
+          "year": "2022",
+          "countryiso3code": "SWE"
+        },
+        "İsviçre": {
+          "value": 37.09025854,
+          "year": "2022",
+          "countryiso3code": "CHE"
+        },
+        "Suriye": {
+          "value": 3.671750078,
+          "year": "2022",
+          "countryiso3code": "SYR"
+        },
+        "Tacikistan": {
+          "value": 16.26262626,
+          "year": "2022",
+          "countryiso3code": "TJK"
+        },
+        "Tayland": {
+          "value": 4.845914913,
+          "year": "2022",
+          "countryiso3code": "THA"
+        },
+        "Togo": {
+          "value": 2.825112108,
+          "year": "2022",
+          "countryiso3code": "TGO"
+        },
+        "Trinidad ve Tobago": {
+          "value": 33.63778706,
+          "year": "2022",
+          "countryiso3code": "TTO"
+        },
+        "Tunus": {
+          "value": 1.725483637,
+          "year": "2022",
+          "countryiso3code": "TUN"
+        },
+        "Türkiye": {
+          "value": 2.008312523,
+          "year": "2022",
+          "countryiso3code": "TUR"
+        },
+        "Türkmenistan": {
+          "value": 4.641954248,
+          "year": "2022",
+          "countryiso3code": "TKM"
+        },
+        "Uganda": {
+          "value": 7.849293564,
+          "year": "2022",
+          "countryiso3code": "UGA"
+        },
+        "Ukrayna": {
+          "value": 44.8441247,
+          "year": "2022",
+          "countryiso3code": "UKR"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "value": 1.141623722,
+          "year": "2022",
+          "countryiso3code": "ARE"
+        },
+        "Birleşik Krallık": {
+          "value": 11.99524941,
+          "year": "2022",
+          "countryiso3code": "GBR"
+        },
+        "ABD": {
+          "value": 47.19890162,
+          "year": "2022",
+          "countryiso3code": "USA"
+        },
+        "Uruguay": {
+          "value": 13.39339356,
+          "year": "2022",
+          "countryiso3code": "URY"
+        },
+        "Özbekistan": {
+          "value": 2.696629214,
+          "year": "2022",
+          "countryiso3code": "UZB"
+        },
+        "Venezuela": {
+          "value": 3.506096887,
+          "year": "2022",
+          "countryiso3code": "VEN"
+        },
+        "Vietnam": {
+          "value": 3.747409484,
+          "year": "2022",
+          "countryiso3code": "VNM"
+        },
+        "Yemen": {
+          "value": 1.823281907,
+          "year": "2022",
+          "countryiso3code": "YEM"
+        },
+        "Zambiya": {
+          "value": 8.269720102,
+          "year": "2022",
+          "countryiso3code": "ZMB"
+        },
+        "Zimbabve": {
+          "value": 1.656971738,
+          "year": "2022",
+          "countryiso3code": "ZWE"
+        }
+      }
+    },
+    "water_use_domestic": {
+      "label": "Su Kullanımı: Evsel Pay",
+      "unit": "%",
+      "decimals": 1,
+      "source": {
+        "type": "worldbank",
+        "indicator_code": "ER.H2O.FWDM.ZS",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.FWDM.ZS?format=json&per_page=20000&mrv=1",
+        "lastupdated": "2026-02-24",
+        "total": 266
+      },
+      "by_country": {
+        "Afganistan": {
+          "value": 0.99838511,
+          "year": "2022",
+          "countryiso3code": "AFG"
+        },
+        "Arnavutluk": {
+          "value": 27.72898369,
+          "year": "2022",
+          "countryiso3code": "ALB"
+        },
+        "Cezayir": {
+          "value": 30.9187118,
+          "year": "2022",
+          "countryiso3code": "DZA"
+        },
+        "Angola": {
+          "value": 45.26778124,
+          "year": "2022",
+          "countryiso3code": "AGO"
+        },
+        "Arjantin": {
+          "value": 15.48438327,
+          "year": "2022",
+          "countryiso3code": "ARG"
+        },
+        "Ermenistan": {
+          "value": 17.64322917,
+          "year": "2022",
+          "countryiso3code": "ARM"
+        },
+        "Avustralya": {
+          "value": 14.52480574,
+          "year": "2022",
+          "countryiso3code": "AUS"
+        },
+        "Avusturya": {
+          "value": 1.450792954,
+          "year": "2022",
+          "countryiso3code": "AUT"
+        },
+        "Azerbaycan": {
+          "value": 3.146206046,
+          "year": "2022",
+          "countryiso3code": "AZE"
+        },
+        "Bangladeş": {
+          "value": 10.03624198,
+          "year": "2022",
+          "countryiso3code": "BGD"
+        },
+        "Belarus": {
+          "value": 42.43281471,
+          "year": "2022",
+          "countryiso3code": "BLR"
+        },
+        "Belçika": {
+          "value": 15.03803239,
+          "year": "2022",
+          "countryiso3code": "BEL"
+        },
+        "Benin": {
+          "value": 61.96581197,
+          "year": "2022",
+          "countryiso3code": "BEN"
+        },
+        "Bolivya": {
+          "value": 11.47031242,
+          "year": "2022",
+          "countryiso3code": "BOL"
+        },
+        "Botsvana": {
+          "value": 60.63645036,
+          "year": "2022",
+          "countryiso3code": "BWA"
+        },
+        "Brezilya": {
+          "value": 24.13453047,
+          "year": "2022",
+          "countryiso3code": "BRA"
+        },
+        "Bulgaristan": {
+          "value": 15.39469425,
+          "year": "2022",
+          "countryiso3code": "BGR"
+        },
+        "Burkina Faso": {
+          "value": 45.91687042,
+          "year": "2022",
+          "countryiso3code": "BFA"
+        },
+        "Burundi": {
+          "value": 15.38736166,
+          "year": "2022",
+          "countryiso3code": "BDI"
+        },
+        "Cabo Verde": {
+          "value": 58.88918769,
+          "year": "2022",
+          "countryiso3code": "CPV"
+        },
+        "Kamboçya": {
+          "value": 4.487179487,
+          "year": "2022",
+          "countryiso3code": "KHM"
+        },
+        "Kamerun": {
+          "value": 22.67548695,
+          "year": "2022",
+          "countryiso3code": "CMR"
+        },
+        "Kanada": {
+          "value": 13.49314119,
+          "year": "2022",
+          "countryiso3code": "CAN"
+        },
+        "Orta Afrika Cumhuriyeti": {
+          "value": 82.89655172,
+          "year": "2022",
+          "countryiso3code": "CAF"
+        },
+        "Çad": {
+          "value": 11.78944975,
+          "year": "2022",
+          "countryiso3code": "TCD"
+        },
+        "Şili": {
+          "value": 3.985171455,
+          "year": "2022",
+          "countryiso3code": "CHL"
+        },
+        "Çin": {
+          "value": 20.12936744,
+          "year": "2022",
+          "countryiso3code": "CHN"
+        },
+        "Kolombiya": {
+          "value": 13.6764368,
+          "year": "2022",
+          "countryiso3code": "COL"
+        },
+        "Komorlar": {
+          "value": 48.0,
+          "year": "2022",
+          "countryiso3code": "COM"
+        },
+        "Demokratik Kongo Cumhuriyeti": {
+          "value": 68.00760679,
+          "year": "2022",
+          "countryiso3code": "COD"
+        },
+        "Fildişi Sahili": {
+          "value": 27.53872633,
+          "year": "2022",
+          "countryiso3code": "CIV"
+        },
+        "Hırvatistan": {
+          "value": 45.76771654,
+          "year": "2022",
+          "countryiso3code": "HRV"
+        },
+        "Küba": {
+          "value": 24.42879724,
+          "year": "2022",
+          "countryiso3code": "CUB"
+        },
+        "Kıbrıs": {
+          "value": 38.75432526,
+          "year": "2022",
+          "countryiso3code": "CYP"
+        },
+        "Çek Cumhuriyeti": {
+          "value": 43.29183956,
+          "year": "2022",
+          "countryiso3code": "CZE"
+        },
+        "Danimarka": {
+          "value": 40.96826671,
+          "year": "2022",
+          "countryiso3code": "DNK"
+        },
+        "Cibuti": {
+          "value": 84.21052632,
+          "year": "2022",
+          "countryiso3code": "DJI"
+        },
+        "Ekvador": {
+          "value": 13.0369026,
+          "year": "2022",
+          "countryiso3code": "ECU"
+        },
+        "Mısır": {
+          "value": 13.87096774,
+          "year": "2022",
+          "countryiso3code": "EGY"
+        },
+        "El Salvador": {
+          "value": 22.34837278,
+          "year": "2022",
+          "countryiso3code": "SLV"
+        },
+        "Ekvator Ginesi": {
+          "value": 79.7979798,
+          "year": "2022",
+          "countryiso3code": "GNQ"
+        },
+        "Eritre": {
+          "value": 5.326460481,
+          "year": "2022",
+          "countryiso3code": "ERI"
+        },
+        "Estonya": {
+          "value": 5.391902324,
+          "year": "2022",
+          "countryiso3code": "EST"
+        },
+        "Esvatini": {
+          "value": 3.867041199,
+          "year": "2022",
+          "countryiso3code": "SWZ"
+        },
+        "Etiyopya": {
+          "value": 7.679108086,
+          "year": "2022",
+          "countryiso3code": "ETH"
+        },
+        "Finlandiya": {
+          "value": 17.86301213,
+          "year": "2022",
+          "countryiso3code": "FIN"
+        },
+        "Fransa": {
+          "value": 21.57840156,
+          "year": "2022",
+          "countryiso3code": "FRA"
+        },
+        "Gabon": {
+          "value": 60.891445,
+          "year": "2022",
+          "countryiso3code": "GAB"
+        },
+        "Gambiya": {
+          "value": 40.5511811,
+          "year": "2022",
+          "countryiso3code": "GMB"
+        },
+        "Gürcistan": {
+          "value": 39.04189024,
+          "year": "2022",
+          "countryiso3code": "GEO"
+        },
+        "Almanya": {
+          "value": 41.53374175,
+          "year": "2022",
+          "countryiso3code": "DEU"
+        },
+        "Gana": {
+          "value": 20.45609723,
+          "year": "2022",
+          "countryiso3code": "GHA"
+        },
+        "Yunanistan": {
+          "value": 16.74607902,
+          "year": "2022",
+          "countryiso3code": "GRC"
+        },
+        "Guatemala": {
+          "value": 25.11958124,
+          "year": "2022",
+          "countryiso3code": "GTM"
+        },
+        "Gine": {
+          "value": 25.84269663,
+          "year": "2022",
+          "countryiso3code": "GIN"
+        },
+        "Gine-Bissau": {
+          "value": 17.94736842,
+          "year": "2022",
+          "countryiso3code": "GNB"
+        },
+        "Guyana": {
+          "value": 4.243095452,
+          "year": "2022",
+          "countryiso3code": "GUY"
+        },
+        "Haiti": {
+          "value": 13.10344828,
+          "year": "2022",
+          "countryiso3code": "HTI"
+        },
+        "Macaristan": {
+          "value": 13.28946079,
+          "year": "2022",
+          "countryiso3code": "HUN"
+        },
+        "İzlanda": {
+          "value": 28.7459576,
+          "year": "2022",
+          "countryiso3code": "ISL"
+        },
+        "Hindistan": {
+          "value": 7.358738502,
+          "year": "2022",
+          "countryiso3code": "IND"
+        },
+        "Endonezya": {
+          "value": 10.69014306,
+          "year": "2022",
+          "countryiso3code": "IDN"
+        },
+        "İran": {
+          "value": 6.645230439,
+          "year": "2022",
+          "countryiso3code": "IRN"
+        },
+        "Irak": {
+          "value": 15.87544786,
+          "year": "2022",
+          "countryiso3code": "IRQ"
+        },
+        "İrlanda": {
+          "value": 66.09683204,
+          "year": "2022",
+          "countryiso3code": "IRL"
+        },
+        "İtalya": {
+          "value": 27.02670763,
+          "year": "2022",
+          "countryiso3code": "ITA"
+        },
+        "Jamaika": {
+          "value": 73.43274737,
+          "year": "2022",
+          "countryiso3code": "JAM"
+        },
+        "Japonya": {
+          "value": 16.98113208,
+          "year": "2022",
+          "countryiso3code": "JPN"
+        },
+        "Ürdün": {
+          "value": 45.01656318,
+          "year": "2022",
+          "countryiso3code": "JOR"
+        },
+        "Kazakistan": {
+          "value": 19.40245067,
+          "year": "2022",
+          "countryiso3code": "KAZ"
+        },
+        "Kenya": {
+          "value": 12.27678571,
+          "year": "2022",
+          "countryiso3code": "KEN"
+        },
+        "Kuveyt": {
+          "value": 35.864,
+          "year": "2022",
+          "countryiso3code": "KWT"
+        },
+        "Kırgızistan": {
+          "value": 2.924281984,
+          "year": "2022",
+          "countryiso3code": "KGZ"
+        },
+        "Letonya": {
+          "value": 53.35279167,
+          "year": "2022",
+          "countryiso3code": "LVA"
+        },
+        "Lübnan": {
+          "value": 13.04347826,
+          "year": "2022",
+          "countryiso3code": "LBN"
+        },
+        "Lesoto": {
+          "value": 45.66210046,
+          "year": "2022",
+          "countryiso3code": "LSO"
+        },
+        "Liberya": {
+          "value": 54.96915696,
+          "year": "2022",
+          "countryiso3code": "LBR"
+        },
+        "Libya": {
+          "value": 12.00686106,
+          "year": "2022",
+          "countryiso3code": "LBY"
+        },
+        "Litvanya": {
+          "value": 45.53868691,
+          "year": "2022",
+          "countryiso3code": "LTU"
+        },
+        "Lüksemburg": {
+          "value": 91.18139925,
+          "year": "2022",
+          "countryiso3code": "LUX"
+        },
+        "Madagaskar": {
+          "value": 2.91364545,
+          "year": "2022",
+          "countryiso3code": "MDG"
+        },
+        "Malavi": {
+          "value": 10.546875,
+          "year": "2022",
+          "countryiso3code": "MWI"
+        },
+        "Malezya": {
+          "value": 24.45335277,
+          "year": "2022",
+          "countryiso3code": "MYS"
+        },
+        "Maldivler": {
+          "value": 94.91525424,
+          "year": "2022",
+          "countryiso3code": "MDV"
+        },
+        "Mali": {
+          "value": 2.063247204,
+          "year": "2022",
+          "countryiso3code": "MLI"
+        },
+        "Moritanya": {
+          "value": 7.065619908,
+          "year": "2022",
+          "countryiso3code": "MRT"
+        },
+        "Mauritius": {
+          "value": 50.55292259,
+          "year": "2022",
+          "countryiso3code": "MUS"
+        },
+        "Meksika": {
+          "value": 14.84310625,
+          "year": "2022",
+          "countryiso3code": "MEX"
+        },
+        "Moldova": {
+          "value": 20.05012531,
+          "year": "2022",
+          "countryiso3code": "MDA"
+        },
+        "Moğolistan": {
+          "value": 9.796712803,
+          "year": "2022",
+          "countryiso3code": "MNG"
+        },
+        "Karadağ": {
+          "value": 5.496955198,
+          "year": "2022",
+          "countryiso3code": "MNE"
+        },
+        "Fas": {
+          "value": 10.19077749,
+          "year": "2022",
+          "countryiso3code": "MAR"
+        },
+        "Mozambik": {
+          "value": 25.25458248,
+          "year": "2022",
+          "countryiso3code": "MOZ"
+        },
+        "Myanmar": {
+          "value": 9.951664201,
+          "year": "2022",
+          "countryiso3code": "MMR"
+        },
+        "Namibya": {
+          "value": 21.89649993,
+          "year": "2022",
+          "countryiso3code": "NAM"
+        },
+        "Nepal": {
+          "value": 1.554158638,
+          "year": "2022",
+          "countryiso3code": "NPL"
+        },
+        "Hollanda": {
+          "value": 26.53174787,
+          "year": "2022",
+          "countryiso3code": "NLD"
+        },
+        "Yeni Zelanda": {
+          "value": 11.07735925,
+          "year": "2022",
+          "countryiso3code": "NZL"
+        },
+        "Nikaragua": {
+          "value": 14.90640348,
+          "year": "2022",
+          "countryiso3code": "NIC"
+        },
+        "Nijer": {
+          "value": 7.48060297,
+          "year": "2022",
+          "countryiso3code": "NER"
+        },
+        "Nijerya": {
+          "value": 40.08016032,
+          "year": "2022",
+          "countryiso3code": "NGA"
+        },
+        "Makedonya": {
+          "value": 14.06401105,
+          "year": "2022",
+          "countryiso3code": "MKD"
+        },
+        "Norveç": {
+          "value": 28.75867788,
+          "year": "2022",
+          "countryiso3code": "NOR"
+        },
+        "Pakistan": {
+          "value": 5.260288907,
+          "year": "2022",
+          "countryiso3code": "PAK"
+        },
+        "Papua Yeni Gine": {
+          "value": 57.00076511,
+          "year": "2022",
+          "countryiso3code": "PNG"
+        },
+        "Paraguay": {
+          "value": 15.00207211,
+          "year": "2022",
+          "countryiso3code": "PRY"
+        },
+        "Peru": {
+          "value": 12.11852309,
+          "year": "2022",
+          "countryiso3code": "PER"
+        },
+        "Filipinler": {
+          "value": 10.433023,
+          "year": "2022",
+          "countryiso3code": "PHL"
+        },
+        "Polonya": {
+          "value": 21.48838326,
+          "year": "2022",
+          "countryiso3code": "POL"
+        },
+        "Portekiz": {
+          "value": 14.91335139,
+          "year": "2022",
+          "countryiso3code": "PRT"
+        },
+        "Katar": {
+          "value": 62.3917072,
+          "year": "2022",
+          "countryiso3code": "QAT"
+        },
+        "Romanya": {
+          "value": 15.40915225,
+          "year": "2022",
+          "countryiso3code": "ROU"
+        },
+        "Rusya": {
+          "value": 26.45788337,
+          "year": "2022",
+          "countryiso3code": "RUS"
+        },
+        "Ruanda": {
+          "value": 38.26955075,
+          "year": "2022",
+          "countryiso3code": "RWA"
+        },
+        "Suudi Arabistan": {
+          "value": 13.05016928,
+          "year": "2022",
+          "countryiso3code": "SAU"
+        },
+        "Senegal": {
+          "value": 8.639243186,
+          "year": "2022",
+          "countryiso3code": "SEN"
+        },
+        "Seyseller": {
+          "value": 65.69343066,
+          "year": "2022",
+          "countryiso3code": "SYC"
+        },
+        "Sierra Leone": {
+          "value": 52.30914232,
+          "year": "2022",
+          "countryiso3code": "SLE"
+        },
+        "Singapur": {
+          "value": 54.9306915,
+          "year": "2022",
+          "countryiso3code": "SGP"
+        },
+        "Slovakya": {
+          "value": 54.32881332,
+          "year": "2022",
+          "countryiso3code": "SVK"
+        },
+        "Slovenya": {
+          "value": 21.64449819,
+          "year": "2022",
+          "countryiso3code": "SVN"
+        },
+        "Güney Afrika": {
+          "value": 17.44016858,
+          "year": "2022",
+          "countryiso3code": "ZAF"
+        },
+        "Güney Sudan": {
+          "value": 29.33130699,
+          "year": "2022",
+          "countryiso3code": "SSD"
+        },
+        "İspanya": {
+          "value": 15.71330117,
+          "year": "2022",
+          "countryiso3code": "ESP"
+        },
+        "Sri Lanka": {
+          "value": 6.218136876,
+          "year": "2022",
+          "countryiso3code": "LKA"
+        },
+        "Sudan": {
+          "value": 3.527009467,
+          "year": "2022",
+          "countryiso3code": "SDN"
+        },
+        "Surinam": {
+          "value": 8.004546193,
+          "year": "2022",
+          "countryiso3code": "SUR"
+        },
+        "İsveç": {
+          "value": 33.80077369,
+          "year": "2022",
+          "countryiso3code": "SWE"
+        },
+        "İsviçre": {
+          "value": 53.67036011,
+          "year": "2022",
+          "countryiso3code": "CHE"
+        },
+        "Suriye": {
+          "value": 8.800505955,
+          "year": "2022",
+          "countryiso3code": "SYR"
+        },
+        "Tacikistan": {
+          "value": 9.212121212,
+          "year": "2022",
+          "countryiso3code": "TJK"
+        },
+        "Tayland": {
+          "value": 4.77960423,
+          "year": "2022",
+          "countryiso3code": "THA"
+        },
+        "Togo": {
+          "value": 63.0941704,
+          "year": "2022",
+          "countryiso3code": "TGO"
+        },
+        "Trinidad ve Tobago": {
+          "value": 62.00417537,
+          "year": "2022",
+          "countryiso3code": "TTO"
+        },
+        "Tunus": {
+          "value": 22.73234097,
+          "year": "2022",
+          "countryiso3code": "TUN"
+        },
+        "Türkiye": {
+          "value": 11.06467574,
+          "year": "2022",
+          "countryiso3code": "TUR"
+        },
+        "Türkmenistan": {
+          "value": 2.609341267,
+          "year": "2022",
+          "countryiso3code": "TKM"
+        },
+        "Uganda": {
+          "value": 51.49136578,
+          "year": "2022",
+          "countryiso3code": "UGA"
+        },
+        "Ukrayna": {
+          "value": 34.0240628,
+          "year": "2022",
+          "countryiso3code": "UKR"
+        },
+        "Birleşik Arap Emirlikleri": {
+          "value": 47.67866198,
+          "year": "2022",
+          "countryiso3code": "ARE"
+        },
+        "Birleşik Krallık": {
+          "value": 73.95486936,
+          "year": "2022",
+          "countryiso3code": "GBR"
+        },
+        "ABD": {
+          "value": 13.14231696,
+          "year": "2022",
+          "countryiso3code": "USA"
+        },
+        "Uruguay": {
+          "value": 9.416131986,
+          "year": "2022",
+          "countryiso3code": "URY"
+        },
+        "Özbekistan": {
+          "value": 5.168539326,
+          "year": "2022",
+          "countryiso3code": "UZB"
+        },
+        "Venezuela": {
+          "value": 22.64179296,
+          "year": "2022",
+          "countryiso3code": "VEN"
+        },
+        "Vietnam": {
+          "value": 1.470193832,
+          "year": "2022",
+          "countryiso3code": "VNM"
+        },
+        "Yemen": {
+          "value": 7.433380084,
+          "year": "2022",
+          "countryiso3code": "YEM"
+        },
+        "Zambiya": {
+          "value": 18.44783715,
+          "year": "2022",
+          "countryiso3code": "ZMB"
+        },
+        "Zimbabve": {
+          "value": 11.14284571,
+          "year": "2022",
+          "countryiso3code": "ZWE"
         }
       }
     }

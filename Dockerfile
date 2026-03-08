@@ -18,6 +18,7 @@ COPY . .
 
 # Fetch external datasets (NATO, minimum wage, Big Mac index, etc.)
 RUN python scripts/fetch_indicators.py
+RUN python scripts/check_strategic_data.py
 
 # Generate the map (assuming this script generates output/geopolitical_map.html)
 # We need to make sure the script output directory matches what we serve

@@ -1,0 +1,504 @@
+{
+  "provider": "frankfurter",
+  "updated_at_utc": "2026-03-08T14:35:25Z",
+  "source_note": "30 günlük USD karşısı yerel para baskısı. Pozitif değer yerel para biriminin değer kaybını gösterir.",
+  "source": {
+    "type": "frankfurter",
+    "currencies_url": "https://api.frankfurter.dev/v1/currencies",
+    "current_date": "2026-03-06",
+    "comparison_date_requested": "2026-02-04",
+    "comparison_date_resolved": "2026-02-04"
+  },
+  "countries": {
+    "Almanya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Avustralya": {
+      "currency_code": "AUD",
+      "currency_name": "Australian Dollar",
+      "current_rate_local_per_usd": 1.4273,
+      "previous_rate_local_per_usd": 1.4225,
+      "change_pct_30d": 0.337,
+      "pressure_pct_30d": 0.337,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Avusturya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Belçika": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Birleşik Krallık": {
+      "currency_code": "GBP",
+      "currency_name": "British Pound",
+      "current_rate_local_per_usd": 0.74987,
+      "previous_rate_local_per_usd": 0.72893,
+      "change_pct_30d": 2.873,
+      "pressure_pct_30d": 2.873,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Brezilya": {
+      "currency_code": "BRL",
+      "currency_name": "Brazilian Real",
+      "current_rate_local_per_usd": 5.2765,
+      "previous_rate_local_per_usd": 5.2206,
+      "change_pct_30d": 1.071,
+      "pressure_pct_30d": 1.071,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Danimarka": {
+      "currency_code": "DKK",
+      "currency_name": "Danish Krone",
+      "current_rate_local_per_usd": 6.4621,
+      "previous_rate_local_per_usd": 6.3175,
+      "change_pct_30d": 2.289,
+      "pressure_pct_30d": 2.289,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Endonezya": {
+      "currency_code": "IDR",
+      "currency_name": "Indonesian Rupiah",
+      "current_rate_local_per_usd": 16973.0,
+      "previous_rate_local_per_usd": 16794.0,
+      "change_pct_30d": 1.066,
+      "pressure_pct_30d": 1.066,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Estonya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Filipinler": {
+      "currency_code": "PHP",
+      "currency_name": "Philippine Peso",
+      "current_rate_local_per_usd": 59.273,
+      "previous_rate_local_per_usd": 58.986,
+      "change_pct_30d": 0.487,
+      "pressure_pct_30d": 0.487,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Finlandiya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Fransa": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Gronland": {
+      "currency_code": "DKK",
+      "currency_name": "Danish Krone",
+      "current_rate_local_per_usd": 6.4621,
+      "previous_rate_local_per_usd": 6.3175,
+      "change_pct_30d": 2.289,
+      "pressure_pct_30d": 2.289,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Güney Afrika": {
+      "currency_code": "ZAR",
+      "currency_name": "South African Rand",
+      "current_rate_local_per_usd": 16.718,
+      "previous_rate_local_per_usd": 15.9375,
+      "change_pct_30d": 4.897,
+      "pressure_pct_30d": 4.897,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Güney Kore": {
+      "currency_code": "KRW",
+      "currency_name": "South Korean Won",
+      "current_rate_local_per_usd": 1485.18,
+      "previous_rate_local_per_usd": 1455.75,
+      "change_pct_30d": 2.022,
+      "pressure_pct_30d": 2.022,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Hindistan": {
+      "currency_code": "INR",
+      "currency_name": "Indian Rupee",
+      "current_rate_local_per_usd": 91.83,
+      "previous_rate_local_per_usd": 90.41,
+      "change_pct_30d": 1.571,
+      "pressure_pct_30d": 1.571,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Hollanda": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Hırvatistan": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Japonya": {
+      "currency_code": "JPY",
+      "currency_name": "Japanese Yen",
+      "current_rate_local_per_usd": 157.92,
+      "previous_rate_local_per_usd": 156.64,
+      "change_pct_30d": 0.817,
+      "pressure_pct_30d": 0.817,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Kanada": {
+      "currency_code": "CAD",
+      "currency_name": "Canadian Dollar",
+      "current_rate_local_per_usd": 1.3651,
+      "previous_rate_local_per_usd": 1.3653,
+      "change_pct_30d": -0.015,
+      "pressure_pct_30d": 0.0,
+      "pressure_label": "Yok",
+      "reference_pair": "USD/local"
+    },
+    "Karadağ": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Kosova": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Kıbrıs": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Letonya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Litvanya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Lüksemburg": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Macaristan": {
+      "currency_code": "HUF",
+      "currency_name": "Hungarian Forint",
+      "current_rate_local_per_usd": 340.28,
+      "previous_rate_local_per_usd": 321.81,
+      "change_pct_30d": 5.739,
+      "pressure_pct_30d": 5.739,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Malezya": {
+      "currency_code": "MYR",
+      "currency_name": "Malaysian Ringgit",
+      "current_rate_local_per_usd": 3.946,
+      "previous_rate_local_per_usd": 3.932,
+      "change_pct_30d": 0.356,
+      "pressure_pct_30d": 0.356,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Meksika": {
+      "currency_code": "MXN",
+      "currency_name": "Mexican Peso",
+      "current_rate_local_per_usd": 17.7857,
+      "previous_rate_local_per_usd": 17.2428,
+      "change_pct_30d": 3.149,
+      "pressure_pct_30d": 3.149,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Norveç": {
+      "currency_code": "NOK",
+      "currency_name": "Norwegian Krone",
+      "current_rate_local_per_usd": 9.664,
+      "previous_rate_local_per_usd": 9.6442,
+      "change_pct_30d": 0.205,
+      "pressure_pct_30d": 0.205,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Polonya": {
+      "currency_code": "PLN",
+      "currency_name": "Polish Złoty",
+      "current_rate_local_per_usd": 3.7086,
+      "previous_rate_local_per_usd": 3.5732,
+      "change_pct_30d": 3.789,
+      "pressure_pct_30d": 3.789,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Portekiz": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Romanya": {
+      "currency_code": "RON",
+      "currency_name": "Romanian Leu",
+      "current_rate_local_per_usd": 4.4071,
+      "previous_rate_local_per_usd": 4.3104,
+      "change_pct_30d": 2.243,
+      "pressure_pct_30d": 2.243,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Singapur": {
+      "currency_code": "SGD",
+      "currency_name": "Singapore Dollar",
+      "current_rate_local_per_usd": 1.281,
+      "previous_rate_local_per_usd": 1.2713,
+      "change_pct_30d": 0.763,
+      "pressure_pct_30d": 0.763,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Slovakya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Slovenya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Tayland": {
+      "currency_code": "THB",
+      "currency_name": "Thai Baht",
+      "current_rate_local_per_usd": 31.975,
+      "previous_rate_local_per_usd": 31.633,
+      "change_pct_30d": 1.081,
+      "pressure_pct_30d": 1.081,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Türkiye": {
+      "currency_code": "TRY",
+      "currency_name": "Turkish Lira",
+      "current_rate_local_per_usd": 44.074,
+      "previous_rate_local_per_usd": 43.509,
+      "change_pct_30d": 1.299,
+      "pressure_pct_30d": 1.299,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Yeni Zelanda": {
+      "currency_code": "NZD",
+      "currency_name": "New Zealand Dollar",
+      "current_rate_local_per_usd": 1.7029,
+      "previous_rate_local_per_usd": 1.6584,
+      "change_pct_30d": 2.683,
+      "pressure_pct_30d": 2.683,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Yunanistan": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Çek Cumhuriyeti": {
+      "currency_code": "CZK",
+      "currency_name": "Czech Koruna",
+      "current_rate_local_per_usd": 21.122,
+      "previous_rate_local_per_usd": 20.607,
+      "change_pct_30d": 2.499,
+      "pressure_pct_30d": 2.499,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "Çin": {
+      "currency_code": "CNY",
+      "currency_name": "Chinese Renminbi Yuan",
+      "current_rate_local_per_usd": 6.9047,
+      "previous_rate_local_per_usd": 6.9417,
+      "change_pct_30d": -0.533,
+      "pressure_pct_30d": 0.0,
+      "pressure_label": "Yok",
+      "reference_pair": "USD/local"
+    },
+    "İrlanda": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "İspanya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "İsrail": {
+      "currency_code": "ILS",
+      "currency_name": "Israeli New Shekel",
+      "current_rate_local_per_usd": 3.0928,
+      "previous_rate_local_per_usd": 3.0861,
+      "change_pct_30d": 0.217,
+      "pressure_pct_30d": 0.217,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "İsveç": {
+      "currency_code": "SEK",
+      "currency_name": "Swedish Krona",
+      "current_rate_local_per_usd": 9.2492,
+      "previous_rate_local_per_usd": 8.9484,
+      "change_pct_30d": 3.361,
+      "pressure_pct_30d": 3.361,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "İsviçre": {
+      "currency_code": "CHF",
+      "currency_name": "Swiss Franc",
+      "current_rate_local_per_usd": 0.78237,
+      "previous_rate_local_per_usd": 0.77563,
+      "change_pct_30d": 0.869,
+      "pressure_pct_30d": 0.869,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "İtalya": {
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "current_rate_local_per_usd": 0.86498,
+      "previous_rate_local_per_usd": 0.84602,
+      "change_pct_30d": 2.241,
+      "pressure_pct_30d": 2.241,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    },
+    "İzlanda": {
+      "currency_code": "ISK",
+      "currency_name": "Icelandic Króna",
+      "current_rate_local_per_usd": 125.34,
+      "previous_rate_local_per_usd": 122.67,
+      "change_pct_30d": 2.177,
+      "pressure_pct_30d": 2.177,
+      "pressure_label": "Düşük",
+      "reference_pair": "USD/local"
+    }
+  }
+}

@@ -1,0 +1,2636 @@
+{
+  "provider": "open-meteo-air",
+  "updated_at_utc": "2026-03-08T14:35:25Z",
+  "source_note": "OpenAQ requires an API key. Open-Meteo air quality fallback is used.",
+  "source": {
+    "type": "open-meteo-air",
+    "primary_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+    "fallback_url": ""
+  },
+  "countries": {
+    "ABD": {
+      "lat": 38.89,
+      "lon": -77.05,
+      "location_name": "Washington, D.C.",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 7.5,
+        "pm2_5": 7.3,
+        "nitrogen_dioxide": 13.2,
+        "ozone": 47.0,
+        "european_aqi": 20
+      },
+      "aqi_label": "İyi"
+    },
+    "Afganistan": {
+      "lat": 34.52,
+      "lon": 69.18,
+      "location_name": "Kabul",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 25.2,
+        "pm2_5": 12.8,
+        "nitrogen_dioxide": 10.1,
+        "ozone": 93.0,
+        "european_aqi": 37
+      },
+      "aqi_label": "Orta"
+    },
+    "Almanya": {
+      "lat": 52.52,
+      "lon": 13.4,
+      "location_name": "Berlin",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 31.1,
+        "pm2_5": 22.8,
+        "nitrogen_dioxide": 12.4,
+        "ozone": 72.0,
+        "european_aqi": 61
+      },
+      "aqi_label": "Kötü"
+    },
+    "Angola": {
+      "lat": -8.83,
+      "lon": 13.22,
+      "location_name": "Luanda",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 23.2,
+        "pm2_5": 16.1,
+        "nitrogen_dioxide": 1.6,
+        "ozone": 79.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Arjantin": {
+      "lat": -34.58,
+      "lon": -58.67,
+      "location_name": "Buenos Aires",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 8.3,
+        "pm2_5": 6.1,
+        "nitrogen_dioxide": 3.8,
+        "ozone": 54.0,
+        "european_aqi": 22
+      },
+      "aqi_label": "Orta"
+    },
+    "Arnavutluk": {
+      "lat": 41.32,
+      "lon": 19.82,
+      "location_name": "Tirana",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 22.4,
+        "pm2_5": 15.1,
+        "nitrogen_dioxide": 4.9,
+        "ozone": 81.0,
+        "european_aqi": 52
+      },
+      "aqi_label": "Hassas"
+    },
+    "Avustralya": {
+      "lat": -35.27,
+      "lon": 149.13,
+      "location_name": "Canberra",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 2.9,
+        "pm2_5": 2.0,
+        "nitrogen_dioxide": 1.3,
+        "ozone": 43.0,
+        "european_aqi": 17
+      },
+      "aqi_label": "İyi"
+    },
+    "Avusturya": {
+      "lat": 48.2,
+      "lon": 16.37,
+      "location_name": "Vienna",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 13.1,
+        "pm2_5": 10.4,
+        "nitrogen_dioxide": 5.4,
+        "ozone": 84.0,
+        "european_aqi": 34
+      },
+      "aqi_label": "Orta"
+    },
+    "Azerbaycan": {
+      "lat": 40.38,
+      "lon": 49.87,
+      "location_name": "Baku",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 12.0,
+        "pm2_5": 7.1,
+        "nitrogen_dioxide": 2.7,
+        "ozone": 80.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Bangladeş": {
+      "lat": 23.72,
+      "lon": 90.4,
+      "location_name": "Dhaka",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 63.1,
+        "pm2_5": 57.7,
+        "nitrogen_dioxide": 38.6,
+        "ozone": 52.0,
+        "european_aqi": 82
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Batı Sahra": {
+      "lat": -13.28,
+      "lon": 27.14,
+      "location_name": "El Aaiún",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 12.3,
+        "pm2_5": 12.1,
+        "nitrogen_dioxide": 0.3,
+        "ozone": 50.0,
+        "european_aqi": 26
+      },
+      "aqi_label": "Orta"
+    },
+    "Batı Şeria": {
+      "lat": 31.943775,
+      "lon": 35.2198445,
+      "location_name": "Batı Şeria",
+      "coord_source": "geojson:largest_polygon_bbox",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.2,
+        "pm2_5": 4.0,
+        "nitrogen_dioxide": 1.9,
+        "ozone": 105.0,
+        "european_aqi": 43
+      },
+      "aqi_label": "Hassas"
+    },
+    "Belarus": {
+      "lat": 53.9,
+      "lon": 27.57,
+      "location_name": "Minsk",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 49.8,
+        "pm2_5": 43.4,
+        "nitrogen_dioxide": 32.6,
+        "ozone": 48.0,
+        "european_aqi": 49
+      },
+      "aqi_label": "Hassas"
+    },
+    "Belçika": {
+      "lat": 50.83,
+      "lon": 4.33,
+      "location_name": "Brussels",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 58.1,
+        "pm2_5": 45.7,
+        "nitrogen_dioxide": 16.1,
+        "ozone": 68.0,
+        "european_aqi": 82
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Benin": {
+      "lat": 6.48,
+      "lon": 2.62,
+      "location_name": "Porto-Novo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 64.3,
+        "pm2_5": 23.3,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 76.0,
+        "european_aqi": 60
+      },
+      "aqi_label": "Hassas"
+    },
+    "Birleşik Arap Emirlikleri": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "location_name": "Abu Dhabi",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 78.9,
+        "pm2_5": 29.8,
+        "nitrogen_dioxide": 16.3,
+        "ozone": 109.0,
+        "european_aqi": 64
+      },
+      "aqi_label": "Kötü"
+    },
+    "Birleşik Krallık": {
+      "lat": 51.5,
+      "lon": -0.08,
+      "location_name": "London",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 40.7,
+        "pm2_5": 27.9,
+        "nitrogen_dioxide": 25.0,
+        "ozone": 50.0,
+        "european_aqi": 40
+      },
+      "aqi_label": "Orta"
+    },
+    "Bolivya": {
+      "lat": -19.02,
+      "lon": -65.26,
+      "location_name": "Sucre",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 2.5,
+        "pm2_5": 2.3,
+        "nitrogen_dioxide": 0.7,
+        "ozone": 66.0,
+        "european_aqi": 26
+      },
+      "aqi_label": "Orta"
+    },
+    "Bosna Hersek": {
+      "lat": 43.87,
+      "lon": 18.42,
+      "location_name": "Sarajevo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 26.2,
+        "pm2_5": 23.4,
+        "nitrogen_dioxide": 0.9,
+        "ozone": 93.0,
+        "european_aqi": 74
+      },
+      "aqi_label": "Kötü"
+    },
+    "Botsvana": {
+      "lat": -24.63,
+      "lon": 25.9,
+      "location_name": "Gaborone",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.4,
+        "pm2_5": 6.4,
+        "nitrogen_dioxide": 1.2,
+        "ozone": 86.0,
+        "european_aqi": 34
+      },
+      "aqi_label": "Orta"
+    },
+    "Brezilya": {
+      "lat": -15.79,
+      "lon": -47.88,
+      "location_name": "Brasília",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 8.2,
+        "pm2_5": 7.7,
+        "nitrogen_dioxide": 1.6,
+        "ozone": 81.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Bulgaristan": {
+      "lat": 42.68,
+      "lon": 23.32,
+      "location_name": "Sofia",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 16.4,
+        "pm2_5": 13.3,
+        "nitrogen_dioxide": 2.8,
+        "ozone": 86.0,
+        "european_aqi": 63
+      },
+      "aqi_label": "Kötü"
+    },
+    "Burkina Faso": {
+      "lat": 12.37,
+      "lon": -1.52,
+      "location_name": "Ouagadougou",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 264.5,
+        "pm2_5": 49.0,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 139.0,
+        "european_aqi": 113
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Burundi": {
+      "lat": -3.43,
+      "lon": 29.93,
+      "location_name": "Gitega",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.1,
+        "pm2_5": 16.1,
+        "nitrogen_dioxide": 0.3,
+        "ozone": 76.0,
+        "european_aqi": 30
+      },
+      "aqi_label": "Orta"
+    },
+    "Cabo Verde": {
+      "lat": 14.92,
+      "lon": -23.52,
+      "location_name": "Praia",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 134.6,
+        "pm2_5": 35.5,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 89.0,
+        "european_aqi": 95
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Cezayir": {
+      "lat": 36.75,
+      "lon": 3.05,
+      "location_name": "Algiers",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 18.1,
+        "pm2_5": 12.7,
+        "nitrogen_dioxide": 11.6,
+        "ozone": 85.0,
+        "european_aqi": 34
+      },
+      "aqi_label": "Orta"
+    },
+    "Cibuti": {
+      "lat": 11.58,
+      "lon": 43.15,
+      "location_name": "Djibouti",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 17.6,
+        "pm2_5": 11.3,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 93.0,
+        "european_aqi": 37
+      },
+      "aqi_label": "Orta"
+    },
+    "Danimarka": {
+      "lat": 55.67,
+      "lon": 12.58,
+      "location_name": "Copenhagen",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 29.2,
+        "pm2_5": 25.7,
+        "nitrogen_dioxide": 15.8,
+        "ozone": 54.0,
+        "european_aqi": 58
+      },
+      "aqi_label": "Hassas"
+    },
+    "Demokratik Kongo Cumhuriyeti": {
+      "lat": -4.32,
+      "lon": 15.3,
+      "location_name": "Kinshasa",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 43.8,
+        "pm2_5": 33.5,
+        "nitrogen_dioxide": 0.7,
+        "ozone": 106.0,
+        "european_aqi": 73
+      },
+      "aqi_label": "Kötü"
+    },
+    "Ekvador": {
+      "lat": -0.22,
+      "lon": -78.5,
+      "location_name": "Quito",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 17.8,
+        "pm2_5": 17.4,
+        "nitrogen_dioxide": 10.2,
+        "ozone": 54.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Ekvator Ginesi": {
+      "lat": 1.35,
+      "lon": 10.49,
+      "location_name": "Ciudad de la Paz",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 55.6,
+        "pm2_5": 35.4,
+        "nitrogen_dioxide": 0.2,
+        "ozone": 73.0,
+        "european_aqi": 66
+      },
+      "aqi_label": "Kötü"
+    },
+    "El Salvador": {
+      "lat": 13.7,
+      "lon": -89.2,
+      "location_name": "San Salvador",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.6,
+        "pm2_5": 18.7,
+        "nitrogen_dioxide": 8.7,
+        "ozone": 78.0,
+        "european_aqi": 31
+      },
+      "aqi_label": "Orta"
+    },
+    "Endonezya": {
+      "lat": -6.17,
+      "lon": 106.82,
+      "location_name": "Jakarta",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 46.4,
+        "pm2_5": 46.2,
+        "nitrogen_dioxide": 81.5,
+        "ozone": 31.0,
+        "european_aqi": 67
+      },
+      "aqi_label": "Kötü"
+    },
+    "Eritre": {
+      "lat": 15.33,
+      "lon": 38.93,
+      "location_name": "Asmara",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 24.6,
+        "pm2_5": 12.3,
+        "nitrogen_dioxide": 0.7,
+        "ozone": 95.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Ermenistan": {
+      "lat": 40.17,
+      "lon": 44.5,
+      "location_name": "Yerevan",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 4.7,
+        "pm2_5": 3.5,
+        "nitrogen_dioxide": 3.2,
+        "ozone": 86.0,
+        "european_aqi": 34
+      },
+      "aqi_label": "Orta"
+    },
+    "Estonya": {
+      "lat": 59.43,
+      "lon": 24.72,
+      "location_name": "Tallinn",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 10.5,
+        "pm2_5": 7.3,
+        "nitrogen_dioxide": 6.3,
+        "ozone": 64.0,
+        "european_aqi": 26
+      },
+      "aqi_label": "Orta"
+    },
+    "Esvatini": {
+      "lat": -26.32,
+      "lon": 31.13,
+      "location_name": "Mbabane",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 4.7,
+        "pm2_5": 3.6,
+        "nitrogen_dioxide": 1.6,
+        "ozone": 59.0,
+        "european_aqi": 24
+      },
+      "aqi_label": "Orta"
+    },
+    "Etiyopya": {
+      "lat": 9.03,
+      "lon": 38.7,
+      "location_name": "Addis Ababa",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 15.1,
+        "pm2_5": 9.2,
+        "nitrogen_dioxide": 0.7,
+        "ozone": 83.0,
+        "european_aqi": 41
+      },
+      "aqi_label": "Hassas"
+    },
+    "Fas": {
+      "lat": 34.02,
+      "lon": -6.82,
+      "location_name": "Rabat",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 17.7,
+        "pm2_5": 12.7,
+        "nitrogen_dioxide": 1.2,
+        "ozone": 94.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Fildişi Sahili": {
+      "lat": 6.82,
+      "lon": -5.27,
+      "location_name": "Yamoussoukro",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 50.2,
+        "pm2_5": 21.0,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 80.0,
+        "european_aqi": 42
+      },
+      "aqi_label": "Hassas"
+    },
+    "Filipinler": {
+      "lat": 14.6,
+      "lon": 120.97,
+      "location_name": "Manila",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 10.0,
+        "pm2_5": 7.7,
+        "nitrogen_dioxide": 6.5,
+        "ozone": 73.0,
+        "european_aqi": 29
+      },
+      "aqi_label": "Orta"
+    },
+    "Filistin": {
+      "lat": 31.943775,
+      "lon": 35.2198445,
+      "location_name": "Filistin",
+      "coord_source": "geojson:largest_polygon_bbox",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.2,
+        "pm2_5": 4.0,
+        "nitrogen_dioxide": 1.9,
+        "ozone": 105.0,
+        "european_aqi": 43
+      },
+      "aqi_label": "Hassas"
+    },
+    "Finlandiya": {
+      "lat": 60.17,
+      "lon": 24.93,
+      "location_name": "Helsinki",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 7.2,
+        "pm2_5": 3.5,
+        "nitrogen_dioxide": 10.2,
+        "ozone": 66.0,
+        "european_aqi": 26
+      },
+      "aqi_label": "Orta"
+    },
+    "Fransa": {
+      "lat": 48.87,
+      "lon": 2.33,
+      "location_name": "Paris",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 62.1,
+        "pm2_5": 41.1,
+        "nitrogen_dioxide": 27.9,
+        "ozone": 66.0,
+        "european_aqi": 72
+      },
+      "aqi_label": "Kötü"
+    },
+    "Gabon": {
+      "lat": 0.38,
+      "lon": 9.45,
+      "location_name": "Libreville",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 34.3,
+        "pm2_5": 21.2,
+        "nitrogen_dioxide": 1.9,
+        "ozone": 94.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Gambiya": {
+      "lat": 13.45,
+      "lon": -16.57,
+      "location_name": "Banjul",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 59.0,
+        "pm2_5": 22.5,
+        "nitrogen_dioxide": 0.3,
+        "ozone": 73.0,
+        "european_aqi": 64
+      },
+      "aqi_label": "Kötü"
+    },
+    "Gana": {
+      "lat": 5.55,
+      "lon": -0.22,
+      "location_name": "Accra",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 37.6,
+        "pm2_5": 16.8,
+        "nitrogen_dioxide": 1.1,
+        "ozone": 87.0,
+        "european_aqi": 35
+      },
+      "aqi_label": "Orta"
+    },
+    "Gazze": {
+      "lat": 31.9,
+      "lon": 35.2,
+      "location_name": "Ramallah",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.2,
+        "pm2_5": 4.0,
+        "nitrogen_dioxide": 1.9,
+        "ozone": 105.0,
+        "european_aqi": 43
+      },
+      "aqi_label": "Hassas"
+    },
+    "Gine": {
+      "lat": 9.5,
+      "lon": -13.7,
+      "location_name": "Conakry",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 124.3,
+        "pm2_5": 38.4,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 117.0,
+        "european_aqi": 82
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Gine-Bissau": {
+      "lat": 11.85,
+      "lon": -15.58,
+      "location_name": "Bissau",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 70.5,
+        "pm2_5": 24.2,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 75.0,
+        "european_aqi": 70
+      },
+      "aqi_label": "Kötü"
+    },
+    "Gronland": {
+      "lat": 64.18,
+      "lon": -51.75,
+      "location_name": "Nuuk",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 0.8,
+        "pm2_5": 0.5,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 87.0,
+        "european_aqi": 35
+      },
+      "aqi_label": "Orta"
+    },
+    "Guatemala": {
+      "lat": 14.62,
+      "lon": -90.52,
+      "location_name": "Guatemala City",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.2,
+        "pm2_5": 18.7,
+        "nitrogen_dioxide": 4.6,
+        "ozone": 62.0,
+        "european_aqi": 35
+      },
+      "aqi_label": "Orta"
+    },
+    "Guyana": {
+      "lat": 6.8,
+      "lon": -58.15,
+      "location_name": "Georgetown",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 15.9,
+        "pm2_5": 9.7,
+        "nitrogen_dioxide": 0.7,
+        "ozone": 73.0,
+        "european_aqi": 29
+      },
+      "aqi_label": "Orta"
+    },
+    "Güney Afrika": {
+      "lat": -25.7,
+      "lon": 28.22,
+      "location_name": "Pretoria",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 7.6,
+        "pm2_5": 7.5,
+        "nitrogen_dioxide": 13.4,
+        "ozone": 58.0,
+        "european_aqi": 23
+      },
+      "aqi_label": "Orta"
+    },
+    "Güney Kore": {
+      "lat": 37.55,
+      "lon": 126.98,
+      "location_name": "Seoul",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 56.0,
+        "pm2_5": 41.9,
+        "nitrogen_dioxide": 75.2,
+        "ozone": 13.0,
+        "european_aqi": 64
+      },
+      "aqi_label": "Kötü"
+    },
+    "Güney Sudan": {
+      "lat": 4.85,
+      "lon": 31.62,
+      "location_name": "Juba",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 38.5,
+        "pm2_5": 26.5,
+        "nitrogen_dioxide": 1.0,
+        "ozone": 138.0,
+        "european_aqi": 63
+      },
+      "aqi_label": "Kötü"
+    },
+    "Gürcistan": {
+      "lat": 41.68,
+      "lon": 44.83,
+      "location_name": "Tbilisi",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 4.6,
+        "pm2_5": 3.4,
+        "nitrogen_dioxide": 2.3,
+        "ozone": 92.0,
+        "european_aqi": 37
+      },
+      "aqi_label": "Orta"
+    },
+    "Haiti": {
+      "lat": 18.53,
+      "lon": -72.33,
+      "location_name": "Port-au-Prince",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 11.5,
+        "pm2_5": 9.9,
+        "nitrogen_dioxide": 4.5,
+        "ozone": 81.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Hindistan": {
+      "lat": 28.6,
+      "lon": 77.2,
+      "location_name": "New Delhi",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 352.0,
+        "pm2_5": 70.3,
+        "nitrogen_dioxide": 35.1,
+        "ozone": 81.0,
+        "european_aqi": 130
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Hollanda": {
+      "lat": 52.35,
+      "lon": 4.92,
+      "location_name": "Amsterdam",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 42.8,
+        "pm2_5": 30.5,
+        "nitrogen_dioxide": 13.2,
+        "ozone": 47.0,
+        "european_aqi": 54
+      },
+      "aqi_label": "Hassas"
+    },
+    "Hırvatistan": {
+      "lat": 45.8,
+      "lon": 16.0,
+      "location_name": "Zagreb",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 20.5,
+        "pm2_5": 13.0,
+        "nitrogen_dioxide": 1.6,
+        "ozone": 90.0,
+        "european_aqi": 64
+      },
+      "aqi_label": "Kötü"
+    },
+    "Irak": {
+      "lat": 33.33,
+      "lon": 44.4,
+      "location_name": "Baghdad",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.3,
+        "pm2_5": 10.8,
+        "nitrogen_dioxide": 17.1,
+        "ozone": 81.0,
+        "european_aqi": 66
+      },
+      "aqi_label": "Kötü"
+    },
+    "Jamaika": {
+      "lat": 17.99702,
+      "lon": -76.79358,
+      "location_name": "Kingston",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.9,
+        "pm2_5": 4.9,
+        "nitrogen_dioxide": 2.6,
+        "ozone": 73.0,
+        "european_aqi": 29
+      },
+      "aqi_label": "Orta"
+    },
+    "Japonya": {
+      "lat": 35.68,
+      "lon": 139.75,
+      "location_name": "Tokyo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 34.5,
+        "pm2_5": 33.2,
+        "nitrogen_dioxide": 80.4,
+        "ozone": 13.0,
+        "european_aqi": 36
+      },
+      "aqi_label": "Orta"
+    },
+    "Kamboçya": {
+      "lat": 11.55,
+      "lon": 104.92,
+      "location_name": "Phnom Penh",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 79.6,
+        "pm2_5": 77.8,
+        "nitrogen_dioxide": 49.9,
+        "ozone": 42.0,
+        "european_aqi": 76
+      },
+      "aqi_label": "Kötü"
+    },
+    "Kamerun": {
+      "lat": 3.85,
+      "lon": 11.5,
+      "location_name": "Yaoundé",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 77.3,
+        "pm2_5": 40.2,
+        "nitrogen_dioxide": 0.1,
+        "ozone": 104.0,
+        "european_aqi": 80
+      },
+      "aqi_label": "Kötü"
+    },
+    "Kanada": {
+      "lat": 45.42,
+      "lon": -75.7,
+      "location_name": "Ottawa",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 1.5,
+        "pm2_5": 1.5,
+        "nitrogen_dioxide": 4.3,
+        "ozone": 55.0,
+        "european_aqi": 22
+      },
+      "aqi_label": "Orta"
+    },
+    "Karadağ": {
+      "lat": 42.43,
+      "lon": 19.27,
+      "location_name": "Podgorica",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 30.9,
+        "pm2_5": 24.3,
+        "nitrogen_dioxide": 1.3,
+        "ozone": 98.0,
+        "european_aqi": 68
+      },
+      "aqi_label": "Kötü"
+    },
+    "Katar": {
+      "lat": 25.28,
+      "lon": 51.53,
+      "location_name": "Doha",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 132.7,
+        "pm2_5": 37.7,
+        "nitrogen_dioxide": 21.1,
+        "ozone": 99.0,
+        "european_aqi": 73
+      },
+      "aqi_label": "Kötü"
+    },
+    "Kazakistan": {
+      "lat": 51.16,
+      "lon": 71.45,
+      "location_name": "Astana",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 2.6,
+        "pm2_5": 2.6,
+        "nitrogen_dioxide": 3.7,
+        "ozone": 83.0,
+        "european_aqi": 33
+      },
+      "aqi_label": "Orta"
+    },
+    "Kenya": {
+      "lat": -1.28,
+      "lon": 36.82,
+      "location_name": "Nairobi",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 9.1,
+        "pm2_5": 8.4,
+        "nitrogen_dioxide": 4.3,
+        "ozone": 92.0,
+        "european_aqi": 39
+      },
+      "aqi_label": "Orta"
+    },
+    "Kolombiya": {
+      "lat": 4.71,
+      "lon": -74.07,
+      "location_name": "Bogotá",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 18.5,
+        "pm2_5": 18.2,
+        "nitrogen_dioxide": 18.8,
+        "ozone": 73.0,
+        "european_aqi": 65
+      },
+      "aqi_label": "Kötü"
+    },
+    "Komorlar": {
+      "lat": -11.7,
+      "lon": 43.23,
+      "location_name": "Moroni",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 4.5,
+        "pm2_5": 3.3,
+        "nitrogen_dioxide": 1.0,
+        "ozone": 41.0,
+        "european_aqi": 16
+      },
+      "aqi_label": "İyi"
+    },
+    "Kosova": {
+      "lat": 42.67,
+      "lon": 21.17,
+      "location_name": "Pristina",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 30.6,
+        "pm2_5": 25.2,
+        "nitrogen_dioxide": 5.7,
+        "ozone": 88.0,
+        "european_aqi": 72
+      },
+      "aqi_label": "Kötü"
+    },
+    "Kuveyt": {
+      "lat": 29.37,
+      "lon": 47.97,
+      "location_name": "Kuwait City",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 81.7,
+        "pm2_5": 45.9,
+        "nitrogen_dioxide": 73.8,
+        "ozone": 85.0,
+        "european_aqi": 70
+      },
+      "aqi_label": "Kötü"
+    },
+    "Kuzey Kore": {
+      "lat": 39.02,
+      "lon": 125.75,
+      "location_name": "Pyongyang",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 81.3,
+        "pm2_5": 51.0,
+        "nitrogen_dioxide": 10.5,
+        "ozone": 64.0,
+        "european_aqi": 66
+      },
+      "aqi_label": "Kötü"
+    },
+    "Kuzey Kıbrıs": {
+      "lat": 35.347342,
+      "lon": 33.651566,
+      "location_name": "Kuzey Kıbrıs",
+      "coord_source": "geojson:largest_polygon_bbox",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 4.3,
+        "pm2_5": 2.5,
+        "nitrogen_dioxide": 0.2,
+        "ozone": 101.0,
+        "european_aqi": 41
+      },
+      "aqi_label": "Hassas"
+    },
+    "Küba": {
+      "lat": 23.12,
+      "lon": -82.35,
+      "location_name": "Havana",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 5.1,
+        "pm2_5": 3.7,
+        "nitrogen_dioxide": 2.1,
+        "ozone": 65.0,
+        "european_aqi": 26
+      },
+      "aqi_label": "Orta"
+    },
+    "Kıbrıs": {
+      "lat": 35.17,
+      "lon": 33.37,
+      "location_name": "Nicosia",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 4.5,
+        "pm2_5": 3.1,
+        "nitrogen_dioxide": 1.0,
+        "ozone": 95.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Kırgızistan": {
+      "lat": 42.87,
+      "lon": 74.6,
+      "location_name": "Bishkek",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 30.5,
+        "pm2_5": 22.1,
+        "nitrogen_dioxide": 14.9,
+        "ozone": 100.0,
+        "european_aqi": 40
+      },
+      "aqi_label": "Orta"
+    },
+    "Lesoto": {
+      "lat": -29.32,
+      "lon": 27.48,
+      "location_name": "Maseru",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 3.2,
+        "pm2_5": 3.2,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 88.0,
+        "european_aqi": 35
+      },
+      "aqi_label": "Orta"
+    },
+    "Letonya": {
+      "lat": 56.95,
+      "lon": 24.1,
+      "location_name": "Riga",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 24.3,
+        "pm2_5": 16.8,
+        "nitrogen_dioxide": 6.5,
+        "ozone": 70.0,
+        "european_aqi": 63
+      },
+      "aqi_label": "Kötü"
+    },
+    "Liberya": {
+      "lat": 6.3,
+      "lon": -10.8,
+      "location_name": "Monrovia",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 29.5,
+        "pm2_5": 14.6,
+        "nitrogen_dioxide": 0.9,
+        "ozone": 75.0,
+        "european_aqi": 46
+      },
+      "aqi_label": "Hassas"
+    },
+    "Libya": {
+      "lat": 32.88,
+      "lon": 13.17,
+      "location_name": "Tripoli",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 36.5,
+        "pm2_5": 19.3,
+        "nitrogen_dioxide": 8.7,
+        "ozone": 97.0,
+        "european_aqi": 39
+      },
+      "aqi_label": "Orta"
+    },
+    "Litvanya": {
+      "lat": 54.68,
+      "lon": 25.32,
+      "location_name": "Vilnius",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.3,
+        "pm2_5": 17.9,
+        "nitrogen_dioxide": 9.0,
+        "ozone": 70.0,
+        "european_aqi": 41
+      },
+      "aqi_label": "Hassas"
+    },
+    "Lübnan": {
+      "lat": 33.87,
+      "lon": 35.5,
+      "location_name": "Beirut",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 9.0,
+        "pm2_5": 5.1,
+        "nitrogen_dioxide": 3.4,
+        "ozone": 103.0,
+        "european_aqi": 42
+      },
+      "aqi_label": "Hassas"
+    },
+    "Lüksemburg": {
+      "lat": 49.6,
+      "lon": 6.12,
+      "location_name": "Luxembourg",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 38.4,
+        "pm2_5": 24.8,
+        "nitrogen_dioxide": 5.8,
+        "ozone": 84.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Macaristan": {
+      "lat": 47.5,
+      "lon": 19.08,
+      "location_name": "Budapest",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 14.6,
+        "pm2_5": 10.5,
+        "nitrogen_dioxide": 5.0,
+        "ozone": 88.0,
+        "european_aqi": 50
+      },
+      "aqi_label": "Hassas"
+    },
+    "Madagaskar": {
+      "lat": -18.92,
+      "lon": 47.52,
+      "location_name": "Antananarivo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 2.9,
+        "pm2_5": 2.5,
+        "nitrogen_dioxide": 1.0,
+        "ozone": 40.0,
+        "european_aqi": 16
+      },
+      "aqi_label": "İyi"
+    },
+    "Makedonya": {
+      "lat": 42.0,
+      "lon": 21.43,
+      "location_name": "Skopje",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 33.2,
+        "pm2_5": 27.0,
+        "nitrogen_dioxide": 4.8,
+        "ozone": 82.0,
+        "european_aqi": 71
+      },
+      "aqi_label": "Kötü"
+    },
+    "Malavi": {
+      "lat": -13.97,
+      "lon": 33.78,
+      "location_name": "Lilongwe",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 2.3,
+        "pm2_5": 2.2,
+        "nitrogen_dioxide": 0.8,
+        "ozone": 42.0,
+        "european_aqi": 17
+      },
+      "aqi_label": "İyi"
+    },
+    "Maldivler": {
+      "lat": 4.17,
+      "lon": 73.51,
+      "location_name": "Malé",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 27.8,
+        "pm2_5": 23.7,
+        "nitrogen_dioxide": 3.0,
+        "ozone": 116.0,
+        "european_aqi": 51
+      },
+      "aqi_label": "Hassas"
+    },
+    "Malezya": {
+      "lat": 3.17,
+      "lon": 101.7,
+      "location_name": "Kuala Lumpur",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 88.5,
+        "pm2_5": 87.5,
+        "nitrogen_dioxide": 131.9,
+        "ozone": 59.0,
+        "european_aqi": 82
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Mali": {
+      "lat": 12.65,
+      "lon": -8.0,
+      "location_name": "Bamako",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 151.3,
+        "pm2_5": 42.6,
+        "nitrogen_dioxide": 0.3,
+        "ozone": 85.0,
+        "european_aqi": 109
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Mauritius": {
+      "lat": -20.15,
+      "lon": 57.48,
+      "location_name": "Port Louis",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 7.5,
+        "pm2_5": 4.7,
+        "nitrogen_dioxide": 2.5,
+        "ozone": 31.0,
+        "european_aqi": 12
+      },
+      "aqi_label": "İyi"
+    },
+    "Meksika": {
+      "lat": 19.43,
+      "lon": -99.13,
+      "location_name": "Mexico City",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 57.0,
+        "pm2_5": 56.9,
+        "nitrogen_dioxide": 77.4,
+        "ozone": 54.0,
+        "european_aqi": 74
+      },
+      "aqi_label": "Kötü"
+    },
+    "Moldova": {
+      "lat": 47.01,
+      "lon": 28.9,
+      "location_name": "Chișinău",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 8.9,
+        "pm2_5": 6.8,
+        "nitrogen_dioxide": 1.7,
+        "ozone": 80.0,
+        "european_aqi": 56
+      },
+      "aqi_label": "Hassas"
+    },
+    "Moritanya": {
+      "lat": 18.07,
+      "lon": -15.97,
+      "location_name": "Nouakchott",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 275.7,
+        "pm2_5": 47.3,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 76.0,
+        "european_aqi": 143
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Mozambik": {
+      "lat": -25.95,
+      "lon": 32.58,
+      "location_name": "Maputo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.0,
+        "pm2_5": 4.2,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 60.0,
+        "european_aqi": 24
+      },
+      "aqi_label": "Orta"
+    },
+    "Moğolistan": {
+      "lat": 47.92,
+      "lon": 106.91,
+      "location_name": "Ulan Bator",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 44.1,
+        "pm2_5": 33.6,
+        "nitrogen_dioxide": 14.3,
+        "ozone": 82.0,
+        "european_aqi": 76
+      },
+      "aqi_label": "Kötü"
+    },
+    "Myanmar": {
+      "lat": 19.76,
+      "lon": 96.07,
+      "location_name": "Naypyidaw",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 46.9,
+        "pm2_5": 44.5,
+        "nitrogen_dioxide": 9.3,
+        "ozone": 65.0,
+        "european_aqi": 68
+      },
+      "aqi_label": "Kötü"
+    },
+    "Mısır": {
+      "lat": 30.05,
+      "lon": 31.25,
+      "location_name": "Cairo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 24.9,
+        "pm2_5": 19.2,
+        "nitrogen_dioxide": 13.8,
+        "ozone": 110.0,
+        "european_aqi": 63
+      },
+      "aqi_label": "Kötü"
+    },
+    "Namibya": {
+      "lat": -22.57,
+      "lon": 17.08,
+      "location_name": "Windhoek",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 0.4,
+        "pm2_5": 0.4,
+        "nitrogen_dioxide": 0.1,
+        "ozone": 68.0,
+        "european_aqi": 27
+      },
+      "aqi_label": "Orta"
+    },
+    "Nepal": {
+      "lat": 27.72,
+      "lon": 85.32,
+      "location_name": "Kathmandu",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 93.6,
+        "pm2_5": 82.2,
+        "nitrogen_dioxide": 16.5,
+        "ozone": 134.0,
+        "european_aqi": 97
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Nijer": {
+      "lat": 13.52,
+      "lon": 2.12,
+      "location_name": "Niamey",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 264.5,
+        "pm2_5": 37.7,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 109.0,
+        "european_aqi": 92
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Nijerya": {
+      "lat": 9.08,
+      "lon": 7.53,
+      "location_name": "Abuja",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 163.0,
+        "pm2_5": 40.0,
+        "nitrogen_dioxide": 0.4,
+        "ozone": 133.0,
+        "european_aqi": 109
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Nikaragua": {
+      "lat": 12.13,
+      "lon": -86.25,
+      "location_name": "Managua",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.4,
+        "pm2_5": 5.1,
+        "nitrogen_dioxide": 1.4,
+        "ozone": 61.0,
+        "european_aqi": 24
+      },
+      "aqi_label": "Orta"
+    },
+    "Norveç": {
+      "lat": 59.92,
+      "lon": 10.75,
+      "location_name": "Oslo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 27.6,
+        "pm2_5": 20.4,
+        "nitrogen_dioxide": 23.5,
+        "ozone": 40.0,
+        "european_aqi": 42
+      },
+      "aqi_label": "Hassas"
+    },
+    "Orta Afrika Cumhuriyeti": {
+      "lat": 4.37,
+      "lon": 18.58,
+      "location_name": "Bangui",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 47.1,
+        "pm2_5": 32.8,
+        "nitrogen_dioxide": 0.8,
+        "ozone": 138.0,
+        "european_aqi": 78
+      },
+      "aqi_label": "Kötü"
+    },
+    "Pakistan": {
+      "lat": 33.68,
+      "lon": 73.05,
+      "location_name": "Islamabad",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 55.3,
+        "pm2_5": 38.6,
+        "nitrogen_dioxide": 69.7,
+        "ozone": 45.0,
+        "european_aqi": 61
+      },
+      "aqi_label": "Kötü"
+    },
+    "Papua Yeni Gine": {
+      "lat": -9.45,
+      "lon": 147.18,
+      "location_name": "Port Moresby",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 9.1,
+        "pm2_5": 8.2,
+        "nitrogen_dioxide": 4.6,
+        "ozone": 56.0,
+        "european_aqi": 22
+      },
+      "aqi_label": "Orta"
+    },
+    "Paraguay": {
+      "lat": -25.28,
+      "lon": -57.57,
+      "location_name": "Asunción",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.7,
+        "pm2_5": 19.4,
+        "nitrogen_dioxide": 1.7,
+        "ozone": 99.0,
+        "european_aqi": 40
+      },
+      "aqi_label": "Orta"
+    },
+    "Peru": {
+      "lat": -12.05,
+      "lon": -77.05,
+      "location_name": "Lima",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 18.8,
+        "pm2_5": 13.2,
+        "nitrogen_dioxide": 10.0,
+        "ozone": 43.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Polonya": {
+      "lat": 52.25,
+      "lon": 21.0,
+      "location_name": "Warsaw",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 23.7,
+        "pm2_5": 16.9,
+        "nitrogen_dioxide": 9.5,
+        "ozone": 77.0,
+        "european_aqi": 104
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Portekiz": {
+      "lat": 38.72,
+      "lon": -9.13,
+      "location_name": "Lisbon",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 12.7,
+        "pm2_5": 6.4,
+        "nitrogen_dioxide": 4.9,
+        "ozone": 81.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Romanya": {
+      "lat": 44.43,
+      "lon": 26.1,
+      "location_name": "Bucharest",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 9.2,
+        "pm2_5": 6.3,
+        "nitrogen_dioxide": 3.3,
+        "ozone": 81.0,
+        "european_aqi": 37
+      },
+      "aqi_label": "Orta"
+    },
+    "Ruanda": {
+      "lat": -1.95,
+      "lon": 30.05,
+      "location_name": "Kigali",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.3,
+        "pm2_5": 16.0,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 85.0,
+        "european_aqi": 44
+      },
+      "aqi_label": "Hassas"
+    },
+    "Rusya": {
+      "lat": 55.75,
+      "lon": 37.6,
+      "location_name": "Moscow",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 43.3,
+        "pm2_5": 31.4,
+        "nitrogen_dioxide": 72.6,
+        "ozone": 17.0,
+        "european_aqi": 58
+      },
+      "aqi_label": "Hassas"
+    },
+    "Sao Tome ve Principe": {
+      "lat": 0.34,
+      "lon": 6.73,
+      "location_name": "São Tomé",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.6,
+        "pm2_5": 4.1,
+        "nitrogen_dioxide": 0.3,
+        "ozone": 68.0,
+        "european_aqi": 27
+      },
+      "aqi_label": "Orta"
+    },
+    "Senegal": {
+      "lat": 14.73,
+      "lon": -17.63,
+      "location_name": "Dakar",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 145.3,
+        "pm2_5": 48.5,
+        "nitrogen_dioxide": 0.7,
+        "ozone": 82.0,
+        "european_aqi": 96
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Seyseller": {
+      "lat": -4.62,
+      "lon": 55.45,
+      "location_name": "Victoria",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 3.6,
+        "pm2_5": 2.9,
+        "nitrogen_dioxide": 3.1,
+        "ozone": 54.0,
+        "european_aqi": 22
+      },
+      "aqi_label": "Orta"
+    },
+    "Sierra Leone": {
+      "lat": 8.48,
+      "lon": -13.23,
+      "location_name": "Freetown",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 79.6,
+        "pm2_5": 31.7,
+        "nitrogen_dioxide": 0.5,
+        "ozone": 91.0,
+        "european_aqi": 76
+      },
+      "aqi_label": "Kötü"
+    },
+    "Singapur": {
+      "lat": 1.28,
+      "lon": 103.85,
+      "location_name": "Singapore",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.0,
+        "pm2_5": 14.2,
+        "nitrogen_dioxide": 24.7,
+        "ozone": 68.0,
+        "european_aqi": 29
+      },
+      "aqi_label": "Orta"
+    },
+    "Slovakya": {
+      "lat": 48.15,
+      "lon": 17.12,
+      "location_name": "Bratislava",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 15.0,
+        "pm2_5": 11.4,
+        "nitrogen_dioxide": 5.0,
+        "ozone": 83.0,
+        "european_aqi": 40
+      },
+      "aqi_label": "Orta"
+    },
+    "Slovenya": {
+      "lat": 46.05,
+      "lon": 14.52,
+      "location_name": "Ljubljana",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 28.0,
+        "pm2_5": 21.4,
+        "nitrogen_dioxide": 1.8,
+        "ozone": 96.0,
+        "european_aqi": 72
+      },
+      "aqi_label": "Kötü"
+    },
+    "Somali": {
+      "lat": 2.07,
+      "lon": 45.33,
+      "location_name": "Mogadishu",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 8.9,
+        "pm2_5": 5.9,
+        "nitrogen_dioxide": 0.2,
+        "ozone": 60.0,
+        "european_aqi": 24
+      },
+      "aqi_label": "Orta"
+    },
+    "Sri Lanka": {
+      "lat": 6.89,
+      "lon": 79.9,
+      "location_name": "Sri Jayawardenepura Kotte",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 48.8,
+        "pm2_5": 42.8,
+        "nitrogen_dioxide": 25.1,
+        "ozone": 124.0,
+        "european_aqi": 75
+      },
+      "aqi_label": "Kötü"
+    },
+    "Sudan": {
+      "lat": 15.6,
+      "lon": 32.53,
+      "location_name": "Khartoum",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 165.8,
+        "pm2_5": 27.2,
+        "nitrogen_dioxide": 1.2,
+        "ozone": 102.0,
+        "european_aqi": 92
+      },
+      "aqi_label": "Çok kötü"
+    },
+    "Surinam": {
+      "lat": 5.83,
+      "lon": -55.17,
+      "location_name": "Paramaribo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 12.0,
+        "pm2_5": 7.6,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 64.0,
+        "european_aqi": 26
+      },
+      "aqi_label": "Orta"
+    },
+    "Suriye": {
+      "lat": 33.5,
+      "lon": 36.3,
+      "location_name": "Damascus",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 11.1,
+        "pm2_5": 9.4,
+        "nitrogen_dioxide": 8.3,
+        "ozone": 97.0,
+        "european_aqi": 39
+      },
+      "aqi_label": "Orta"
+    },
+    "Suudi Arabistan": {
+      "lat": 24.65,
+      "lon": 46.7,
+      "location_name": "Riyadh",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 1881.3,
+        "pm2_5": 172.8,
+        "nitrogen_dioxide": 26.1,
+        "ozone": 63.0,
+        "european_aqi": 761
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Sırbistan": {
+      "lat": 44.83,
+      "lon": 20.5,
+      "location_name": "Belgrade",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 16.3,
+        "pm2_5": 12.6,
+        "nitrogen_dioxide": 2.9,
+        "ozone": 91.0,
+        "european_aqi": 38
+      },
+      "aqi_label": "Orta"
+    },
+    "Tacikistan": {
+      "lat": 38.55,
+      "lon": 68.77,
+      "location_name": "Dushanbe",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 14.3,
+        "pm2_5": 9.7,
+        "nitrogen_dioxide": 21.5,
+        "ozone": 80.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Tanzanya": {
+      "lat": -6.16,
+      "lon": 35.75,
+      "location_name": "Dodoma",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 5.1,
+        "pm2_5": 5.0,
+        "nitrogen_dioxide": 0.1,
+        "ozone": 51.0,
+        "european_aqi": 20
+      },
+      "aqi_label": "İyi"
+    },
+    "Tayland": {
+      "lat": 13.75,
+      "lon": 100.52,
+      "location_name": "Bangkok",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 21.9,
+        "pm2_5": 21.4,
+        "nitrogen_dioxide": 13.7,
+        "ozone": 148.0,
+        "european_aqi": 65
+      },
+      "aqi_label": "Kötü"
+    },
+    "Togo": {
+      "lat": 6.14,
+      "lon": 1.21,
+      "location_name": "Lomé",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 45.9,
+        "pm2_5": 19.2,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 81.0,
+        "european_aqi": 39
+      },
+      "aqi_label": "Orta"
+    },
+    "Trinidad ve Tobago": {
+      "lat": 10.65,
+      "lon": -61.52,
+      "location_name": "Port of Spain",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 12.0,
+        "pm2_5": 7.7,
+        "nitrogen_dioxide": 1.3,
+        "ozone": 74.0,
+        "european_aqi": 30
+      },
+      "aqi_label": "Orta"
+    },
+    "Tunus": {
+      "lat": 36.8,
+      "lon": 10.18,
+      "location_name": "Tunis",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 26.8,
+        "pm2_5": 16.4,
+        "nitrogen_dioxide": 2.3,
+        "ozone": 101.0,
+        "european_aqi": 41
+      },
+      "aqi_label": "Hassas"
+    },
+    "Türkiye": {
+      "lat": 39.93,
+      "lon": 32.87,
+      "location_name": "Ankara",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 10.9,
+        "pm2_5": 8.7,
+        "nitrogen_dioxide": 11.2,
+        "ozone": 76.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Türkmenistan": {
+      "lat": 37.95,
+      "lon": 58.38,
+      "location_name": "Ashgabat",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 32.6,
+        "pm2_5": 16.3,
+        "nitrogen_dioxide": 19.7,
+        "ozone": 62.0,
+        "european_aqi": 40
+      },
+      "aqi_label": "Orta"
+    },
+    "Uganda": {
+      "lat": 0.32,
+      "lon": 32.55,
+      "location_name": "Kampala",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 14.6,
+        "pm2_5": 12.6,
+        "nitrogen_dioxide": 0.6,
+        "ozone": 86.0,
+        "european_aqi": 73
+      },
+      "aqi_label": "Kötü"
+    },
+    "Ukrayna": {
+      "lat": 50.43,
+      "lon": 30.52,
+      "location_name": "Kyiv",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 13.7,
+        "pm2_5": 9.7,
+        "nitrogen_dioxide": 9.2,
+        "ozone": 80.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "Uruguay": {
+      "lat": -34.85,
+      "lon": -56.17,
+      "location_name": "Montevideo",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 8.3,
+        "pm2_5": 5.3,
+        "nitrogen_dioxide": 1.0,
+        "ozone": 53.0,
+        "european_aqi": 21
+      },
+      "aqi_label": "Orta"
+    },
+    "Venezuela": {
+      "lat": 10.48,
+      "lon": -66.87,
+      "location_name": "Caracas",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 8.2,
+        "pm2_5": 5.9,
+        "nitrogen_dioxide": 2.8,
+        "ozone": 74.0,
+        "european_aqi": 30
+      },
+      "aqi_label": "Orta"
+    },
+    "Vietnam": {
+      "lat": 21.03,
+      "lon": 105.85,
+      "location_name": "Hanoi",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 36.1,
+        "pm2_5": 34.3,
+        "nitrogen_dioxide": 27.9,
+        "ozone": 70.0,
+        "european_aqi": 74
+      },
+      "aqi_label": "Kötü"
+    },
+    "Yemen": {
+      "lat": 15.37,
+      "lon": 44.19,
+      "location_name": "Sana'a",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 22.3,
+        "pm2_5": 7.6,
+        "nitrogen_dioxide": 0.3,
+        "ozone": 83.0,
+        "european_aqi": 33
+      },
+      "aqi_label": "Orta"
+    },
+    "Yeni Zelanda": {
+      "lat": -41.3,
+      "lon": 174.78,
+      "location_name": "Wellington",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 4.7,
+        "pm2_5": 3.2,
+        "nitrogen_dioxide": 1.0,
+        "ozone": 44.0,
+        "european_aqi": 18
+      },
+      "aqi_label": "İyi"
+    },
+    "Yunanistan": {
+      "lat": 37.98,
+      "lon": 23.73,
+      "location_name": "Athens",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 9.7,
+        "pm2_5": 6.5,
+        "nitrogen_dioxide": 4.4,
+        "ozone": 87.0,
+        "european_aqi": 35
+      },
+      "aqi_label": "Orta"
+    },
+    "Zambiya": {
+      "lat": -15.42,
+      "lon": 28.28,
+      "location_name": "Lusaka",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 3.9,
+        "pm2_5": 3.8,
+        "nitrogen_dioxide": 0.3,
+        "ozone": 50.0,
+        "european_aqi": 30
+      },
+      "aqi_label": "Orta"
+    },
+    "Zimbabve": {
+      "lat": -17.82,
+      "lon": 31.03,
+      "location_name": "Harare",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 3.7,
+        "pm2_5": 3.4,
+        "nitrogen_dioxide": 0.7,
+        "ozone": 54.0,
+        "european_aqi": 24
+      },
+      "aqi_label": "Orta"
+    },
+    "Çad": {
+      "lat": 12.1,
+      "lon": 15.03,
+      "location_name": "N'Djamena",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 178.8,
+        "pm2_5": 37.8,
+        "nitrogen_dioxide": 0.2,
+        "ozone": 97.0,
+        "european_aqi": 130
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Çek Cumhuriyeti": {
+      "lat": 50.08,
+      "lon": 14.47,
+      "location_name": "Prague",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 12.0,
+        "pm2_5": 8.9,
+        "nitrogen_dioxide": 5.4,
+        "ozone": 80.0,
+        "european_aqi": 52
+      },
+      "aqi_label": "Hassas"
+    },
+    "Çin": {
+      "lat": 39.92,
+      "lon": 116.38,
+      "location_name": "Beijing",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 36.4,
+        "pm2_5": 35.3,
+        "nitrogen_dioxide": 57.5,
+        "ozone": 26.0,
+        "european_aqi": 123
+      },
+      "aqi_label": "Tehlikeli"
+    },
+    "Özbekistan": {
+      "lat": 41.32,
+      "lon": 69.25,
+      "location_name": "Tashkent",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 26.4,
+        "pm2_5": 20.4,
+        "nitrogen_dioxide": 31.6,
+        "ozone": 64.0,
+        "european_aqi": 39
+      },
+      "aqi_label": "Orta"
+    },
+    "Ürdün": {
+      "lat": 31.95,
+      "lon": 35.93,
+      "location_name": "Amman",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.4,
+        "pm2_5": 4.8,
+        "nitrogen_dioxide": 2.5,
+        "ozone": 102.0,
+        "european_aqi": 41
+      },
+      "aqi_label": "Hassas"
+    },
+    "İran": {
+      "lat": 35.7,
+      "lon": 51.42,
+      "location_name": "Tehran",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 57.2,
+        "pm2_5": 19.0,
+        "nitrogen_dioxide": 58.9,
+        "ozone": 50.0,
+        "european_aqi": 52
+      },
+      "aqi_label": "Hassas"
+    },
+    "İrlanda": {
+      "lat": 53.32,
+      "lon": -6.23,
+      "location_name": "Dublin",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 9.3,
+        "pm2_5": 4.8,
+        "nitrogen_dioxide": 8.8,
+        "ozone": 79.0,
+        "european_aqi": 32
+      },
+      "aqi_label": "Orta"
+    },
+    "İspanya": {
+      "lat": 40.4,
+      "lon": -3.68,
+      "location_name": "Madrid",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.6,
+        "pm2_5": 5.8,
+        "nitrogen_dioxide": 10.3,
+        "ozone": 65.0,
+        "european_aqi": 26
+      },
+      "aqi_label": "Orta"
+    },
+    "İsrail": {
+      "lat": 31.77,
+      "lon": 35.23,
+      "location_name": "Jerusalem",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 6.5,
+        "pm2_5": 4.1,
+        "nitrogen_dioxide": 3.2,
+        "ozone": 106.0,
+        "european_aqi": 44
+      },
+      "aqi_label": "Hassas"
+    },
+    "İsveç": {
+      "lat": 59.33,
+      "lon": 18.05,
+      "location_name": "Stockholm",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 19.9,
+        "pm2_5": 9.8,
+        "nitrogen_dioxide": 9.6,
+        "ozone": 71.0,
+        "european_aqi": 28
+      },
+      "aqi_label": "Orta"
+    },
+    "İsviçre": {
+      "lat": 46.92,
+      "lon": 7.47,
+      "location_name": "Bern",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 60.8,
+        "pm2_5": 30.8,
+        "nitrogen_dioxide": 1.8,
+        "ozone": 88.0,
+        "european_aqi": 65
+      },
+      "aqi_label": "Kötü"
+    },
+    "İtalya": {
+      "lat": 41.9,
+      "lon": 12.48,
+      "location_name": "Rome",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 25.9,
+        "pm2_5": 16.5,
+        "nitrogen_dioxide": 5.5,
+        "ozone": 82.0,
+        "european_aqi": 62
+      },
+      "aqi_label": "Kötü"
+    },
+    "İzlanda": {
+      "lat": 64.15,
+      "lon": -21.95,
+      "location_name": "Reykjavik",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 5.9,
+        "pm2_5": 1.9,
+        "nitrogen_dioxide": 2.0,
+        "ozone": 84.0,
+        "european_aqi": 34
+      },
+      "aqi_label": "Orta"
+    },
+    "Şili": {
+      "lat": -33.45,
+      "lon": -70.67,
+      "location_name": "Santiago",
+      "coord_source": "restcountries:capitalInfo",
+      "data_source": "open-meteo-air",
+      "current": {
+        "time": "2026-03-08T14:00",
+        "pm10": 35.7,
+        "pm2_5": 33.8,
+        "nitrogen_dioxide": 26.8,
+        "ozone": 98.0,
+        "european_aqi": 39
+      },
+      "aqi_label": "Orta"
+    }
+  }
+}

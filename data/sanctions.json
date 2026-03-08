@@ -1,0 +1,3867 @@
+{
+  "provider": "opensanctions",
+  "updated_at_utc": "2026-03-08T14:35:25Z",
+  "source_note": "OpenSanctions consolidated sanctions bulk export. Country summaries are derived from targets.simple.csv.",
+  "source": {
+    "type": "opensanctions-bulk",
+    "index_url": "https://data.opensanctions.org/datasets/20260308/sanctions/index.json",
+    "csv_url": "https://data.opensanctions.org/datasets/20260308/sanctions/targets.simple.csv",
+    "dataset_updated_at": "2026-03-08T13:47:01",
+    "last_change": "2026-03-08T12:58:02",
+    "entity_count": 290010,
+    "target_count": 71131
+  },
+  "countries": {
+    "ABD": {
+      "matches_count": 4089,
+      "dataset_count": 43,
+      "risk_score": 98,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Russia Personal Sanctions Targeting US Citizens",
+          "count": 2166
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 1491
+        },
+        {
+          "name": "US Directorate of Defense Trade Controls AECA Debarments",
+          "count": 749
+        }
+      ],
+      "sample_targets": [
+        "MICHAEL DAVID MUMMERT",
+        "Chen, Kan",
+        "Alexander Nikolic"
+      ]
+    },
+    "Afganistan": {
+      "matches_count": 305,
+      "dataset_count": 43,
+      "risk_score": 77,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 225
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 191
+        },
+        {
+          "name": "Monaco National Fund Freezing List",
+          "count": 190
+        }
+      ],
+      "sample_targets": [
+        "ABDULHAI SALEK",
+        "JANAN AGHA",
+        "Ismatullah Khalozai"
+      ]
+    },
+    "Almanya": {
+      "matches_count": 290,
+      "dataset_count": 40,
+      "risk_score": 77,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 219
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 160
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 74
+        }
+      ],
+      "sample_targets": [
+        "Bahram Ali SHAYESTEH",
+        "fifteenth ocean gmbh & co. kg",
+        "4U Aircraft Design and Engineering GmbH"
+      ]
+    },
+    "Angola": {
+      "matches_count": 18,
+      "dataset_count": 12,
+      "risk_score": 48,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 11
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 11
+        },
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "Luisa de Fatima Giovetty",
+        "EMPRESA CUBANA DE AVIACION",
+        "Hyok Chan Kim"
+      ]
+    },
+    "Arjantin": {
+      "matches_count": 33,
+      "dataset_count": 5,
+      "risk_score": 39,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 26
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 20
+        },
+        {
+          "name": "Argentina RePET Sanctions",
+          "count": 6
+        }
+      ],
+      "sample_targets": [
+        "B-WORK S.A.S.",
+        "LA EMPRESA CUBANA DE FLETES",
+        "CRYMSA - ARGENTINA, S.A."
+      ]
+    },
+    "Arnavutluk": {
+      "matches_count": 29,
+      "dataset_count": 25,
+      "risk_score": 58,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 14
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 14
+        },
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 14
+        }
+      ],
+      "sample_targets": [
+        "Huriya Private FZE LLE",
+        "Dr. Abdul Latif SALEH",
+        "Fatos Hysa"
+      ]
+    },
+    "Avustralya": {
+      "matches_count": 27,
+      "dataset_count": 18,
+      "risk_score": 57,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 13
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 10
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "Talib and Sons PTY LTD",
+        "PERFORMANCE MEDICAL SUPPLIES",
+        "Abbas Eberahim"
+      ]
+    },
+    "Avusturya": {
+      "matches_count": 101,
+      "dataset_count": 18,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 48
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 34
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 22
+        }
+      ],
+      "sample_targets": [
+        "Alexander Franz Josef Lins",
+        "Daniel FROSCH",
+        "SBERBANK EUROPE AG"
+      ]
+    },
+    "Azerbaycan": {
+      "matches_count": 132,
+      "dataset_count": 37,
+      "risk_score": 70,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 70
+        },
+        {
+          "name": "Azerbaijan Domestic List",
+          "count": 36
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 26
+        }
+      ],
+      "sample_targets": [
+        "Jahangir Yevgenyevich ALIYEV",
+        "Махмудов Ельчин",
+        "Талібханли Хаджібаба"
+      ]
+    },
+    "Bangladeş": {
+      "matches_count": 27,
+      "dataset_count": 32,
+      "risk_score": 57,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 15
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 15
+        },
+        {
+          "name": "Singapore Targeted Financial Sanctions",
+          "count": 9
+        }
+      ],
+      "sample_targets": [
+        "ISIS-Bangladesh",
+        "Моршед Мамун",
+        "GLOBAL RELIEF FOUNDATION"
+      ]
+    },
+    "Belarus": {
+      "matches_count": 876,
+      "dataset_count": 29,
+      "risk_score": 86,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Swiss SECO Sanctions/Embargoes",
+          "count": 462
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 441
+        },
+        {
+          "name": "EU Financial Sanctions Files (FSF)",
+          "count": 441
+        }
+      ],
+      "sample_targets": [
+        "Anatoliy Anatolievich Bulavko",
+        "Artem Balaba",
+        "Відкрите акціонерне товариство \"МНІПІ\""
+      ]
+    },
+    "Belçika": {
+      "matches_count": 90,
+      "dataset_count": 33,
+      "risk_score": 67,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 66
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 55
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 36
+        }
+      ],
+      "sample_targets": [
+        "TAWU Mechanical Engineering and Trading Company",
+        "Saïd BOUHDIFI",
+        "Viktor Gennadevich Labin"
+      ]
+    },
+    "Benin": {
+      "matches_count": 11,
+      "dataset_count": 3,
+      "risk_score": 26,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 11
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 11
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 2
+        }
+      ],
+      "sample_targets": [
+        "AGROPHEN",
+        "ELLISSA MEGASTORE",
+        "ELLISSA SHIPPING"
+      ]
+    },
+    "Birleşik Arap Emirlikleri": {
+      "matches_count": 1158,
+      "dataset_count": 43,
+      "risk_score": 88,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 927
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 676
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 328
+        }
+      ],
+      "sample_targets": [
+        "Digital Marketing Awards FZ LLC",
+        "GOLDEN LUXURY JEWELLERY TRADING L.L.C",
+        "ALBAHR ALAAHMAR ENERGY FZE"
+      ]
+    },
+    "Birleşik Krallık": {
+      "matches_count": 540,
+      "dataset_count": 51,
+      "risk_score": 82,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 338
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 245
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 138
+        }
+      ],
+      "sample_targets": [
+        "BANK SADERAT PLC",
+        "REXFORD LTD.",
+        "OVERSEAS HYBRID SYSTEMS"
+      ]
+    },
+    "Bolivya": {
+      "matches_count": 6,
+      "dataset_count": 5,
+      "risk_score": 26,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 6
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 5
+        },
+        {
+          "name": "Canadian Listed Terrorist Entities",
+          "count": 1
+        }
+      ],
+      "sample_targets": [
+        "GRUPO WISA, S.A.",
+        "Fernando Gustavo ALVAREZ PERALTA",
+        "Marco Marino DIODATO DEL GALLO"
+      ]
+    },
+    "Bosna Hersek": {
+      "matches_count": 59,
+      "dataset_count": 30,
+      "risk_score": 64,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 39
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 38
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 14
+        }
+      ],
+      "sample_targets": [
+        "Dalibor Curlik",
+        "Dragomir VASIC",
+        "Сіміч Даніель"
+      ]
+    },
+    "Brezilya": {
+      "matches_count": 42,
+      "dataset_count": 30,
+      "risk_score": 61,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 27
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 23
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 18
+        }
+      ],
+      "sample_targets": [
+        "Домінгес Енріке",
+        "Феррейра Родріго До Вал",
+        "Osama Abdelmongy Abdalla Bakr"
+      ]
+    },
+    "Bulgaristan": {
+      "matches_count": 258,
+      "dataset_count": 12,
+      "risk_score": 70,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 142
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 107
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 96
+        }
+      ],
+      "sample_targets": [
+        "NATIONAL LOTTERY AD",
+        "LA EMPRESA CUBANA DE FLETES",
+        "EUROBET OOD"
+      ]
+    },
+    "Burkina Faso": {
+      "matches_count": 7,
+      "dataset_count": 28,
+      "risk_score": 47,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 5
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 5
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 5
+        }
+      ],
+      "sample_targets": [
+        "Ansar al-Islam",
+        "ISIS in the Greater Sahara",
+        "ISLAMIC STATE IN THE GREATER SAHARA"
+      ]
+    },
+    "Burundi": {
+      "matches_count": 6,
+      "dataset_count": 24,
+      "risk_score": 46,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "Swiss SECO Sanctions/Embargoes",
+          "count": 3
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 3
+        },
+        {
+          "name": "EU Financial Sanctions Files (FSF)",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "Jean-Claude HABYARIMANA MBITSE",
+        "Augustin MIGABO",
+        "Mathias-Joseph NIYONZIMA"
+      ]
+    },
+    "Cabo Verde": {
+      "matches_count": 2,
+      "dataset_count": 4,
+      "risk_score": 17,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 2
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 2
+        },
+        {
+          "name": "UK HMT/OFSI Consolidated List of Targets",
+          "count": 1
+        }
+      ],
+      "sample_targets": [
+        "Francisco de Fatima Frederico BARROS",
+        "Alex Nain Saab Moran"
+      ]
+    },
+    "Cezayir": {
+      "matches_count": 52,
+      "dataset_count": 33,
+      "risk_score": 63,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 42
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 41
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 41
+        }
+      ],
+      "sample_targets": [
+        "Messaoud Belhireche",
+        "Karim AIDI",
+        "Mohammed Reda OUHARANI"
+      ]
+    },
+    "Cibuti": {
+      "matches_count": 18,
+      "dataset_count": 9,
+      "risk_score": 42,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 14
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 14
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 5
+        }
+      ],
+      "sample_targets": [
+        "MS MELENIA",
+        "KOHO I",
+        "Royal Shipping Agency"
+      ]
+    },
+    "Danimarka": {
+      "matches_count": 13,
+      "dataset_count": 27,
+      "risk_score": 52,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 6
+        },
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 5
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Nordic Resistance Movement",
+        "Alliance of Democracies Foundation",
+        "SEMICONDUCTOR SYSTEMS INTL., INC. (SSI)"
+      ]
+    },
+    "Demokratik Kongo Cumhuriyeti": {
+      "matches_count": 134,
+      "dataset_count": 22,
+      "risk_score": 70,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 106
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 106
+        },
+        {
+          "name": "Monaco National Fund Freezing List",
+          "count": 73
+        }
+      ],
+      "sample_targets": [
+        "Hwa Song Pak",
+        "Woodford Enterprises Limited SASU",
+        "Caprikat and Foxwhelp SARL"
+      ]
+    },
+    "Ekvador": {
+      "matches_count": 19,
+      "dataset_count": 15,
+      "risk_score": 55,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 14
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 13
+        },
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 5
+        }
+      ],
+      "sample_targets": [
+        "LOS RASTROJOS",
+        "LOS LOBOS DRUG TRAFFICKING ORGANIZATION",
+        "GESTORES DEL ECUADOR GESTORUM S.A."
+      ]
+    },
+    "Ekvator Ginesi": {
+      "matches_count": 3,
+      "dataset_count": 5,
+      "risk_score": 21,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 3
+        },
+        {
+          "name": "UK HMT/OFSI Consolidated List of Targets",
+          "count": 3
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 2
+        }
+      ],
+      "sample_targets": [
+        "Zineb Jammeh",
+        "Teodoro Nguema Obiang Mangue",
+        "Abdul Aziz Jemus Junkung Jammeh Yahya"
+      ]
+    },
+    "El Salvador": {
+      "matches_count": 42,
+      "dataset_count": 7,
+      "risk_score": 45,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 27
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 20
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 20
+        }
+      ],
+      "sample_targets": [
+        "Borromeo Enrique HENRIQUEZ SOLORZANO",
+        "GRUPO WISA, S.A.",
+        "Jose Luis MENDOZA FIGUEROA"
+      ]
+    },
+    "Endonezya": {
+      "matches_count": 132,
+      "dataset_count": 34,
+      "risk_score": 70,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Indonesian List of Suspected Terrorists and Terrorist Organizations",
+          "count": 79
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 64
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 53
+        }
+      ],
+      "sample_targets": [
+        "PT ANTASENA KREASI",
+        "Agung Surya Dewanto",
+        "Huawei Tech Investment, PT"
+      ]
+    },
+    "Eritre": {
+      "matches_count": 15,
+      "dataset_count": 24,
+      "risk_score": 53,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 13
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 13
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "Mukhtar ROBOW",
+        "People's Front for Democracy and Justice",
+        "Hagos Ghebrehiwet W Kidan"
+      ]
+    },
+    "Ermenistan": {
+      "matches_count": 74,
+      "dataset_count": 22,
+      "risk_score": 65,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 55
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 23
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 10
+        }
+      ],
+      "sample_targets": [
+        "Товмасян Ельміра",
+        "Hayk Arsenovich GASPARYAN",
+        "Мелікян Маріне"
+      ]
+    },
+    "Estonya": {
+      "matches_count": 41,
+      "dataset_count": 18,
+      "risk_score": 61,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 27
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 20
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 18
+        }
+      ],
+      "sample_targets": [
+        "Адімір ОУ",
+        "Alexander Alexandrovich Pushkov",
+        "Тедер Гіллар"
+      ]
+    },
+    "Esvatini": {
+      "matches_count": 3,
+      "dataset_count": 2,
+      "risk_score": 15,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 3
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "FENGSHUN",
+        "Amak",
+        "Hornet"
+      ]
+    },
+    "Etiyopya": {
+      "matches_count": 10,
+      "dataset_count": 28,
+      "risk_score": 50,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 10
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 10
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 8
+        }
+      ],
+      "sample_targets": [
+        "Adnan Ayad",
+        "ABADIGGA, Abdella Hussein",
+        "GLOBAL RELIEF FOUNDATION"
+      ]
+    },
+    "Fas": {
+      "matches_count": 33,
+      "dataset_count": 33,
+      "risk_score": 59,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 25
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 24
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 24
+        }
+      ],
+      "sample_targets": [
+        "Saïd BOUHDIFI",
+        "Abdelatif Gaini",
+        "Abdelkader Laagoub"
+      ]
+    },
+    "Fildişi Sahili": {
+      "matches_count": 8,
+      "dataset_count": 10,
+      "risk_score": 38,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 7
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 7
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 5
+        }
+      ],
+      "sample_targets": [
+        "Konijane Strategic Marketing",
+        "JAMMAL TRUST BANK S.A.L.",
+        "ENERGY ENGINEERS PROCUREMENT AND CONSTRUCTION"
+      ]
+    },
+    "Filipinler": {
+      "matches_count": 173,
+      "dataset_count": 39,
+      "risk_score": 72,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Philippines Anti-Money Laundering Council Sanctions",
+          "count": 94
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 34
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 31
+        }
+      ],
+      "sample_targets": [
+        "Ma. Loida Tuzo Magpatoc",
+        "INTERNATIONAL ISLAMIC RELIEF ORGANIZATION - PHILIPPINES - BRANCH OFFICES; INTERNATIONAL ISLAMIC RELIEF AGENCY; INTERNATIONAL RELIEF ORGANIZATION",
+        "Pasil Bayali"
+      ]
+    },
+    "Finlandiya": {
+      "matches_count": 91,
+      "dataset_count": 18,
+      "risk_score": 67,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 52
+        },
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 33
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 26
+        }
+      ],
+      "sample_targets": [
+        "Nordic Resistance Movement",
+        "Alexander Sakulin",
+        "Airfix Aviation Oy"
+      ]
+    },
+    "Fransa": {
+      "matches_count": 376,
+      "dataset_count": 36,
+      "risk_score": 79,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 219
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 91
+        },
+        {
+          "name": "French National Asset Freezing System",
+          "count": 67
+        }
+      ],
+      "sample_targets": [
+        "MARCEL GOLDFARB",
+        "Даріа енд Ко",
+        "EMPRESA CUBANA DE AVIACION"
+      ]
+    },
+    "Gabon": {
+      "matches_count": 77,
+      "dataset_count": 19,
+      "risk_score": 66,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 69
+        },
+        {
+          "name": "Swiss SECO Sanctions/Embargoes",
+          "count": 69
+        },
+        {
+          "name": "EU Council Official Journal Sanctioned Entities",
+          "count": 68
+        }
+      ],
+      "sample_targets": [
+        "XUE SONG",
+        "Krymsk",
+        "GREAT JACOMBO"
+      ]
+    },
+    "Gambiya": {
+      "matches_count": 47,
+      "dataset_count": 11,
+      "risk_score": 54,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 42
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 38
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 9
+        }
+      ],
+      "sample_targets": [
+        "Fuga Bluemarine",
+        "Husayn TAJIDEEN",
+        "CHIL 1"
+      ]
+    },
+    "Gana": {
+      "matches_count": 6,
+      "dataset_count": 25,
+      "risk_score": 46,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 6
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 6
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Adnan Ayad",
+        "Aleksandr Khoseluisovich Mira Serda",
+        "STAR TRADE GHANA LIMITED"
+      ]
+    },
+    "Gazze": {
+      "matches_count": 198,
+      "dataset_count": 36,
+      "risk_score": 74,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 128
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 104
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 101
+        }
+      ],
+      "sample_targets": [
+        "Nasser Al Sheikh Ali",
+        "Yahia Abdul Aziz AL-ABADSAH",
+        "Alihasan Charity"
+      ]
+    },
+    "Gine": {
+      "matches_count": 13,
+      "dataset_count": 15,
+      "risk_score": 52,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 8
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 8
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 8
+        }
+      ],
+      "sample_targets": [
+        "Jean-Claude Pivi",
+        "Aboubacar Cherif Diakite",
+        "Ali Karaki"
+      ]
+    },
+    "Gine-Bissau": {
+      "matches_count": 21,
+      "dataset_count": 14,
+      "risk_score": 53,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 19
+        },
+        {
+          "name": "Australian Sanctions Consolidated List",
+          "count": 17
+        },
+        {
+          "name": "Swiss SECO Sanctions/Embargoes",
+          "count": 17
+        }
+      ],
+      "sample_targets": [
+        "Jose Americo Bubo NA TCHUTO",
+        "Francisco de Fatima Frederico BARROS",
+        "ARGENT"
+      ]
+    },
+    "Guatemala": {
+      "matches_count": 97,
+      "dataset_count": 17,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 63
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 63
+        },
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 31
+        }
+      ],
+      "sample_targets": [
+        "Ronaldo Galindo Lopez Escobar",
+        "Blanca Aida Stalling Davila",
+        "GRUPO WISA, S.A."
+      ]
+    },
+    "Guyana": {
+      "matches_count": 23,
+      "dataset_count": 7,
+      "risk_score": 40,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 23
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 23
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 1
+        }
+      ],
+      "sample_targets": [
+        "Mae Toussaint Thomas",
+        "Himnauth Sawh",
+        "Mark Cromwell"
+      ]
+    },
+    "Güney Afrika": {
+      "matches_count": 83,
+      "dataset_count": 29,
+      "risk_score": 66,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 78
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 55
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 50
+        }
+      ],
+      "sample_targets": [
+        "Ajay Kumar GUPTA",
+        "IAN ACE",
+        "Hassan Drug Trafficking Organization"
+      ]
+    },
+    "Güney Kore": {
+      "matches_count": 22,
+      "dataset_count": 13,
+      "risk_score": 52,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 16
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 9
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 9
+        }
+      ],
+      "sample_targets": [
+        "Ul Ji Bong 6",
+        "Paek Ma",
+        "Dongjin Lee"
+      ]
+    },
+    "Güney Sudan": {
+      "matches_count": 60,
+      "dataset_count": 20,
+      "risk_score": 64,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 59
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 44
+        },
+        {
+          "name": "UK HMT/OFSI Consolidated List of Targets",
+          "count": 16
+        }
+      ],
+      "sample_targets": [
+        "Michael Kuajien",
+        "Ashraf Said Ahmed Hussein ALI",
+        "Gatluak Nyang Hoth"
+      ]
+    },
+    "Gürcistan": {
+      "matches_count": 467,
+      "dataset_count": 33,
+      "risk_score": 81,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 314
+        },
+        {
+          "name": "Lithuania Designated Persons Under Magnitsky Amendments",
+          "count": 112
+        },
+        {
+          "name": "Estonia International Sanctions Act List",
+          "count": 86
+        }
+      ],
+      "sample_targets": [
+        "Чантурія Іраклі",
+        "Zviad TSEKVAVA",
+        "Рехвіашвілі Іраклій"
+      ]
+    },
+    "Haiti": {
+      "matches_count": 58,
+      "dataset_count": 22,
+      "risk_score": 64,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 34
+        },
+        {
+          "name": "Swiss SECO Sanctions/Embargoes",
+          "count": 21
+        },
+        {
+          "name": "Monaco National Fund Freezing List",
+          "count": 21
+        }
+      ],
+      "sample_targets": [
+        "Fednel Monchery",
+        "EMPRESA CUBANA DE AVIACION",
+        "Luckson Elan"
+      ]
+    },
+    "Hindistan": {
+      "matches_count": 303,
+      "dataset_count": 46,
+      "risk_score": 77,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 200
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 173
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 108
+        }
+      ],
+      "sample_targets": [
+        "Elvegard Shipping Ltd",
+        "Агрім Авіейшн Прайват Лімітед",
+        "Ajay Kumar GUPTA"
+      ]
+    },
+    "Hollanda": {
+      "matches_count": 131,
+      "dataset_count": 32,
+      "risk_score": 70,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 87
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 64
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 25
+        }
+      ],
+      "sample_targets": [
+        "Вашингтон Холдингс Б.В.",
+        "LA EMPRESA CUBANA DE FLETES",
+        "GAZPROMBANK LATIN AMERICA VENTURES BV"
+      ]
+    },
+    "Hırvatistan": {
+      "matches_count": 109,
+      "dataset_count": 30,
+      "risk_score": 69,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 97
+        },
+        {
+          "name": "UK HMT/OFSI Consolidated List of Targets",
+          "count": 6
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 6
+        }
+      ],
+      "sample_targets": [
+        "Noah LICUL",
+        "Katina Drustvo s Ogranicenom Odgovornoscu za Nekretnine i Ugostiteljstvo",
+        "Nusret SEFEROVIC"
+      ]
+    },
+    "Irak": {
+      "matches_count": 523,
+      "dataset_count": 43,
+      "risk_score": 81,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 311
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 305
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 296
+        }
+      ],
+      "sample_targets": [
+        "South Wealth Resources Company",
+        "Black Shield Company for General Trading LLC",
+        "NATIONAL COMPANY FOR FOOD INDUSTRIES"
+      ]
+    },
+    "Jamaika": {
+      "matches_count": 19,
+      "dataset_count": 4,
+      "risk_score": 33,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 11
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 8
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "EMPRESA CUBANA DE AVIACION",
+        "Huawei Technologies Jamaica Company Limited",
+        "CARIBBEAN BEACH PARK"
+      ]
+    },
+    "Japonya": {
+      "matches_count": 83,
+      "dataset_count": 20,
+      "risk_score": 66,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "China Sanctions Research",
+          "count": 40
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 33
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 25
+        }
+      ],
+      "sample_targets": [
+        "ETCO INTERNATIONAL COMPANY, LIMITED",
+        "YUZO OSHIMA",
+        "Katsuaki MITSUYASU"
+      ]
+    },
+    "Kamboçya": {
+      "matches_count": 141,
+      "dataset_count": 21,
+      "risk_score": 71,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 129
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 129
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 23
+        }
+      ],
+      "sample_targets": [
+        "PRINCE SEASHORE NO. 1 CO. LTD.",
+        "BELT ROAD CAPITAL MANAGEMENT CAMBODIA CO. LTD.",
+        "K B X Investment Co Ltd"
+      ]
+    },
+    "Kamerun": {
+      "matches_count": 32,
+      "dataset_count": 20,
+      "risk_score": 59,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 21
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 21
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 12
+        }
+      ],
+      "sample_targets": [
+        "ELIZABET",
+        "TRIS GAS",
+        "OXIS"
+      ]
+    },
+    "Kanada": {
+      "matches_count": 160,
+      "dataset_count": 33,
+      "risk_score": 72,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 114
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 54
+        },
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 27
+        }
+      ],
+      "sample_targets": [
+        "ALI REZA PARSA",
+        "INTERNATIONAL COBALT CO. INC.",
+        "FARID H. TALAB"
+      ]
+    },
+    "Karadağ": {
+      "matches_count": 14,
+      "dataset_count": 16,
+      "risk_score": 52,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 9
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 9
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Luka KARADZIC",
+        "HOTEL CASA GRANDE - Ulcinj, Montenegro",
+        "Miodrag Davidovic"
+      ]
+    },
+    "Katar": {
+      "matches_count": 33,
+      "dataset_count": 29,
+      "risk_score": 59,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 29
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 26
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 25
+        }
+      ],
+      "sample_targets": [
+        "Muhammad Ahmad 'Abd-Al-Dayim Nasrallah",
+        "ABDALLAH GHANIM MAHFUZ MUSLIM AL-KHAWAR",
+        "Abd al-Muayyid al-Banai"
+      ]
+    },
+    "Kazakistan": {
+      "matches_count": 1458,
+      "dataset_count": 36,
+      "risk_score": 90,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Kazakh Terrorist and Terror Financing lists",
+          "count": 1373
+        },
+        {
+          "name": "Kyrgyz National List",
+          "count": 86
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 63
+        }
+      ],
+      "sample_targets": [
+        "Ерлан Дарыгулевич Усенов",
+        "Турлан Жалгасулы Абилхайыров",
+        "Бауыржан Казбекулы Спанбетов"
+      ]
+    },
+    "Kenya": {
+      "matches_count": 55,
+      "dataset_count": 29,
+      "risk_score": 63,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 45
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 42
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 23
+        }
+      ],
+      "sample_targets": [
+        "Michael Kuajien",
+        "Mukhtar ROBOW",
+        "Raj Vaya Sanjay"
+      ]
+    },
+    "Kolombiya": {
+      "matches_count": 491,
+      "dataset_count": 19,
+      "risk_score": 81,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 474
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 473
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 17
+        }
+      ],
+      "sample_targets": [
+        "German Alberto PEREZ OCAMPO",
+        "Nidal Ahmed WAKED HATUM",
+        "Jose Maria NEGRETE LUNA"
+      ]
+    },
+    "Komorlar": {
+      "matches_count": 73,
+      "dataset_count": 28,
+      "risk_score": 65,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 69
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 69
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 41
+        }
+      ],
+      "sample_targets": [
+        "Oriental Treasure",
+        "SEA OWL I",
+        "FOTIS"
+      ]
+    },
+    "Kosova": {
+      "matches_count": 43,
+      "dataset_count": 19,
+      "risk_score": 61,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 30
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 30
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 12
+        }
+      ],
+      "sample_targets": [
+        "SINISA NEDELJKOVIC I.B.",
+        "Burim KRASNIQI",
+        "N.P.T.T. DONA-SHELL"
+      ]
+    },
+    "Kuveyt": {
+      "matches_count": 34,
+      "dataset_count": 28,
+      "risk_score": 59,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 33
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 31
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 31
+        }
+      ],
+      "sample_targets": [
+        "MOHAMMAD AL-MASHAN",
+        "External Construction Bureau",
+        "JABER ABDALLAH JABER AHMED AL-JALAHMAH"
+      ]
+    },
+    "Kuzey Kore": {
+      "matches_count": 859,
+      "dataset_count": 29,
+      "risk_score": 86,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 445
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 440
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 367
+        }
+      ],
+      "sample_targets": [
+        "Onsong County MSS Detention Centre",
+        "Ji Sang Jun",
+        "Kumgang Bank"
+      ]
+    },
+    "Küba": {
+      "matches_count": 617,
+      "dataset_count": 28,
+      "risk_score": 83,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US State Department Cuba Sanctions",
+          "count": 572
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 39
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 38
+        }
+      ],
+      "sample_targets": [
+        "Empresa de Tecnologías de la Información Para La Defensa",
+        "Departamento de Seguridad del Estado",
+        "Ministerio de las Fuerzas Armadas Revolucionarias"
+      ]
+    },
+    "Kıbrıs": {
+      "matches_count": 508,
+      "dataset_count": 34,
+      "risk_score": 81,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 302
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 175
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 160
+        }
+      ],
+      "sample_targets": [
+        "Finrost Limited",
+        "Омнія Сервісіз Сайпрес Лтд",
+        "Miramonte Investments Limited"
+      ]
+    },
+    "Kırgızistan": {
+      "matches_count": 63,
+      "dataset_count": 32,
+      "risk_score": 64,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 40
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 37
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 34
+        }
+      ],
+      "sample_targets": [
+        "CJSC TENGRICOIN",
+        "Kamchybek Asanbekovich KOLBAYEV",
+        "KHATIBA AL-TAWHID WAL-JIHAD"
+      ]
+    },
+    "Letonya": {
+      "matches_count": 58,
+      "dataset_count": 21,
+      "risk_score": 64,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 27
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 22
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 18
+        }
+      ],
+      "sample_targets": [
+        "SIA FALCON INTERNATIONAL GROUP",
+        "Прайвет Еквіті Груп",
+        "Берзінс Дідзіс"
+      ]
+    },
+    "Liberya": {
+      "matches_count": 145,
+      "dataset_count": 13,
+      "risk_score": 67,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 123
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 123
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 50
+        }
+      ],
+      "sample_targets": [
+        "Nurkez",
+        "Benoil Shipping Inc",
+        "MANDALA"
+      ]
+    },
+    "Libya": {
+      "matches_count": 103,
+      "dataset_count": 34,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 71
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 71
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 67
+        }
+      ],
+      "sample_targets": [
+        "Abd al Hadi Zarqun",
+        "Abdurahem al Kani",
+        "CAPTAIN ELYAZGI"
+      ]
+    },
+    "Litvanya": {
+      "matches_count": 21,
+      "dataset_count": 18,
+      "risk_score": 55,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 11
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 11
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "IDS BORJOMI EUROPE UAB",
+        "AVIATECH FZC",
+        "Буркін Єгор Васильович"
+      ]
+    },
+    "Lübnan": {
+      "matches_count": 462,
+      "dataset_count": 39,
+      "risk_score": 80,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 434
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 410
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 365
+        }
+      ],
+      "sample_targets": [
+        "Alihasan Charity",
+        "Car Care Center",
+        "Muhammad Yusuf Ahmad MANSUR"
+      ]
+    },
+    "Lüksemburg": {
+      "matches_count": 54,
+      "dataset_count": 13,
+      "risk_score": 59,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 31
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 14
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 14
+        }
+      ],
+      "sample_targets": [
+        "ЕйрФрейт Лоджистікс САРЛ",
+        "Фінансьер Ежін Ес.А.",
+        "ЕйБіЕйч Холдингз СА"
+      ]
+    },
+    "Macaristan": {
+      "matches_count": 32,
+      "dataset_count": 17,
+      "risk_score": 59,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 14
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 12
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 12
+        }
+      ],
+      "sample_targets": [
+        "I.C.I.C. KFT.",
+        "MATRIX METAL GROUP KORLATOLT FELELOSSEGU TARSASAG FELSZAMOLAS ALATT",
+        "Artemis Artemiou"
+      ]
+    },
+    "Madagaskar": {
+      "matches_count": 1,
+      "dataset_count": 2,
+      "risk_score": 10,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 1
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 1
+        }
+      ],
+      "sample_targets": [
+        "Huawei Technologies Madagascar Sarl"
+      ]
+    },
+    "Makedonya": {
+      "matches_count": 26,
+      "dataset_count": 5,
+      "risk_score": 37,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 15
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 13
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 13
+        }
+      ],
+      "sample_targets": [
+        "Bet City International D.O.O. Skopje, Advertising, Marketing, and Services Company",
+        "Orka Holding AD",
+        "Ratka Kunoska Kamceva"
+      ]
+    },
+    "Malavi": {
+      "matches_count": 2,
+      "dataset_count": 1,
+      "risk_score": 11,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 2
+        }
+      ],
+      "sample_targets": [
+        "Cecillia Mussa",
+        "Uladi Basikolo Mussa"
+      ]
+    },
+    "Maldivler": {
+      "matches_count": 51,
+      "dataset_count": 3,
+      "risk_score": 38,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 51
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 51
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 51
+        }
+      ],
+      "sample_targets": [
+        "Panda Maldives Pvt Ltd",
+        "Larosa",
+        "Al Athmaar"
+      ]
+    },
+    "Malezya": {
+      "matches_count": 198,
+      "dataset_count": 35,
+      "risk_score": 74,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 113
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 55
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 46
+        }
+      ],
+      "sample_targets": [
+        "NOOR ENERGY (MALAYSIA) LTD.",
+        "Sunrise Greenland Sdn. Bhd.",
+        "Ezekial KANNIAPPAN, JR"
+      ]
+    },
+    "Mali": {
+      "matches_count": 49,
+      "dataset_count": 36,
+      "risk_score": 62,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 34
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 34
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 31
+        }
+      ],
+      "sample_targets": [
+        "Messaoud Belhireche",
+        "Hamadou Koufa",
+        "Hamama Ould Khouier"
+      ]
+    },
+    "Mauritius": {
+      "matches_count": 9,
+      "dataset_count": 26,
+      "risk_score": 49,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 6
+        },
+        {
+          "name": "Monaco National Fund Freezing List",
+          "count": 6
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 6
+        }
+      ],
+      "sample_targets": [
+        "LAP Green Networks",
+        "Файріч Інвестмент Лімітед",
+        "Bagsak Shipping Inc"
+      ]
+    },
+    "Meksika": {
+      "matches_count": 1153,
+      "dataset_count": 10,
+      "risk_score": 78,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 1143
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 1128
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 105
+        }
+      ],
+      "sample_targets": [
+        "LOLA LOLITA 1110, S. DE R.L. DE C.V.",
+        "TRANSPORTES REFRIGERADOS PANDAS TRUCKING, SOCIEDAD ANONIMA DE CAPITAL VARIABLE",
+        "CORPORATIVO FEARFI, S.A. DE C.V."
+      ]
+    },
+    "Moldova": {
+      "matches_count": 94,
+      "dataset_count": 21,
+      "risk_score": 67,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 53
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 43
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 42
+        }
+      ],
+      "sample_targets": [
+        "Denis Igorevich Gusev",
+        "Лінник Інна Костянтинівна",
+        "Гушан Іон"
+      ]
+    },
+    "Moritanya": {
+      "matches_count": 8,
+      "dataset_count": 30,
+      "risk_score": 48,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 7
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 7
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "Saleck Ould Cheikh Mohamedou",
+        "Talha Al-Libi",
+        "AL QAIDA IN THE LAND OF THE ISLAMIC MAGHREB"
+      ]
+    },
+    "Mozambik": {
+      "matches_count": 8,
+      "dataset_count": 29,
+      "risk_score": 48,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 8
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 8
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Mohamed Ahmed Qahiye",
+        "GRUPO MBS - KAYUM CENTRE",
+        "Bonomade Machude Omar"
+      ]
+    },
+    "Moğolistan": {
+      "matches_count": 12,
+      "dataset_count": 14,
+      "risk_score": 49,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 12
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 12
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "Dawnlight",
+        "HUMANITY",
+        "Shang Yuan Bao"
+      ]
+    },
+    "Myanmar": {
+      "matches_count": 385,
+      "dataset_count": 30,
+      "risk_score": 79,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 242
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 209
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 194
+        }
+      ],
+      "sample_targets": [
+        "Myanmar Yatai International Holding Group Co., LTD.",
+        "Myawaddy Travel Services",
+        "U Than Swe"
+      ]
+    },
+    "Mısır": {
+      "matches_count": 124,
+      "dataset_count": 39,
+      "risk_score": 70,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 73
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 71
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 70
+        }
+      ],
+      "sample_targets": [
+        "Muhammad Nasr al-Din al-Ghazlani",
+        "Zaki Izzat Zaki AHMAD",
+        "Egyptian Muslim Brotherhood"
+      ]
+    },
+    "Namibya": {
+      "matches_count": 6,
+      "dataset_count": 16,
+      "risk_score": 46,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 6
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 4
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Mansudae Overseas Projects Architectural and Technical Services (PTY) Limited",
+        "Gaffar Mohammed Elhassan",
+        "Qingdao Construction (Namibia) CC"
+      ]
+    },
+    "Nijer": {
+      "matches_count": 6,
+      "dataset_count": 30,
+      "risk_score": 46,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 6
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 4
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Ousmane Illiassou Djibo",
+        "ISIS in the Greater Sahara",
+        "AL QAIDA IN THE LAND OF THE ISLAMIC MAGHREB"
+      ]
+    },
+    "Nijerya": {
+      "matches_count": 62,
+      "dataset_count": 28,
+      "risk_score": 64,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Nigeria Sanctions List",
+          "count": 40
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 30
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 30
+        }
+      ],
+      "sample_targets": [
+        "Fouzi Reda Darwish Fawaz",
+        "Abu Bakr ibn Muhammad ibn 'Ali al-mainuki",
+        "Abubakar Adam KAMBAR"
+      ]
+    },
+    "Nikaragua": {
+      "matches_count": 93,
+      "dataset_count": 14,
+      "risk_score": 65,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 72
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 72
+        },
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 35
+        }
+      ],
+      "sample_targets": [
+        "Conseil électoral suprême; Consejo Supremo Electoral",
+        "Yohaira Hernandez Chirino",
+        "GRUPO WISA, S.A."
+      ]
+    },
+    "Norveç": {
+      "matches_count": 116,
+      "dataset_count": 29,
+      "risk_score": 69,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 103
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 10
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "Nordic Resistance Movement",
+        "ATTICA",
+        "RO MARINE"
+      ]
+    },
+    "Orta Afrika Cumhuriyeti": {
+      "matches_count": 35,
+      "dataset_count": 22,
+      "risk_score": 59,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 33
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 33
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 26
+        }
+      ],
+      "sample_targets": [
+        "Salim Kony",
+        "Aleksandr Grigorievitch Maloletko",
+        "Okot Lukwang"
+      ]
+    },
+    "Pakistan": {
+      "matches_count": 4666,
+      "dataset_count": 43,
+      "risk_score": 99,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Pakistan NACTA Proscribed Persons",
+          "count": 4206
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 414
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 288
+        }
+      ],
+      "sample_targets": [
+        "Linkers Automation (Pvt) Ltd.",
+        "Umar Siddique Kathio AZMARAI",
+        "KTK Engineering (Pvt) LTD"
+      ]
+    },
+    "Paraguay": {
+      "matches_count": 54,
+      "dataset_count": 7,
+      "risk_score": 47,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 30
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 21
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 20
+        }
+      ],
+      "sample_targets": [
+        "Fahd JAMIL GEORGES",
+        "Muhammad Yusif ABDALLAH",
+        "Ali Hassan Barakat"
+      ]
+    },
+    "Peru": {
+      "matches_count": 46,
+      "dataset_count": 24,
+      "risk_score": 62,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 42
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 41
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "EMPRESA CUBANA DE AVIACION",
+        "EDITORA TRANSPARENCIA S.A.",
+        "Felix Anner Castillo Rondon"
+      ]
+    },
+    "Polonya": {
+      "matches_count": 100,
+      "dataset_count": 10,
+      "risk_score": 58,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 81
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 14
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 11
+        }
+      ],
+      "sample_targets": [
+        "LA EMPRESA CUBANA DE FLETES",
+        "WILDBERRIES Sp. z o.o.",
+        "Lake Forest SP Z O O"
+      ]
+    },
+    "Portekiz": {
+      "matches_count": 15,
+      "dataset_count": 16,
+      "risk_score": 53,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 8
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 4
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "Huawei Technology Portugal",
+        "Antonio Filipe Fortio Mira",
+        "Business United Unipessoal Lda"
+      ]
+    },
+    "Romanya": {
+      "matches_count": 39,
+      "dataset_count": 17,
+      "risk_score": 60,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 19
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 11
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 10
+        }
+      ],
+      "sample_targets": [
+        "NIMR International S.R.L.",
+        "Chiril Guzun",
+        "Gheorghe Petru CAVCALIUC"
+      ]
+    },
+    "Ruanda": {
+      "matches_count": 42,
+      "dataset_count": 18,
+      "risk_score": 61,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 33
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 33
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 32
+        }
+      ],
+      "sample_targets": [
+        "Gustave KUBWAYO",
+        "JEAN-MARIE LUGERERO RUNIGA",
+        "Andrew Nyamvumba"
+      ]
+    },
+    "Rusya": {
+      "matches_count": 20852,
+      "dataset_count": 52,
+      "risk_score": 100,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 17013
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 6713
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 6057
+        }
+      ],
+      "sample_targets": [
+        "Товариство з обмеженою відповідальністю \"Зелінський Групп\"",
+        "Open Joint Stock Company “Elektrostal Chemical and Mechanical Plant named after N.D. Zelinsky”",
+        "Акціонерне товариство \"Електроагрегат\""
+      ]
+    },
+    "Sao Tome ve Principe": {
+      "matches_count": 10,
+      "dataset_count": 2,
+      "risk_score": 24,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 10
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 10
+        }
+      ],
+      "sample_targets": [
+        "LADY LIBERTY",
+        "Nova",
+        "ELVA"
+      ]
+    },
+    "Senegal": {
+      "matches_count": 7,
+      "dataset_count": 23,
+      "risk_score": 47,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 5
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 5
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Corman Construction & Commerce Senegal Sural",
+        "Abbas Loutfe FAWAZ",
+        "Dart Aviation"
+      ]
+    },
+    "Seyseller": {
+      "matches_count": 47,
+      "dataset_count": 6,
+      "risk_score": 44,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 44
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 44
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 26
+        }
+      ],
+      "sample_targets": [
+        "Galeran Service Corp",
+        "GRAT SHIPPING CO LTD",
+        "EGIR SHIPPING LTD"
+      ]
+    },
+    "Sierra Leone": {
+      "matches_count": 51,
+      "dataset_count": 27,
+      "risk_score": 62,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 32
+        },
+        {
+          "name": "Swiss SECO Sanctions/Embargoes",
+          "count": 30
+        },
+        {
+          "name": "EU Sanctions Map",
+          "count": 29
+        }
+      ],
+      "sample_targets": [
+        "CENTURION",
+        "Fouzi Reda Darwish Fawaz",
+        "MILENYUM ENERGY S.A.; MILENYUM SHIPPING; MILENYUM DENIZCILIK GEMI HIZMETLERI ACENTELIK VE OZEL OGRETIM HIZMETLERI LIMITED SIRKETI; MILENYUM DENIZCILIK GEMI"
+      ]
+    },
+    "Singapur": {
+      "matches_count": 225,
+      "dataset_count": 33,
+      "risk_score": 75,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 178
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 119
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 59
+        }
+      ],
+      "sample_targets": [
+        "HENGYANG PETROCHEMICAL LOGISTICS LIMITED",
+        "RAGUNATHAN THIRUNAVUKKARASU",
+        "LNG Delta Shipping PTE LTD"
+      ]
+    },
+    "Slovakya": {
+      "matches_count": 33,
+      "dataset_count": 11,
+      "risk_score": 51,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 17
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 16
+        },
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 11
+        }
+      ],
+      "sample_targets": [
+        "Ricardo Jose Moron Hernandez",
+        "KTH Group Spol SRO",
+        "Phoenix Lines S.R.O."
+      ]
+    },
+    "Slovenya": {
+      "matches_count": 145,
+      "dataset_count": 11,
+      "risk_score": 63,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 134
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 11
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 11
+        }
+      ],
+      "sample_targets": [
+        "Mihael KARNER",
+        "Matevz KARNER",
+        "VELINVESTMENT D.O.O."
+      ]
+    },
+    "Somali": {
+      "matches_count": 106,
+      "dataset_count": 33,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 83
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 83
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 77
+        }
+      ],
+      "sample_targets": [
+        "Abdikarim Hussein Gagaale",
+        "Barakat Computer Consulting (BCC)",
+        "Aadan Yusuf Saciid Ibrahim"
+      ]
+    },
+    "Sri Lanka": {
+      "matches_count": 20,
+      "dataset_count": 21,
+      "risk_score": 55,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Anti-Kleptocracy and Human Rights Visa Restrictions",
+          "count": 8
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 7
+        },
+        {
+          "name": "UK HMT/OFSI Consolidated List of Targets",
+          "count": 5
+        }
+      ],
+      "sample_targets": [
+        "Jagath JAYASURIYA",
+        "Marine Solution Pvt Ltd",
+        "Huawei Technologies Lanka Company (Private) Limited"
+      ]
+    },
+    "Sudan": {
+      "matches_count": 96,
+      "dataset_count": 33,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 81
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 81
+        },
+        {
+          "name": "Monaco National Fund Freezing List",
+          "count": 56
+        }
+      ],
+      "sample_targets": [
+        "Ashraf Said Ahmed Hussein ALI",
+        "AL ROWAD REAL ESTATE DEVELOPMENT",
+        "Harakat Sawa’d Misr"
+      ]
+    },
+    "Surinam": {
+      "matches_count": 6,
+      "dataset_count": 3,
+      "risk_score": 22,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 6
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 6
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 4
+        }
+      ],
+      "sample_targets": [
+        "Strong Roots Provider NV",
+        "Engen Management NV",
+        "Sea Services Providers NV"
+      ]
+    },
+    "Suriye": {
+      "matches_count": 1075,
+      "dataset_count": 46,
+      "risk_score": 87,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 664
+        },
+        {
+          "name": "French National Asset Freezing System",
+          "count": 466
+        },
+        {
+          "name": "Monaco National Fund Freezing List",
+          "count": 464
+        }
+      ],
+      "sample_targets": [
+        "Ministry of Interior",
+        "Zuhayr Haydar",
+        "Zaid Salah"
+      ]
+    },
+    "Suudi Arabistan": {
+      "matches_count": 100,
+      "dataset_count": 36,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 91
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 88
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 69
+        }
+      ],
+      "sample_targets": [
+        "Ali Muhammad Abu Turab",
+        "Mahir Jawad Yunis Salah",
+        "Thaar Ghaleb T. Alharbi"
+      ]
+    },
+    "Sırbistan": {
+      "matches_count": 103,
+      "dataset_count": 35,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 66
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 57
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 18
+        }
+      ],
+      "sample_targets": [
+        "Zoran Petrovic",
+        "MARKOM METAL COMMERCE DOO ZVECAN",
+        "NOVI PAZAR-PUT D.O.O. NOVI PAZAR"
+      ]
+    },
+    "Tacikistan": {
+      "matches_count": 14,
+      "dataset_count": 29,
+      "risk_score": 52,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 12
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 10
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 9
+        }
+      ],
+      "sample_targets": [
+        "Kafolatbank",
+        "KHATIBA AL-TAWHID WAL-JIHAD",
+        "CHAMAIYATI DOROI MASAULIYATI MAKHDUDI KAFOLATI KOMIL"
+      ]
+    },
+    "Tanzanya": {
+      "matches_count": 41,
+      "dataset_count": 32,
+      "risk_score": 61,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 37
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 37
+        },
+        {
+          "name": "UK FCDO Sanctions List",
+          "count": 7
+        }
+      ],
+      "sample_targets": [
+        "Hassan Drug Trafficking Organization",
+        "Dong Feng 6",
+        "SEAPRIDE"
+      ]
+    },
+    "Tayland": {
+      "matches_count": 376,
+      "dataset_count": 28,
+      "risk_score": 79,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Thailand Designated Persons List",
+          "count": 278
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 88
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 76
+        }
+      ],
+      "sample_targets": [
+        "Trans Asia International Holding Group Thailand Company Limited",
+        "SCORE COMMERCIAL COMPANY LTD.",
+        "Hsueh Yuan WEI"
+      ]
+    },
+    "Togo": {
+      "matches_count": 13,
+      "dataset_count": 13,
+      "risk_score": 48,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 9
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 9
+        },
+        {
+          "name": "French National Asset Freezing System",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "MIAMI PRIDE",
+        "Groupe Panafricain pour le Commerce et l’Investissement",
+        "Хугблайм Куку Мавуле"
+      ]
+    },
+    "Trinidad ve Tobago": {
+      "matches_count": 6,
+      "dataset_count": 23,
+      "risk_score": 46,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 4
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 4
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "Ozel 2",
+        "Eddie Aleong",
+        "Emraan Ali"
+      ]
+    },
+    "Tunus": {
+      "matches_count": 96,
+      "dataset_count": 36,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 59
+        },
+        {
+          "name": "French National Asset Freezing System",
+          "count": 59
+        },
+        {
+          "name": "EU Financial Sanctions Files (FSF)",
+          "count": 58
+        }
+      ],
+      "sample_targets": [
+        "Jalila Bent Mohamed Ben Rhouma TRABELSI",
+        "Slim Ben Mohamed Salah Ben Ahmed ZARROUK",
+        "Mohamed KARMOUS"
+      ]
+    },
+    "Türkiye": {
+      "matches_count": 1700,
+      "dataset_count": 47,
+      "risk_score": 91,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Türkiye Asset Freezing Sanctions List (MASAK)",
+          "count": 1184
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 508
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 398
+        }
+      ],
+      "sample_targets": [
+        "DAVUT YALÇIN",
+        "TAHSİN KURT",
+        "EŞREF KÜLLEBİ"
+      ]
+    },
+    "Türkmenistan": {
+      "matches_count": 7,
+      "dataset_count": 15,
+      "risk_score": 47,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 6
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 6
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "CGN Trade FZE",
+        "Adelina KULIYEVA",
+        "PETROCHEMICAL COMMERCIAL COMPANY INTERNATIONAL"
+      ]
+    },
+    "Uganda": {
+      "matches_count": 44,
+      "dataset_count": 30,
+      "risk_score": 61,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 36
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 35
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 19
+        }
+      ],
+      "sample_targets": [
+        "PRO HELI INTERNATIONAL SERVICES LIMITED",
+        "Amigo Kibirige",
+        "Johnson Byabashaija"
+      ]
+    },
+    "Ukrayna": {
+      "matches_count": 2557,
+      "dataset_count": 40,
+      "risk_score": 94,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 2334
+        },
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 638
+        },
+        {
+          "name": "Belgian Financial Sanctions",
+          "count": 538
+        }
+      ],
+      "sample_targets": [
+        "Приватне підприємство \"Магістар-СГ\"",
+        "Чантурія Іраклі",
+        "Баєва Катерина Миколаївна"
+      ]
+    },
+    "Uruguay": {
+      "matches_count": 4,
+      "dataset_count": 4,
+      "risk_score": 21,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 3
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 3
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 1
+        }
+      ],
+      "sample_targets": [
+        "GRUPO WISA, S.A.",
+        "BANCO BANDES URUGUAY S.A.",
+        "Perfect Day Co SA"
+      ]
+    },
+    "Venezuela": {
+      "matches_count": 430,
+      "dataset_count": 22,
+      "risk_score": 80,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 322
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 317
+        },
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 132
+        }
+      ],
+      "sample_targets": [
+        "Angel Daniel BALESTRINI JARAMILLO",
+        "Miguel Antonio Jose PONENTE PARRA",
+        "Ricardo Jose Moron Hernandez"
+      ]
+    },
+    "Vietnam": {
+      "matches_count": 50,
+      "dataset_count": 25,
+      "risk_score": 62,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 28
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 26
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 21
+        }
+      ],
+      "sample_targets": [
+        "Yong Su Kim",
+        "Thinh Cuong Company Limited",
+        "SEA MARINE 1"
+      ]
+    },
+    "Yemen": {
+      "matches_count": 188,
+      "dataset_count": 37,
+      "risk_score": 73,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 169
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 169
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 152
+        }
+      ],
+      "sample_targets": [
+        "Radwan Muhammad Husayn Ali Qanan",
+        "Waleed Fathi Salam Baidhani",
+        "Barash Aviation and Cargo Company Limited"
+      ]
+    },
+    "Yeni Zelanda": {
+      "matches_count": 9,
+      "dataset_count": 7,
+      "risk_score": 33,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 7
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 6
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "Huawei Technologies (New Zealand) Company Limited",
+        "KAIKAI TECHNOLOGY CO., LTD.",
+        "TNK Trading Limited"
+      ]
+    },
+    "Yunanistan": {
+      "matches_count": 115,
+      "dataset_count": 29,
+      "risk_score": 69,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 72
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 37
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 26
+        }
+      ],
+      "sample_targets": [
+        "Ставропулос Статіс",
+        "IMPIRE SHIPPING COMPANY",
+        "ProPer In Management Incorporated"
+      ]
+    },
+    "Zambiya": {
+      "matches_count": 5,
+      "dataset_count": 22,
+      "risk_score": 45,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 5
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 5
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 5
+        }
+      ],
+      "sample_targets": [
+        "Ali Adel Diab",
+        "Hamer and Nail Construction Limited",
+        "Abubakar Swalleh"
+      ]
+    },
+    "Zimbabve": {
+      "matches_count": 101,
+      "dataset_count": 8,
+      "risk_score": 54,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 81
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 20
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 20
+        }
+      ],
+      "sample_targets": [
+        "David Paul Crosby",
+        "Raj Vaya Sanjay",
+        "Swetang Sinha"
+      ]
+    },
+    "Çad": {
+      "matches_count": 5,
+      "dataset_count": 17,
+      "risk_score": 45,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 5
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 5
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 5
+        }
+      ],
+      "sample_targets": [
+        "Mustapha Chad",
+        "Ali Darassa",
+        "Abdoulaye Hissene"
+      ]
+    },
+    "Çek Cumhuriyeti": {
+      "matches_count": 25,
+      "dataset_count": 20,
+      "risk_score": 57,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 16
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 12
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 11
+        }
+      ],
+      "sample_targets": [
+        "Voice of Europe",
+        "SABA, TRADE & INVESTMENT S.R.O.",
+        "Bonitopto S.R.O."
+      ]
+    },
+    "Çin": {
+      "matches_count": 3138,
+      "dataset_count": 50,
+      "risk_score": 96,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 2569
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 1298
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 1291
+        }
+      ],
+      "sample_targets": [
+        "Star Dragon Corporation Limited",
+        "Taiyuan Jinke Semiconductor Technology Co., Ltd.",
+        "Beijing Shuoke Zhongkexin Electronic Equipment Co., Ltd."
+      ]
+    },
+    "Özbekistan": {
+      "matches_count": 72,
+      "dataset_count": 35,
+      "risk_score": 65,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 52
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 49
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 42
+        }
+      ],
+      "sample_targets": [
+        "Nasiba Erkinovna Narzieva",
+        "KHATIBA AL-TAWHID WAL-JIHAD",
+        "Сайдумаров Маріфходжа Абдукарімович"
+      ]
+    },
+    "Ürdün": {
+      "matches_count": 100,
+      "dataset_count": 32,
+      "risk_score": 68,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 61
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 56
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 55
+        }
+      ],
+      "sample_targets": [
+        "Nadim S. AL-DAJANI",
+        "Ismail Abdallah Sbaitan Shalabi",
+        "AL NASER AIRLINES"
+      ]
+    },
+    "İran": {
+      "matches_count": 2555,
+      "dataset_count": 40,
+      "risk_score": 94,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 2006
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 1883
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 1135
+        }
+      ],
+      "sample_targets": [
+        "Sepehr Energy Jahan Nama Pars (SEJ)",
+        "BANK SADERAT PLC",
+        "Mohammad Mahdi Maghfoori"
+      ]
+    },
+    "İrlanda": {
+      "matches_count": 59,
+      "dataset_count": 19,
+      "risk_score": 64,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 31
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 23
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 18
+        }
+      ],
+      "sample_targets": [
+        "John Francis MORRISSEY",
+        "Joung Ok HONG",
+        "McGuinn, Thomas"
+      ]
+    },
+    "İspanya": {
+      "matches_count": 207,
+      "dataset_count": 24,
+      "risk_score": 74,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 101
+        },
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 101
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 87
+        }
+      ],
+      "sample_targets": [
+        "Nidal Ahmed WAKED HATUM",
+        "AL ZAWAYA GROUP FOR DEVELOPMENT AND INVESTMENT SOCIEDAD LIMITADA",
+        "LA EMPRESA CUBANA DE FLETES"
+      ]
+    },
+    "İsrail": {
+      "matches_count": 108,
+      "dataset_count": 28,
+      "risk_score": 69,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 49
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 34
+        },
+        {
+          "name": "Canadian Consolidated Autonomous Sanctions List",
+          "count": 32
+        }
+      ],
+      "sample_targets": [
+        "Denis Igorevich Gusev",
+        "Jonatan Zimenkov",
+        "ADDAMEER - Prisoner Support and Human Rights Association"
+      ]
+    },
+    "İsveç": {
+      "matches_count": 76,
+      "dataset_count": 22,
+      "risk_score": 66,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 38
+        },
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 32
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 19
+        }
+      ],
+      "sample_targets": [
+        "Nordic Resistance Movement",
+        "GUNNAR WEDELL",
+        "Foxtrot Network"
+      ]
+    },
+    "İsviçre": {
+      "matches_count": 161,
+      "dataset_count": 27,
+      "risk_score": 72,
+      "risk_label": "Yüksek",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 117
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 88
+        },
+        {
+          "name": "Ukraine NSDC State Register of Sanctions",
+          "count": 57
+        }
+      ],
+      "sample_targets": [
+        "Laurin Katz",
+        "«СПітч АГ»",
+        "Frederic Pierre Villa"
+      ]
+    },
+    "İtalya": {
+      "matches_count": 335,
+      "dataset_count": 34,
+      "risk_score": 78,
+      "risk_label": "Çok yüksek",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 225
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 98
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 93
+        }
+      ],
+      "sample_targets": [
+        "Petropark S.R.L.",
+        "Giulio Sfoglietti",
+        "LA EMPRESA CUBANA DE FLETES"
+      ]
+    },
+    "İzlanda": {
+      "matches_count": 4,
+      "dataset_count": 5,
+      "risk_score": 23,
+      "risk_label": "Düşük",
+      "top_datasets": [
+        {
+          "name": "EU ESMA Suspensions and Removals",
+          "count": 2
+        },
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 1
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 1
+        }
+      ],
+      "sample_targets": [
+        "Nordic Resistance Movement",
+        "Jónas Haraldsson",
+        "MAREL"
+      ]
+    },
+    "Şili": {
+      "matches_count": 10,
+      "dataset_count": 8,
+      "risk_score": 36,
+      "risk_label": "Orta",
+      "top_datasets": [
+        {
+          "name": "US Trade Consolidated Screening List (CSL)",
+          "count": 10
+        },
+        {
+          "name": "US OFAC Specially Designated Nationals (SDN) List",
+          "count": 8
+        },
+        {
+          "name": "Taiwan Strategic High-Tech Commodities Entity List",
+          "count": 3
+        }
+      ],
+      "sample_targets": [
+        "Huawei Chile S.A.",
+        "Andrei Vladimirovich DUBEN",
+        "Assad Ahmad BARAKAT"
+      ]
+    }
+  }
+}

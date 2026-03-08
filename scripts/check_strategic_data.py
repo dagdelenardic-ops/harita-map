@@ -7,6 +7,7 @@ Checks:
 - conflict participants are canonical Turkish country names
 - conflict links have a source country and a country target or coordinate anchor
 - `data/water_sources.json` uses canonical Turkish country names
+- strategic snapshot files exist and use canonical Turkish country names
 """
 
 from __future__ import annotations
@@ -21,6 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 COUNTRY_MAPPINGS_PATH = BASE_DIR / "data" / "country_mappings.json"
 CURRENT_CONFLICTS_PATH = BASE_DIR / "data" / "current_conflicts.json"
 WATER_SOURCES_PATH = BASE_DIR / "data" / "water_sources.json"
+STRATEGIC_SNAPSHOT_PATHS = {
+    "sanctions": BASE_DIR / "data" / "sanctions.json",
+    "weather": BASE_DIR / "data" / "weather.json",
+    "air_quality": BASE_DIR / "data" / "air_quality.json",
+    "fx": BASE_DIR / "data" / "fx.json",
+}
 
 
 def normalize_lookup_key(value: Any) -> str:
@@ -106,11 +113,30 @@ def check_water_sources(lookup: Dict[str, str]) -> List[str]:
     return errors
 
 
+def check_country_keyed_snapshot(name: str, path: Path, lookup: Dict[str, str]) -> List[str]:
+    errors: List[str] = []
+    if not path.exists():
+        return [f"{name}: missing snapshot file -> {path.name}"]
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    countries = payload.get("countries")
+    if not isinstance(countries, dict):
+        return [f"{name}: countries must be an object"]
+
+    for country in countries:
+        canon = canonicalize_country(lookup, country)
+        if canon != country:
+            errors.append(f"{name}: key should be canonical Turkish name -> {country!r} (expected {canon!r})")
+    return errors
+
+
 def main() -> None:
     lookup = load_country_index()
     errors = []
     errors.extend(check_conflicts(lookup))
     errors.extend(check_water_sources(lookup))
+    for name, path in STRATEGIC_SNAPSHOT_PATHS.items():
+        errors.extend(check_country_keyed_snapshot(name, path, lookup))
 
     if errors:
         print("ERROR: strategic datasets failed validation")
