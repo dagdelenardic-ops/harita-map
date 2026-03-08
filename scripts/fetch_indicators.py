@@ -6,6 +6,7 @@ Datasets:
 - NATO member states (Wikipedia: Member states of NATO)
 - Minimum wage by country (Wikipedia: List of countries by minimum wage)
 - Big Mac Index (The Economist GitHub: big-mac-full-index.csv)
+- Water resources and stress (World Bank indicators)
 - G8 country list (static; canonicalized via country_mappings.json)
 
 Output is keyed by the project's canonical Turkish country names from data/country_mappings.json.
@@ -40,6 +41,63 @@ WIKI_MIN_WAGE_URL = "https://en.wikipedia.org/wiki/List_of_countries_by_minimum_
 BIGMAC_CSV_URL = (
     "https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/output-data/big-mac-full-index.csv"
 )
+WORLD_BANK_API_TEMPLATE = (
+    "https://api.worldbank.org/v2/country/all/indicator/{indicator}"
+    "?format=json&per_page=20000&mrv=1"
+)
+
+WORLD_BANK_AGGREGATES = {
+    "AFE", "AFW", "ARB", "CSS", "CEB", "EAP", "EAR", "EAS", "ECA", "ECS", "EMU", "EUU",
+    "FCS", "HIC", "HPC", "IBD", "IBT", "IDA", "IDB", "IDX", "INX", "LAC", "LCN", "LDC",
+    "LIC", "LMC", "LMY", "LTE", "MEA", "MIC", "MNA", "NAC", "OED", "OSS", "PRE", "PSS",
+    "PST", "SAS", "SSA", "SSF", "SST", "TEA", "TEC", "TLA", "TMN", "TSA", "TSS", "UMC",
+    "WLD",
+}
+
+WORLD_BANK_WATER_INDICATORS = {
+    "water_internal_total": {
+        "code": "ER.H2O.INTR.K3",
+        "label": "Yenilenebilir İç Tatlı Su (milyar m3)",
+        "unit": "milyar m3",
+        "decimals": 1,
+    },
+    "water_internal_per_capita": {
+        "code": "ER.H2O.INTR.PC",
+        "label": "Yenilenebilir İç Tatlı Su / Kişi",
+        "unit": "m3/kişi",
+        "decimals": 0,
+    },
+    "water_stress": {
+        "code": "ER.H2O.FWST.ZS",
+        "label": "Su Stresi",
+        "unit": "%",
+        "decimals": 1,
+    },
+    "water_withdrawal_pct_internal": {
+        "code": "ER.H2O.FWTL.ZS",
+        "label": "Su Çekimi / İç Kaynak",
+        "unit": "%",
+        "decimals": 1,
+    },
+    "water_use_agriculture": {
+        "code": "ER.H2O.FWAG.ZS",
+        "label": "Su Kullanımı: Tarım Payı",
+        "unit": "%",
+        "decimals": 1,
+    },
+    "water_use_industry": {
+        "code": "ER.H2O.FWIN.ZS",
+        "label": "Su Kullanımı: Sanayi Payı",
+        "unit": "%",
+        "decimals": 1,
+    },
+    "water_use_domestic": {
+        "code": "ER.H2O.FWDM.ZS",
+        "label": "Su Kullanımı: Evsel Pay",
+        "unit": "%",
+        "decimals": 1,
+    },
+}
 
 
 _TR_TRANSLATE = str.maketrans(
@@ -64,6 +122,31 @@ _TR_TRANSLATE = str.maketrans(
         "Û": "u",
     }
 )
+
+SPECIAL_CANONICAL_NAMES = {
+    "bahamas, the": "Bahamalar",
+    "brunei darussalam": "Brunei",
+    "cape verde": "Cabo Verde",
+    "congo, dem. rep.": "Demokratik Kongo Cumhuriyeti",
+    "congo, rep.": "Kongo Cumhuriyeti",
+    "cote d'ivoire": "Fildişi Sahili",
+    "egypt, arab rep.": "Mısır",
+    "gambia, the": "Gambiya",
+    "hong kong sar, china": "Hong Kong",
+    "iran, islamic rep.": "İran",
+    "kyrgyz republic": "Kırgızistan",
+    "lao pdr": "Laos",
+    "macao sar, china": "Makao",
+    "micronesia, fed. sts.": "Mikronezya",
+    "russian federation": "Rusya",
+    "slovak republic": "Slovakya",
+    "syrian arab republic": "Suriye",
+    "turkiye": "Türkiye",
+    "venezuela, rb": "Venezuela",
+    "viet nam": "Vietnam",
+    "west bank and gaza": "Filistin",
+    "yemen, rep.": "Yemen",
+}
 
 
 def _normalize_lookup_key(value: str) -> str:
@@ -123,6 +206,11 @@ def _fetch(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return resp.read()
+
+
+def _fetch_json(url: str) -> Any:
+    raw = _fetch(url)
+    return json.loads(raw.decode("utf-8", "ignore"))
 
 
 def _parse_float(value: str) -> Optional[float]:
@@ -191,7 +279,13 @@ def _canonicalize(lookup: Dict[str, CountryCanon], name: str) -> Optional[Countr
     nk = _normalize_lookup_key(_clean_country_name(name))
     if not nk:
         return None
-    return lookup.get(nk)
+    canon = lookup.get(nk)
+    if canon:
+        return canon
+    special = SPECIAL_CANONICAL_NAMES.get(nk)
+    if special:
+        return lookup.get(_normalize_lookup_key(special))
+    return None
 
 
 def fetch_nato_members(lookup: Dict[str, CountryCanon]) -> Tuple[List[str], List[str]]:
@@ -356,6 +450,79 @@ def fetch_big_mac_index(lookup: Dict[str, CountryCanon]) -> Tuple[Dict[str, Dict
     return by_country, meta, unknown
 
 
+def fetch_world_bank_indicator(
+    lookup: Dict[str, CountryCanon], indicator_code: str
+) -> Tuple[Dict[str, Dict[str, Any]], Dict[str, Any], List[str]]:
+    url = WORLD_BANK_API_TEMPLATE.format(indicator=indicator_code)
+    payload = _fetch_json(url)
+    if not isinstance(payload, list) or len(payload) < 2:
+        raise RuntimeError(f"Unexpected World Bank response for {indicator_code}")
+
+    meta_raw = payload[0] if isinstance(payload[0], dict) else {}
+    rows = payload[1] if isinstance(payload[1], list) else []
+
+    by_country: Dict[str, Dict[str, Any]] = {}
+    unknown: List[str] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        value = row.get("value")
+        if value is None:
+            continue
+
+        iso3 = (row.get("countryiso3code") or "").strip().upper()
+        if not iso3 or iso3 in WORLD_BANK_AGGREGATES:
+            continue
+
+        country_obj = row.get("country") or {}
+        source_name = _clean_country_name(country_obj.get("value") or "")
+        canon = _canonicalize(lookup, source_name)
+        if not canon:
+            if source_name and source_name not in unknown and len(unknown) < 50:
+                unknown.append(source_name)
+            continue
+
+        try:
+            numeric_value = float(value)
+        except (TypeError, ValueError):
+            continue
+
+        by_country[canon.turkish] = {
+            "value": numeric_value,
+            "year": row.get("date"),
+            "countryiso3code": iso3,
+        }
+
+    meta = {
+        "url": url,
+        "lastupdated": meta_raw.get("lastupdated"),
+        "total": meta_raw.get("total"),
+    }
+    return by_country, meta, unknown
+
+
+def fetch_water_indicators(lookup: Dict[str, CountryCanon]) -> Tuple[Dict[str, Dict[str, Any]], Dict[str, List[str]]]:
+    indicators: Dict[str, Dict[str, Any]] = {}
+    unknown_by_indicator: Dict[str, List[str]] = {}
+
+    for key, config in WORLD_BANK_WATER_INDICATORS.items():
+        by_country, wb_meta, unknown = fetch_world_bank_indicator(lookup, config["code"])
+        indicators[key] = {
+            "label": config["label"],
+            "unit": config["unit"],
+            "decimals": config["decimals"],
+            "source": {
+                "type": "worldbank",
+                "indicator_code": config["code"],
+                **wb_meta,
+            },
+            "by_country": by_country,
+        }
+        unknown_by_indicator[key] = unknown
+
+    return indicators, unknown_by_indicator
+
+
 def main() -> None:
     lookup, _by_tr = _load_country_index()
     now_utc = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -365,6 +532,7 @@ def main() -> None:
     min_wage_by_country, min_wage_unknown = fetch_minimum_wage(lookup)
 
     bigmac_by_country, bigmac_meta, bigmac_unknown = fetch_big_mac_index(lookup)
+    water_indicators, water_unknown = fetch_water_indicators(lookup)
 
     # Static BRICS+ list (as of Jan 2025 expansion, incl. Indonesia; canonicalized via mappings)
     # Source: brics.br (Brazilian BRICS presidency comms).
@@ -434,6 +602,7 @@ def main() -> None:
                 "source": {"type": "github", "url": BIGMAC_CSV_URL, **bigmac_meta},
                 "by_country": bigmac_by_country,
             },
+            **water_indicators,
         },
     }
 
@@ -444,6 +613,11 @@ def main() -> None:
     print("- BRICS+ members:", len(brics_plus))
     print("- Min wage countries:", len(min_wage_by_country), "(unknown:", len(min_wage_unknown), ")")
     print("- Big Mac countries:", len(bigmac_by_country), "as of", bigmac_meta.get("latest_date"))
+    for key, indicator in water_indicators.items():
+        print(f"- {key}: {len(indicator.get('by_country', {}))} country rows")
+        unknown = water_unknown.get(key) or []
+        if unknown:
+            print(f"  unknown names ({len(unknown)}): {', '.join(unknown[:8])}")
 
     # Exit non-zero only if critical datasets are empty.
     if not nato_members or not bigmac_by_country:

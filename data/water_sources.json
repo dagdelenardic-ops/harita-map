@@ -1,0 +1,105 @@
+{
+  "updated_at_utc": "2026-03-08T00:00:00Z",
+  "countries": {
+    "Türkiye": {
+      "primary_sources": [
+        "Ulke ici nehir havzalari",
+        "Firat-Dicle sistemi",
+        "Baraj depolamasi ve yer alti suyu"
+      ],
+      "dependency": "Su tabani agirlikla ulke ici yuzey ve yer alti suyuna dayanir; sinir asan nehir yonetimi stratejiktir.",
+      "risk": "Kuraklik, tarimsal talep ve sinir asan akis rejimi baskisi."
+    },
+    "Mısır": {
+      "primary_sources": [
+        "Nil Nehri",
+        "Aswan rezervuari",
+        "Drenaj suyu yeniden kullanim"
+      ],
+      "dependency": "Akisin buyuk bolumu sinir asan Nil havzasindan gelir.",
+      "risk": "GERD isletme rejimi, yukari havza yagislari ve hizli talep artisi."
+    },
+    "Irak": {
+      "primary_sources": [
+        "Dicle",
+        "Firat",
+        "Yer alti suyu"
+      ],
+      "dependency": "Ana akisin onemli bolumu sinir disindan geldigi icin yukari havza yonetimine duyarli.",
+      "risk": "Kuraklik, tuzluluk ve yukari havza barajlari."
+    },
+    "Suriye": {
+      "primary_sources": [
+        "Firat havzasi",
+        "Yer alti suyu",
+        "Kisitli yerel nehirler"
+      ],
+      "dependency": "Sinir asan su ve yer alti suyu kritik roldedir.",
+      "risk": "Savas hasari, kuraklik ve altyapi zayifligi."
+    },
+    "Ürdün": {
+      "primary_sources": [
+        "Urdun ve Yermuk nehri sistemi",
+        "Disi akiferi",
+        "Desalinizasyon ve ithal su"
+      ],
+      "dependency": "Yerel kaynaklar kisitli oldugu icin dis baglanti ve teknoloji agirligi yuksektir.",
+      "risk": "Asiri su stresi ve bolgesel tedarik hassasiyeti."
+    },
+    "İsrail": {
+      "primary_sources": [
+        "Desalinizasyon",
+        "Dag akiferi",
+        "Celile Golu",
+        "Atik su geri kazanim"
+      ],
+      "dependency": "Dogal kaynak ile teknoloji tabanli arz birlikte kullanilir.",
+      "risk": "Bolgesel gerilim, ekolojik esikler ve enerji bagimli su uretimi."
+    },
+    "Suudi Arabistan": {
+      "primary_sources": [
+        "Desalinizasyon",
+        "Fosil akiferler",
+        "Artilmis yeniden kullanim"
+      ],
+      "dependency": "Ic yenilenebilir su tabani dusuk oldugu icin teknoloji ve akifer cekimi belirleyicidir.",
+      "risk": "Yuksek enerji maliyeti ve akifer asiri kullanim baskisi."
+    },
+    "Birleşik Arap Emirlikleri": {
+      "primary_sources": [
+        "Desalinizasyon",
+        "Yeralti suyu",
+        "Yeniden kullanim"
+      ],
+      "dependency": "Dogal tatli su sinirli; deniz suyu aritimi merkezi rol oynar.",
+      "risk": "Enerji bagimliligi ve iklim kaynakli talep zirveleri."
+    },
+    "Etiyopya": {
+      "primary_sources": [
+        "Yuksek yayla yagislari",
+        "Mavi Nil baslangic havzasi",
+        "Yerel nehir sistemleri"
+      ],
+      "dependency": "Su tabani buyuk olcude ulke ici ve yuksek yayla kaynaklidir.",
+      "risk": "Baraj isletmesi etrafinda diplomatik baski ve duzensiz yagis."
+    },
+    "Pakistan": {
+      "primary_sources": [
+        "Indus havzasi",
+        "Buzul erimeleri",
+        "Kanal sulama sistemi"
+      ],
+      "dependency": "Himalaya-Karakurum beslemeli sinir asan havzalar belirleyicidir.",
+      "risk": "Buzul rejimi, sel-kuraklik dongusu ve tarimsal yuk."
+    },
+    "Hindistan": {
+      "primary_sources": [
+        "Ganj-Brahmaputra sistemi",
+        "Ic nehir havzalari",
+        "Yer alti suyu"
+      ],
+      "dependency": "Kaynak tabani genistir ancak bolgesel dagilim esitsizdir.",
+      "risk": "Yer alti suyu tukenmesi, muson oynakligi ve tarimsal cekim."
+    }
+  }
+}

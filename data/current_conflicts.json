@@ -1,0 +1,366 @@
+{
+  "updated_at_utc": "2026-03-08T00:00:00Z",
+  "source_note": "Elle derlenmis stratejik snapshot. Dosya yapisi duzenli guncellemeye ve dis veri kaynagi entegrasyonuna uygundur.",
+  "conflicts": [
+    {
+      "id": "russia-ukraine-war",
+      "label": "Rusya-Ukrayna Savasi",
+      "summary": "2022 isgali sonrasinda suren yuksek yogunluklu devletler arasi savas.",
+      "kind": "interstate",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2022-02",
+      "updated_at": "2026-03-08",
+      "tags": ["territory", "security", "energy"],
+      "participants": ["Rusya", "Ukrayna"],
+      "links": [
+        {
+          "source": "Rusya",
+          "target": "Ukrayna",
+          "label": "Cephe hatti"
+        },
+        {
+          "source": "Ukrayna",
+          "target": "Rusya",
+          "label": "Karsi taarruz / sinir baskisi"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ACLED",
+          "url": "https://acleddata.com/"
+        }
+      ]
+    },
+    {
+      "id": "israel-gaza-war",
+      "label": "Israil-Gazze Savasi",
+      "summary": "Gazze merkezli yogun savas ve ablukali catisma ortami.",
+      "kind": "war",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2023-10",
+      "updated_at": "2026-03-08",
+      "tags": ["territory", "security", "humanitarian"],
+      "participants": ["İsrail", "Filistin"],
+      "links": [
+        {
+          "source": "İsrail",
+          "target_anchor": {
+            "lat": 31.43,
+            "lon": 34.38,
+            "label": "Gazze"
+          },
+          "label": "Gazze cephesi"
+        },
+        {
+          "source": "Filistin",
+          "target": "İsrail",
+          "label": "Toprak / taninma catismasi"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ICRC",
+          "url": "https://www.icrc.org/en/where-we-work/middle-east/israel-and-occupied-territories"
+        }
+      ]
+    },
+    {
+      "id": "israel-lebanon-front",
+      "label": "Israil-Lubnan Kuzey Cephesi",
+      "summary": "Lubnan sinirinda dusuk-orta yogunlukta ama surekli askeri gerilim.",
+      "kind": "border",
+      "status": "active",
+      "intensity": "medium",
+      "started_at": "2023-10",
+      "updated_at": "2026-03-08",
+      "tags": ["border", "regional"],
+      "participants": ["İsrail", "Lübnan"],
+      "links": [
+        {
+          "source": "İsrail",
+          "target": "Lübnan",
+          "label": "Kuzey cephesi"
+        }
+      ]
+    },
+    {
+      "id": "sudan-civil-war",
+      "label": "Sudan Ic Savasi",
+      "summary": "Sudan ordusu ile Hizli Destek Kuvvetleri arasindaki parcalayici ic savas.",
+      "kind": "civil_war",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2023-04",
+      "updated_at": "2026-03-08",
+      "tags": ["state-fragmentation", "humanitarian"],
+      "participants": ["Sudan"],
+      "links": [
+        {
+          "source": "Sudan",
+          "target_anchor": {
+            "lat": 15.55,
+            "lon": 32.54,
+            "label": "Khartoum / RSF"
+          },
+          "label": "SAF vs RSF"
+        },
+        {
+          "source": "Sudan",
+          "target_anchor": {
+            "lat": 13.62,
+            "lon": 25.35,
+            "label": "Darfur"
+          },
+          "label": "Darfur cephesi"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ICRC",
+          "url": "https://www.icrc.org/en/where-we-work/africa/sudan"
+        }
+      ]
+    },
+    {
+      "id": "myanmar-civil-war",
+      "label": "Myanmar Ic Savasi",
+      "summary": "Cunta, etnik silahli gruplar ve direnis gucleri arasinda suregelen catisma.",
+      "kind": "civil_war",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2021-02",
+      "updated_at": "2026-03-08",
+      "tags": ["state-fragmentation", "insurgency"],
+      "participants": ["Myanmar"],
+      "links": [
+        {
+          "source": "Myanmar",
+          "target_anchor": {
+            "lat": 21.98,
+            "lon": 96.08,
+            "label": "Mandalay / ic cepheler"
+          },
+          "label": "Direnis cepheleri"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ICRC",
+          "url": "https://www.icrc.org/en/where-we-work/asia-pacific/myanmar"
+        }
+      ]
+    },
+    {
+      "id": "yemen-war",
+      "label": "Yemen Savasi",
+      "summary": "Husiler, hukumet ve bolgesel aktorler arasinda kesintili ama aktif savas.",
+      "kind": "civil_war",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2014-09",
+      "updated_at": "2026-03-08",
+      "tags": ["regional", "maritime"],
+      "participants": ["Yemen", "Suudi Arabistan"],
+      "links": [
+        {
+          "source": "Yemen",
+          "target_anchor": {
+            "lat": 15.37,
+            "lon": 44.19,
+            "label": "Sana / Husi"
+          },
+          "label": "Ic savas"
+        },
+        {
+          "source": "Suudi Arabistan",
+          "target": "Yemen",
+          "label": "Sinir ve hava harekatlari"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ICRC",
+          "url": "https://www.icrc.org/en/where-we-work/middle-east/yemen"
+        }
+      ]
+    },
+    {
+      "id": "ethiopia-internal-conflicts",
+      "label": "Etiyopya Ic Cepheleri",
+      "summary": "Oromia ve Amhara eksenlerinde suren ic guvenlik ve isyan baskisi.",
+      "kind": "insurgency",
+      "status": "active",
+      "intensity": "medium",
+      "started_at": "2018-01",
+      "updated_at": "2026-03-08",
+      "tags": ["insurgency", "state-fragmentation"],
+      "participants": ["Etiyopya"],
+      "links": [
+        {
+          "source": "Etiyopya",
+          "target_anchor": {
+            "lat": 11.59,
+            "lon": 37.39,
+            "label": "Amhara"
+          },
+          "label": "Amhara / Fano"
+        },
+        {
+          "source": "Etiyopya",
+          "target_anchor": {
+            "lat": 8.98,
+            "lon": 38.79,
+            "label": "Oromia"
+          },
+          "label": "Oromia / OLA"
+        }
+      ]
+    },
+    {
+      "id": "drc-m23",
+      "label": "Kivu-M23 Catismasi",
+      "summary": "Demokratik Kongo Cumhuriyeti dogusunda M23 eksenli yogun catisma.",
+      "kind": "insurgency",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2012-01",
+      "updated_at": "2026-03-08",
+      "tags": ["minerals", "insurgency", "border"],
+      "participants": ["Demokratik Kongo Cumhuriyeti"],
+      "links": [
+        {
+          "source": "Demokratik Kongo Cumhuriyeti",
+          "target_anchor": {
+            "lat": -1.68,
+            "lon": 29.23,
+            "label": "Kuzey Kivu / M23"
+          },
+          "label": "M23"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ICRC",
+          "url": "https://www.icrc.org/en/where-we-work/africa/democratic-republic-congo"
+        }
+      ]
+    },
+    {
+      "id": "somalia-al-shabaab",
+      "label": "Somali-El Sebab Catismasi",
+      "summary": "Devlet ile El Sebab arasinda suregelen dusuk-yuksek yogunluklu catisma.",
+      "kind": "insurgency",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2006-01",
+      "updated_at": "2026-03-08",
+      "tags": ["terror", "state-fragmentation"],
+      "participants": ["Somali"],
+      "links": [
+        {
+          "source": "Somali",
+          "target_anchor": {
+            "lat": 2.04,
+            "lon": 45.34,
+            "label": "Mogadishu / El Sebab"
+          },
+          "label": "El Sebab"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ICRC",
+          "url": "https://www.icrc.org/en/where-we-work/africa/somalia"
+        }
+      ]
+    },
+    {
+      "id": "haiti-gang-war",
+      "label": "Haiti Cete Savasi",
+      "summary": "Port-au-Prince merkezli cete bloklari ve zayif devlet arasinda siddet sarmali.",
+      "kind": "urban_conflict",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2020-01",
+      "updated_at": "2026-03-08",
+      "tags": ["state-collapse", "urban"],
+      "participants": ["Haiti"],
+      "links": [
+        {
+          "source": "Haiti",
+          "target_anchor": {
+            "lat": 18.54,
+            "lon": -72.34,
+            "label": "Port-au-Prince"
+          },
+          "label": "Cete koridorlari"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ICRC",
+          "url": "https://www.icrc.org/en/where-we-work/americas/haiti"
+        }
+      ]
+    },
+    {
+      "id": "mexico-cartel-war",
+      "label": "Meksika Kartel Savasi",
+      "summary": "Karteller arasindaki ve devletle karteller arasindaki suregelen siddet.",
+      "kind": "criminal_conflict",
+      "status": "active",
+      "intensity": "high",
+      "started_at": "2006-12",
+      "updated_at": "2026-03-08",
+      "tags": ["organized-crime", "border"],
+      "participants": ["Meksika"],
+      "links": [
+        {
+          "source": "Meksika",
+          "target_anchor": {
+            "lat": 25.68,
+            "lon": -100.31,
+            "label": "Monterrey / kuzey koridoru"
+          },
+          "label": "Sinir ve lojistik hatlari"
+        },
+        {
+          "source": "Meksika",
+          "target_anchor": {
+            "lat": 24.80,
+            "lon": -107.39,
+            "label": "Sinaloa"
+          },
+          "label": "Kartel cekirdek alani"
+        }
+      ]
+    },
+    {
+      "id": "egypt-ethiopia-nile-dispute",
+      "label": "Misir-Etiyopya Nil Krizi",
+      "summary": "GERD etrafinda yogunlasan su guvenligi ve nehir akis rejimi gerilimi.",
+      "kind": "water_dispute",
+      "status": "active",
+      "intensity": "medium",
+      "started_at": "2011-04",
+      "updated_at": "2026-03-08",
+      "tags": ["water", "infrastructure", "diplomacy"],
+      "participants": ["Mısır", "Etiyopya"],
+      "links": [
+        {
+          "source": "Etiyopya",
+          "target": "Mısır",
+          "label": "Mavi Nil akisi / GERD"
+        }
+      ],
+      "sources": [
+        {
+          "label": "World Bank Water",
+          "url": "https://data.worldbank.org/indicator/ER.H2O.INTR.K3"
+        }
+      ]
+    }
+  ]
+}

@@ -5,8 +5,9 @@ Geopolitical History Map - Interactive world map showing major events from the l
 
 import json
 import os
+import unicodedata
 from pathlib import Path
-from typing import Dict, List
+from typing import Any, Dict, List
 
 import folium
 from folium.plugins import MarkerCluster
@@ -110,35 +111,33 @@ class GeopoliticalMap:
                 self.geojson_data = json.load(f)
         self._patch_geojson_france()
 
-        # Load Country Metadata
-        metadata_path = self.base_dir / "data" / "country_metadata.json"
-        self.country_metadata = {}
-        if metadata_path.exists():
-            with open(metadata_path, 'r', encoding='utf-8') as f:
-                self.country_metadata = json.load(f)
-
         # Load Master Country Mappings
         mappings_path = self.base_dir / "data" / "country_mappings.json"
         self.country_mappings = []
         self.turkish_to_english = {}
         self.english_to_turkish = {}
         self.turkish_to_iso = {}
+        self.country_lookup = {}
         if mappings_path.exists():
             with open(mappings_path, 'r', encoding='utf-8') as f:
                 mappings_data = json.load(f)
                 self.country_mappings = mappings_data.get('countries', [])
                 # Build lookup dictionaries
                 for c in self.country_mappings:
-                    tr = c.get('turkish', '')
-                    en = c.get('english', '')
-                    iso = c.get('iso2', '')
-                    aliases = c.get('aliases', [])
+                    tr = (c.get('turkish') or '').strip()
+                    en = (c.get('english') or '').strip()
+                    iso = (c.get('iso2') or '').strip()
+                    aliases = c.get('aliases', []) or []
                     
                     if tr and en:
                         self.turkish_to_english[tr] = en
                         self.english_to_turkish[en] = tr
                     if tr and iso:
                         self.turkish_to_iso[tr] = iso
+                    for candidate in [tr, en] + aliases:
+                        nk = self._normalize_lookup_key(candidate)
+                        if nk and tr:
+                            self.country_lookup.setdefault(nk, tr)
                     # Handle aliases
                     for alias in aliases:
                         if alias and en:
@@ -146,6 +145,38 @@ class GeopoliticalMap:
                             self.turkish_to_english[alias] = en
                         if alias and iso:
                             self.turkish_to_iso[alias] = iso
+
+        # Load Country Metadata
+        metadata_path = self.base_dir / "data" / "country_metadata.json"
+        self.country_metadata = {}
+        if metadata_path.exists():
+            with open(metadata_path, 'r', encoding='utf-8') as f:
+                raw_metadata = json.load(f)
+            self.country_metadata = self._normalize_country_metadata(raw_metadata)
+
+        # Optional narrative notes for water sourcing
+        water_sources_path = self.base_dir / "data" / "water_sources.json"
+        self.water_sources = {"updated_at_utc": "", "countries": {}}
+        if water_sources_path.exists():
+            try:
+                with open(water_sources_path, 'r', encoding='utf-8') as f:
+                    raw_water_sources = json.load(f)
+                self.water_sources = self._normalize_country_keyed_payload(raw_water_sources)
+            except Exception as e:
+                print(f"WARNING: Failed to load water_sources.json: {e}")
+                self.water_sources = {"updated_at_utc": "", "countries": {}}
+
+        # Structured current conflicts for map overlay + sidebar
+        current_conflicts_path = self.base_dir / "data" / "current_conflicts.json"
+        self.current_conflicts = {"updated_at_utc": "", "source_note": "", "conflicts": []}
+        if current_conflicts_path.exists():
+            try:
+                with open(current_conflicts_path, 'r', encoding='utf-8') as f:
+                    raw_conflicts = json.load(f)
+                self.current_conflicts = self._normalize_current_conflicts(raw_conflicts)
+            except Exception as e:
+                print(f"WARNING: Failed to load current_conflicts.json: {e}")
+                self.current_conflicts = {"updated_at_utc": "", "source_note": "", "conflicts": []}
 
         # Load external indicators/groups (NATO, G8, minimum wage, Big Mac, etc.)
         indicators_path = self.base_dir / "data" / "indicators.json"
@@ -282,6 +313,171 @@ class GeopoliticalMap:
             }
         )
 
+    def _normalize_lookup_key(self, value: Any) -> str:
+        if value is None:
+            return ""
+        s = str(value).strip()
+        if not s:
+            return ""
+        s = (
+            s.replace("\u2019", "'")
+            .replace("\u2018", "'")
+            .replace("\u201B", "'")
+            .replace("\u02BC", "'")
+            .replace("’", "'")
+            .replace("‘", "'")
+        )
+        s = " ".join(s.split())
+        s = unicodedata.normalize("NFKD", s)
+        s = "".join(ch for ch in s if not unicodedata.combining(ch))
+        s = s.lower().replace("ı", "i")
+        return s
+
+    def _canonicalize_country_name(self, value: Any) -> str:
+        raw = str(value or "").strip()
+        if not raw:
+            return ""
+        key = self._normalize_lookup_key(raw)
+        if key in self.country_lookup:
+            return self.country_lookup[key]
+        return raw
+
+    def _merge_unique_objects(self, existing: List[Dict[str, Any]], incoming: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        seen = set()
+        merged: List[Dict[str, Any]] = []
+        for item in (existing or []) + (incoming or []):
+            if not isinstance(item, dict):
+                continue
+            key = json.dumps(item, sort_keys=True, ensure_ascii=False)
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(item)
+        return merged
+
+    def _normalize_rivalries(self, rivalries: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        seen = set()
+        normalized = []
+        for item in rivalries or []:
+            if not isinstance(item, dict):
+                continue
+            rival = self._canonicalize_country_name(item.get("rival"))
+            row = dict(item)
+            if rival:
+                row["rival"] = rival
+            key = (
+                row.get("rival", ""),
+                row.get("text", ""),
+                row.get("status", ""),
+                row.get("year", ""),
+                row.get("url", ""),
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            normalized.append(row)
+        return normalized
+
+    def _normalize_country_metadata(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
+        normalized: Dict[str, Dict[str, Any]] = {}
+        for raw_name, raw_meta in (metadata or {}).items():
+            if not isinstance(raw_meta, dict):
+                continue
+            country = self._canonicalize_country_name(raw_name)
+            if not country:
+                continue
+            current = normalized.setdefault(country, {})
+
+            for field in ["predecessor", "demographics"]:
+                incoming = str(raw_meta.get(field) or "").strip()
+                existing = str(current.get(field) or "").strip()
+                if incoming and (not existing or existing == "-" or len(incoming) > len(existing)):
+                    current[field] = incoming
+
+            incoming_rivals = [
+                self._canonicalize_country_name(x) or x
+                for x in (raw_meta.get("rivals") or [])
+                if str(x or "").strip()
+            ]
+            if incoming_rivals:
+                current["rivals"] = sorted(set((current.get("rivals") or []) + incoming_rivals), key=lambda x: self._normalize_lookup_key(x))
+
+            incoming_rivalries = self._normalize_rivalries(raw_meta.get("rivalries") or [])
+            if incoming_rivalries:
+                current["rivalries"] = self._normalize_rivalries((current.get("rivalries") or []) + incoming_rivalries)
+
+            incoming_felaketler = [x for x in (raw_meta.get("felaketler") or []) if isinstance(x, dict)]
+            if incoming_felaketler:
+                current["felaketler"] = self._merge_unique_objects(current.get("felaketler") or [], incoming_felaketler)
+
+            incoming_key_conflict = raw_meta.get("key_conflict")
+            if isinstance(incoming_key_conflict, dict):
+                if not current.get("key_conflict"):
+                    current["key_conflict"] = dict(incoming_key_conflict)
+                else:
+                    existing_text = str((current.get("key_conflict") or {}).get("text") or "")
+                    incoming_text = str(incoming_key_conflict.get("text") or "")
+                    if incoming_text and len(incoming_text) > len(existing_text):
+                        current["key_conflict"] = dict(incoming_key_conflict)
+
+            for field in ["code", "flag_url", "water_profile"]:
+                if raw_meta.get(field) and not current.get(field):
+                    current[field] = raw_meta[field]
+
+        return normalized
+
+    def _normalize_country_keyed_payload(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        countries = payload.get("countries") if isinstance(payload, dict) else {}
+        normalized_countries = {}
+        for raw_name, raw_note in (countries or {}).items():
+            if not isinstance(raw_note, dict):
+                continue
+            country = self._canonicalize_country_name(raw_name)
+            if not country:
+                continue
+            normalized_countries[country] = raw_note
+        return {
+            "updated_at_utc": payload.get("updated_at_utc", ""),
+            "countries": normalized_countries,
+        }
+
+    def _normalize_current_conflicts(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        normalized_conflicts = []
+        seen_ids = set()
+        for item in payload.get("conflicts", []) if isinstance(payload, dict) else []:
+            if not isinstance(item, dict):
+                continue
+            conflict_id = str(item.get("id") or "").strip()
+            if not conflict_id or conflict_id in seen_ids:
+                continue
+            seen_ids.add(conflict_id)
+
+            conflict = dict(item)
+            conflict["participants"] = [
+                self._canonicalize_country_name(x) or str(x).strip()
+                for x in (item.get("participants") or [])
+                if str(x or "").strip()
+            ]
+
+            normalized_links = []
+            for link in item.get("links", []) or []:
+                if not isinstance(link, dict):
+                    continue
+                row = dict(link)
+                if row.get("source"):
+                    row["source"] = self._canonicalize_country_name(row.get("source")) or row.get("source")
+                if row.get("target"):
+                    row["target"] = self._canonicalize_country_name(row.get("target")) or row.get("target")
+                normalized_links.append(row)
+            conflict["links"] = normalized_links
+            normalized_conflicts.append(conflict)
+
+        return {
+            "updated_at_utc": payload.get("updated_at_utc", ""),
+            "source_note": payload.get("source_note", ""),
+            "conflicts": normalized_conflicts,
+        }
+
     def _get_custom_css_js(self) -> str:
         """Get custom CSS and JavaScript for the map."""
         events_json = json.dumps(self.events, ensure_ascii=False)
@@ -307,6 +503,8 @@ class GeopoliticalMap:
         
         # Safe serialization for metadata
         country_metadata_json = json.dumps(self.country_metadata, ensure_ascii=False) if hasattr(self, 'country_metadata') else '{}'
+        water_sources_json = json.dumps(self.water_sources, ensure_ascii=False) if hasattr(self, 'water_sources') else '{"updated_at_utc":"","countries":{}}'
+        current_conflicts_json = json.dumps(self.current_conflicts, ensure_ascii=False) if hasattr(self, 'current_conflicts') else '{"updated_at_utc":"","source_note":"","conflicts":[]}'
 
         # External indicators/groups (NATO, G8, min wage, Big Mac etc.)
         indicators_json = json.dumps(self.indicators, ensure_ascii=False) if hasattr(self, 'indicators') else '{}'
@@ -1157,12 +1355,19 @@ function parseMarkdownLinks(text) {
     </div>
 
     <div class="control-section">
-        <h4>Ekonomi</h4>
+        <h4>Gosterge Katmanlari</h4>
         <div style="display:flex; flex-direction:column; gap:6px;">
             <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
                 <option value="">Gösterge kapalı</option>
                 <option value="min_wage">Asgari Ücret (USD/saat)</option>
                 <option value="bigmac">Big Mac Endeksi (USD)</option>
+                <option value="water_internal_total">Ic Tatli Su (milyar m3)</option>
+                <option value="water_internal_per_capita">Ic Tatli Su / Kisi</option>
+                <option value="water_stress">Su Stresi</option>
+                <option value="water_withdrawal_pct_internal">Su Cekimi / Ic Kaynak</option>
+                <option value="water_use_agriculture">Su Kullanimi: Tarim</option>
+                <option value="water_use_industry">Su Kullanimi: Sanayi</option>
+                <option value="water_use_domestic">Su Kullanimi: Evsel</option>
             </select>
             <div class="indicator-legend" id="indicatorLegend" style="display:none;"></div>
         </div>
@@ -1191,6 +1396,8 @@ function parseMarkdownLinks(text) {
 // Data
 const allEvents = {events_json};
 const countryMeta = {country_metadata_json};
+const waterSourceData = {water_sources_json};
+const currentConflictData = {current_conflicts_json};
 // Filter out special categories from standard list if needed, or handle in toggleCategory
 const categories = {categories_json};
 const decades = {decades_json};
@@ -1203,12 +1410,15 @@ const countryGroups = {{
     brics_plus: new Set((externalData.groups && externalData.groups.brics_plus) ? externalData.groups.brics_plus : [])
 }};
 const externalIndicators = (externalData && externalData.indicators) ? externalData.indicators : {{}};
+const waterSourceNotes = (waterSourceData && waterSourceData.countries) ? waterSourceData.countries : {{}};
+const activeConflicts = Array.isArray(currentConflictData && currentConflictData.conflicts) ? currentConflictData.conflicts : [];
 
 // Expose to window for other injected scripts
 window.countryGroups = countryGroups;
 window.externalIndicators = externalIndicators;
 window.activeCountryGroup = null; // 'g8' | 'nato' | 'brics_plus' | null
-window.activeIndicator = ''; // 'min_wage' | 'bigmac' | ''
+window.activeIndicator = '';
+window.currentConflicts = activeConflicts;
 
 // State
 let selectedDecades = new Set(decades);
@@ -1217,6 +1427,77 @@ let showTime100 = true;
 window.showConflictArrows = true;
 // Remove 'time_100' from standard categories set to avoid double toggle issues if it's there
 let selectedCategories = new Set(Object.keys(categories).filter(c => c !== 'time_100'));
+
+function buildConflictIndex(conflicts) {{
+    const index = {{}};
+    (conflicts || []).forEach(conflict => {{
+        const touched = new Set();
+        (conflict.participants || []).forEach(country => {{
+            const key = String(country || '').trim();
+            if (!key || touched.has(key)) return;
+            touched.add(key);
+            if (!index[key]) index[key] = [];
+            index[key].push(conflict);
+        }});
+        (conflict.links || []).forEach(link => {{
+            ['source', 'target'].forEach(field => {{
+                const key = String((link && link[field]) || '').trim();
+                if (!key || touched.has(key)) return;
+                touched.add(key);
+                if (!index[key]) index[key] = [];
+                index[key].push(conflict);
+            }});
+        }});
+    }});
+    return index;
+}}
+
+const conflictsByCountry = buildConflictIndex(activeConflicts);
+window.conflictsByCountry = conflictsByCountry;
+
+function formatNumberTr(value, digits = 0) {{
+    if (typeof value !== 'number' || Number.isNaN(value)) return '-';
+    return new Intl.NumberFormat('tr-TR', {{
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits
+    }}).format(value);
+}}
+
+function getIndicatorDecimals(indicatorKey) {{
+    const ind = externalIndicators[indicatorKey] || {{}};
+    if (typeof ind.decimals === 'number') return ind.decimals;
+    if (indicatorKey === 'min_wage' || indicatorKey === 'bigmac') return 2;
+    return 1;
+}}
+
+function formatIndicatorValue(indicatorKey, value) {{
+    if (typeof value !== 'number' || Number.isNaN(value)) return '-';
+    const decimals = getIndicatorDecimals(indicatorKey);
+    const raw = formatNumberTr(value, decimals);
+    const unit = ((externalIndicators[indicatorKey] || {{}}).unit || '').trim();
+    if (indicatorKey === 'min_wage' || indicatorKey === 'bigmac') {{
+        return `$${{raw}}${{indicatorKey === 'min_wage' ? '/saat' : ''}}`;
+    }}
+    return unit ? `${{raw}} ${{unit}}` : raw;
+}}
+
+function getCountryConflicts(countryName) {{
+    return (conflictsByCountry[countryName] || []).filter(conflict => (conflict.status || 'active') !== 'historical');
+}}
+
+function getConflictIntensityLabel(level) {{
+    if (level === 'high') return 'Yuksek';
+    if (level === 'medium') return 'Orta';
+    if (level === 'low') return 'Dusuk';
+    return 'Belirsiz';
+}}
+
+function getConflictIntensityColor(level) {{
+    if (level === 'high') return '#c0392b';
+    if (level === 'medium') return '#d35400';
+    if (level === 'low') return '#2980b9';
+    return '#7f8c8d';
+}}
 
 // Initialize filters
 function initFilters() {{
@@ -1302,6 +1583,7 @@ function getIndicatorDetails(countryName, indicatorKey) {{
 function getIndicatorValue(countryName, indicatorKey) {{
     const d = getIndicatorDetails(countryName, indicatorKey);
     if (!d) return null;
+    if (typeof d.value === 'number' && !Number.isNaN(d.value)) return d.value;
     if (indicatorKey === 'min_wage') return d.hourly_usd_nominal;
     if (indicatorKey === 'bigmac') return d.dollar_price;
     return null;
@@ -1358,6 +1640,13 @@ function lerpColor(c1, c2, t) {{
 }}
 
 function getIndicatorGradient(indicatorKey) {{
+    if (indicatorKey === 'water_internal_total') return ['#edf8fb', '#005b96'];
+    if (indicatorKey === 'water_internal_per_capita') return ['#f1fbff', '#0b7285'];
+    if (indicatorKey === 'water_stress') return ['#fff4cc', '#c0392b'];
+    if (indicatorKey === 'water_withdrawal_pct_internal') return ['#fdebd0', '#d35400'];
+    if (indicatorKey === 'water_use_agriculture') return ['#eef8e6', '#2d6a4f'];
+    if (indicatorKey === 'water_use_industry') return ['#edf2f7', '#4a5568'];
+    if (indicatorKey === 'water_use_domestic') return ['#eef6ff', '#2563eb'];
     if (indicatorKey === 'bigmac') return ['#fff3e0', '#e65100'];
     // default: min_wage
     return ['#e8f5e9', '#1b5e20'];
@@ -1462,16 +1751,19 @@ function updateIndicatorLegend() {{
     const label = ind.label || key;
     const [c1, c2] = getIndicatorGradient(key);
     const source = ind.source || {{}};
-    const note = (key === 'bigmac' && source.latest_date) ? `veri tarihi: ${{source.latest_date}}` : '';
+    const note = (key === 'bigmac' && source.latest_date)
+        ? `veri tarihi: ${{source.latest_date}}`
+        : (source.lastupdated ? `kaynak guncelleme: ${{source.lastupdated}}` : '');
     const fetched = externalData.fetched_at_utc ? `çekildi: ${{externalData.fetched_at_utc}}` : '';
+    const decimals = getIndicatorDecimals(key);
 
     el.style.display = '';
     el.innerHTML = `
         <div style="font-weight:700; margin-bottom:2px;">${{label}}</div>
         <div class="legend-bar" style="background: linear-gradient(90deg, ${{c1}} 0%, ${{c2}} 100%);"></div>
         <div class="legend-row">
-            <span>${{stats.min.toFixed(2)}} ${{unit}}</span>
-            <span>${{stats.max.toFixed(2)}} ${{unit}}</span>
+            <span>${{formatNumberTr(stats.min, decimals)}} ${{unit}}</span>
+            <span>${{formatNumberTr(stats.max, decimals)}} ${{unit}}</span>
         </div>
         <div style="margin-top:6px; font-size:10px; color:#6c757d;">
             ${{note}} ${{fetched}}
@@ -1498,11 +1790,7 @@ function updateIndicatorHoverInfo(countryName) {{
         el.textContent = `${{countryName}}: veri yok`;
         return;
     }}
-    if (key === 'min_wage') {{
-        el.textContent = `${{countryName}}: ${{formatUsd(v, '/saat')}}`;
-        return;
-    }}
-    el.textContent = `${{countryName}}: ${{formatUsd(v)}}`;
+    el.textContent = `${{countryName}}: ${{formatIndicatorValue(key, v)}}`;
 }}
 
 function clearIndicatorHoverInfo() {{
@@ -1521,13 +1809,12 @@ function toggleSpecial(type) {{
 function toggleConflictArrows() {{
     window.showConflictArrows = !window.showConflictArrows;
     if (window.showConflictArrows) {{
-        // If sidebar is open and country selected, draw its arrows
-        const sidebar = document.getElementById('countrySidebar');
-        if (sidebar && sidebar.style.display !== 'none' && window._lastArrowCountry && window._lastArrowRivalries) {{
+        if (window._lastArrowConflictId) {{
+            showConflictOnMap(window._lastArrowConflictId, window._lastArrowCountry || '');
+        }} else if (window._lastArrowCountry && window._lastArrowRivalries) {{
             drawRivalryArrows(window._lastArrowCountry, window._lastArrowRivalries);
         }} else {{
-            // Global view disabled per user request
-            if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
+            if (window.drawGlobalActiveArrows) window.drawGlobalActiveArrows();
         }}
     }} else {{
         // Clear arrows immediately
@@ -1846,6 +2133,124 @@ function highlightCountryWithFlag(countryName) {{
 
 // Sidebar functions
 
+function buildWaterHtml(countryName) {{
+    const total = getIndicatorDetails(countryName, 'water_internal_total');
+    const perCapita = getIndicatorDetails(countryName, 'water_internal_per_capita');
+    const stress = getIndicatorDetails(countryName, 'water_stress');
+    const withdrawal = getIndicatorDetails(countryName, 'water_withdrawal_pct_internal');
+    const useAgri = getIndicatorDetails(countryName, 'water_use_agriculture');
+    const useIndustry = getIndicatorDetails(countryName, 'water_use_industry');
+    const useDomestic = getIndicatorDetails(countryName, 'water_use_domestic');
+    const note = waterSourceNotes[countryName] || null;
+
+    if (!total && !perCapita && !stress && !withdrawal && !useAgri && !useIndustry && !useDomestic && !note) {{
+        return '';
+    }}
+
+    const usageBits = [];
+    if (useAgri && typeof useAgri.value === 'number') usageBits.push(`Tarim %${{formatNumberTr(useAgri.value, 1)}}`);
+    if (useIndustry && typeof useIndustry.value === 'number') usageBits.push(`Sanayi %${{formatNumberTr(useIndustry.value, 1)}}`);
+    if (useDomestic && typeof useDomestic.value === 'number') usageBits.push(`Evsel %${{formatNumberTr(useDomestic.value, 1)}}`);
+
+    const sourceList = (note && Array.isArray(note.primary_sources) && note.primary_sources.length > 0)
+        ? `<ul style="margin:6px 0 0 18px; padding:0;">${{note.primary_sources.map(item => `<li>${{item}}</li>`).join('')}}</ul>`
+        : '<div style="color:#7f8c8d; font-style:italic;">Detayli kaynak notu henuz eklenmedi.</div>';
+
+    return `
+        <details class="country-meta-card" open>
+            <summary>
+                <span>▼ Su Kaynaklari</span>
+            </summary>
+            <div class="country-meta-content">
+                <div class="meta-row">
+                    <span class="meta-label">Ic Su Stoku</span>
+                    <div>${{total ? `${{formatNumberTr(total.value, 1)}} milyar m3 <div style="font-size:11px;color:#7f8c8d;">${{total.year || '-'}} verisi</div>` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Kisi Basi</span>
+                    <div>${{perCapita ? `${{formatNumberTr(perCapita.value, 0)}} m3 <div style="font-size:11px;color:#7f8c8d;">${{perCapita.year || '-'}} verisi</div>` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Su Stresi</span>
+                    <div>${{stress ? `${{formatNumberTr(stress.value, 1)}}%` : '-'}}</div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Cekim / Ic Kaynak</span>
+                    <div>${{withdrawal ? `${{formatNumberTr(withdrawal.value, 1)}}%` : '-'}}</div>
+                </div>
+                <div class="meta-row" style="align-items:flex-start;">
+                    <span class="meta-label">Kullanim</span>
+                    <div>${{usageBits.length > 0 ? usageBits.join(' · ') : '-'}}</div>
+                </div>
+                <div class="meta-row" style="align-items:flex-start;">
+                    <span class="meta-label">Baslica Kaynaklar</span>
+                    <div>${{sourceList}}</div>
+                </div>
+                ${{
+                    note && note.dependency
+                        ? `<div class="meta-row" style="align-items:flex-start;"><span class="meta-label">Bagimlilik</span><div>${{note.dependency}}</div></div>`
+                        : ''
+                }}
+                ${{
+                    note && note.risk
+                        ? `<div class="meta-row" style="align-items:flex-start;"><span class="meta-label">Risk</span><div>${{note.risk}}</div></div>`
+                        : ''
+                }}
+                <div style="font-size:10px;color:#7f8c8d;margin-top:6px;">
+                    Dunya Bankasi su verileri ve yerel notlar birlikte gosterilir.
+                </div>
+            </div>
+        </details>
+    `;
+}}
+
+function buildCurrentConflictHtml(countryName) {{
+    const conflicts = getCountryConflicts(countryName);
+    if (!conflicts || conflicts.length === 0) return '';
+
+    const updated = currentConflictData && currentConflictData.updated_at_utc
+        ? `<div style="font-size:10px;color:#7f8c8d;margin-top:6px;">Snapshot: ${{currentConflictData.updated_at_utc}}</div>`
+        : '';
+
+    return `
+        <details class="country-meta-card" open>
+            <summary>
+                <span>▼ Guncel Catismalar</span>
+            </summary>
+            <div class="country-meta-content">
+                ${{
+                    conflicts.map(conflict => {{
+                        const color = getConflictIntensityColor(conflict.intensity);
+                        const firstSource = Array.isArray(conflict.sources) && conflict.sources.length > 0 ? conflict.sources[0] : null;
+                        const tagText = Array.isArray(conflict.tags) && conflict.tags.length > 0
+                            ? `<div style="font-size:11px;color:#95a5a6;margin-top:3px;">${{conflict.tags.join(' · ')}}</div>`
+                            : '';
+                        const sourceHtml = firstSource && firstSource.url
+                            ? `<a href="${{firstSource.url}}" target="_blank" style="color:#8ecae6;text-decoration:none;font-size:11px;">${{firstSource.label}} ↗</a>`
+                            : '';
+                        return `
+                            <div style="border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px; margin-bottom:10px; background:rgba(255,255,255,0.02);">
+                                <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                                    <div style="font-weight:700; color:#ecf0f1;">${{conflict.label}}</div>
+                                    <span style="background:${{color}}; color:white; border-radius:999px; padding:2px 8px; font-size:11px;">${{getConflictIntensityLabel(conflict.intensity)}}</span>
+                                </div>
+                                <div style="font-size:12px; color:#bdc3c7; margin-top:5px;">${{conflict.summary || '-'}}</div>
+                                ${{tagText}}
+                                <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px;">
+                                    <div style="font-size:11px; color:#7f8c8d;">${{conflict.started_at || '-'}} → ${{conflict.updated_at || '-'}}</div>
+                                    <button onclick="showConflictOnMap('${{conflict.id}}', '${{countryName}}')" style="background:#e74c3c; border:none; color:white; border-radius:999px; padding:6px 10px; font-size:11px; cursor:pointer;">Haritada Goster</button>
+                                </div>
+                                ${{sourceHtml}}
+                            </div>
+                        `;
+                    }}).join('')
+                }}
+                ${{updated}}
+            </div>
+        </details>
+    `;
+}}
+
 function buildEconomyHtml(countryName) {{
     const badges = [];
     if (countryGroups.g8 && countryGroups.g8.has(countryName)) {{
@@ -2114,7 +2519,10 @@ function openSidebar(countryName) {{
     }}
     
     const metaResult = findCountryMeta(countryName);
+    const conflictHtml = buildCurrentConflictHtml(countryName);
+    const waterHtml = buildWaterHtml(countryName);
     const econHtml = buildEconomyHtml(countryName);
+    const countryConflicts = getCountryConflicts(countryName);
     if (metaContainer && metaResult) {{
         const meta = metaResult.meta;
         const countryKey = metaResult.key; // Use the key that matched for arrow drawing
@@ -2131,23 +2539,29 @@ function openSidebar(countryName) {{
                      ${{
                         (meta.rivalries && meta.rivalries.length > 0)
                         ? `
-                        <div class="meta-row" style="align-items:flex-start;">
-                            <span class="meta-label">Aktif Cepheler</span>
-                            <div style="margin-top:2px; display:flex; flex-direction:column; gap:4px;">
-                                ${{
-                                    (() => {{
-                                        const active = meta.rivalries.filter(r => !r.status || r.status === 'active');
-                                        if (active.length === 0) return '<div style="color:#7f8c8d; font-style:italic;">Yok</div>';
-                                        return active.map(r => 
-                                        `<div style="display:flex; align-items:center; gap:5px; margin-bottom:5px;">
-                                            <button onclick="drawSingleArrow('${{countryName}}', '${{r.rival}}')" style="background:#e74c3c; border:none; color:white; border-radius:50%; width:16px; height:16px; font-size:10px; cursor:pointer;" title="Haritada Göster">🎯</button>
-                                            <a href="${{r.url}}" target="_blank" style="color:#bdc3c7;text-decoration:none;font-weight:600; font-size:12px;">${{r.rival}}: ${{r.text}} ↗</a>
-                                        </div>`
-                                        ).join('');
-                                    }})()
-                                }}
-                            </div>
-                        </div>
+                        ${{
+                            countryConflicts.length === 0
+                                ? `
+                                <div class="meta-row" style="align-items:flex-start;">
+                                    <span class="meta-label">Aktif Cepheler</span>
+                                    <div style="margin-top:2px; display:flex; flex-direction:column; gap:4px;">
+                                        ${{
+                                            (() => {{
+                                                const active = meta.rivalries.filter(r => !r.status || r.status === 'active');
+                                                if (active.length === 0) return '<div style="color:#7f8c8d; font-style:italic;">Yok</div>';
+                                                return active.map(r => 
+                                                `<div style="display:flex; align-items:center; gap:5px; margin-bottom:5px;">
+                                                    <button onclick="drawSingleArrow('${{countryName}}', '${{r.rival}}')" style="background:#e74c3c; border:none; color:white; border-radius:50%; width:16px; height:16px; font-size:10px; cursor:pointer;" title="Haritada Göster">🎯</button>
+                                                    <a href="${{r.url}}" target="_blank" style="color:#bdc3c7;text-decoration:none;font-weight:600; font-size:12px;">${{r.rival}}: ${{r.text}} ↗</a>
+                                                </div>`
+                                                ).join('');
+                                            }})()
+                                        }}
+                                    </div>
+                                </div>
+                                `
+                                : ''
+                        }}
                         <div class="meta-row" style="align-items:flex-start; margin-top:10px; border-top:1px dashed #444; padding-top:10px;">
                             <span class="meta-label">Tarihi / Pasif Çatışmalar</span>
                             <div style="margin-top:2px; display:flex; flex-direction:column; gap:4px;">
@@ -2175,17 +2589,23 @@ function openSidebar(countryName) {{
                 </div>
             </details>
         `;
-        metaContainer.innerHTML += econHtml;
+        metaContainer.innerHTML += conflictHtml + waterHtml + econHtml;
         
         // 4. Draw Arrows
-        if (meta.rivalries) {{
+        if (countryConflicts.length > 0) {{
+            drawCountryConflicts(countryName, countryConflicts);
+        }} else if (meta.rivalries) {{
             drawRivalryArrows(countryKey, meta.rivalries);
         }} else if (window.hoi4Layer) {{
              window.hoi4Layer.setArrows([]);
         }}
     }} else {{
-        if (metaContainer) metaContainer.innerHTML = econHtml;
-        if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
+        if (metaContainer) metaContainer.innerHTML = conflictHtml + waterHtml + econHtml;
+        if (countryConflicts.length > 0) {{
+            drawCountryConflicts(countryName, countryConflicts);
+        }} else if (window.hoi4Layer) {{
+            window.hoi4Layer.setArrows([]);
+        }}
     }}
 
     // 5. Render Events List
@@ -2887,34 +3307,58 @@ function updateMarkerVisibility() {{
         return null;
     }}
 
+    function resolveConflictPoint(name, anchor) {{
+        if (anchor && typeof anchor === 'object') {{
+            const lat = Number(anchor.lat);
+            const lon = Number(anchor.lon);
+            if (Number.isFinite(lat) && Number.isFinite(lon)) {{
+                return L.latLng(lat, lon);
+            }}
+        }}
+
+        if (!name) return null;
+        let layer = null;
+        if (typeof window.findCountryFeature === 'function') {{
+            const feature = window.findCountryFeature(name);
+            if (feature) layer = L.geoJSON(feature);
+        }}
+        if (!layer) layer = findLayer(name);
+        if (!layer && !VISUAL_CENTERS[name]) return null;
+        return getVisualCenter(name, layer);
+    }}
+
+    function dedupeArrowData(rows) {{
+        const out = [];
+        const seen = new Set();
+        (rows || []).forEach(row => {{
+            if (!row || !row.start || !row.end) return;
+            const key = [
+                row.label || '',
+                row.status || '',
+                row.start.lat.toFixed(2),
+                row.start.lng.toFixed(2),
+                row.end.lat.toFixed(2),
+                row.end.lng.toFixed(2)
+            ].join('|');
+            if (seen.has(key)) return;
+            seen.add(key);
+            out.push(row);
+        }});
+        return out;
+    }}
+
     function getArrowsForCountry(sourceName, rivalries) {{
         if (!sourceName || !rivalries || rivalries.length === 0) return [];
-        
-        let sourceLayer = null;
-        if (typeof window.findCountryFeature === 'function') {{
-            const feature = window.findCountryFeature(sourceName);
-            if (feature) sourceLayer = L.geoJSON(feature);
-        }}
-        if (!sourceLayer) sourceLayer = findLayer(sourceName);
-        if (!sourceLayer && !VISUAL_CENTERS[sourceName]) return [];
+        const sourceCenter = resolveConflictPoint(sourceName, null);
+        if (!sourceCenter) return [];
 
-        const sourceCenter = getVisualCenter(sourceName, sourceLayer);
         const arrowData = [];
-        
         rivalries.forEach(rivalItem => {{
             const rivalName = (typeof rivalItem === 'object') ? rivalItem.rival : rivalItem;
             const conflictText = (typeof rivalItem === 'object') ? rivalItem.text : null;
             const status = (typeof rivalItem === 'object') ? (rivalItem.status || 'active') : 'active';
-
-            let targetLayer = null;
-            if (typeof window.findCountryFeature === 'function') {{
-                const feature = window.findCountryFeature(rivalName);
-                if (feature) targetLayer = L.geoJSON(feature);
-            }}
-            if (!targetLayer) targetLayer = findLayer(rivalName);
-
-            const targetCenter = getVisualCenter(rivalName, targetLayer);
-
+            const targetAnchor = (typeof rivalItem === 'object') ? rivalItem.target_anchor : null;
+            const targetCenter = resolveConflictPoint(rivalName, targetAnchor);
             if (sourceCenter && targetCenter) {{
                 arrowData.push({{
                     start: sourceCenter,
@@ -2924,7 +3368,63 @@ function updateMarkerVisibility() {{
                 }});
             }}
         }});
-        return arrowData;
+        return dedupeArrowData(arrowData);
+    }}
+
+    function getArrowsForConflict(conflict, focusCountry = '') {{
+        if (!conflict || !Array.isArray(conflict.links)) return [];
+        const participants = Array.isArray(conflict.participants) ? conflict.participants : [];
+        const arrows = [];
+        conflict.links.forEach(link => {{
+            if (!link || !link.source) return;
+            if (focusCountry) {{
+                const touchesFocus = [link.source, link.target].some(name => String(name || '').trim() === focusCountry);
+                if (!touchesFocus && !participants.includes(focusCountry)) return;
+            }}
+            const start = resolveConflictPoint(link.source, link.source_anchor);
+            const end = resolveConflictPoint(link.target, link.target_anchor);
+            if (!start || !end) return;
+            arrows.push({{
+                start: start,
+                end: end,
+                label: link.label || conflict.label,
+                status: link.status || conflict.status || 'active'
+            }});
+        }});
+        return dedupeArrowData(arrows);
+    }}
+
+    function drawCountryConflicts(countryName, conflicts) {{
+        if (!window.geoMap) return;
+        window._lastArrowCountry = countryName;
+        window._lastArrowRivalries = null;
+        window._lastArrowConflictId = '';
+        window.activeCountrySelection = countryName;
+
+        if (!window.showConflictArrows) {{
+            if (window.hoi4Layer) window.hoi4Layer.setArrows([]);
+            return;
+        }}
+
+        let arrows = [];
+        (conflicts || []).forEach(conflict => {{
+            arrows = arrows.concat(getArrowsForConflict(conflict, countryName));
+        }});
+        if (window.hoi4Layer) window.hoi4Layer.setArrows(dedupeArrowData(arrows));
+    }}
+
+    function showConflictOnMap(conflictId, focusCountry = '') {{
+        const conflict = activeConflicts.find(item => item.id === conflictId);
+        if (!conflict || !window.hoi4Layer) return;
+        window._lastArrowConflictId = conflictId;
+        window._lastArrowCountry = focusCountry || '';
+        window._lastArrowRivalries = null;
+        if (!window.showConflictArrows) {{
+            window.hoi4Layer.setArrows([]);
+            return;
+        }}
+        const arrows = getArrowsForConflict(conflict, focusCountry || '');
+        window.hoi4Layer.setArrows(dedupeArrowData(arrows));
     }}
 
     function drawRivalryArrows(sourceName, rivalries) {{
@@ -2935,6 +3435,7 @@ function updateMarkerVisibility() {{
         
         window._lastArrowCountry = sourceName;
         window._lastArrowRivalries = rivalries;
+        window._lastArrowConflictId = '';
         window.activeCountrySelection = sourceName;
 
         if (!window.showConflictArrows) {{
@@ -2943,16 +3444,21 @@ function updateMarkerVisibility() {{
         }}
         
         const data = getArrowsForCountry(sourceName, rivalries);
-        window.hoi4Layer.setArrows(data);
+        window.hoi4Layer.setArrows(dedupeArrowData(data));
     }}
 
     function drawGlobalActiveArrows() {{
         if (!window.showConflictArrows) return;
-        if (window.activeCountrySelection) return; // Don't override selection
+        if (window.activeCountrySelection) return;
 
-        console.log("Drawing global active arrows...");
         let allArrows = [];
-        if (window.countryMeta) {{
+        if (activeConflicts.length > 0) {{
+            activeConflicts.forEach(conflict => {{
+                if ((conflict.status || 'active') !== 'historical') {{
+                    allArrows = allArrows.concat(getArrowsForConflict(conflict));
+                }}
+            }});
+        }} else if (window.countryMeta) {{
             Object.keys(window.countryMeta).forEach(country => {{
                  const meta = window.countryMeta[country];
                  if (meta.rivalries) {{
@@ -2963,9 +3469,10 @@ function updateMarkerVisibility() {{
                  }}
             }});
         }}
-        window.hoi4Layer.setArrows(allArrows);
+        if (window.hoi4Layer) window.hoi4Layer.setArrows(dedupeArrowData(allArrows));
     }}
     window.drawGlobalActiveArrows = drawGlobalActiveArrows;
+    window.showConflictOnMap = showConflictOnMap;
 
 
 
