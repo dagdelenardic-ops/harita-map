@@ -500,9 +500,9 @@ class GeopoliticalMap:
 
     def _get_custom_css_js(self) -> str:
         """Get custom CSS and JavaScript for the map."""
-        events_json = json.dumps(self.events, ensure_ascii=False)
+        # Large data (events, geojson, metadata) now loaded async from separate files
+        # Only small config data stays inline
         categories_json = json.dumps(self.categories, ensure_ascii=False)
-        geojson_json = json.dumps(self.geojson_data, ensure_ascii=False) if self.geojson_data else 'null'
 
         # Decades are part of the UI filter; derive from data (do not hardcode).
         decades_set = {
@@ -521,16 +521,7 @@ class GeopoliticalMap:
 
         decades_json = json.dumps(sorted(decades_set, key=_decade_sort_key), ensure_ascii=False)
         
-        # Safe serialization for metadata
-        country_metadata_json = json.dumps(self.country_metadata, ensure_ascii=False) if hasattr(self, 'country_metadata') else '{}'
-        water_sources_json = json.dumps(self.water_sources, ensure_ascii=False) if hasattr(self, 'water_sources') else '{"updated_at_utc":"","countries":{}}'
-        current_conflicts_json = json.dumps(self.current_conflicts, ensure_ascii=False) if hasattr(self, 'current_conflicts') else '{"updated_at_utc":"","source_note":"","conflicts":[]}'
-
-        # External indicators/groups (NATO, G8, min wage, Big Mac etc.)
-        indicators_json = json.dumps(self.indicators, ensure_ascii=False) if hasattr(self, 'indicators') else '{}'
-        strategic_snapshots_json = json.dumps(self.strategic_snapshots, ensure_ascii=False) if hasattr(self, 'strategic_snapshots') else '{"sanctions":{"countries":{}},"weather":{"countries":{}},"air_quality":{"countries":{}},"fx":{"countries":{}}}'
-
-        # Serialize master mappings for JavaScript
+        # Serialize master mappings for JavaScript (small, kept inline)
         turkish_to_english_json = json.dumps(self.turkish_to_english, ensure_ascii=False)
         english_to_turkish_json = json.dumps(self.english_to_turkish, ensure_ascii=False)
         turkish_to_iso_json = json.dumps(self.turkish_to_iso, ensure_ascii=False)
@@ -565,6 +556,10 @@ function parseMarkdownLinks(text) {
 <meta property="twitter:image" content="https://jeopolitik.com.tr/og-image.jpg">
 
 <link rel="canonical" href="https://jeopolitik.com.tr/" />
+<link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+<link rel="dns-prefetch" href="https://tile.openstreetmap.org">
+<link rel="preconnect" href="https://flagcdn.com" crossorigin>
+<link rel="dns-prefetch" href="https://flagcdn.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
     * {{
@@ -632,16 +627,20 @@ function parseMarkdownLinks(text) {
         text-align: center;
     }}
 
-    /* Control Panel */
+    /* Control Panel - Glass Design */
     .control-panel {{
         position: fixed;
         top: 10px;
         right: 10px;
         z-index: 1000;
-        background: white;
+        background: rgba(14, 21, 27, 0.78);
+        backdrop-filter: blur(20px) saturate(130%);
+        -webkit-backdrop-filter: blur(20px) saturate(130%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #ecf0f1;
         padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        border-radius: 14px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.04);
         max-height: 90vh;
         overflow-y: auto;
         width: 280px;
@@ -651,18 +650,22 @@ function parseMarkdownLinks(text) {
         margin: 0 0 12px 0;
         font-size: 16px;
         font-weight: 600;
-        color: #2c3e50;
-        border-bottom: 2px solid #3498db;
+        color: #ecf0f1;
+        border-bottom: 2px solid rgba(52, 152, 219, 0.5);
         padding-bottom: 8px;
     }}
     .control-section {{
-        margin-bottom: 15px;
+        margin-bottom: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+        padding: 10px;
     }}
     .control-section h4 {{
         margin: 0 0 8px 0;
         font-size: 13px;
         font-weight: 500;
-        color: #666;
+        color: rgba(236, 240, 241, 0.7);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -674,16 +677,20 @@ function parseMarkdownLinks(text) {
     .select-btns button {{
         padding: 2px 8px;
         font-size: 10px;
-        border: 1px solid #ddd;
-        background: #f5f5f5;
-        border-radius: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: #b2bec3;
+        border-radius: 4px;
         cursor: pointer;
+        transition: all 0.15s;
     }}
     .select-btns button:hover {{
-        background: #e0e0e0;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ecf0f1;
+        border-color: rgba(255, 255, 255, 0.2);
     }}
 
-    /* Decade checkboxes */
+    /* Decade toggle chips */
     .decade-grid {{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -694,106 +701,254 @@ function parseMarkdownLinks(text) {
         align-items: center;
         gap: 4px;
         font-size: 12px;
-        padding: 4px 6px;
-        background: #f8f9fa;
-        border-radius: 4px;
+        padding: 5px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
         cursor: pointer;
+        color: #b2bec3;
+        transition: all 0.15s;
     }}
     .decade-item:hover {{
-        background: #e9ecef;
+        background: rgba(52, 152, 219, 0.12);
+        border-color: rgba(52, 152, 219, 0.3);
+        color: #dfe6e9;
+    }}
+    .decade-item:has(input:checked) {{
+        background: rgba(52, 152, 219, 0.2);
+        border-color: rgba(52, 152, 219, 0.5);
+        color: #74b9ff;
     }}
     .decade-item input {{
         margin: 0;
+        accent-color: #3498db;
     }}
 
-    /* Category checkboxes */
+    /* Category checkboxes - Hierarchical */
     .category-list {{
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 4px;
     }}
+    .category-tier-group {{
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }}
+    .category-tier-label {{
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(236, 240, 241, 0.35);
+        padding: 6px 4px 2px;
+        margin-top: 4px;
+    }}
+    .category-tier-label:first-child {{
+        margin-top: 0;
+    }}
+    /* Tier 1 = Critical (full width, prominent) */
     .category-item {{
         display: flex;
         align-items: center;
         gap: 8px;
         font-size: 12px;
         padding: 6px 8px;
-        background: #f8f9fa;
-        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 8px;
         cursor: pointer;
+        color: #b2bec3;
+        transition: all 0.15s;
+    }}
+    .category-item.tier-1 {{
+        padding: 8px 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.1);
+        font-weight: 600;
+        color: #dfe6e9;
+        font-size: 12px;
+    }}
+    .category-item.tier-1 .category-color {{
+        width: 16px;
+        height: 16px;
+        box-shadow: 0 0 8px var(--tier-color, rgba(0,0,0,0.3));
+    }}
+    /* Tier 2 = Important (slight indent) */
+    .category-item.tier-2 {{
+        margin-left: 10px;
+        padding: 5px 8px;
+        font-size: 11px;
+        border-color: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.025);
+    }}
+    /* Tier 3 = Minor (more indent, smaller) */
+    .category-item.tier-3 {{
+        margin-left: 20px;
+        padding: 4px 8px;
+        font-size: 11px;
+        opacity: 0.8;
+        border-color: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, 0.015);
     }}
     .category-item:hover {{
-        background: #e9ecef;
+        background: rgba(255, 255, 255, 0.08);
+        color: #dfe6e9;
+    }}
+    .category-item:has(input:checked) {{
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: #ecf0f1;
     }}
     .category-item input {{
         margin: 0;
+        accent-color: #3498db;
     }}
     .category-color {{
         width: 14px;
         height: 14px;
         border-radius: 50%;
         flex-shrink: 0;
+        box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }}
+    /* Hierarchy connector lines */
+    .category-tier-group {{
+        position: relative;
+        padding-left: 0;
+    }}
+    .category-tier-group.has-indent {{
+        border-left: 1px solid rgba(255, 255, 255, 0.06);
+        margin-left: 6px;
+        padding-left: 0;
     }}
 
-    /* Stats */
+    /* Stats - Glass + Pulse */
     .stats-box {{
-        background: #f8f9fa;
-        padding: 10px;
-        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 12px;
+        border-radius: 10px;
         text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }}
+    .stats-box::after {{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(52,152,219,0.1), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
+    }}
+    .stats-box.pulse::after {{
+        opacity: 1;
+        animation: statsPulse 0.6s ease-out;
+    }}
+    @keyframes statsPulse {{
+        0% {{ opacity: 1; transform: scale(0.8); }}
+        100% {{ opacity: 0; transform: scale(1.5); }}
     }}
     .stats-box .count {{
-        font-size: 24px;
+        font-size: 26px;
         font-weight: 700;
-        color: #2c3e50;
+        color: #ecf0f1;
+        transition: transform 0.2s ease;
+    }}
+    .stats-box.pulse .count {{
+        animation: countBounce 0.3s ease;
+    }}
+    @keyframes countBounce {{
+        0% {{ transform: scale(1); }}
+        50% {{ transform: scale(1.15); }}
+        100% {{ transform: scale(1); }}
     }}
     .stats-box .label {{
         font-size: 11px;
-        color: #666;
+        color: rgba(236, 240, 241, 0.6);
     }}
 
-    /* Country Sidebar */
-    /* Country Sidebar - Left Side Slide-in */
+    /* Country Sidebar - Glass Design */
     .country-sidebar {{
         position: fixed;
         top: 0;
-        left: -420px; /* Hidden off-screen left */
+        left: -420px;
         width: 420px;
         height: 100vh;
-        background: #1e272e; /* Dark Military Grey */
+        background: rgba(14, 21, 27, 0.82);
+        backdrop-filter: blur(18px) saturate(140%);
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
         color: #ecf0f1;
-        box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 4px 0 30px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.04);
         overflow-y: auto;
         z-index: 2000;
-        transform: translateX(0); 
-        transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth ease out back */
+        transform: translateX(0);
+        transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }}
     .country-sidebar.open {{
         transform: translateX(420px);
     }}
+    /* Scroll progress indicator */
+    .sidebar-scroll-progress {{
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 10;
+        background: transparent;
+    }}
+    .sidebar-scroll-progress .bar {{
+        height: 100%;
+        background: linear-gradient(90deg, #00cec9, #0984e3);
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.15s ease-out;
+        border-radius: 0 2px 2px 0;
+    }}
     .sidebar-header {{
         position: relative;
         padding: 20px 48px 20px 20px;
-        background: #2c3e50;
+        background: rgba(44, 62, 80, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         color: white;
+        overflow: hidden;
+    }}
+    .sidebar-header .flag-bg {{
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.08;
+        pointer-events: none;
     }}
     .sidebar-header h2 {{
         margin: 0;
         font-size: 20px;
         font-weight: 600;
+        position: relative;
+        z-index: 1;
     }}
     .sidebar-header .event-count {{
         font-size: 13px;
         opacity: 0.8;
         margin-top: 5px;
+        position: relative;
+        z-index: 1;
     }}
     .close-sidebar {{
         position: absolute;
         top: 50%;
         right: 8px;
         transform: translateY(-50%);
-        background: rgba(255,255,255,0.2);
-        border: none;
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.15);
         color: white;
         width: 32px;
         height: 32px;
@@ -802,24 +957,171 @@ function parseMarkdownLinks(text) {
         line-height: 1;
         cursor: pointer;
         opacity: 0.8;
+        z-index: 2;
+        transition: all 0.2s;
     }}
     .close-sidebar:hover {{
         opacity: 1;
-        background: rgba(255,255,255,0.3);
+        background: rgba(255,255,255,0.22);
+        transform: translateY(-50%) scale(1.1);
     }}
+
+    /* Sidebar Tab Navigation */
+    .sidebar-tabs {{
+        display: flex;
+        gap: 0;
+        padding: 0 12px;
+        background: rgba(0,0,0,0.2);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        position: sticky;
+        top: 3px;
+        z-index: 5;
+    }}
+    .sidebar-tab {{
+        flex: 1;
+        padding: 10px 8px;
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(236,240,241,0.5);
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+        letter-spacing: 0.3px;
+    }}
+    .sidebar-tab:hover {{
+        color: rgba(236,240,241,0.8);
+        background: rgba(255,255,255,0.03);
+    }}
+    .sidebar-tab.active {{
+        color: #74b9ff;
+        border-bottom-color: #3498db;
+        background: rgba(52,152,219,0.06);
+    }}
+    .sidebar-tab svg {{
+        display: block;
+        margin: 0 auto 3px;
+        opacity: 0.7;
+    }}
+    .sidebar-tab.active svg {{
+        opacity: 1;
+    }}
+    .sidebar-tab-panel {{
+        display: none;
+        animation: tabFadeIn 0.25s ease;
+    }}
+    .sidebar-tab-panel.active {{
+        display: block;
+    }}
+    @keyframes tabFadeIn {{
+        from {{ opacity: 0; transform: translateY(6px); }}
+        to {{ opacity: 1; transform: translateY(0); }}
+    }}
+
+    /* Group Cards (NATO/G8/BRICS) */
+    .group-card {{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        position: relative;
+        overflow: hidden;
+    }}
+    .group-card::before {{
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+    }}
+    .group-card:hover {{
+        background: rgba(255,255,255,0.06);
+        border-color: rgba(255,255,255,0.15);
+    }}
+    .group-card.active {{
+        border-color: var(--group-color, rgba(52,152,219,0.5));
+        box-shadow: 0 0 16px rgba(52,152,219,0.12), inset 0 0 0 1px rgba(52,152,219,0.1);
+    }}
+    .group-card.active::before {{
+        opacity: 1;
+        background: radial-gradient(ellipse at left center, var(--group-glow, rgba(52,152,219,0.08)), transparent 70%);
+    }}
+    .group-card-icon {{
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.05);
+        transition: all 0.25s;
+    }}
+    .group-card.active .group-card-icon {{
+        background: var(--group-bg, rgba(52,152,219,0.15));
+    }}
+    .group-card-icon svg {{
+        width: 16px;
+        height: 16px;
+        opacity: 0.6;
+        transition: all 0.25s;
+    }}
+    .group-card.active .group-card-icon svg {{
+        opacity: 1;
+        filter: drop-shadow(0 0 4px currentColor);
+    }}
+    .group-card-label {{
+        font-size: 12px;
+        font-weight: 500;
+        color: #b2bec3;
+        transition: color 0.2s;
+    }}
+    .group-card.active .group-card-label {{
+        color: #ecf0f1;
+    }}
+    .group-card-count {{
+        margin-left: auto;
+        font-size: 10px;
+        color: rgba(236,240,241,0.4);
+        padding: 2px 6px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+    }}
+
     .sidebar-content {{
         flex: 1;
         overflow-y: auto;
         padding: 0;
+        position: relative;
+    }}
+    /* Vertical timeline line */
+    .sidebar-content::before {{
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 28px;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(0, 206, 201, 0.3), rgba(9, 132, 227, 0.15), transparent);
+        pointer-events: none;
+        z-index: 1;
     }}
 
     /* Timeline in sidebar */
     .decade-section {{
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }}
     .decade-header {{
-        padding: 12px 20px;
-        background: #2d3436;
+        padding: 12px 20px 12px 48px;
+        background: rgba(45, 52, 54, 0.5);
         font-weight: 600;
         font-size: 14px;
         color: #ecf0f1;
@@ -827,43 +1129,97 @@ function parseMarkdownLinks(text) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-left: 3px solid #636e72;
+        border-left: none;
+        position: relative;
+        transition: background 0.2s;
+    }}
+    /* Timeline dot on decade header */
+    .decade-header::before {{
+        content: '';
+        position: absolute;
+        left: 22px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #00cec9;
+        border: 2px solid rgba(14, 21, 27, 0.8);
+        z-index: 2;
+        box-shadow: 0 0 8px rgba(0, 206, 201, 0.4);
+        transition: all 0.2s;
     }}
     .decade-header:hover {{
-        background: #353b48;
-        border-left-color: #00cec9;
+        background: rgba(53, 59, 72, 0.7);
+    }}
+    .decade-header:hover::before {{
+        transform: translateY(-50%) scale(1.2);
+        box-shadow: 0 0 12px rgba(0, 206, 201, 0.6);
     }}
     .decade-header .count {{
-        background: #0984e3;
-        color: white;
+        background: rgba(9, 132, 227, 0.3);
+        color: #74b9ff;
         padding: 2px 8px;
         border-radius: 10px;
         font-size: 11px;
+        border: 1px solid rgba(116, 185, 255, 0.2);
     }}
     .decade-events {{
         display: none;
-        background: #1e272e;
+        background: transparent;
+        padding-bottom: 6px;
     }}
     .decade-events.open {{
         display: block;
     }}
+    /* Glass event cards */
     .event-item {{
-        padding: 14px 18px;
-        border-bottom: 1px solid #333;
-        border-left: 5px solid var(--cat-color, #636e72);
-        background: rgba(255, 255, 255, 0.02);
+        padding: 14px 16px 14px 48px;
+        margin: 4px 8px 4px 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 4px solid var(--cat-color, #636e72);
+        background: rgba(255, 255, 255, 0.03);
+        position: relative;
+        transition: all 0.2s;
+    }}
+    /* Small timeline dot on event */
+    .event-item::before {{
+        content: '';
+        position: absolute;
+        left: 16px;
+        top: 20px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--cat-color, #636e72);
+        opacity: 0.7;
+        z-index: 2;
+    }}
+    .event-item:hover {{
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.12);
+        transform: translateX(2px);
     }}
     .event-item:last-child {{
         border-bottom: none;
     }}
     .event-item.tier-1 {{
-        border-left-width: 7px;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0%, rgba(30, 39, 46, 0.0) 72%);
+        border-left-width: 5px;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }}
+    .event-item.tier-1::before {{
+        width: 8px;
+        height: 8px;
+        opacity: 1;
+        box-shadow: 0 0 6px var(--cat-color, #636e72);
     }}
     .event-item.tier-3 {{
-        border-left-width: 4px;
+        border-left-width: 3px;
         background: rgba(255, 255, 255, 0.015);
-        opacity: 0.92;
+        opacity: 0.88;
     }}
     .event-item.event-enter {{
         animation: eventItemIn 0.22s ease both;
@@ -978,33 +1334,59 @@ function parseMarkdownLinks(text) {
     
     /* Metadata Card - Dark Theme */
     .country-meta-card {{
-        margin: 15px;
-        background: #2d3436;
-        border-radius: 0;
-        border: 1px solid #444;
+        margin: 10px 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
         overflow: hidden;
+        transition: border-color 0.2s;
+    }}
+    .country-meta-card:hover {{
+        border-color: rgba(255, 255, 255, 0.12);
     }}
     .country-meta-card summary {{
         padding: 10px 15px;
         cursor: pointer;
         font-weight: 600;
-        color: #ced6e0;
+        font-size: 13px;
+        color: #dfe6e9;
         user-select: none;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: #353b48;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 12px 12px 0 0;
+        transition: background 0.15s;
     }}
-    .country-meta-card summary:hover {{ background: #3d4653; }}
+    .country-meta-card summary::marker {{ content: ''; }}
+    .country-meta-card summary::-webkit-details-marker {{ display: none; }}
+    .country-meta-card summary::after {{
+        content: '';
+        width: 0; height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid rgba(255,255,255,0.4);
+        transition: transform 0.2s;
+        flex-shrink: 0;
+    }}
+    .country-meta-card[open] summary::after {{
+        transform: rotate(180deg);
+    }}
+    .country-meta-card summary:hover {{ background: rgba(255, 255, 255, 0.08); }}
+    .country-meta-card[open] summary {{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }}
     .country-meta-content {{
         padding: 15px;
-        border-top: 1px solid #444;
         font-size: 13px;
-        line-height: 1.5;
+        line-height: 1.6;
         color: #b2bec3;
     }}
-    .meta-row {{ margin-bottom: 8px; }}
-    .meta-label {{ color: #636e72; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }}
+    .meta-row {{ margin-bottom: 10px; }}
+    .meta-label {{ color: rgba(0, 206, 201, 0.7); font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; display: block; margin-bottom: 3px; }}
+    .meta-row strong, .country-meta-content strong {{ color: #ecf0f1; }}
+    .country-meta-content ul {{ padding-left: 16px; margin: 6px 0; }}
+    .country-meta-content li {{ margin-bottom: 3px; color: #dfe6e9; }}
 
     /* Country Flag Overlay */
     .country-flag-overlay {{
@@ -1180,10 +1562,12 @@ function parseMarkdownLinks(text) {
         width: 36px;
         height: 46px;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.95);
-        border: 1px solid rgba(52, 152, 219, 0.55);
-        box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-        color: #3498db;
+        background: rgba(14, 21, 27, 0.75);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+        color: #74b9ff;
         cursor: pointer;
         align-items: center;
         justify-content: center;
@@ -1201,7 +1585,7 @@ function parseMarkdownLinks(text) {
     }}
     .build-info {{
         position: fixed;
-        right: 8px;
+        right: 300px;
         bottom: 8px;
         z-index: 1200;
         background: rgba(0, 0, 0, 0.7);
@@ -1262,18 +1646,34 @@ function parseMarkdownLinks(text) {
     }}
     .indicator-select {{
         width: 100%;
-        padding: 6px 8px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        background: #fff;
+        padding: 8px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        color: #ecf0f1;
         font-size: 12px;
         cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2395a5a6' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        padding-right: 28px;
+        transition: all 0.15s;
+    }}
+    .indicator-select:hover {{
+        border-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.09);
+    }}
+    .indicator-select option {{
+        background: #1e272e;
+        color: #ecf0f1;
     }}
     .indicator-legend {{
         font-size: 11px;
-        color: #2c3e50;
-        background: #f8f9fa;
-        border: 1px solid #e9ecef;
+        color: #dfe6e9;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 8px;
         padding: 8px 10px;
     }}
@@ -1282,25 +1682,38 @@ function parseMarkdownLinks(text) {
         font-weight: 800;
         letter-spacing: 0.8px;
         text-transform: uppercase;
-        color: #12263a;
+        color: #ecf0f1;
     }}
     .indicator-legend-desc {{
         margin-top: 4px;
         font-size: 11px;
         line-height: 1.45;
-        color: #516170;
+        color: rgba(236, 240, 241, 0.7);
     }}
     .indicator-legend-detail {{
         margin-top: 6px;
         font-size: 10px;
         line-height: 1.4;
-        color: #607080;
+        color: rgba(236, 240, 241, 0.6);
     }}
     .legend-bar {{
         height: 8px;
         border-radius: 999px;
         margin: 6px 0 4px 0;
         background: linear-gradient(90deg, #e8f5e9 0%, #1b5e20 100%);
+        position: relative;
+        overflow: hidden;
+    }}
+    .legend-bar::after {{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        animation: legendShimmer 3s ease-in-out infinite;
+    }}
+    @keyframes legendShimmer {{
+        0%, 100% {{ transform: translateX(-100%); }}
+        50% {{ transform: translateX(100%); }}
     }}
     .legend-row {{
         display: flex;
@@ -1308,7 +1721,7 @@ function parseMarkdownLinks(text) {
         align-items: center;
         gap: 8px;
         font-size: 11px;
-        color: #6c757d;
+        color: rgba(236, 240, 241, 0.6);
     }}
     .active-indicator-banner {{
         position: fixed;
@@ -1318,7 +1731,7 @@ function parseMarkdownLinks(text) {
         z-index: 1250;
         width: min(620px, calc(100vw - 560px));
         min-width: 360px;
-        padding: 14px 16px;
+        padding: 14px 18px;
         border-radius: 16px;
         background: rgba(7, 18, 31, 0.88);
         border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1326,44 +1739,51 @@ function parseMarkdownLinks(text) {
         backdrop-filter: blur(10px);
         color: #f4f7fb;
     }}
-    .active-indicator-kicker {{
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1.4px;
-        color: rgba(255, 255, 255, 0.62);
-        text-transform: uppercase;
-    }}
-    .active-indicator-title {{
-        margin-top: 4px;
-        font-size: 28px;
-        line-height: 1.05;
-        font-weight: 800;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #ffffff;
-    }}
-    .active-indicator-desc {{
-        margin-top: 6px;
-        font-size: 13px;
-        line-height: 1.45;
-        color: rgba(230, 236, 242, 0.9);
-    }}
-    .active-indicator-meta {{
-        margin-top: 10px;
-        font-size: 11px;
-        line-height: 1.45;
-        color: rgba(190, 206, 221, 0.92);
-    }}
+    /* Hover data = hero section (top, big, changes) */
     .active-indicator-hover {{
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.14);
-        font-size: 12px;
-        line-height: 1.45;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
         color: #ffffff;
+        min-height: 28px;
+        transition: opacity 0.15s ease;
     }}
     .active-indicator-hover.empty {{
-        color: rgba(190, 206, 221, 0.7);
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(190, 206, 221, 0.6);
+        letter-spacing: 0;
+    }}
+    /* Indicator name = subtitle */
+    .active-indicator-title {{
+        margin-top: 4px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+    }}
+    /* Divider line */
+    .active-indicator-divider {{
+        height: 1px;
+        margin: 10px 0;
+        background: rgba(255, 255, 255, 0.1);
+    }}
+    /* Description = bottom, smaller */
+    .active-indicator-desc {{
+        font-size: 11px;
+        line-height: 1.4;
+        color: rgba(230, 236, 242, 0.7);
+    }}
+    .active-indicator-meta {{
+        margin-top: 4px;
+        font-size: 10px;
+        line-height: 1.35;
+        color: rgba(190, 206, 221, 0.6);
+    }}
+    .active-indicator-kicker {{
+        display: none;
     }}
     @media (max-width: 768px) {{
         .active-indicator-banner {{
@@ -1375,24 +1795,44 @@ function parseMarkdownLinks(text) {
             min-width: 0;
             padding: 12px 14px;
         }}
-        .active-indicator-title {{
-            font-size: 22px;
-        }}
-        .active-indicator-desc {{
-            font-size: 12px;
+        .active-indicator-hover {{
+            font-size: 18px;
         }}
     }}
 </style>
 
 <!-- Sidebar always visible -->
 <div class="country-sidebar" id="countrySidebar">
+    <div class="sidebar-scroll-progress"><div class="bar" id="sidebarScrollBar"></div></div>
     <div class="sidebar-header">
+        <div class="flag-bg" id="sidebarFlagBg"></div>
         <h2 id="sidebarCountryName">Ülke</h2>
         <div class="event-count" id="sidebarEventCount">0 olay</div>
         <button class="close-sidebar" onclick="closeSidebar()">×</button>
     </div>
-    <div id="countryMetaContainer"></div>
-    <div class="sidebar-content" id="sidebarContent"></div>
+    <div class="sidebar-tabs">
+        <button class="sidebar-tab active" data-tab="events" onclick="switchSidebarTab('events')">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 2h8v12l-4-2-4 2V2z" stroke="currentColor" stroke-width="1.3"/></svg>
+            Olaylar
+        </button>
+        <button class="sidebar-tab" data-tab="data" onclick="switchSidebarTab('data')">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="7" width="3" height="7" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="6.5" y="4" width="3" height="10" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="11" y="2" width="3" height="12" rx="0.5" fill="currentColor" opacity="0.7"/></svg>
+            Veri
+        </button>
+        <button class="sidebar-tab" data-tab="relations" onclick="switchSidebarTab('relations')">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M6 8h4" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 1"/></svg>
+            İlişkiler
+        </button>
+    </div>
+    <div class="sidebar-tab-panel active" id="tabEvents">
+        <div class="sidebar-content" id="sidebarContent"></div>
+    </div>
+    <div class="sidebar-tab-panel" id="tabData">
+        <div class="sidebar-content" id="countryMetaContainer"></div>
+    </div>
+    <div class="sidebar-tab-panel" id="tabRelations">
+        <div class="sidebar-content" id="countryRelationsContainer"></div>
+    </div>
 </div>
 
 <button class="panel-fab hidden" id="panelFab" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">
@@ -1432,12 +1872,12 @@ function parseMarkdownLinks(text) {
     <div class="control-section">
         <h4>Özel Listeler</h4>
         <div class="category-list">
-             <label class="category-item" style="background: #fffbe6; border: 1px solid #ffe58f;">
+             <label class="category-item" style="background: rgba(241, 196, 15, 0.08); border: 1px solid rgba(241, 196, 15, 0.2);">
                 <input type="checkbox" checked onchange="toggleSpecial('time_100')" id="special-time_100">
                 <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
                 Time 100: Yüzyılın Kişileri
             </label>
-            <label class="category-item" style="background: #fde8e8; border: 1px solid rgba(231, 76, 60, 0.35);">
+            <label class="category-item" style="background: rgba(231, 76, 60, 0.08); border: 1px solid rgba(231, 76, 60, 0.2);">
                 <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows">
                 <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
                 Çatışma Okları
@@ -1447,22 +1887,31 @@ function parseMarkdownLinks(text) {
 
     <div class="control-section">
         <h4>Ülke Grupları</h4>
-        <div class="category-list">
-            <label class="category-item" style="background: #eef8ff; border: 1px solid rgba(52, 152, 219, 0.35);">
-                <input type="checkbox" onchange="toggleCountryGroup('nato')" id="group-nato">
-                <span class="category-color" style="background: #3498db;"></span>
-                NATO Üyeleri
-            </label>
-            <label class="category-item" style="background: #fffbe6; border: 1px solid rgba(241, 196, 15, 0.45);">
-                <input type="checkbox" onchange="toggleCountryGroup('g8')" id="group-g8">
-                <span class="category-color" style="background: #f1c40f;"></span>
-                G8 Ülkeleri
-            </label>
-            <label class="category-item" style="background: #f3f0ff; border: 1px solid rgba(88, 101, 242, 0.35);">
-                <input type="checkbox" onchange="toggleCountryGroup('brics_plus')" id="group-brics_plus">
-                <span class="category-color" style="background: #5865f2;"></span>
-                BRICS+ Ülkeleri
-            </label>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+            <div class="group-card" id="group-nato-card" onclick="toggleCountryGroupCard('nato')" style="--group-color:rgba(52,152,219,0.5);--group-glow:rgba(52,152,219,0.08);--group-bg:rgba(52,152,219,0.15);">
+                <input type="checkbox" id="group-nato" style="display:none;">
+                <div class="group-card-icon" style="color:#3498db;">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="currentColor" opacity="0.5"/></svg>
+                </div>
+                <span class="group-card-label">NATO</span>
+                <span class="group-card-count" id="natoCount"></span>
+            </div>
+            <div class="group-card" id="group-g8-card" onclick="toggleCountryGroupCard('g8')" style="--group-color:rgba(241,196,15,0.5);--group-glow:rgba(241,196,15,0.08);--group-bg:rgba(241,196,15,0.15);">
+                <input type="checkbox" id="group-g8" style="display:none;">
+                <div class="group-card-icon" style="color:#f1c40f;">
+                    <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 2.5v11M2.5 8h11" stroke="currentColor" stroke-width="0.8" opacity="0.4"/><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="0.8" opacity="0.3"/><text x="8" y="10.5" text-anchor="middle" font-size="6" font-weight="700" fill="currentColor">8</text></svg>
+                </div>
+                <span class="group-card-label">G8</span>
+                <span class="group-card-count" id="g8Count"></span>
+            </div>
+            <div class="group-card" id="group-brics-card" onclick="toggleCountryGroupCard('brics_plus')" style="--group-color:rgba(88,101,242,0.5);--group-glow:rgba(88,101,242,0.08);--group-bg:rgba(88,101,242,0.15);">
+                <input type="checkbox" id="group-brics_plus" style="display:none;">
+                <div class="group-card-icon" style="color:#5865f2;">
+                    <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="4" height="5" rx="0.5" fill="currentColor" opacity="0.6"/><rect x="6" y="5" width="4" height="9" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="10" y="2" width="4" height="12" rx="0.5" fill="currentColor" opacity="0.8"/></svg>
+                </div>
+                <span class="group-card-label">BRICS+</span>
+                <span class="group-card-count" id="bricsCount"></span>
+            </div>
         </div>
     </div>
 
@@ -1502,11 +1951,11 @@ function parseMarkdownLinks(text) {
 </div>
 
 <div class="active-indicator-banner" id="activeIndicatorBanner" style="display:none;">
-    <div class="active-indicator-kicker">Aktif Gosterge</div>
+    <div class="active-indicator-hover empty" id="activeIndicatorHover">Bir ülkenin üzerine gelin.</div>
     <div class="active-indicator-title" id="activeIndicatorTitle"></div>
+    <div class="active-indicator-divider"></div>
     <div class="active-indicator-desc" id="activeIndicatorDesc"></div>
     <div class="active-indicator-meta" id="activeIndicatorMeta"></div>
-    <div class="active-indicator-hover empty" id="activeIndicatorHover">Bir ulkenin uzerine gelin.</div>
 </div>
 
 <div class="app-footer" id="appFooter">Jeopolitik harita Alpha 1.0 - Gurur Sönmez</div>
@@ -1517,26 +1966,87 @@ function parseMarkdownLinks(text) {
 
 <script>
 {parse_md_js}
-// Data
-const allEvents = {events_json};
-const countryMeta = {country_metadata_json};
-const waterSourceData = {water_sources_json};
-const currentConflictData = {current_conflicts_json};
-// Filter out special categories from standard list if needed, or handle in toggleCategory
+// --- Async Data Loading ---
+// Small data stays inline (categories, decades are tiny)
 const categories = {categories_json};
 const decades = {decades_json};
 
-// External datasets (groups + indicators)
-const externalData = {indicators_json};
-const strategicSnapshotData = {strategic_snapshots_json};
-const countryGroups = {{
-    g8: new Set((externalData.groups && externalData.groups.g8) ? externalData.groups.g8 : []),
-    nato: new Set((externalData.groups && externalData.groups.nato) ? externalData.groups.nato : []),
-    brics_plus: new Set((externalData.groups && externalData.groups.brics_plus) ? externalData.groups.brics_plus : [])
-}};
-const baseIndicators = (externalData && externalData.indicators) ? externalData.indicators : {{}};
-const waterSourceNotes = (waterSourceData && waterSourceData.countries) ? waterSourceData.countries : {{}};
-const activeConflicts = Array.isArray(currentConflictData && currentConflictData.conflicts) ? currentConflictData.conflicts : [];
+// Large data loaded asynchronously from separate files
+let allEvents = [];
+let countryMeta = {{}};
+let waterSourceData = {{}};
+let currentConflictData = {{}};
+let externalData = {{}};
+let strategicSnapshotData = {{}};
+let countryGroups = {{ g8: new Set(), nato: new Set(), brics_plus: new Set() }};
+let baseIndicators = {{}};
+let waterSourceNotes = {{}};
+let activeConflicts = [];
+
+// Loading overlay
+(function() {{
+    const overlay = document.createElement('div');
+    overlay.id = 'loadingOverlay';
+    overlay.innerHTML = '<div style="text-align:center;color:#ecf0f1;font-family:sans-serif;"><div style="font-size:18px;font-weight:600;margin-bottom:12px;">Jeopolitik Harita Yükleniyor...</div><div id="loadProgress" style="font-size:13px;opacity:0.7;">Veriler indiriliyor</div></div>';
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(10,15,20,0.92);backdrop-filter:blur(8px);transition:opacity 0.4s;';
+    document.body.appendChild(overlay);
+}})();
+
+async function loadAppData() {{
+    const progress = document.getElementById('loadProgress');
+    try {{
+        progress.textContent = 'Harita verileri indiriliyor...';
+        const [eventsRes, geoRes, metaRes] = await Promise.all([
+            fetch('events_data.json'),
+            fetch('geo.json'),
+            fetch('meta.json')
+        ]);
+
+        progress.textContent = 'Veriler işleniyor...';
+        const [eventsData, geoData, metaData] = await Promise.all([
+            eventsRes.json(),
+            geoRes.json(),
+            metaRes.json()
+        ]);
+
+        // Assign to globals
+        allEvents = eventsData;
+        window.countriesGeoJSON = geoData;
+
+        countryMeta = metaData.country_metadata || {{}};
+        waterSourceData = metaData.water_sources || {{}};
+        currentConflictData = metaData.current_conflicts || {{}};
+        externalData = metaData.indicators || {{}};
+        strategicSnapshotData = metaData.strategic_snapshots || {{}};
+
+        // Derived data
+        countryGroups = {{
+            g8: new Set((externalData.groups && externalData.groups.g8) ? externalData.groups.g8 : []),
+            nato: new Set((externalData.groups && externalData.groups.nato) ? externalData.groups.nato : []),
+            brics_plus: new Set((externalData.groups && externalData.groups.brics_plus) ? externalData.groups.brics_plus : [])
+        }};
+        baseIndicators = (externalData && externalData.indicators) ? externalData.indicators : {{}};
+        waterSourceNotes = (waterSourceData && waterSourceData.countries) ? waterSourceData.countries : {{}};
+        activeConflicts = Array.isArray(currentConflictData && currentConflictData.conflicts) ? currentConflictData.conflicts : [];
+
+        // Also set global name mappings from meta
+        window.geoJSONNameMap = metaData.turkish_to_english || {{}};
+        window.reverseNameMap = metaData.english_to_turkish || {{}};
+        window.turkishToIso = metaData.turkish_to_iso || {{}};
+
+        // Rebuild indicator data now that async data is available
+        rebuildIndicatorData();
+
+        console.log('Data loaded: ' + allEvents.length + ' events, ' + geoData.features.length + ' countries');
+        progress.textContent = 'Harita başlatılıyor...';
+        return true;
+    }} catch(err) {{
+        console.error('Data loading failed:', err);
+        progress.textContent = 'Veri yükleme hatası! Sayfa yenileniyor...';
+        setTimeout(() => location.reload(), 3000);
+        return false;
+    }}
+}}
 
 function buildStrategicIndicators(snapshots) {{
     const sanctions = (snapshots && snapshots.sanctions) ? snapshots.sanctions : {{}};
@@ -1627,14 +2137,23 @@ function buildStrategicIndicators(snapshots) {{
     return out;
 }}
 
-const strategicIndicators = buildStrategicIndicators(strategicSnapshotData);
-const externalIndicators = Object.assign({{}}, baseIndicators, strategicIndicators);
-const strategicCountries = {{
-    sanctions: (strategicSnapshotData && strategicSnapshotData.sanctions && strategicSnapshotData.sanctions.countries) ? strategicSnapshotData.sanctions.countries : {{}},
-    weather: (strategicSnapshotData && strategicSnapshotData.weather && strategicSnapshotData.weather.countries) ? strategicSnapshotData.weather.countries : {{}},
-    air_quality: (strategicSnapshotData && strategicSnapshotData.air_quality && strategicSnapshotData.air_quality.countries) ? strategicSnapshotData.air_quality.countries : {{}},
-    fx: (strategicSnapshotData && strategicSnapshotData.fx && strategicSnapshotData.fx.countries) ? strategicSnapshotData.fx.countries : {{}}
-}};
+// These are rebuilt after async data loads via rebuildIndicatorData()
+let strategicIndicators = {{}};
+let externalIndicators = {{}};
+let strategicCountries = {{ sanctions: {{}}, weather: {{}}, air_quality: {{}}, fx: {{}} }};
+
+function rebuildIndicatorData() {{
+    strategicIndicators = buildStrategicIndicators(strategicSnapshotData);
+    externalIndicators = Object.assign({{}}, baseIndicators, strategicIndicators);
+    strategicCountries = {{
+        sanctions: (strategicSnapshotData && strategicSnapshotData.sanctions && strategicSnapshotData.sanctions.countries) ? strategicSnapshotData.sanctions.countries : {{}},
+        weather: (strategicSnapshotData && strategicSnapshotData.weather && strategicSnapshotData.weather.countries) ? strategicSnapshotData.weather.countries : {{}},
+        air_quality: (strategicSnapshotData && strategicSnapshotData.air_quality && strategicSnapshotData.air_quality.countries) ? strategicSnapshotData.air_quality.countries : {{}},
+        fx: (strategicSnapshotData && strategicSnapshotData.fx && strategicSnapshotData.fx.countries) ? strategicSnapshotData.fx.countries : {{}}
+    }};
+    window.externalIndicators = externalIndicators;
+    console.log('Indicator data rebuilt:', Object.keys(externalIndicators).length, 'indicators');
+}}
 
 // Expose to window for other injected scripts
 window.countryGroups = countryGroups;
@@ -2046,6 +2565,20 @@ function initFilters() {{
         decadeContainer.appendChild(item);
     }});
 
+    // SVG icons for categories
+    const categorySVG = {{
+        war: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1L2 14h12L8 1z" fill="currentColor" opacity="0.9"/><path d="M7.5 6v4M7.5 11.5v1" stroke="#1e272e" stroke-width="1.5" stroke-linecap="round"/></svg>',
+        genocide: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M5 6h.01M11 6h.01M6 11c.5-1 3.5-1 4 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>',
+        revolution: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v5M5 7h6M6 12l2-3 2 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        terror: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" fill="currentColor" opacity="0.7"/><path d="M8 2v2M8 12v2M2 8h2M12 8h2M4 4l1.5 1.5M10.5 10.5L12 12M12 4l-1.5 1.5M5.5 10.5L4 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>',
+        politics: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 12V7l5-4 5 4v5a1 1 0 01-1 1H4a1 1 0 01-1-1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6 13v-3h4v3" stroke="currentColor" stroke-width="1.2"/></svg>',
+        diplomacy: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8c2-3 4-3 6 0s4 3 6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="5" cy="8" r="1.5" fill="currentColor" opacity="0.5"/><circle cx="11" cy="8" r="1.5" fill="currentColor" opacity="0.5"/></svg>',
+        leader: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5l3.5-.5L8 2z" fill="currentColor" opacity="0.8"/></svg>',
+        culture: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 2h8v12l-4-2-4 2V2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>',
+        cinema: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M6 6.5l4 2-4 2v-4z" fill="currentColor" opacity="0.8"/></svg>',
+        music: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 12V4l7-2v8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="12" r="2" fill="currentColor" opacity="0.7"/><circle cx="11" cy="10" r="2" fill="currentColor" opacity="0.7"/></svg>',
+    }};
+
     const catContainer = document.getElementById('categoryFilters');
     const catEntries = Object.entries(categories)
         .filter(([key, _cat]) => key !== 'time_100')
@@ -2057,16 +2590,41 @@ function initFilters() {{
             const lb = (b[1] && b[1].label) ? b[1].label : b[0];
             return String(la).localeCompare(String(lb), 'tr');
         }});
+
+    // Group by tier and render with hierarchy
+    const tierLabels = {{ 1: 'Kritik Olaylar', 2: 'Önemli Olaylar', 3: 'Kültür & Yaşam' }};
+    let currentTier = 0;
+    let tierGroup = null;
+
     catEntries.forEach(([key, cat]) => {{
-        if (key === 'time_100') return; // Skip Time 100 in standard list
+        if (key === 'time_100') return;
+        const tier = (cat && typeof cat.tier === 'number') ? cat.tier : 2;
+
+        // New tier group
+        if (tier !== currentTier) {{
+            currentTier = tier;
+            // Add tier label
+            const label = document.createElement('div');
+            label.className = 'category-tier-label';
+            label.textContent = tierLabels[tier] || `Tier ${{tier}}`;
+            catContainer.appendChild(label);
+
+            // Create tier group container
+            tierGroup = document.createElement('div');
+            tierGroup.className = `category-tier-group${{tier > 1 ? ' has-indent' : ''}}`;
+            catContainer.appendChild(tierGroup);
+        }}
+
+        const svg = categorySVG[key] || '';
         const item = document.createElement('label');
-        item.className = 'category-item';
+        item.className = `category-item tier-${{tier}}`;
+        item.style.setProperty('--tier-color', cat.color);
         item.innerHTML = `
             <input type="checkbox" checked onchange="toggleCategory('${{key}}')" id="cat-${{key}}">
-            <span class="category-color" style="background: ${{cat.color}}"></span>
+            <span class="category-color" style="background: ${{cat.color}}; color: ${{cat.color}}; display:flex;align-items:center;justify-content:center;">${{svg || ''}}</span>
             ${{cat.label}}
         `;
-        catContainer.appendChild(item);
+        (tierGroup || catContainer).appendChild(item);
     }});
 
     updateVisibleCount();
@@ -2081,6 +2639,7 @@ function toggleCountryGroup(groupKey) {{
 
     window.activeCountryGroup = (window.activeCountryGroup === groupKey) ? null : groupKey;
 
+    // Update hidden checkboxes
     const g8Box = document.getElementById('group-g8');
     const natoBox = document.getElementById('group-nato');
     const bricsBox = document.getElementById('group-brics_plus');
@@ -2088,9 +2647,80 @@ function toggleCountryGroup(groupKey) {{
     if (natoBox) natoBox.checked = window.activeCountryGroup === 'nato';
     if (bricsBox) bricsBox.checked = window.activeCountryGroup === 'brics_plus';
 
+    // Update group card visual state
+    ['nato', 'g8', 'brics_plus'].forEach(gk => {{
+        const cardId = gk === 'brics_plus' ? 'group-brics-card' : `group-${{gk}}-card`;
+        const card = document.getElementById(cardId);
+        if (card) {{
+            if (window.activeCountryGroup === gk) {{
+                card.classList.add('active');
+            }} else {{
+                card.classList.remove('active');
+            }}
+        }}
+    }});
+
     updateVisibleCount();
     updateMarkerVisibility();
     updateExternalOverlays();
+}}
+
+// Wrapper for SVG group cards
+function toggleCountryGroupCard(groupKey) {{
+    toggleCountryGroup(groupKey);
+}}
+
+// Update group counts after data loads
+function updateGroupCounts() {{
+    const natoEl = document.getElementById('natoCount');
+    const g8El = document.getElementById('g8Count');
+    const bricsEl = document.getElementById('bricsCount');
+    if (natoEl && countryGroups.nato) natoEl.textContent = countryGroups.nato.size + ' ülke';
+    if (g8El && countryGroups.g8) g8El.textContent = countryGroups.g8.size + ' ülke';
+    if (bricsEl && countryGroups.brics_plus) bricsEl.textContent = countryGroups.brics_plus.size + ' ülke';
+}}
+
+// Sidebar Tab Navigation
+function switchSidebarTab(tabName) {{
+    document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.sidebar-tab-panel').forEach(p => p.classList.remove('active'));
+
+    const tab = document.querySelector(`.sidebar-tab[data-tab="${{tabName}}"]`);
+    const panel = document.getElementById(tabName === 'events' ? 'tabEvents' : tabName === 'data' ? 'tabData' : 'tabRelations');
+    if (tab) tab.classList.add('active');
+    if (panel) panel.classList.add('active');
+}}
+
+// Stats countup with pulse animation
+function updateVisibleCountAnimated(newCount) {{
+    const el = document.getElementById('visibleCount');
+    if (!el) return;
+    const oldCount = parseInt(el.textContent) || 0;
+    if (oldCount === newCount) return;
+
+    const box = el.closest('.stats-box');
+    if (box) {{
+        box.classList.remove('pulse');
+        void box.offsetWidth; // force reflow
+        box.classList.add('pulse');
+        setTimeout(() => box.classList.remove('pulse'), 700);
+    }}
+
+    // Simple countup
+    if (Math.abs(newCount - oldCount) < 20) {{
+        el.textContent = newCount;
+        return;
+    }}
+    const duration = 300;
+    const startTime = performance.now();
+    function animate(now) {{
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(oldCount + (newCount - oldCount) * eased);
+        if (progress < 1) requestAnimationFrame(animate);
+    }}
+    requestAnimationFrame(animate);
 }}
 
 function setIndicatorMode(mode) {{
@@ -2250,15 +2880,15 @@ function groupStyle(feature) {{
 }}
 
 function initExternalOverlays() {{
-    if (!window.geoMap || typeof countriesGeoJSON === 'undefined' || !countriesGeoJSON) return;
+    if (!window.geoMap || !window.countriesGeoJSON) return;
     if (!window.groupOverlayLayer) {{
-        window.groupOverlayLayer = L.geoJSON(countriesGeoJSON, {{
+        window.groupOverlayLayer = L.geoJSON(window.countriesGeoJSON, {{
             interactive: false,
             style: groupStyle
         }}).addTo(window.geoMap);
     }}
     if (!window.indicatorOverlayLayer) {{
-        window.indicatorOverlayLayer = L.geoJSON(countriesGeoJSON, {{
+        window.indicatorOverlayLayer = L.geoJSON(window.countriesGeoJSON, {{
             interactive: false,
             style: indicatorStyle
         }}).addTo(window.geoMap);
@@ -2424,7 +3054,7 @@ function updateVisibleCount() {{
         if (groupSet && !groupSet.has(e.country_name)) return false;
         return isEventVisibleByFilters(e);
     }}).length;
-    document.getElementById('visibleCount').textContent = count;
+    updateVisibleCountAnimated(count);
 }}
 
 // Track markers by country for filtering
@@ -2470,8 +3100,8 @@ function findCountryFeature(countryName) {{
     
     // 1. Try L.geoJSON layers if we have them accessibly
     // We didn't store them globally easily, but we have countriesGeoJSON data
-    if (typeof countriesGeoJSON !== 'undefined' && countriesGeoJSON) {{
-        countriesGeoJSON.features.forEach(f => {{
+    if (window.countriesGeoJSON) {{
+        window.countriesGeoJSON.features.forEach(f => {{
             if (f.properties.NAME === countryName || f.properties.NAME_LONG === countryName || 
                 (window.countryCodeMap && window.countryCodeMap[f.properties.NAME] === countryName)) {{
                 found = f;
@@ -2693,7 +3323,7 @@ function buildWaterHtml(countryName) {{
     return `
         <details class="country-meta-card" open>
             <summary>
-                <span>▼ Su Kaynaklari</span>
+                <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M8 2C5 6 2 8 2 11a6 6 0 1012 0c0-3-3-5-6-9z" fill="#3498db" opacity="0.7"/></svg>Su Kaynaklari</span>
             </summary>
             <div class="country-meta-content">
                 <div class="meta-row">
@@ -2749,7 +3379,7 @@ function buildCurrentConflictHtml(countryName) {{
     return `
         <details class="country-meta-card" open>
             <summary>
-                <span>▼ Guncel Catismalar</span>
+                <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M8 1L2 14h12L8 1z" fill="#e74c3c" opacity="0.8"/><path d="M7.5 6v4M7.5 11.5v1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Guncel Catismalar</span>
             </summary>
             <div class="country-meta-content">
                 ${{
@@ -2807,7 +3437,7 @@ function buildSanctionsHtml(countryName) {{
     return `
         <details class="country-meta-card" open>
             <summary>
-                <span>▼ Yaptirim / Risk</span>
+                <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><circle cx="8" cy="8" r="6" stroke="#f39c12" stroke-width="1.5" fill="none"/><path d="M8 5v4M8 11v1" stroke="#f39c12" stroke-width="1.5" stroke-linecap="round"/></svg>Yaptirim / Risk</span>
             </summary>
             <div class="country-meta-content">
                 <div class="meta-row">
@@ -2848,7 +3478,7 @@ function buildWeatherRiskHtml(countryName) {{
     return `
         <details class="country-meta-card" open>
             <summary>
-                <span>▼ Iklim Baskisi</span>
+                <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><circle cx="8" cy="6" r="4" fill="#e67e22" opacity="0.6"/><path d="M3 12h10" stroke="#e67e22" stroke-width="1.2" stroke-linecap="round"/><path d="M5 14h6" stroke="#e67e22" stroke-width="1" stroke-linecap="round" opacity="0.5"/></svg>Iklim Baskisi</span>
             </summary>
             <div class="country-meta-content">
                 <div class="meta-row">
@@ -2896,7 +3526,7 @@ function buildAirQualityHtml(countryName) {{
     return `
         <details class="country-meta-card" open>
             <summary>
-                <span>▼ Hava Kalitesi</span>
+                <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 8h4a2 2 0 100-4H2M4 12h5a2 2 0 100-4H4" stroke="#27ae60" stroke-width="1.3" stroke-linecap="round"/></svg>Hava Kalitesi</span>
             </summary>
             <div class="country-meta-content">
                 <div class="meta-row">
@@ -2945,7 +3575,7 @@ function buildFxPressureHtml(countryName) {{
     return `
         <details class="country-meta-card" open>
             <summary>
-                <span>▼ Kur Baskisi</span>
+                <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 12l3-4 3 2 4-6 2 3" stroke="#9b59b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Kur Baskisi</span>
             </summary>
             <div class="country-meta-content">
                 <div class="meta-row">
@@ -3020,7 +3650,7 @@ function buildEconomyHtml(countryName) {{
     return `
         <details class="country-meta-card" open>
             <summary>
-                <span>▼ Üyelik & Ekonomi</span>
+                <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><rect x="2" y="7" width="3" height="7" rx="1" fill="#2ecc71" opacity="0.6"/><rect x="6.5" y="4" width="3" height="10" rx="1" fill="#2ecc71" opacity="0.8"/><rect x="11" y="2" width="3" height="12" rx="1" fill="#2ecc71"/></svg>Üyelik & Ekonomi</span>
             </summary>
             <div class="country-meta-content">
                 <div class="meta-row">
@@ -3194,7 +3824,10 @@ function openSidebar(countryName) {{
     if (countryEvents.length === 0) {{
         console.log("No events found for", countryName);
     }}
-    
+
+    // Reset to events tab when opening new country
+    switchSidebarTab('events');
+
     // Update Header
     const titleElem = document.getElementById('sidebarCountryName');
     if (titleElem) titleElem.innerText = countryName;
@@ -3209,6 +3842,29 @@ function openSidebar(countryName) {{
     
     document.getElementById('sidebarCountryName').textContent = countryName;
     document.getElementById('sidebarEventCount').textContent = countryEvents.length + ' olay';
+
+    // Set flag background in header
+    const flagBg = document.getElementById('sidebarFlagBg');
+    if (flagBg) {{
+        const code = countryCodeMap[countryName] || '';
+        if (code) {{
+            flagBg.style.backgroundImage = `url(https://flagcdn.com/w640/${{code}}.png)`;
+        }} else {{
+            flagBg.style.backgroundImage = 'none';
+        }}
+    }}
+
+    // Setup scroll progress bar
+    const sidebarEl = document.getElementById('countrySidebar');
+    const scrollBar = document.getElementById('sidebarScrollBar');
+    if (sidebarEl && scrollBar) {{
+        sidebarEl.onscroll = function() {{
+            const scrollTop = sidebarEl.scrollTop;
+            const scrollHeight = sidebarEl.scrollHeight - sidebarEl.clientHeight;
+            const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+            scrollBar.style.transform = `scaleX(${{progress}})`;
+        }};
+    }}
 
     // 3. Render Metadata - with smart lookup
     const metaContainer = document.getElementById('countryMetaContainer');
@@ -3257,7 +3913,7 @@ function openSidebar(countryName) {{
         metaContainer.innerHTML = `
             <details class="country-meta-card" open>
                 <summary>
-                    <span>▼ İstihbarat Raporu</span>
+                    <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M8 1l1 3h3l-2.5 2 1 3L8 7.5 5.5 9l1-3L4 4h3L8 1z" fill="#f1c40f" opacity="0.8"/></svg>İstihbarat Raporu</span>
                 </summary>
                 <div class="country-meta-content">
                     <div class="meta-row">
@@ -3290,7 +3946,7 @@ function openSidebar(countryName) {{
                                 `
                                 : ''
                         }}
-                        <div class="meta-row" style="align-items:flex-start; margin-top:10px; border-top:1px dashed #444; padding-top:10px;">
+                        <div class="meta-row" style="align-items:flex-start; margin-top:10px; border-top:1px dashed rgba(255,255,255,0.1); padding-top:10px;">
                             <span class="meta-label">Tarihi / Pasif Çatışmalar</span>
                             <div style="margin-top:2px; display:flex; flex-direction:column; gap:4px;">
                                 ${{
@@ -3341,6 +3997,59 @@ function openSidebar(countryName) {{
         preserveOpenState: false,
         animateEnter: false
     }});
+
+    // 6. Populate Relations Tab
+    const relContainer = document.getElementById('countryRelationsContainer');
+    if (relContainer) {{
+        let relHtml = '';
+
+        // Rivalries from metadata
+        if (metaResult && metaResult.meta) {{
+            const meta = metaResult.meta;
+            if (meta.rivals && meta.rivals.length > 0) {{
+                relHtml += `<details class="country-meta-card" open>
+                    <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 8h4M10 8h4M8 2v4M8 10v4" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round"/></svg>Rakipler & Gerilimler</span></summary>
+                    <div class="country-meta-content">
+                        ${{meta.rivals.map(r => `<div class="meta-row"><span class="meta-label">${{r.country || r}}</span><div style="font-size:12px;color:#bdc3c7;">${{r.reason || ''}}</div></div>`).join('')}}
+                    </div>
+                </details>`;
+            }}
+            if (meta.allies && meta.allies.length > 0) {{
+                relHtml += `<details class="country-meta-card" open>
+                    <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 8c2-3 4-3 6 0s4 3 6 0" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round"/></svg>Müttefikler</span></summary>
+                    <div class="country-meta-content">
+                        ${{meta.allies.map(a => `<div class="meta-row"><span class="meta-label">${{a}}</span></div>`).join('')}}
+                    </div>
+                </details>`;
+            }}
+        }}
+
+        // Group memberships
+        const memberships = [];
+        if (countryGroups.nato && countryGroups.nato.has(countryName)) memberships.push('NATO');
+        if (countryGroups.g8 && countryGroups.g8.has(countryName)) memberships.push('G8');
+        if (countryGroups.brics_plus && countryGroups.brics_plus.has(countryName)) memberships.push('BRICS+');
+        if (memberships.length > 0) {{
+            relHtml += `<details class="country-meta-card" open>
+                <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><circle cx="8" cy="8" r="5.5" stroke="#3498db" stroke-width="1.2"/><path d="M8 5v6M5 8h6" stroke="#3498db" stroke-width="1.2"/></svg>Grup Üyelikleri</span></summary>
+                <div class="country-meta-content">
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                        ${{memberships.map(m => `<span class="group-badge">${{m}}</span>`).join('')}}
+                    </div>
+                </div>
+            </details>`;
+        }}
+
+        // Active conflicts
+        if (countryConflicts.length > 0) {{
+            relHtml += conflictHtml;
+        }}
+
+        if (!relHtml) {{
+            relHtml = '<div class="sidebar-empty">Bu ülke için ilişki verisi bulunamadı.</div>';
+        }}
+        relContainer.innerHTML = relHtml;
+    }}
 }}
 
 function closeSidebar() {{
@@ -3397,28 +4106,17 @@ allEvents.forEach(e => {{
 }});
 
 
-// GeoJSON country boundaries - inline embedded
-const countriesGeoJSON = {geojson_json};
+// GeoJSON country boundaries - loaded async via loadAppData()
+// Access via window.countriesGeoJSON (set by async loader before init)
 let highlightLayers = []; // Changed to array for multiple layers
 
-// Log GeoJSON status
-if (countriesGeoJSON) {{
-    console.log('GeoJSON loaded inline:', countriesGeoJSON.features.length + ' countries');
-}} else {{
-    console.error('GeoJSON data not available');
-}}
-
-// GeoJSON name mapping (Turkish names -> English GeoJSON names)
-// Dynamically generated from master country_mappings.json
-const geoJSONNameMap = {turkish_to_english_json};
-
-// Reverse mapping (English GeoJSON names -> Turkish canonical names)
-// Also dynamically generated from master country_mappings.json
-const reverseNameMap = {english_to_turkish_json};
+// Name mappings - loaded async (see loadAppData)
+const geoJSONNameMap = window.geoJSONNameMap || {turkish_to_english_json};
+const reverseNameMap = window.reverseNameMap || {english_to_turkish_json};
 
 // Find country feature in GeoJSON by name or code
 function findCountryFeature(countryName) {{
-    if (!countriesGeoJSON) {{
+    if (!window.countriesGeoJSON) {{
         console.error('GeoJSON not loaded!');
         return null;
     }}
@@ -3428,7 +4126,7 @@ function findCountryFeature(countryName) {{
 
     console.log('Looking for:', countryName, '-> GeoJSON name:', geoJSONName, '-> ISO:', countryCode);
 
-    const found = countriesGeoJSON.features.find(f => {{
+    const found = window.countriesGeoJSON.features.find(f => {{
         const props = f.properties;
         const propName = props.name || '';
         const propISO = (props['ISO3166-1-Alpha-2'] || '').toLowerCase();
@@ -3498,6 +4196,8 @@ function clearCountryHighlight() {{
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function() {{
     initFilters();
+    // Update group card counts once data is ready
+    setTimeout(updateGroupCounts, 500);
 }});
 
 window.openSidebar = openSidebar;
@@ -3599,6 +4299,37 @@ window.addEventListener('load', function() {{
         color = color_map.get(cat.get('color', '#3498db'), 'blue')
         return folium.Icon(color=color, icon=icon, prefix='fa')
 
+    def _write_data_assets(self, output_dir: Path) -> None:
+        """Write large data objects as separate JSON files for async loading."""
+        # 1. GeoJSON country boundaries (~14MB inline -> separate cacheable file)
+        if self.geojson_data:
+            geo_path = output_dir / "geo.json"
+            with open(geo_path, "w", encoding="utf-8") as f:
+                json.dump(self.geojson_data, f, ensure_ascii=False, separators=(",", ":"))
+            print(f"  Data asset: geo.json ({geo_path.stat().st_size // 1024}KB)")
+
+        # 2. Events data (~1.8MB inline -> separate cacheable file)
+        events_path = output_dir / "events_data.json"
+        with open(events_path, "w", encoding="utf-8") as f:
+            json.dump(self.events, f, ensure_ascii=False, separators=(",", ":"))
+        print(f"  Data asset: events_data.json ({events_path.stat().st_size // 1024}KB)")
+
+        # 3. Meta bundle (metadata + indicators + strategic snapshots + mappings)
+        meta_bundle = {
+            "country_metadata": self.country_metadata if hasattr(self, "country_metadata") else {},
+            "water_sources": self.water_sources if hasattr(self, "water_sources") else {"updated_at_utc": "", "countries": {}},
+            "current_conflicts": self.current_conflicts if hasattr(self, "current_conflicts") else {"updated_at_utc": "", "source_note": "", "conflicts": []},
+            "indicators": self.indicators if hasattr(self, "indicators") else {},
+            "strategic_snapshots": self.strategic_snapshots if hasattr(self, "strategic_snapshots") else {"sanctions": {"countries": {}}, "weather": {"countries": {}}, "air_quality": {"countries": {}}, "fx": {"countries": {}}},
+            "turkish_to_english": self.turkish_to_english,
+            "english_to_turkish": self.english_to_turkish,
+            "turkish_to_iso": self.turkish_to_iso,
+        }
+        meta_path = output_dir / "meta.json"
+        with open(meta_path, "w", encoding="utf-8") as f:
+            json.dump(meta_bundle, f, ensure_ascii=False, separators=(",", ":"))
+        print(f"  Data asset: meta.json ({meta_path.stat().st_size // 1024}KB)")
+
     def create_map(self, output_path: str = None) -> str:
         """Create the interactive geopolitical map."""
         output_path = output_path or self.output_dir / "geopolitical_map.html"
@@ -3665,8 +4396,11 @@ window.addEventListener('load', function() {{
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         m.save(str(output_path))
-        
-        # Post-process HTML to add marker tracking for filtering        
+
+        # Write data assets as separate files for async loading
+        self._write_data_assets(Path(output_path).parent)
+
+        # Post-process HTML to add marker tracking for filtering
         self._inject_marker_tracking(output_path, by_country)
 
         # Create robots.txt
@@ -3732,8 +4466,14 @@ const countryFilterData = {json.dumps(marker_data, ensure_ascii=False)};
 window.geoMap = null;
 window.markerLayersByCountry = {{}};
 
-// Initialize marker tracking
-window.addEventListener('load', function() {{
+// Initialize marker tracking - waits for async data load
+window.addEventListener('load', async function() {{
+    // Load data assets first
+    if (typeof loadAppData === 'function') {{
+        const loaded = await loadAppData();
+        if (!loaded) return;
+    }}
+
     setTimeout(function() {{
         // Robustly find Leaflet map instance
         for (let key in window) {{
@@ -3803,8 +4543,8 @@ window.addEventListener('load', function() {{
         
         // Use global reverseNameMap (generated from country_mappings.json)
 
-        if (typeof countriesGeoJSON !== 'undefined' && countriesGeoJSON) {{
-            countriesGeoJSON.features.forEach(feature => {{
+        if (window.countriesGeoJSON) {{
+            window.countriesGeoJSON.features.forEach(feature => {{
                 const geoName = feature.properties.name || feature.properties.NAME;
                 // Try to find Turkish name using global reverseNameMap, otherwise fallback to GeoJSON name
                 let countryKey = reverseNameMap[geoName] || geoName;
@@ -3901,11 +4641,39 @@ window.addEventListener('load', function() {{
             }});
         }}
 
+        // Update group counts and visible event count now that data is loaded
+        if (typeof updateGroupCounts === 'function') updateGroupCounts();
+        if (typeof updateVisibleCount === 'function') updateVisibleCount();
+
+        // Dismiss loading overlay
+        const overlay = document.getElementById('loadingOverlay');
+        if (overlay) {{
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.remove(), 400);
+        }}
+
     }}, 1500); // Wait for Folium to finish initialization
 }});
 
-// Visibility function directly using Leaflet API
+// --- Performance: Debounce + rAF utilities ---
+let _markerVisibilityRAF = null;
+function _scheduleMarkerUpdate() {{
+    if (_markerVisibilityRAF) cancelAnimationFrame(_markerVisibilityRAF);
+    _markerVisibilityRAF = requestAnimationFrame(() => {{
+        _markerVisibilityRAF = null;
+        _doUpdateMarkerVisibility();
+    }});
+}}
+
+// Debounced version for rapid filter changes (80ms)
+let _filterDebounceTimer = null;
 function updateMarkerVisibility() {{
+    clearTimeout(_filterDebounceTimer);
+    _filterDebounceTimer = setTimeout(_scheduleMarkerUpdate, 80);
+}}
+
+// Actual visibility update logic
+function _doUpdateMarkerVisibility() {{
     if (!window.geoMap || !window.markerLayersByCountry) return;
     
     const groupKey = window.activeCountryGroup;
@@ -4581,7 +5349,7 @@ L.Hoi4Overlay = L.Layer.extend({{
         # Injection of data
         inject_script += f'''
 <script>
-window.countryMeta = {json.dumps(self.country_metadata, ensure_ascii=False)};
+window.countryMeta = window.countryMeta || countryMeta;
 window.countryIsoMap = {{
     "Turkiye": "tr", "Türkiye": "tr", "Almanya": "de", "Rusya": "ru", "Ukrayna": "ua", 
     "Fransa": "fr", "Birleşik Krallık": "gb", "ABD": "us", "Çin": "cn",

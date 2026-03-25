@@ -1,0 +1,136 @@
+{
+  "_comment": "Veri katalogu - tum veri kaynaklarinin merkezi kaydi",
+  "datasets": [
+    {
+      "key": "events",
+      "path": "events.json",
+      "priority": 1,
+      "required": true,
+      "description": "Ana olay veritabani - 3900+ jeopolitik olay",
+      "format": "json_array"
+    },
+    {
+      "key": "countries_geo",
+      "path": "countries.geojson",
+      "priority": 1,
+      "required": true,
+      "description": "Ulke sinirlari GeoJSON",
+      "format": "geojson"
+    },
+    {
+      "key": "country_mappings",
+      "path": "country_mappings.json",
+      "priority": 1,
+      "required": true,
+      "description": "Turkce-Ingilizce-ISO2 ulke adi eslemeleri",
+      "format": "json_object"
+    },
+    {
+      "key": "country_metadata",
+      "path": "country_metadata.json",
+      "priority": 2,
+      "required": false,
+      "description": "Ulke bazli meta veriler (afetler, rekabetler)",
+      "format": "json_object"
+    },
+    {
+      "key": "indicators",
+      "path": "indicators.json",
+      "priority": 2,
+      "required": false,
+      "description": "Ekonomik ve grup gostergeleri (NATO, G8, BRICS, min ucret, Big Mac)",
+      "format": "json_object"
+    },
+    {
+      "key": "water_sources",
+      "path": "water_sources.json",
+      "priority": 3,
+      "required": false,
+      "description": "Su kaynaklari ve altyapi verileri",
+      "format": "json_object"
+    },
+    {
+      "key": "current_conflicts",
+      "path": "current_conflicts.json",
+      "priority": 2,
+      "required": false,
+      "description": "Aktif catisma ve gerilim verileri",
+      "format": "json_object"
+    },
+    {
+      "key": "sanctions",
+      "path": "sanctions.json",
+      "priority": 3,
+      "required": false,
+      "description": "Yaptirim ve risk skorlari",
+      "format": "json_object",
+      "indicator_config": {
+        "js_key": "sanctions_risk_score",
+        "label": "Yaptirim / Risk",
+        "unit": "puan",
+        "value_field": "risk_score",
+        "gradient": ["#e8f5e9", "#b71c1c"]
+      }
+    },
+    {
+      "key": "weather",
+      "path": "weather.json",
+      "priority": 3,
+      "required": false,
+      "description": "Iklim baskisi verileri",
+      "format": "json_object",
+      "indicator_config": {
+        "js_key": "weather_pressure_score",
+        "label": "Iklim Baskisi",
+        "unit": "puan",
+        "value_field": "pressure_score",
+        "gradient": ["#e3f2fd", "#b71c1c"]
+      }
+    },
+    {
+      "key": "air_quality",
+      "path": "air_quality.json",
+      "priority": 3,
+      "required": false,
+      "description": "Hava kalitesi (PM2.5) verileri",
+      "format": "json_object",
+      "indicator_config": {
+        "js_key": "air_quality_pm25",
+        "label": "Hava Kalitesi (PM2.5)",
+        "unit": "ug/m3",
+        "value_field": "pm25",
+        "gradient": ["#e8f5e9", "#4a148c"]
+      }
+    },
+    {
+      "key": "fx",
+      "path": "fx.json",
+      "priority": 3,
+      "required": false,
+      "description": "Doviz kuru verileri",
+      "format": "json_object",
+      "indicator_config": {
+        "js_key": "fx_usd_rate",
+        "label": "Doviz Kuru (1 USD)",
+        "unit": "",
+        "value_field": "rate",
+        "gradient": ["#e8f5e9", "#e65100"]
+      }
+    }
+  ],
+  "etl_pipeline": [
+    "1. CSV/API -> import_events_from_csv.py / add_*_events.py",
+    "2. merge_gap_fillers.py (CSV -> events.json)",
+    "3. normalize_events.py (ulke adi normalizasyonu)",
+    "4. check_events_consistency.py (veri dogrulama)",
+    "5. fetch_indicators.py (dis veri kaynaklari)",
+    "6. check_strategic_data.py (indicator dogrulama)",
+    "7. geopolitical_map.py (HTML uretimi + data assets)"
+  ],
+  "adding_new_data": [
+    "1. Yeni JSON dosyasini data/ klasorune ekle",
+    "2. Bu manifest dosyasina dataset kaydi ekle",
+    "3. geopolitical_map.py icinde _load_data() metoduna yukleme ekle",
+    "4. Indicator ise: indicator_config ile manifest'e ekle, buildStrategicIndicators() ve <option> listesini guncelle"
+  ]
+}
