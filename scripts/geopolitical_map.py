@@ -701,81 +701,164 @@ function parseMarkdownLinks(text) {
         border-bottom: 2px solid rgba(52, 152, 219, 0.5);
         padding-bottom: 8px;
     }}
+    /* Accordion sections */
     .control-section {{
-        margin-bottom: 12px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 6px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 10px;
-        padding: 10px;
+        overflow: hidden;
+        transition: border-color 0.2s;
     }}
-    .control-section h4 {{
-        margin: 0 0 8px 0;
-        font-size: 13px;
-        font-weight: 500;
-        color: rgba(236, 240, 241, 0.7);
+    .control-section:hover {{
+        border-color: rgba(255, 255, 255, 0.1);
+    }}
+    .control-section.open {{
+        border-color: rgba(52, 152, 219, 0.15);
+        background: rgba(255, 255, 255, 0.03);
+    }}
+    .acc-header {{
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.15s;
     }}
-    .select-btns {{
+    .acc-header:hover {{
+        background: rgba(255, 255, 255, 0.04);
+    }}
+    .acc-icon {{
+        width: 20px;
+        height: 20px;
         display: flex;
-        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--acc-color, rgba(52,152,219,0.15));
+        color: var(--acc-text, #3498db);
+        flex-shrink: 0;
     }}
-    .select-btns button {{
-        padding: 2px 8px;
-        font-size: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.06);
-        color: #b2bec3;
+    .acc-icon svg {{
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
+    }}
+    .acc-title {{
+        flex: 1;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgba(236, 240, 241, 0.85);
+        letter-spacing: 0.3px;
+    }}
+    .acc-badge {{
+        font-size: 9px;
+        padding: 1px 6px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+    }}
+    .acc-chevron {{
+        width: 14px;
+        height: 14px;
+        color: rgba(255, 255, 255, 0.3);
+        transition: transform 0.25s ease;
+        flex-shrink: 0;
+    }}
+    .control-section.open .acc-chevron {{
+        transform: rotate(180deg);
+        color: rgba(52, 152, 219, 0.6);
+    }}
+    .acc-body {{
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0 10px;
+    }}
+    .control-section.open .acc-body {{
+        max-height: 600px;
+        padding: 0 10px 10px;
+    }}
+    .acc-actions {{
+        display: flex;
+        gap: 4px;
+        margin-bottom: 6px;
+    }}
+    .acc-actions button {{
+        flex: 1;
+        padding: 3px 0;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.4);
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.15s;
     }}
-    .select-btns button:hover {{
-        background: rgba(255, 255, 255, 0.12);
-        color: #ecf0f1;
-        border-color: rgba(255, 255, 255, 0.2);
+    .acc-actions button:hover {{
+        background: rgba(52, 152, 219, 0.15);
+        color: #74b9ff;
+        border-color: rgba(52, 152, 219, 0.3);
     }}
 
     /* Decade toggle chips */
     .decade-grid {{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
     }}
     .decade-item {{
         display: flex;
         align-items: center;
-        gap: 4px;
-        font-size: 12px;
-        padding: 5px 8px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
+        gap: 0;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 4px 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
         cursor: pointer;
-        color: #b2bec3;
-        transition: all 0.15s;
-    }}
-    .decade-item:hover {{
-        background: rgba(52, 152, 219, 0.12);
-        border-color: rgba(52, 152, 219, 0.3);
-        color: #dfe6e9;
-    }}
-    .decade-item:has(input:checked) {{
-        background: rgba(52, 152, 219, 0.2);
-        border-color: rgba(52, 152, 219, 0.5);
-        color: #74b9ff;
+        color: rgba(255, 255, 255, 0.45);
+        transition: all 0.2s;
+        position: relative;
     }}
     .decade-item input {{
-        margin: 0;
-        accent-color: #3498db;
+        display: none;
+    }}
+    .decade-item:hover {{
+        background: rgba(52, 152, 219, 0.1);
+        border-color: rgba(52, 152, 219, 0.25);
+        color: rgba(255, 255, 255, 0.7);
+    }}
+    .decade-item:has(input:checked) {{
+        background: rgba(52, 152, 219, 0.18);
+        border-color: rgba(52, 152, 219, 0.4);
+        color: #74b9ff;
+        box-shadow: 0 0 8px rgba(52, 152, 219, 0.15);
+    }}
+    .decade-item:has(input:checked)::before {{
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #3498db;
+        margin-right: 5px;
+        box-shadow: 0 0 4px #3498db;
     }}
 
     /* Category checkboxes - Hierarchical */
     .category-list {{
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 3px;
+    }}
+    .category-item input[type="checkbox"] {{
+        display: none;
     }}
     .category-tier-group {{
         display: flex;
@@ -843,20 +926,27 @@ function parseMarkdownLinks(text) {
         color: #dfe6e9;
     }}
     .category-item:has(input:checked) {{
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.07);
         border-color: rgba(255, 255, 255, 0.12);
         color: #ecf0f1;
     }}
-    .category-item input {{
-        margin: 0;
-        accent-color: #3498db;
+    .category-item:has(input:not(:checked)) {{
+        opacity: 0.45;
+    }}
+    .category-item:has(input:not(:checked)):hover {{
+        opacity: 0.7;
     }}
     .category-color {{
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         flex-shrink: 0;
         box-shadow: 0 0 6px rgba(0,0,0,0.3);
+        transition: transform 0.15s;
+    }}
+    .category-item:has(input:checked) .category-color {{
+        transform: scale(1.15);
+        box-shadow: 0 0 10px var(--tier-color, rgba(0,0,0,0.4));
     }}
     /* Hierarchy connector lines */
     .category-tier-group {{
@@ -1894,77 +1984,119 @@ function parseMarkdownLinks(text) {
         Ülkeye tıklayın veya marker'a basın. Filtreleri kullanarak olayları daraltabilirsiniz.
     </div>
 
-    <div class="control-section">
-        <h4>
-            Zaman Dilimi
-            <div class="select-btns">
-                <button onclick="selectAllDecades()">Tümü</button>
-                <button onclick="selectNoDecades()">Hiçbiri</button>
+    <!-- Accordion: Zaman Dilimi -->
+    <div class="control-section open" id="accDecades">
+        <div class="acc-header" onclick="toggleAcc('accDecades')">
+            <div class="acc-icon" style="--acc-color:rgba(52,152,219,0.15);--acc-text:#3498db;">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
             </div>
-        </h4>
-        <div class="decade-grid" id="decadeFilters"></div>
-    </div>
-
-    <div class="control-section">
-        <h4>
-            Kategoriler
-            <div class="select-btns">
-                <button onclick="selectAllCategories()">Tümü</button>
-                <button onclick="selectNoCategories()">Hiçbiri</button>
+            <span class="acc-title">Zaman Dilimi</span>
+            <span class="acc-badge" id="decadeBadge">11/11</span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body">
+            <div class="acc-actions">
+                <button onclick="event.stopPropagation();selectAllDecades()">Tümü</button>
+                <button onclick="event.stopPropagation();selectNoDecades()">Hiçbiri</button>
             </div>
-        </h4>
-        <div class="category-list" id="categoryFilters"></div>
-    </div>
-
-    <div class="control-section">
-        <h4>Özel Listeler</h4>
-        <div class="category-list">
-             <label class="category-item" style="background: rgba(241, 196, 15, 0.08); border: 1px solid rgba(241, 196, 15, 0.2);">
-                <input type="checkbox" checked onchange="toggleSpecial('time_100')" id="special-time_100">
-                <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
-                Time 100: Yüzyılın Kişileri
-            </label>
-            <label class="category-item" style="background: rgba(231, 76, 60, 0.08); border: 1px solid rgba(231, 76, 60, 0.2);">
-                <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows">
-                <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
-                Çatışma Okları
-            </label>
+            <div class="decade-grid" id="decadeFilters"></div>
         </div>
     </div>
 
-    <div class="control-section">
-        <h4>Ülke Grupları</h4>
-        <div style="display:flex; flex-direction:column; gap:6px;">
-            <div class="group-card" id="group-nato-card" onclick="toggleCountryGroupCard('nato')" style="--group-color:rgba(52,152,219,0.5);--group-glow:rgba(52,152,219,0.08);--group-bg:rgba(52,152,219,0.15);">
-                <input type="checkbox" id="group-nato" style="display:none;">
-                <div class="group-card-icon" style="color:#3498db;">
-                    <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="currentColor" opacity="0.5"/></svg>
-                </div>
-                <span class="group-card-label">NATO</span>
-                <span class="group-card-count" id="natoCount"></span>
+    <!-- Accordion: Kategoriler -->
+    <div class="control-section open" id="accCategories">
+        <div class="acc-header" onclick="toggleAcc('accCategories')">
+            <div class="acc-icon" style="--acc-color:rgba(231,76,60,0.15);--acc-text:#e74c3c;">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
-            <div class="group-card" id="group-g8-card" onclick="toggleCountryGroupCard('g8')" style="--group-color:rgba(241,196,15,0.5);--group-glow:rgba(241,196,15,0.08);--group-bg:rgba(241,196,15,0.15);">
-                <input type="checkbox" id="group-g8" style="display:none;">
-                <div class="group-card-icon" style="color:#f1c40f;">
-                    <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 2.5v11M2.5 8h11" stroke="currentColor" stroke-width="0.8" opacity="0.4"/><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="0.8" opacity="0.3"/><text x="8" y="10.5" text-anchor="middle" font-size="6" font-weight="700" fill="currentColor">8</text></svg>
-                </div>
-                <span class="group-card-label">G8</span>
-                <span class="group-card-count" id="g8Count"></span>
+            <span class="acc-title">Kategoriler</span>
+            <span class="acc-badge" id="catBadge"></span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body">
+            <div class="acc-actions">
+                <button onclick="event.stopPropagation();selectAllCategories()">Tümü</button>
+                <button onclick="event.stopPropagation();selectNoCategories()">Hiçbiri</button>
             </div>
-            <div class="group-card" id="group-brics-card" onclick="toggleCountryGroupCard('brics_plus')" style="--group-color:rgba(88,101,242,0.5);--group-glow:rgba(88,101,242,0.08);--group-bg:rgba(88,101,242,0.15);">
-                <input type="checkbox" id="group-brics_plus" style="display:none;">
-                <div class="group-card-icon" style="color:#5865f2;">
-                    <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="4" height="5" rx="0.5" fill="currentColor" opacity="0.6"/><rect x="6" y="5" width="4" height="9" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="10" y="2" width="4" height="12" rx="0.5" fill="currentColor" opacity="0.8"/></svg>
-                </div>
-                <span class="group-card-label">BRICS+</span>
-                <span class="group-card-count" id="bricsCount"></span>
+            <div class="category-list" id="categoryFilters"></div>
+        </div>
+    </div>
+
+    <!-- Accordion: Özel Listeler -->
+    <div class="control-section" id="accSpecial">
+        <div class="acc-header" onclick="toggleAcc('accSpecial')">
+            <div class="acc-icon" style="--acc-color:rgba(241,196,15,0.15);--acc-text:#f1c40f;">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            </div>
+            <span class="acc-title">Özel Listeler</span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body">
+            <div class="category-list">
+                <label class="category-item" style="background: rgba(241, 196, 15, 0.06); border: 1px solid rgba(241, 196, 15, 0.15);">
+                    <input type="checkbox" checked onchange="toggleSpecial('time_100')" id="special-time_100" style="display:none;">
+                    <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
+                    Time 100: Yüzyılın Kişileri
+                </label>
+                <label class="category-item" style="background: rgba(231, 76, 60, 0.06); border: 1px solid rgba(231, 76, 60, 0.15);">
+                    <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows" style="display:none;">
+                    <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
+                    Çatışma Okları
+                </label>
             </div>
         </div>
     </div>
 
-    <div class="control-section">
-        <h4>Gosterge Katmanlari</h4>
-        <div style="display:flex; flex-direction:column; gap:6px;">
+    <!-- Accordion: Ülke Grupları -->
+    <div class="control-section" id="accGroups">
+        <div class="acc-header" onclick="toggleAcc('accGroups')">
+            <div class="acc-icon" style="--acc-color:rgba(46,204,113,0.15);--acc-text:#2ecc71;">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 6v2h12v-2c0-2.67-4-4.13-6-4.13S6 15.33 6 18z"/></svg>
+            </div>
+            <span class="acc-title">Ülke Grupları</span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+                <div class="group-card" id="group-nato-card" onclick="toggleCountryGroupCard('nato')" style="--group-color:rgba(52,152,219,0.5);--group-glow:rgba(52,152,219,0.08);--group-bg:rgba(52,152,219,0.15);">
+                    <input type="checkbox" id="group-nato" style="display:none;">
+                    <div class="group-card-icon" style="color:#3498db;">
+                        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="currentColor" opacity="0.5"/></svg>
+                    </div>
+                    <span class="group-card-label">NATO</span>
+                    <span class="group-card-count" id="natoCount"></span>
+                </div>
+                <div class="group-card" id="group-g8-card" onclick="toggleCountryGroupCard('g8')" style="--group-color:rgba(241,196,15,0.5);--group-glow:rgba(241,196,15,0.08);--group-bg:rgba(241,196,15,0.15);">
+                    <input type="checkbox" id="group-g8" style="display:none;">
+                    <div class="group-card-icon" style="color:#f1c40f;">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><text x="8" y="10.5" text-anchor="middle" font-size="6" font-weight="700" fill="currentColor">8</text></svg>
+                    </div>
+                    <span class="group-card-label">G8</span>
+                    <span class="group-card-count" id="g8Count"></span>
+                </div>
+                <div class="group-card" id="group-brics-card" onclick="toggleCountryGroupCard('brics_plus')" style="--group-color:rgba(88,101,242,0.5);--group-glow:rgba(88,101,242,0.08);--group-bg:rgba(88,101,242,0.15);">
+                    <input type="checkbox" id="group-brics_plus" style="display:none;">
+                    <div class="group-card-icon" style="color:#5865f2;">
+                        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="4" height="5" rx="0.5" fill="currentColor" opacity="0.6"/><rect x="6" y="5" width="4" height="9" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="10" y="2" width="4" height="12" rx="0.5" fill="currentColor" opacity="0.8"/></svg>
+                    </div>
+                    <span class="group-card-label">BRICS+</span>
+                    <span class="group-card-count" id="bricsCount"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accordion: Gösterge Katmanları -->
+    <div class="control-section" id="accIndicators">
+        <div class="acc-header" onclick="toggleAcc('accIndicators')">
+            <div class="acc-icon" style="--acc-color:rgba(155,89,182,0.15);--acc-text:#9b59b6;">
+                <svg viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>
+            </div>
+            <span class="acc-title">Gösterge Katmanları</span>
+            <span class="acc-badge">13</span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body">
             <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
                 <option value="">Gösterge kapalı</option>
                 <option value="sanctions_risk_score">Yaptırım / Risk</option>
@@ -1973,13 +2105,13 @@ function parseMarkdownLinks(text) {
                 <option value="fx_pressure_score">Kur Baskısı (30g USD)</option>
                 <option value="min_wage">Asgari Ücret (USD/saat)</option>
                 <option value="bigmac">Big Mac Endeksi (USD)</option>
-                <option value="water_internal_total">Ic Tatli Su (milyar m3)</option>
-                <option value="water_internal_per_capita">Ic Tatli Su / Kisi</option>
+                <option value="water_internal_total">İç Tatlı Su (milyar m3)</option>
+                <option value="water_internal_per_capita">İç Tatlı Su / Kişi</option>
                 <option value="water_stress">Su Stresi</option>
-                <option value="water_withdrawal_pct_internal">Su Cekimi / Ic Kaynak</option>
-                <option value="water_use_agriculture">Su Kullanimi: Tarim</option>
-                <option value="water_use_industry">Su Kullanimi: Sanayi</option>
-                <option value="water_use_domestic">Su Kullanimi: Evsel</option>
+                <option value="water_withdrawal_pct_internal">Su Çekimi / İç Kaynak</option>
+                <option value="water_use_agriculture">Su Kullanımı: Tarım</option>
+                <option value="water_use_industry">Su Kullanımı: Sanayi</option>
+                <option value="water_use_domestic">Su Kullanımı: Evsel</option>
             </select>
             <div class="indicator-legend" id="indicatorLegend" style="display:none;"></div>
         </div>
@@ -3039,6 +3171,7 @@ function toggleDecade(decade) {{
     }} else {{
         selectedDecades.add(decade);
     }}
+    updateFilterBadges();
     updateVisibleCount();
     updateMarkerVisibility();
 }}
@@ -3049,13 +3182,30 @@ function toggleCategory(category) {{
     }} else {{
         selectedCategories.add(category);
     }}
+    updateFilterBadges();
     updateVisibleCount();
     updateMarkerVisibility();
+}}
+
+function toggleAcc(id) {{
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('open');
+}}
+
+function updateFilterBadges() {{
+    const db = document.getElementById('decadeBadge');
+    if (db) db.textContent = selectedDecades.size + '/' + decades.length;
+    const cb = document.getElementById('catBadge');
+    if (cb) {{
+        const total = Object.keys(categories).filter(c => c !== 'time_100').length;
+        cb.textContent = selectedCategories.size + '/' + total;
+    }}
 }}
 
 function selectAllDecades() {{
     selectedDecades = new Set(decades);
     decades.forEach(d => document.getElementById('decade-' + d).checked = true);
+    updateFilterBadges();
     updateVisibleCount();
     updateMarkerVisibility();
 }}
@@ -3063,18 +3213,19 @@ function selectAllDecades() {{
 function selectNoDecades() {{
     selectedDecades.clear();
     decades.forEach(d => document.getElementById('decade-' + d).checked = false);
+    updateFilterBadges();
     updateVisibleCount();
     updateMarkerVisibility();
 }}
 
 function selectAllCategories() {{
-    // Only select standard categories
     const standardCats = Object.keys(categories).filter(c => c !== 'time_100');
     selectedCategories = new Set(standardCats);
     standardCats.forEach(c => {{
         const el = document.getElementById('cat-' + c);
         if (el) el.checked = true;
     }});
+    updateFilterBadges();
     updateVisibleCount();
     updateMarkerVisibility();
 }}
@@ -3085,6 +3236,7 @@ function selectNoCategories() {{
         const el = document.getElementById('cat-' + c);
         if (el) el.checked = false;
     }});
+    updateFilterBadges();
     updateVisibleCount();
     updateMarkerVisibility();
 }}
@@ -4243,7 +4395,7 @@ function clearCountryHighlight() {{
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function() {{
     initFilters();
-    // Update group card counts once data is ready
+    updateFilterBadges();
     setTimeout(updateGroupCounts, 500);
 }});
 
