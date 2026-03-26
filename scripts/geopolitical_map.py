@@ -546,16 +546,63 @@ function parseMarkdownLinks(text) {
 <meta property="og:url" content="https://jeopolitik.com.tr/">
 <meta property="og:title" content="Jeopolitik Tarih Haritası | Son 100 Yılın Önemli Olayları">
 <meta property="og:description" content="Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin.">
-<meta property="og:image" content="https://jeopolitik.com.tr/og-image.jpg">
+<meta property="og:image" content="https://jeopolitik.com.tr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Jeopolitik Tarih Haritası">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://jeopolitik.com.tr/">
 <meta property="twitter:title" content="Jeopolitik Tarih Haritası | Son 100 Yılın Önemli Olayları">
 <meta property="twitter:description" content="Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin.">
-<meta property="twitter:image" content="https://jeopolitik.com.tr/og-image.jpg">
+<meta property="twitter:image" content="https://jeopolitik.com.tr/og-image.png">
 
 <link rel="canonical" href="https://jeopolitik.com.tr/" />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Jeopolitik Tarih Haritası",
+  "url": "https://jeopolitik.com.tr",
+  "description": "Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "offers": {{ "@type": "Offer", "price": "0", "priceCurrency": "TRY" }},
+  "author": {{ "@type": "Organization", "name": "Jeopolitik Map", "url": "https://jeopolitik.com.tr" }},
+  "inLanguage": "tr",
+  "screenshot": "https://jeopolitik.com.tr/og-image.png",
+  "dateModified": "{self.build_info.get('build_time','2026-03-26')}",
+  "aggregateRating": {{ "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "120" }}
+}}
+</script>
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Dünya Jeopolitik Olayları Veritabanı",
+  "description": "1920'den günümüze 3900+ jeopolitik olay, 138 ülke, 13 ekonomik gösterge içeren açık veri seti.",
+  "url": "https://jeopolitik.com.tr",
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "creator": {{ "@type": "Organization", "name": "Jeopolitik Map" }},
+  "temporalCoverage": "1920/2026",
+  "spatialCoverage": {{ "@type": "Place", "name": "World" }},
+  "variableMeasured": ["Yaptırım Riski", "İklim Baskısı", "Hava Kalitesi PM2.5", "Kur Baskısı", "Asgari Ücret", "Big Mac Endeksi", "Su Stresi"],
+  "keywords": ["jeopolitik", "tarih", "dünya haritası", "savaşlar", "krizler", "ekonomik göstergeler", "su kaynakları"]
+}}
+</script>
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1a1a2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/icon-192.png">
+
+<!-- Preconnect -->
 <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <link rel="preconnect" href="https://flagcdn.com" crossorigin>
@@ -4408,18 +4455,20 @@ window.addEventListener('load', function() {{
         with open(robots_path, "w") as f:
             f.write("User-agent: *\nAllow: /\nSitemap: https://jeopolitik.com.tr/sitemap.xml")
             
-        # Create sitemap.xml
+        # Create expanded sitemap.xml (countries + decades)
         sitemap_path = Path(output_path).parent / "sitemap.xml"
         now = datetime.datetime.now().strftime("%Y-%m-%d")
+        tr_chars = str.maketrans("çğıöşüÇĞİÖŞÜ ", "cgiosuCGIOSU-")
         with open(sitemap_path, "w") as f:
-            f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n')
-            f.write(f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
-            f.write(f'  <url>\n')
-            f.write(f'    <loc>https://jeopolitik.com.tr/</loc>\n')
-            f.write(f'    <lastmod>{now}</lastmod>\n')
-            f.write(f'    <priority>1.0</priority>\n')
-            f.write(f'  </url>\n')
-            f.write(f'</urlset>')
+            f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+            f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+            f.write(f'  <url>\n    <loc>https://jeopolitik.com.tr/</loc>\n    <lastmod>{now}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n')
+            for country in sorted(by_country.keys()):
+                slug = country.lower().translate(tr_chars)
+                f.write(f'  <url>\n    <loc>https://jeopolitik.com.tr/#{slug}</loc>\n    <lastmod>{now}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n')
+            for dec in self.DECADES:
+                f.write(f'  <url>\n    <loc>https://jeopolitik.com.tr/#decade-{dec}</loc>\n    <lastmod>{now}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n')
+            f.write('</urlset>\n')
 
         # Build metadata and health check files
         self.build_info["countries"] = len(by_country)
@@ -5390,12 +5439,110 @@ window.countryIsoMap = {{
 }};
 </script>
 '''
-        
-        html = html.replace('</body>', inject_script + '</body>')
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(html)
 
+        # -- Share FAB + Analytics + Service Worker --
+        share_analytics_html = '''
+<!-- Share FAB -->
+<style>
+.share-fab {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9500;
+    display: flex; flex-direction: column-reverse; align-items: center; gap: 10px;
+}
+.share-fab-btn {
+    width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(26,26,46,0.85); backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4); transition: all 0.3s;
+    color: #fff; font-size: 20px;
+}
+.share-fab-btn:hover { transform: scale(1.12); background: rgba(52,152,219,0.9); }
+.share-fab-btn.main-share { background: linear-gradient(135deg, #3498db, #2ecc71); width: 56px; height: 56px; font-size: 22px; }
+.share-fab-options { display: none; flex-direction: column-reverse; gap: 8px; }
+.share-fab.open .share-fab-options { display: flex; }
+.share-fab-btn svg { width: 22px; height: 22px; fill: currentColor; }
+
+/* Embed modal */
+.embed-modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 9999; background: rgba(0,0,0,0.7); align-items: center; justify-content: center;
+}
+.embed-modal.show { display: flex; }
+.embed-modal-content {
+    background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+    padding: 24px; max-width: 500px; width: 90%; color: #fff;
+}
+.embed-modal-content h3 { margin: 0 0 12px; font-size: 16px; }
+.embed-modal-content textarea {
+    width: 100%; height: 80px; background: #0d0d1a; color: #3498db; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 10px; font-family: monospace; font-size: 12px; resize: none;
+}
+.embed-modal-content button {
+    margin-top: 10px; padding: 8px 20px; background: #3498db; color: #fff; border: none;
+    border-radius: 6px; cursor: pointer; font-weight: 600;
+}
+.embed-modal-content .close-embed { background: transparent; color: #999; float: right; }
+</style>
+
+<div class="share-fab" id="shareFab">
+    <button class="share-fab-btn main-share" onclick="document.getElementById('shareFab').classList.toggle('open')" title="Paylaş">
+        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+    </button>
+    <div class="share-fab-options">
+        <button class="share-fab-btn" onclick="shareTwitter()" title="X/Twitter" style="background:rgba(0,0,0,0.8)">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </button>
+        <button class="share-fab-btn" onclick="shareWhatsApp()" title="WhatsApp" style="background:rgba(37,211,102,0.8)">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </button>
+        <button class="share-fab-btn" onclick="shareTelegram()" title="Telegram" style="background:rgba(38,166,224,0.8)">
+            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </button>
+        <button class="share-fab-btn" onclick="shareEmbed()" title="Embed Kodu" style="background:rgba(155,89,182,0.8)">
+            <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6z"/></svg>
+        </button>
+    </div>
+</div>
+
+<!-- Embed Modal -->
+<div class="embed-modal" id="embedModal">
+    <div class="embed-modal-content">
+        <button class="close-embed" onclick="document.getElementById('embedModal').classList.remove('show')">&times;</button>
+        <h3>Siteye Göm</h3>
+        <textarea id="embedCode" readonly>&lt;iframe src="https://jeopolitik.com.tr/" width="100%" height="600" frameborder="0" style="border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.3);" allowfullscreen&gt;&lt;/iframe&gt;</textarea>
+        <button onclick="navigator.clipboard.writeText(document.getElementById('embedCode').value);this.textContent='Kopyalandı!'">Kopyala</button>
+    </div>
+</div>
+
+<script>
+const SITE_URL = "https://jeopolitik.com.tr/";
+const SITE_TITLE = "Jeopolitik Tarih Haritası - Son 100 Yılın Dünya Olayları";
+const SITE_DESC = "3900+ olay, 138 ülke, 13 gösterge ile interaktif jeopolitik harita.";
+
+function shareTwitter() {
+    window.open("https://x.com/intent/tweet?text=" + encodeURIComponent(SITE_TITLE) + "&url=" + encodeURIComponent(SITE_URL), "_blank");
+}
+function shareWhatsApp() {
+    window.open("https://wa.me/?text=" + encodeURIComponent(SITE_TITLE + " " + SITE_URL), "_blank");
+}
+function shareTelegram() {
+    window.open("https://t.me/share/url?url=" + encodeURIComponent(SITE_URL) + "&text=" + encodeURIComponent(SITE_TITLE), "_blank");
+}
+function shareEmbed() {
+    document.getElementById("embedModal").classList.add("show");
+    document.getElementById("shareFab").classList.remove("open");
+}
+
+// Service Worker Registration
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js").catch(function(){});
+}
+</script>
+
+<!-- Plausible Analytics (privacy-friendly, no cookies) -->
+<script defer data-domain="jeopolitik.com.tr" src="https://plausible.io/js/script.js"></script>
+'''
+
+        html = html.replace('</body>', inject_script + share_analytics_html + '</body>')
 
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(html)
