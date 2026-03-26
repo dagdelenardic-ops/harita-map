@@ -4201,40 +4201,83 @@ function openSidebar(countryName) {{
     const relContainer = document.getElementById('countryRelationsContainer');
     if (relContainer) {{
         let relHtml = '';
+        const meta = (metaResult && metaResult.meta) ? metaResult.meta : {{}};
 
-        // Rivalries from metadata
-        if (metaResult && metaResult.meta) {{
-            const meta = metaResult.meta;
-            if (meta.rivals && meta.rivals.length > 0) {{
-                relHtml += `<details class="country-meta-card" open>
-                    <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 8h4M10 8h4M8 2v4M8 10v4" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round"/></svg>Rakipler & Gerilimler</span></summary>
-                    <div class="country-meta-content">
-                        ${{meta.rivals.map(r => `<div class="meta-row"><span class="meta-label">${{r.country || r}}</span><div style="font-size:12px;color:#bdc3c7;">${{r.reason || ''}}</div></div>`).join('')}}
-                    </div>
-                </details>`;
-            }}
-            if (meta.allies && meta.allies.length > 0) {{
-                relHtml += `<details class="country-meta-card" open>
-                    <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 8c2-3 4-3 6 0s4 3 6 0" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round"/></svg>Müttefikler</span></summary>
-                    <div class="country-meta-content">
-                        ${{meta.allies.map(a => `<div class="meta-row"><span class="meta-label">${{a}}</span></div>`).join('')}}
-                    </div>
-                </details>`;
-            }}
+        // Rivalries
+        if (meta.rivalries && meta.rivalries.length > 0) {{
+            relHtml += `<details class="country-meta-card" open>
+                <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 8h4M10 8h4M8 2v4M8 10v4" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round"/></svg>Rakipler & Gerilimler <span style="font-size:10px;opacity:0.5;">(${{meta.rivalries.length}})</span></span></summary>
+                <div class="country-meta-content">
+                    ${{meta.rivalries.map(r => {{
+                        const rival = r.rival || r.country || r;
+                        const text = r.text || r.reason || '';
+                        const status = r.status || '';
+                        const statusColors = {{active:'#e74c3c',war:'#ff0000',tension:'#e67e22',frozen:'#3498db',cold:'#95a5a6',competition:'#f39c12',normalized:'#2ecc71',managed:'#27ae60',complex:'#9b59b6',severed:'#c0392b','cold_peace':'#7f8c8d','post-war':'#d35400',resolved:'#2ecc71'}};
+                        const dot = status ? `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${{statusColors[status]||'#95a5a6'}};margin-right:4px;box-shadow:0 0 4px ${{statusColors[status]||'#95a5a6'}};"></span>` : '';
+                        const statusLabels = {{active:'Aktif',war:'Savaş',tension:'Gerilim',frozen:'Dondurulmuş',cold:'Soğuk',competition:'Rekabet',normalized:'Normalleşti',managed:'Yönetilen',complex:'Karmaşık',severed:'Kopuk','cold_peace':'Soğuk Barış','post-war':'Savaş Sonrası',resolved:'Çözüldü'}};
+                        const statusText = status ? `<span style="font-size:9px;color:${{statusColors[status]||'#95a5a6'}};font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">${{dot}}${{statusLabels[status]||status}}</span>` : '';
+                        return `<div class="meta-row" style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                <span class="meta-label" style="font-weight:600;color:#ecf0f1;">${{rival}}</span>
+                                ${{statusText}}
+                            </div>
+                            <div style="font-size:11px;color:#95a5a6;margin-top:2px;">${{text}}</div>
+                        </div>`;
+                    }}).join('')}}
+                </div>
+            </details>`;
         }}
 
-        // Group memberships
+        // Allies
+        if (meta.allies && meta.allies.length > 0) {{
+            relHtml += `<details class="country-meta-card" open>
+                <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M4 12c0-2 2-3 4-3s4 1 4 3" stroke="#2ecc71" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="5.5" r="2.5" stroke="#2ecc71" stroke-width="1.2"/></svg>Müttefikler <span style="font-size:10px;opacity:0.5;">(${{meta.allies.length}})</span></span></summary>
+                <div class="country-meta-content">
+                    <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                        ${{meta.allies.map(a => `<span style="padding:3px 10px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.2);border-radius:12px;font-size:11px;color:#2ecc71;cursor:pointer;" onclick="highlightCountryWithFlag('${{a}}')">${{a}}</span>`).join('')}}
+                    </div>
+                </div>
+            </details>`;
+        }}
+
+        // Trade Partners
+        if (meta.trade_partners && meta.trade_partners.length > 0) {{
+            relHtml += `<details class="country-meta-card">
+                <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M2 12l4-4 3 3 5-7" stroke="#f1c40f" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Ticaret Ortakları <span style="font-size:10px;opacity:0.5;">(${{meta.trade_partners.length}})</span></span></summary>
+                <div class="country-meta-content">
+                    <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                        ${{meta.trade_partners.map((t,i) => `<span style="padding:3px 10px;background:rgba(241,196,15,0.08);border:1px solid rgba(241,196,15,0.15);border-radius:12px;font-size:11px;color:#f1c40f;cursor:pointer;" onclick="highlightCountryWithFlag('${{t}}')">${{i+1}}. ${{t}}</span>`).join('')}}
+                    </div>
+                </div>
+            </details>`;
+        }}
+
+        // Organizations
         const memberships = [];
-        if (countryGroups.nato && countryGroups.nato.has(countryName)) memberships.push('NATO');
-        if (countryGroups.g8 && countryGroups.g8.has(countryName)) memberships.push('G8');
-        if (countryGroups.brics_plus && countryGroups.brics_plus.has(countryName)) memberships.push('BRICS+');
+        if (countryGroups.nato && countryGroups.nato.has(countryName)) memberships.push({{name:'NATO',color:'#3498db'}});
+        if (countryGroups.g8 && countryGroups.g8.has(countryName)) memberships.push({{name:'G8',color:'#f1c40f'}});
+        if (countryGroups.brics_plus && countryGroups.brics_plus.has(countryName)) memberships.push({{name:'BRICS+',color:'#5865f2'}});
+        const orgs = meta.organizations || [];
+        orgs.forEach(o => {{
+            if (!memberships.find(m => m.name === o)) memberships.push({{name:o,color:'#95a5a6'}});
+        }});
         if (memberships.length > 0) {{
             relHtml += `<details class="country-meta-card" open>
-                <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><circle cx="8" cy="8" r="5.5" stroke="#3498db" stroke-width="1.2"/><path d="M8 5v6M5 8h6" stroke="#3498db" stroke-width="1.2"/></svg>Grup Üyelikleri</span></summary>
+                <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><circle cx="8" cy="8" r="5.5" stroke="#3498db" stroke-width="1.2"/><path d="M8 5v6M5 8h6" stroke="#3498db" stroke-width="1.2"/></svg>Üyelikler & Kuruluşlar <span style="font-size:10px;opacity:0.5;">(${{memberships.length}})</span></span></summary>
                 <div class="country-meta-content">
-                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                        ${{memberships.map(m => `<span class="group-badge">${{m}}</span>`).join('')}}
+                    <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                        ${{memberships.map(m => `<span class="group-badge" style="border-color:${{m.color}}40;color:${{m.color}};background:${{m.color}}15;">${{m.name}}</span>`).join('')}}
                     </div>
+                </div>
+            </details>`;
+        }}
+
+        // Territorial disputes
+        if (meta.territorial_disputes && meta.territorial_disputes.length > 0) {{
+            relHtml += `<details class="country-meta-card">
+                <summary><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:6px;"><path d="M8 1v14M1 8h14" stroke="#e67e22" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/><circle cx="8" cy="8" r="5" stroke="#e67e22" stroke-width="1.2"/></svg>Toprak Uyuşmazlıkları <span style="font-size:10px;opacity:0.5;">(${{meta.territorial_disputes.length}})</span></span></summary>
+                <div class="country-meta-content">
+                    ${{meta.territorial_disputes.map(t => `<div style="padding:4px 0;font-size:11px;color:#e67e22;border-bottom:1px solid rgba(255,255,255,0.03);">⚠ ${{t}}</div>`).join('')}}
                 </div>
             </details>`;
         }}
