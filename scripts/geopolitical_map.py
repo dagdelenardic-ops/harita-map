@@ -806,6 +806,113 @@ function parseMarkdownLinks(text) {
         border-color: rgba(52, 152, 219, 0.3);
     }}
 
+    .ai-search-panel {{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }}
+    .ai-search-form {{
+        display: flex;
+        gap: 6px;
+    }}
+    .ai-search-input {{
+        flex: 1;
+        min-width: 0;
+        padding: 8px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        color: #ecf0f1;
+        font-size: 12px;
+        outline: none;
+    }}
+    .ai-search-input:focus {{
+        border-color: rgba(52, 152, 219, 0.55);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.16);
+    }}
+    .ai-search-input::placeholder {{
+        color: rgba(236, 240, 241, 0.42);
+    }}
+    .ai-search-button {{
+        flex-shrink: 0;
+        padding: 8px 10px;
+        border: 1px solid rgba(52, 152, 219, 0.42);
+        border-radius: 8px;
+        background: rgba(52, 152, 219, 0.18);
+        color: #dff1ff;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+    }}
+    .ai-search-button:hover {{
+        background: rgba(52, 152, 219, 0.28);
+    }}
+    .ai-search-button:disabled {{
+        opacity: 0.55;
+        cursor: wait;
+    }}
+    .ai-search-status {{
+        min-height: 14px;
+        font-size: 10px;
+        line-height: 1.4;
+        color: rgba(236, 240, 241, 0.55);
+    }}
+    .ai-search-status.error {{
+        color: #ffb4a8;
+    }}
+    .ai-search-summary {{
+        font-size: 10px;
+        line-height: 1.45;
+        color: rgba(236, 240, 241, 0.72);
+    }}
+    .ai-search-results {{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        max-height: 260px;
+        overflow-y: auto;
+    }}
+    .ai-result-item {{
+        width: 100%;
+        text-align: left;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        color: #ecf0f1;
+        padding: 8px;
+        cursor: pointer;
+    }}
+    .ai-result-item:hover {{
+        border-color: rgba(52, 152, 219, 0.34);
+        background: rgba(52, 152, 219, 0.1);
+    }}
+    .ai-result-meta {{
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+        color: rgba(236, 240, 241, 0.58);
+        font-size: 10px;
+    }}
+    .ai-result-category {{
+        padding: 2px 6px;
+        border-radius: 6px;
+        color: #ffffff;
+        font-weight: 700;
+    }}
+    .ai-result-title {{
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.35;
+    }}
+    .ai-result-snippet {{
+        margin-top: 4px;
+        font-size: 10px;
+        line-height: 1.4;
+        color: rgba(236, 240, 241, 0.58);
+    }}
+
     /* Decade toggle chips */
     .decade-grid {{
         display: flex;
@@ -1984,6 +2091,29 @@ function parseMarkdownLinks(text) {
         Ülkeye tıklayın veya marker'a basın. Filtreleri kullanarak olayları daraltabilirsiniz.
     </div>
 
+    <!-- Accordion: AI Arama -->
+    <div class="control-section open" id="accAiSearch">
+        <div class="acc-header" onclick="toggleAcc('accAiSearch')">
+            <div class="acc-icon" style="--acc-color:rgba(52,152,219,0.15);--acc-text:#74b9ff;">
+                <svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 104.47 10.02l3.75 3.75 1.41-1.41-3.75-3.75A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg>
+            </div>
+            <span class="acc-title">AI Arama</span>
+            <span class="acc-badge">Vertex</span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body">
+            <div class="ai-search-panel">
+                <div class="ai-search-form">
+                    <input class="ai-search-input" id="aiSearchInput" type="search" autocomplete="off" placeholder="Örn. petrol krizleri">
+                    <button class="ai-search-button" id="aiSearchButton" type="button" onclick="aiSearch()">Ara</button>
+                </div>
+                <div class="ai-search-status" id="aiSearchStatus">Doğal dilde olay arayın.</div>
+                <div class="ai-search-summary" id="aiSummary"></div>
+                <div class="ai-search-results" id="aiResultsList"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Accordion: Zaman Dilimi -->
     <div class="control-section open" id="accDecades">
         <div class="acc-header" onclick="toggleAcc('accDecades')">
@@ -2409,6 +2539,173 @@ function escapeHtml(value) {{
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
+}}
+
+function stripSearchMarkup(value) {{
+    return String(value == null ? '' : value).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+}}
+
+function setAiSearchStatus(text, isError = false) {{
+    const el = document.getElementById('aiSearchStatus');
+    if (!el) return;
+    el.textContent = text || '';
+    el.classList.toggle('error', Boolean(isError));
+}}
+
+function initAiSearch() {{
+    const input = document.getElementById('aiSearchInput');
+    if (!input) return;
+    input.addEventListener('keydown', function(event) {{
+        if (event.key === 'Enter') {{
+            event.preventDefault();
+            aiSearch();
+        }}
+    }});
+}}
+
+function getAiResultCountry(result) {{
+    return String(
+        result.country_name ||
+        result.country ||
+        result.countryName ||
+        result.country_tr ||
+        ''
+    ).trim();
+}}
+
+function getAiResultTitle(result) {{
+    return String(result.title || result.event_title || result.name || 'Olay').trim();
+}}
+
+function openAiSearchResult(result) {{
+    const country = getAiResultCountry(result);
+    const rawLat = result.lat !== undefined ? result.lat : result.latitude;
+    const rawLon = result.lon !== undefined ? result.lon : (result.lng !== undefined ? result.lng : result.longitude);
+    const lat = Number(rawLat);
+    const lon = Number(rawLon);
+
+    if (country && typeof window.openSidebar === 'function') {{
+        window.openSidebar(country);
+    }}
+
+    const hasUsableCoords = Number.isFinite(lat) && Number.isFinite(lon) && !(lat === 0 && lon === 0);
+    if (window.geoMap && hasUsableCoords) {{
+        window.geoMap.flyTo([lat, lon], Math.max(window.geoMap.getZoom(), 5), {{ duration: 0.7 }});
+        return;
+    }}
+
+    const layers = country && window.markerLayersByCountry ? window.markerLayersByCountry[country] : null;
+    const firstLayer = layers && layers.length ? layers[0] : null;
+    if (window.geoMap && firstLayer && typeof firstLayer.getLatLng === 'function') {{
+        window.geoMap.flyTo(firstLayer.getLatLng(), Math.max(window.geoMap.getZoom(), 5), {{ duration: 0.7 }});
+    }}
+}}
+
+function renderAiSearchResults(data) {{
+    const summaryDiv = document.getElementById('aiSummary');
+    const listDiv = document.getElementById('aiResultsList');
+    if (!summaryDiv || !listDiv) return;
+
+    const results = Array.isArray(data.results) ? data.results : [];
+    summaryDiv.textContent = stripSearchMarkup(data.summary || '');
+    listDiv.innerHTML = '';
+
+    if (!results.length) {{
+        setAiSearchStatus('Sonuç bulunamadı.', false);
+        return;
+    }}
+
+    setAiSearchStatus(`${{results.length}} sonuç bulundu.`, false);
+    const fragment = document.createDocumentFragment();
+    results.forEach(result => {{
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'ai-result-item';
+        item.addEventListener('click', () => openAiSearchResult(result));
+
+        const meta = document.createElement('div');
+        meta.className = 'ai-result-meta';
+
+        const catKey = String(result.category || '').trim();
+        if (catKey) {{
+            const cat = categories[catKey] || {{}};
+            const badge = document.createElement('span');
+            badge.className = 'ai-result-category';
+            badge.style.background = cat.color || '#718096';
+            badge.textContent = cat.label || catKey;
+            meta.appendChild(badge);
+        }}
+
+        const year = result.year ? String(result.year) : '';
+        const country = getAiResultCountry(result);
+        [year, country].filter(Boolean).forEach(value => {{
+            const span = document.createElement('span');
+            span.textContent = value;
+            meta.appendChild(span);
+        }});
+
+        const score = Number(result.score);
+        if (Number.isFinite(score) && score > 0) {{
+            const span = document.createElement('span');
+            span.textContent = `${{Math.round(score * 100)}}%`;
+            meta.appendChild(span);
+        }}
+
+        const title = document.createElement('div');
+        title.className = 'ai-result-title';
+        title.textContent = getAiResultTitle(result);
+
+        item.appendChild(meta);
+        item.appendChild(title);
+
+        const snippet = stripSearchMarkup(result.snippet || result.description || '');
+        if (snippet) {{
+            const desc = document.createElement('div');
+            desc.className = 'ai-result-snippet';
+            desc.textContent = snippet.length > 240 ? snippet.slice(0, 237) + '...' : snippet;
+            item.appendChild(desc);
+        }}
+
+        fragment.appendChild(item);
+    }});
+    listDiv.appendChild(fragment);
+}}
+
+async function aiSearch() {{
+    const input = document.getElementById('aiSearchInput');
+    const button = document.getElementById('aiSearchButton');
+    const summaryDiv = document.getElementById('aiSummary');
+    const listDiv = document.getElementById('aiResultsList');
+    const query = input ? input.value.trim() : '';
+    if (!query) {{
+        setAiSearchStatus('Aramak için bir konu yazın.', true);
+        return;
+    }}
+
+    if (button) button.disabled = true;
+    if (summaryDiv) summaryDiv.textContent = '';
+    if (listDiv) listDiv.innerHTML = '';
+    setAiSearchStatus('Aranıyor...', false);
+
+    try {{
+        const response = await fetch(`/api/search?q=${{encodeURIComponent(query)}}&limit=10`, {{
+            headers: {{ 'Accept': 'application/json' }}
+        }});
+        let data = {{}};
+        try {{
+            data = await response.json();
+        }} catch (_err) {{
+            data = {{ error: `HTTP ${{response.status}}` }};
+        }}
+        if (!response.ok) {{
+            throw new Error(data.error || `HTTP ${{response.status}}`);
+        }}
+        renderAiSearchResults(data);
+    }} catch (err) {{
+        setAiSearchStatus('Arama hatası: ' + (err && err.message ? err.message : String(err)), true);
+    }} finally {{
+        if (button) button.disabled = false;
+    }}
 }}
 
 function formatIndicatorTimestamp(value) {{
@@ -4438,6 +4735,7 @@ function clearCountryHighlight() {{
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function() {{
     initFilters();
+    initAiSearch();
     updateFilterBadges();
     setTimeout(updateGroupCounts, 500);
 }});

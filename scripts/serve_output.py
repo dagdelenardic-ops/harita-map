@@ -13,19 +13,173 @@ from __future__ import annotations
 
 import mimetypes
 import os
+import json
+import subprocess
+import time
 import urllib.parse
+import urllib.error
+import urllib.request
+from collections import defaultdict, deque
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from typing import Optional
+from threading import Lock
+from typing import Any, Optional
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = BASE_DIR / "output"
 
+VERTEX_SEARCH_ENABLED = os.environ.get("VERTEX_SEARCH_ENABLED", "1").lower() not in {"0", "false", "no"}
+VERTEX_PROJECT = os.environ.get("VERTEX_PROJECT", "project-2d4834e6-d656-4df9-909")
+VERTEX_LOCATION = os.environ.get("VERTEX_LOCATION", "global")
+VERTEX_COLLECTION = os.environ.get("VERTEX_COLLECTION", "default_collection")
+VERTEX_ENGINE = os.environ.get("VERTEX_ENGINE", "jeopolitik-search")
+VERTEX_SEARCH_URL = (
+    f"https://discoveryengine.googleapis.com/v1/projects/{VERTEX_PROJECT}"
+    f"/locations/{VERTEX_LOCATION}/collections/{VERTEX_COLLECTION}"
+    f"/engines/{VERTEX_ENGINE}/servingConfigs/default_search:search"
+)
+
+SEARCH_RATE_LIMIT_WINDOW_SECONDS = int(os.environ.get("SEARCH_RATE_LIMIT_WINDOW_SECONDS", "60"))
+SEARCH_RATE_LIMIT_MAX_REQUESTS = int(os.environ.get("SEARCH_RATE_LIMIT_MAX_REQUESTS", "30"))
+SEARCH_CACHE_TTL_SECONDS = int(os.environ.get("SEARCH_CACHE_TTL_SECONDS", "60"))
+
+_search_cache: dict[tuple[str, int], tuple[float, dict[str, Any]]] = {}
+_search_cache_lock = Lock()
+_rate_limit_hits: dict[str, deque[float]] = defaultdict(deque)
+_rate_limit_lock = Lock()
+
 
 def _accepts_gzip(header_value: str) -> bool:
     return "gzip" in (header_value or "").lower()
+
+
+def _get_access_token() -> Optional[str]:
+    metadata_url = "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token"
+    try:
+        req = urllib.request.Request(metadata_url, headers={"Metadata-Flavor": "Google"})
+        with urllib.request.urlopen(req, timeout=2) as resp:
+            return json.loads(resp.read()).get("access_token")
+    except Exception:
+        pass
+
+    try:
+        result = subprocess.run(
+            ["gcloud", "auth", "print-access-token"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+    except Exception:
+        return None
+
+    if result.returncode == 0:
+        return result.stdout.strip()
+    return None
+
+
+def _client_key(handler: SimpleHTTPRequestHandler) -> str:
+    forwarded_for = handler.headers.get("X-Forwarded-For", "")
+    if forwarded_for:
+        return forwarded_for.split(",", 1)[0].strip()
+    return handler.client_address[0] if handler.client_address else "unknown"
+
+
+def _rate_limited(client: str) -> bool:
+    now = time.monotonic()
+    with _rate_limit_lock:
+        hits = _rate_limit_hits[client]
+        while hits and now - hits[0] > SEARCH_RATE_LIMIT_WINDOW_SECONDS:
+            hits.popleft()
+        if len(hits) >= SEARCH_RATE_LIMIT_MAX_REQUESTS:
+            return True
+        hits.append(now)
+    return False
+
+
+def _cached_search(query: str, page_size: int) -> Optional[dict[str, Any]]:
+    key = (query.lower(), page_size)
+    now = time.monotonic()
+    with _search_cache_lock:
+        cached = _search_cache.get(key)
+        if cached and now - cached[0] <= SEARCH_CACHE_TTL_SECONDS:
+            return cached[1]
+        if cached:
+            _search_cache.pop(key, None)
+    return None
+
+
+def _store_cached_search(query: str, page_size: int, payload: dict[str, Any]) -> None:
+    key = (query.lower(), page_size)
+    with _search_cache_lock:
+        _search_cache[key] = (time.monotonic(), payload)
+
+
+def _run_vertex_search(query: str, page_size: int) -> tuple[int, dict[str, Any]]:
+    access_token = _get_access_token()
+    if not access_token:
+        return HTTPStatus.SERVICE_UNAVAILABLE, {"error": "Vertex AI Search kimlik dogrulamasi hazir degil."}
+
+    search_body = json.dumps(
+        {
+            "query": query,
+            "pageSize": page_size,
+            "queryExpansionSpec": {"condition": "AUTO"},
+            "spellCorrectionSpec": {"mode": "AUTO"},
+            "contentSearchSpec": {
+                "snippetSpec": {"returnSnippet": True},
+                "summarySpec": {
+                    "summaryResultCount": 3,
+                    "languageCode": "tr",
+                },
+            },
+        }
+    ).encode("utf-8")
+
+    req = urllib.request.Request(
+        VERTEX_SEARCH_URL,
+        data=search_body,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        },
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")[:500]
+        return HTTPStatus.BAD_GATEWAY, {"error": f"Vertex Search {exc.code}", "detail": detail}
+    except Exception as exc:
+        return HTTPStatus.BAD_GATEWAY, {"error": str(exc)}
+
+    results = []
+    for result in data.get("results", []):
+        document = result.get("document", {})
+        struct_data = document.get("structData", {})
+        snippets = document.get("derivedStructData", {}).get("snippets", [])
+        snippet = ""
+        if snippets:
+            snippet = snippets[0].get("snippet") or snippets[0].get("htmlSnippet") or ""
+        results.append(
+            {
+                **struct_data,
+                "snippet": snippet,
+                "score": result.get("rankSignals", {}).get("semanticSimilarityScore", 0),
+            }
+        )
+
+    payload = {
+        "query": query,
+        "total": len(results),
+        "summary": data.get("summary", {}).get("summaryText", ""),
+        "results": results,
+    }
+    _store_cached_search(query, page_size, payload)
+    return HTTPStatus.OK, payload
 
 
 class GzipStaticHandler(SimpleHTTPRequestHandler):
@@ -66,6 +220,65 @@ class GzipStaticHandler(SimpleHTTPRequestHandler):
             self.send_header("Content-Encoding", "gzip")
         self.end_headers()
         return f
+
+    def _send_json(self, status: int, payload: dict[str, Any]) -> None:
+        data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
+    def _handle_search(self, parsed: urllib.parse.SplitResult) -> None:
+        if not VERTEX_SEARCH_ENABLED:
+            self._send_json(HTTPStatus.SERVICE_UNAVAILABLE, {"error": "Arama gecici olarak kapali."})
+            return
+
+        client = _client_key(self)
+        if _rate_limited(client):
+            self._send_json(HTTPStatus.TOO_MANY_REQUESTS, {"error": "Cok fazla arama istegi."})
+            return
+
+        params = urllib.parse.parse_qs(parsed.query)
+        query = (params.get("q") or [""])[0].strip()
+        if len(query) < 2:
+            self._send_json(HTTPStatus.BAD_REQUEST, {"error": "q parametresi en az 2 karakter olmali."})
+            return
+        if len(query) > 200:
+            self._send_json(HTTPStatus.BAD_REQUEST, {"error": "q parametresi en fazla 200 karakter olabilir."})
+            return
+
+        try:
+            page_size = int((params.get("limit") or ["10"])[0])
+        except ValueError:
+            page_size = 10
+        page_size = max(1, min(page_size, 20))
+
+        cached = _cached_search(query, page_size)
+        if cached:
+            self._send_json(HTTPStatus.OK, cached)
+            return
+
+        status, payload = _run_vertex_search(query, page_size)
+        self._send_json(status, payload)
+
+    def do_GET(self) -> None:
+        parsed = urllib.parse.urlsplit(self.path)
+        if parsed.path == "/api/search":
+            self._handle_search(parsed)
+            return
+        super().do_GET()
+
+    def do_OPTIONS(self) -> None:
+        parsed = urllib.parse.urlsplit(self.path)
+        if parsed.path == "/api/search":
+            self.send_response(HTTPStatus.NO_CONTENT)
+            self.send_header("Allow", "GET, OPTIONS")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            return
+        self.send_error(HTTPStatus.NOT_IMPLEMENTED, "Unsupported method")
 
     def send_head(self):  # noqa: ANN001
         # Mostly copied from SimpleHTTPRequestHandler.send_head, with gzip sidecar support.
