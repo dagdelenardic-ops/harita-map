@@ -359,6 +359,11 @@ def _persist_with_fallback(
         return fallback
 
 
+def _existing_indicator_payload() -> Dict[str, Any]:
+    existing = _load_existing_payload(OUTPUT_PATH)
+    return existing if isinstance(existing, dict) else {}
+
+
 def _parse_float(value: str) -> Optional[float]:
     if value is None:
         return None
@@ -1346,11 +1351,43 @@ def fetch_sanctions_snapshot(now_utc: str, by_iso2: Dict[str, CountryCanon]) -> 
 def main() -> None:
     lookup, by_turkish, by_iso2 = _load_country_index()
     now_utc = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    existing_payload = _existing_indicator_payload()
+    existing_groups = existing_payload.get("groups") or {}
+    existing_indicators = existing_payload.get("indicators") or {}
 
-    nato_members, nato_unknown = fetch_nato_members(lookup)
-    min_wage_by_country, min_wage_unknown = fetch_minimum_wage(lookup)
-    bigmac_by_country, bigmac_meta, bigmac_unknown = fetch_big_mac_index(lookup)
-    water_indicators, water_unknown = fetch_water_indicators(lookup)
+    try:
+        nato_members, nato_unknown = fetch_nato_members(lookup)
+    except Exception as exc:
+        nato_members = existing_groups.get("nato") or []
+        nato_unknown = []
+        print(f"WARNING: NATO fetch failed, keeping previous snapshot: {exc}")
+
+    try:
+        min_wage_by_country, min_wage_unknown = fetch_minimum_wage(lookup)
+    except Exception as exc:
+        min_wage_by_country = ((existing_indicators.get("min_wage") or {}).get("by_country") or {})
+        min_wage_unknown = []
+        print(f"WARNING: minimum wage fetch failed, keeping previous snapshot: {exc}")
+
+    try:
+        bigmac_by_country, bigmac_meta, bigmac_unknown = fetch_big_mac_index(lookup)
+    except Exception as exc:
+        bigmac_entry = existing_indicators.get("bigmac") or {}
+        bigmac_by_country = bigmac_entry.get("by_country") or {}
+        bigmac_meta = bigmac_entry.get("source") or {}
+        bigmac_unknown = []
+        print(f"WARNING: Big Mac fetch failed, keeping previous snapshot: {exc}")
+
+    try:
+        water_indicators, water_unknown = fetch_water_indicators(lookup)
+    except Exception as exc:
+        water_indicators = {
+            key: value
+            for key, value in existing_indicators.items()
+            if str(key).startswith("water_") and isinstance(value, dict)
+        }
+        water_unknown = {}
+        print(f"WARNING: water indicators fetch failed, keeping previous snapshot: {exc}")
 
     country_context = build_country_context(lookup, by_turkish, by_iso2)
 
