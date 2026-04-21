@@ -1746,25 +1746,40 @@ function parseMarkdownLinks(text) {
             transform: translateX(100%);
         }}
         .control-panel {{
-            width: min(340px, calc(100vw - 20px));
-            max-height: calc(100vh - 24px);
-            transform: translateX(110%);
+            top: auto;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            width: auto;
+            max-height: min(78vh, calc(100vh - 24px));
+            padding: 12px 12px calc(14px + env(safe-area-inset-bottom, 0px));
+            border-radius: 8px;
+            transform: translateY(calc(100% + 28px));
             opacity: 0;
             pointer-events: none;
+            overflow-y: auto;
+            box-shadow: 0 14px 40px rgba(0,0,0,0.42), inset 0 0 0 1px rgba(255,255,255,0.04);
         }}
         .control-panel.mobile-open {{
-            transform: translateX(0);
+            transform: translateY(0);
             opacity: 1;
             pointer-events: auto;
         }}
+        .panel-backdrop {{
+            display: block;
+        }}
         .panel-toggle {{
             display: block;
+            margin-bottom: 10px;
         }}
         .panel-fab {{
             display: inline-flex;
         }}
         .panel-handle {{
-            display: inline-flex;
+            display: none;
+        }}
+        .panel-sheet-grip {{
+            display: block;
         }}
         .build-info,
         .app-footer {{
@@ -1797,6 +1812,10 @@ function parseMarkdownLinks(text) {
         .group-card-label,
         .stats-box .label,
         .instructions,
+        .ai-search-status,
+        .ai-search-summary,
+        .ai-result-meta,
+        .ai-result-snippet,
         .indicator-legend,
         .indicator-legend-desc,
         .indicator-legend-detail,
@@ -1813,8 +1832,10 @@ function parseMarkdownLinks(text) {
             line-height: 1.4;
         }}
         .panel-fab {{
-            top: 14px;
-            right: 14px;
+            top: auto;
+            left: 16px;
+            right: auto;
+            bottom: calc(16px + env(safe-area-inset-bottom, 0px));
             padding: 12px 14px;
         }}
         .panel-toggle {{
@@ -1824,7 +1845,6 @@ function parseMarkdownLinks(text) {
         .panel-handle {{
             width: 44px;
             height: 56px;
-            right: 8px;
         }}
         .close-sidebar {{
             width: 44px;
@@ -1834,6 +1854,25 @@ function parseMarkdownLinks(text) {
         .share-fab-btn {{
             min-width: 44px;
             min-height: 44px;
+        }}
+        .ai-search-form {{
+            flex-direction: column;
+        }}
+        .ai-search-input,
+        .ai-search-button {{
+            width: 100%;
+            min-height: 48px;
+        }}
+        .ai-search-input {{
+            padding: 12px 14px;
+            font-size: 16px;
+        }}
+        .ai-search-button {{
+            padding: 12px 14px;
+            font-size: 14px;
+        }}
+        .ai-search-results {{
+            max-height: 220px;
         }}
     }}
     @media (min-width: 769px) {{
@@ -1884,6 +1923,19 @@ function parseMarkdownLinks(text) {
     }}
     .panel-fab.hidden {{ display: none; }}
     .panel-fab:active {{ transform: scale(0.98); }}
+    .panel-backdrop {{
+        position: fixed;
+        inset: 0;
+        z-index: 996;
+        background: rgba(4, 10, 16, 0.52);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+    }}
+    .panel-backdrop.active {{
+        opacity: 1;
+        pointer-events: auto;
+    }}
     .panel-handle {{
         /* display is controlled by media queries */
         position: fixed;
@@ -1914,6 +1966,26 @@ function parseMarkdownLinks(text) {
         font-weight: 900;
         line-height: 1;
         display: block;
+    }}
+    .panel-sheet-grip {{
+        display: none;
+        width: 48px;
+        height: 5px;
+        margin: 0 auto 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+    }}
+    .lazy-placeholder {{
+        padding: 4px 2px 8px;
+        font-size: 11px;
+        line-height: 1.5;
+        color: rgba(236, 240, 241, 0.52);
+    }}
+    body.panel-sheet-open .share-fab {{
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
     }}
     .build-info {{
         position: fixed;
@@ -2167,11 +2239,14 @@ function parseMarkdownLinks(text) {
     </div>
 </div>
 
+<div class="panel-backdrop" id="panelBackdrop" onclick="toggleFilterPanel(false)" aria-hidden="true"></div>
+
 <button class="panel-fab hidden" id="panelFab" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">
     Filtreler
 </button>
 
 <div class="control-panel" id="controlPanel">
+    <div class="panel-sheet-grip" aria-hidden="true"></div>
     <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">Filtreler</button>
     <h3>Jeopolitik Tarih Haritası</h3>
 
@@ -2213,11 +2288,7 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="acc-actions">
-                <button onclick="event.stopPropagation();selectAllDecades()">Tümü</button>
-                <button onclick="event.stopPropagation();selectNoDecades()">Hiçbiri</button>
-            </div>
-            <div class="decade-grid" id="decadeFilters"></div>
+            <div class="lazy-placeholder">Zaman dilimi seçenekleri gerektiğinde hazırlanır.</div>
         </div>
     </div>
 
@@ -2232,11 +2303,7 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="acc-actions">
-                <button onclick="event.stopPropagation();selectAllCategories()">Tümü</button>
-                <button onclick="event.stopPropagation();selectNoCategories()">Hiçbiri</button>
-            </div>
-            <div class="category-list" id="categoryFilters"></div>
+            <div class="lazy-placeholder">Kategori filtreleri panel açıldığında yüklenir.</div>
         </div>
     </div>
 
@@ -2250,18 +2317,7 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="category-list">
-                <label class="category-item" style="background: rgba(241, 196, 15, 0.06); border: 1px solid rgba(241, 196, 15, 0.15);">
-                    <input type="checkbox" checked onchange="toggleSpecial('time_100')" id="special-time_100" style="display:none;">
-                    <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
-                    Time 100: Yüzyılın Kişileri
-                </label>
-                <label class="category-item" style="background: rgba(231, 76, 60, 0.06); border: 1px solid rgba(231, 76, 60, 0.15);">
-                    <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows" style="display:none;">
-                    <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
-                    Çatışma Okları
-                </label>
-            </div>
+            <div class="lazy-placeholder">Özel listeler siz açınca görünecek.</div>
         </div>
     </div>
 
@@ -2275,32 +2331,7 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div style="display:flex; flex-direction:column; gap:6px;">
-                <div class="group-card" id="group-nato-card" onclick="toggleCountryGroupCard('nato')" style="--group-color:rgba(52,152,219,0.5);--group-glow:rgba(52,152,219,0.08);--group-bg:rgba(52,152,219,0.15);">
-                    <input type="checkbox" id="group-nato" style="display:none;">
-                    <div class="group-card-icon" style="color:#3498db;">
-                        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="currentColor" opacity="0.5"/></svg>
-                    </div>
-                    <span class="group-card-label">NATO</span>
-                    <span class="group-card-count" id="natoCount"></span>
-                </div>
-                <div class="group-card" id="group-g8-card" onclick="toggleCountryGroupCard('g8')" style="--group-color:rgba(241,196,15,0.5);--group-glow:rgba(241,196,15,0.08);--group-bg:rgba(241,196,15,0.15);">
-                    <input type="checkbox" id="group-g8" style="display:none;">
-                    <div class="group-card-icon" style="color:#f1c40f;">
-                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><text x="8" y="10.5" text-anchor="middle" font-size="6" font-weight="700" fill="currentColor">8</text></svg>
-                    </div>
-                    <span class="group-card-label">G8</span>
-                    <span class="group-card-count" id="g8Count"></span>
-                </div>
-                <div class="group-card" id="group-brics-card" onclick="toggleCountryGroupCard('brics_plus')" style="--group-color:rgba(88,101,242,0.5);--group-glow:rgba(88,101,242,0.08);--group-bg:rgba(88,101,242,0.15);">
-                    <input type="checkbox" id="group-brics_plus" style="display:none;">
-                    <div class="group-card-icon" style="color:#5865f2;">
-                        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="4" height="5" rx="0.5" fill="currentColor" opacity="0.6"/><rect x="6" y="5" width="4" height="9" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="10" y="2" width="4" height="12" rx="0.5" fill="currentColor" opacity="0.8"/></svg>
-                    </div>
-                    <span class="group-card-label">BRICS+</span>
-                    <span class="group-card-count" id="bricsCount"></span>
-                </div>
-            </div>
+            <div class="lazy-placeholder">Ülke blokları ihtiyaç olduğunda hazırlanır.</div>
         </div>
     </div>
 
@@ -2315,23 +2346,7 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
-                <option value="">Gösterge kapalı</option>
-                <option value="sanctions_risk_score">Yaptırım / Risk</option>
-                <option value="weather_pressure_score">İklim Baskısı</option>
-                <option value="air_quality_pm25">Hava Kalitesi (PM2.5)</option>
-                <option value="fx_pressure_score">Kur Baskısı (30g USD)</option>
-                <option value="min_wage">Asgari Ücret (USD/saat)</option>
-                <option value="bigmac">Big Mac Endeksi (USD)</option>
-                <option value="water_internal_total">İç Tatlı Su (milyar m3)</option>
-                <option value="water_internal_per_capita">İç Tatlı Su / Kişi</option>
-                <option value="water_stress">Su Stresi</option>
-                <option value="water_withdrawal_pct_internal">Su Çekimi / İç Kaynak</option>
-                <option value="water_use_agriculture">Su Kullanımı: Tarım</option>
-                <option value="water_use_industry">Su Kullanımı: Sanayi</option>
-                <option value="water_use_domestic">Su Kullanımı: Evsel</option>
-            </select>
-            <div class="indicator-legend" id="indicatorLegend" style="display:none;"></div>
+            <div class="lazy-placeholder">Gösterge katmanları burada gerektiğinde açılır.</div>
         </div>
     </div>
 
@@ -3116,18 +3131,174 @@ function getConflictIntensityColor(level) {{
     return '#7f8c8d';
 }}
 
-// Initialize filters
-function initFilters() {{
+const filterPanelSections = ['accAiSearch', 'accDecades', 'accCategories', 'accSpecial', 'accGroups', 'accIndicators'];
+const filterPanelDefaultSections = {{
+    mobile: ['accAiSearch'],
+    desktop: ['accAiSearch', 'accDecades', 'accCategories']
+}};
+
+const lazySectionRenderers = {{
+    accDecades: () => `
+        <div class="acc-actions">
+            <button onclick="event.stopPropagation();selectAllDecades()">Tümü</button>
+            <button onclick="event.stopPropagation();selectNoDecades()">Hiçbiri</button>
+        </div>
+        <div class="decade-grid" id="decadeFilters"></div>
+    `,
+    accCategories: () => `
+        <div class="acc-actions">
+            <button onclick="event.stopPropagation();selectAllCategories()">Tümü</button>
+            <button onclick="event.stopPropagation();selectNoCategories()">Hiçbiri</button>
+        </div>
+        <div class="category-list" id="categoryFilters"></div>
+    `,
+    accSpecial: () => `
+        <div class="category-list">
+            <label class="category-item" style="background: rgba(241, 196, 15, 0.06); border: 1px solid rgba(241, 196, 15, 0.15);">
+                <input type="checkbox" checked onchange="toggleSpecial('time_100')" id="special-time_100" style="display:none;">
+                <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
+                Time 100: Yüzyılın Kişileri
+            </label>
+            <label class="category-item" style="background: rgba(231, 76, 60, 0.06); border: 1px solid rgba(231, 76, 60, 0.15);">
+                <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows" style="display:none;">
+                <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
+                Çatışma Okları
+            </label>
+        </div>
+    `,
+    accGroups: () => `
+        <div style="display:flex; flex-direction:column; gap:6px;">
+            <div class="group-card" id="group-nato-card" onclick="toggleCountryGroupCard('nato')" style="--group-color:rgba(52,152,219,0.5);--group-glow:rgba(52,152,219,0.08);--group-bg:rgba(52,152,219,0.15);">
+                <input type="checkbox" id="group-nato" style="display:none;">
+                <div class="group-card-icon" style="color:#3498db;">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="currentColor" opacity="0.5"/></svg>
+                </div>
+                <span class="group-card-label">NATO</span>
+                <span class="group-card-count" id="natoCount"></span>
+            </div>
+            <div class="group-card" id="group-g8-card" onclick="toggleCountryGroupCard('g8')" style="--group-color:rgba(241,196,15,0.5);--group-glow:rgba(241,196,15,0.08);--group-bg:rgba(241,196,15,0.15);">
+                <input type="checkbox" id="group-g8" style="display:none;">
+                <div class="group-card-icon" style="color:#f1c40f;">
+                    <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><text x="8" y="10.5" text-anchor="middle" font-size="6" font-weight="700" fill="currentColor">8</text></svg>
+                </div>
+                <span class="group-card-label">G8</span>
+                <span class="group-card-count" id="g8Count"></span>
+            </div>
+            <div class="group-card" id="group-brics-card" onclick="toggleCountryGroupCard('brics_plus')" style="--group-color:rgba(88,101,242,0.5);--group-glow:rgba(88,101,242,0.08);--group-bg:rgba(88,101,242,0.15);">
+                <input type="checkbox" id="group-brics_plus" style="display:none;">
+                <div class="group-card-icon" style="color:#5865f2;">
+                    <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="4" height="5" rx="0.5" fill="currentColor" opacity="0.6"/><rect x="6" y="5" width="4" height="9" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="10" y="2" width="4" height="12" rx="0.5" fill="currentColor" opacity="0.8"/></svg>
+                </div>
+                <span class="group-card-label">BRICS+</span>
+                <span class="group-card-count" id="bricsCount"></span>
+            </div>
+        </div>
+    `,
+    accIndicators: () => `
+        <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
+            <option value="">Gösterge kapalı</option>
+            <option value="sanctions_risk_score">Yaptırım / Risk</option>
+            <option value="weather_pressure_score">İklim Baskısı</option>
+            <option value="air_quality_pm25">Hava Kalitesi (PM2.5)</option>
+            <option value="fx_pressure_score">Kur Baskısı (30g USD)</option>
+            <option value="min_wage">Asgari Ücret (USD/saat)</option>
+            <option value="bigmac">Big Mac Endeksi (USD)</option>
+            <option value="water_internal_total">İç Tatlı Su (milyar m3)</option>
+            <option value="water_internal_per_capita">İç Tatlı Su / Kişi</option>
+            <option value="water_stress">Su Stresi</option>
+            <option value="water_withdrawal_pct_internal">Su Çekimi / İç Kaynak</option>
+            <option value="water_use_agriculture">Su Kullanımı: Tarım</option>
+            <option value="water_use_industry">Su Kullanımı: Sanayi</option>
+            <option value="water_use_domestic">Su Kullanımı: Evsel</option>
+        </select>
+        <div class="indicator-legend" id="indicatorLegend" style="display:none;"></div>
+    `
+}};
+
+function syncSpecialControlState() {{
+    const time100Box = document.getElementById('special-time_100');
+    const arrowsBox = document.getElementById('toggle-arrows');
+    if (time100Box) time100Box.checked = !!showTime100;
+    if (arrowsBox) arrowsBox.checked = !!window.showConflictArrows;
+}}
+
+function syncGroupControlState() {{
+    const g8Box = document.getElementById('group-g8');
+    const natoBox = document.getElementById('group-nato');
+    const bricsBox = document.getElementById('group-brics_plus');
+    if (g8Box) g8Box.checked = window.activeCountryGroup === 'g8';
+    if (natoBox) natoBox.checked = window.activeCountryGroup === 'nato';
+    if (bricsBox) bricsBox.checked = window.activeCountryGroup === 'brics_plus';
+
+    ['nato', 'g8', 'brics_plus'].forEach(gk => {{
+        const cardId = gk === 'brics_plus' ? 'group-brics-card' : `group-${{gk}}-card`;
+        const card = document.getElementById(cardId);
+        if (!card) return;
+        card.classList.toggle('active', window.activeCountryGroup === gk);
+    }});
+}}
+
+function syncIndicatorControlState() {{
+    const select = document.getElementById('indicatorSelect');
+    if (select) select.value = window.activeIndicator || '';
+    updateIndicatorLegend();
+}}
+
+function ensureSectionRendered(id) {{
+    const section = document.getElementById(id);
+    if (!section || section.dataset.rendered === 'true') return;
+    const renderer = lazySectionRenderers[id];
+    if (!renderer) return;
+
+    const body = section.querySelector('.acc-body');
+    if (!body) return;
+
+    body.innerHTML = renderer();
+    section.dataset.rendered = 'true';
+
+    if (id === 'accDecades') renderDecadeFilters();
+    if (id === 'accCategories') renderCategoryFilters();
+    if (id === 'accSpecial') syncSpecialControlState();
+    if (id === 'accGroups') {{
+        syncGroupControlState();
+        updateGroupCounts();
+    }}
+    if (id === 'accIndicators') syncIndicatorControlState();
+}}
+
+function setSectionOpen(id, isOpen) {{
+    const section = document.getElementById(id);
+    if (!section) return;
+    if (isOpen) ensureSectionRendered(id);
+    section.classList.toggle('open', isOpen);
+}}
+
+function configureFilterSectionsForViewport(isMobile) {{
+    const defaultOpen = isMobile ? filterPanelDefaultSections.mobile : filterPanelDefaultSections.desktop;
+    filterPanelSections.forEach(id => setSectionOpen(id, defaultOpen.includes(id)));
+}}
+
+function renderDecadeFilters() {{
     const decadeContainer = document.getElementById('decadeFilters');
+    if (!decadeContainer || decadeContainer.dataset.rendered === 'true') return;
+    decadeContainer.innerHTML = '';
     decades.forEach(decade => {{
         const item = document.createElement('label');
         item.className = 'decade-item';
+        const checkedAttr = selectedDecades.has(decade) ? 'checked' : '';
         item.innerHTML = `
-            <input type="checkbox" checked onchange="toggleDecade('${{decade}}')" id="decade-${{decade}}">
+            <input type="checkbox" ${{checkedAttr}} onchange="toggleDecade('${{decade}}')" id="decade-${{decade}}">
             ${{decade}}
         `;
         decadeContainer.appendChild(item);
     }});
+    decadeContainer.dataset.rendered = 'true';
+}}
+
+function renderCategoryFilters() {{
+    const catContainer = document.getElementById('categoryFilters');
+    if (!catContainer || catContainer.dataset.rendered === 'true') return;
+    catContainer.innerHTML = '';
 
     // SVG icons for categories
     const categorySVG = {{
@@ -3143,7 +3314,6 @@ function initFilters() {{
         music: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 12V4l7-2v8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="12" r="2" fill="currentColor" opacity="0.7"/><circle cx="11" cy="10" r="2" fill="currentColor" opacity="0.7"/></svg>',
     }};
 
-    const catContainer = document.getElementById('categoryFilters');
     const catEntries = Object.entries(categories)
         .filter(([key, _cat]) => key !== 'time_100')
         .sort((a, b) => {{
@@ -3183,14 +3353,22 @@ function initFilters() {{
         const item = document.createElement('label');
         item.className = `category-item tier-${{tier}}`;
         item.style.setProperty('--tier-color', cat.color);
+        const checkedAttr = selectedCategories.has(key) ? 'checked' : '';
         item.innerHTML = `
-            <input type="checkbox" checked onchange="toggleCategory('${{key}}')" id="cat-${{key}}">
+            <input type="checkbox" ${{checkedAttr}} onchange="toggleCategory('${{key}}')" id="cat-${{key}}">
             <span class="category-color" style="background: ${{cat.color}}; color: ${{cat.color}}; display:flex;align-items:center;justify-content:center;">${{svg || ''}}</span>
             ${{cat.label}}
         `;
         (tierGroup || catContainer).appendChild(item);
     }});
+    catContainer.dataset.rendered = 'true';
+}}
 
+// Initialize filters
+function initFilters() {{
+    renderDecadeFilters();
+    renderCategoryFilters();
+    updateFilterBadges();
     updateVisibleCount();
     updateIndicatorLegend();
 }}
@@ -3202,28 +3380,7 @@ function toggleCountryGroup(groupKey) {{
     }}
 
     window.activeCountryGroup = (window.activeCountryGroup === groupKey) ? null : groupKey;
-
-    // Update hidden checkboxes
-    const g8Box = document.getElementById('group-g8');
-    const natoBox = document.getElementById('group-nato');
-    const bricsBox = document.getElementById('group-brics_plus');
-    if (g8Box) g8Box.checked = window.activeCountryGroup === 'g8';
-    if (natoBox) natoBox.checked = window.activeCountryGroup === 'nato';
-    if (bricsBox) bricsBox.checked = window.activeCountryGroup === 'brics_plus';
-
-    // Update group card visual state
-    ['nato', 'g8', 'brics_plus'].forEach(gk => {{
-        const cardId = gk === 'brics_plus' ? 'group-brics-card' : `group-${{gk}}-card`;
-        const card = document.getElementById(cardId);
-        if (card) {{
-            if (window.activeCountryGroup === gk) {{
-                card.classList.add('active');
-            }} else {{
-                card.classList.remove('active');
-            }}
-        }}
-    }});
-
+    syncGroupControlState();
     updateVisibleCount();
     updateMarkerVisibility();
     updateExternalOverlays();
@@ -3289,6 +3446,7 @@ function updateVisibleCountAnimated(newCount) {{
 
 function setIndicatorMode(mode) {{
     window.activeIndicator = mode || '';
+    syncIndicatorControlState();
     updateExternalOverlays();
 }}
 
@@ -3530,12 +3688,14 @@ function toggleSpecial(type) {{
     if (type === 'time_100') {{
         showTime100 = !showTime100;
     }}
+    syncSpecialControlState();
     updateVisibleCount();
     updateMarkerVisibility();
 }}
 
 function toggleConflictArrows() {{
     window.showConflictArrows = !window.showConflictArrows;
+    syncSpecialControlState();
     if (window.showConflictArrows) {{
         if (window._lastArrowConflictId) {{
             showConflictOnMap(window._lastArrowConflictId, window._lastArrowCountry || '');
@@ -3574,7 +3734,17 @@ function toggleCategory(category) {{
 
 function toggleAcc(id) {{
     const el = document.getElementById(id);
-    if (el) el.classList.toggle('open');
+    if (!el) return;
+    const shouldOpen = !el.classList.contains('open');
+    if (shouldOpen) {{
+        ensureSectionRendered(id);
+        if (window.matchMedia('(max-width: 768px)').matches) {{
+            filterPanelSections.forEach(sectionId => {{
+                if (sectionId !== id) setSectionOpen(sectionId, false);
+            }});
+        }}
+    }}
+    el.classList.toggle('open', shouldOpen);
 }}
 
 function updateFilterBadges() {{
@@ -4694,35 +4864,48 @@ function syncFilterPanelState(isOpen) {{
     const btn = document.getElementById('panelToggle');
     const handle = document.getElementById('panelHandle');
     const handleIcon = document.getElementById('panelHandleIcon');
+    const backdrop = document.getElementById('panelBackdrop');
     if (!panel) return;
 
-    panel.classList.toggle('mobile-open', isOpen);
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    panel.dataset.mode = isMobile ? 'mobile' : 'desktop';
+    panel.classList.toggle('mobile-open', isMobile && isOpen);
+    document.body.classList.toggle('panel-sheet-open', isMobile && isOpen);
 
     if (fab) {{
-        fab.classList.toggle('hidden', isOpen);
-        fab.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        fab.classList.toggle('hidden', isMobile && isOpen);
+        fab.setAttribute('aria-expanded', isMobile && isOpen ? 'true' : 'false');
     }}
     if (btn) {{
-        btn.textContent = isOpen ? 'Kapat' : 'Filtreler';
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        btn.textContent = isMobile && isOpen ? 'Filtreleri Kapat' : 'Filtreler';
+        btn.setAttribute('aria-expanded', isMobile && isOpen ? 'true' : 'false');
     }}
     if (handle) {{
-        handle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        handle.setAttribute('aria-expanded', isMobile && isOpen ? 'true' : 'false');
     }}
     if (handleIcon) {{
-        handleIcon.textContent = isOpen ? '›' : '‹';
+        handleIcon.textContent = isMobile && isOpen ? '›' : '‹';
+    }}
+    if (backdrop) {{
+        backdrop.classList.toggle('active', isMobile && isOpen);
     }}
 }}
 
 function applyResponsiveFilterPanelState() {{
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const nextMode = isMobile ? 'mobile' : 'desktop';
+    if (window._filterPanelLayoutMode !== nextMode) {{
+        window._filterPanelLayoutMode = nextMode;
+        configureFilterSectionsForViewport(isMobile);
+    }}
     syncFilterPanelState(!isMobile);
 }}
 
-function toggleFilterPanel() {{
+function toggleFilterPanel(forceOpen = null) {{
     const panel = document.getElementById('controlPanel');
     if (!panel) return;
-    const open = !panel.classList.contains('mobile-open');
+    const currentOpen = panel.classList.contains('mobile-open');
+    const open = typeof forceOpen === 'boolean' ? forceOpen : !currentOpen;
     syncFilterPanelState(open);
 }}
 function toggleDecadeSection(header) {{
