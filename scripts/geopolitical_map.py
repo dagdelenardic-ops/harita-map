@@ -5,6 +5,7 @@ Geopolitical History Map - Interactive world map showing major events from the l
 
 import json
 import os
+import re
 import unicodedata
 from pathlib import Path
 from typing import Any, Dict, List
@@ -539,7 +540,6 @@ function parseMarkdownLinks(text) {
 <meta name="description" content="Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin. Savaşlar, antlaşmalar ve krizler.">
 <meta name="keywords" content="jeopolitik, tarih, dünya haritası, interaktif harita, askeri tarih, siyasi tarih, olaylar">
 <meta name="author" content="Jeopolitik Map">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -804,6 +804,22 @@ function parseMarkdownLinks(text) {
         background: rgba(52, 152, 219, 0.15);
         color: #74b9ff;
         border-color: rgba(52, 152, 219, 0.3);
+    }}
+
+    .leaflet-marker-icon,
+    .awesome-marker,
+    .awesome-marker-icon {{
+        touch-action: manipulation;
+    }}
+    .awesome-marker,
+    .awesome-marker-icon {{
+        position: relative;
+    }}
+    .awesome-marker::after,
+    .awesome-marker-icon::after {{
+        content: "";
+        position: absolute;
+        inset: -6px;
     }}
 
     .ai-search-panel {{
@@ -1719,6 +1735,9 @@ function parseMarkdownLinks(text) {
 
     /* Mobil: paneller kolay kapansın, daha fazla harita alanı */
     @media (max-width: 768px) {{
+        body {{
+            font-size: 14px;
+        }}
         .country-sidebar {{
             width: 100%;
             left: -100%;
@@ -1727,8 +1746,8 @@ function parseMarkdownLinks(text) {
             transform: translateX(100%);
         }}
         .control-panel {{
-            width: min(320px, 92vw);
-            max-height: 80vh;
+            width: min(340px, calc(100vw - 20px));
+            max-height: calc(100vh - 24px);
             transform: translateX(110%);
             opacity: 0;
             pointer-events: none;
@@ -1746,6 +1765,75 @@ function parseMarkdownLinks(text) {
         }}
         .panel-handle {{
             display: inline-flex;
+        }}
+        .build-info,
+        .app-footer {{
+            display: none;
+        }}
+        .share-fab {{
+            right: 16px;
+            bottom: 16px;
+        }}
+        .acc-header,
+        .acc-actions button,
+        .decade-item,
+        .category-item,
+        .group-card,
+        .indicator-select,
+        .panel-toggle,
+        .panel-fab,
+        .panel-handle,
+        .close-sidebar,
+        .share-fab-btn {{
+            min-height: 44px;
+        }}
+        .acc-header,
+        .category-item,
+        .group-card {{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }}
+        .acc-title,
+        .group-card-label,
+        .stats-box .label,
+        .instructions,
+        .indicator-legend,
+        .indicator-legend-desc,
+        .indicator-legend-detail,
+        .build-info,
+        .app-footer {{
+            font-size: 12px !important;
+            line-height: 1.45;
+        }}
+        .acc-badge,
+        .group-card-count,
+        .category-tier-label,
+        .acc-actions button {{
+            font-size: 11px !important;
+            line-height: 1.4;
+        }}
+        .panel-fab {{
+            top: 14px;
+            right: 14px;
+            padding: 12px 14px;
+        }}
+        .panel-toggle {{
+            padding: 10px 12px;
+            font-size: 14px;
+        }}
+        .panel-handle {{
+            width: 44px;
+            height: 56px;
+            right: 8px;
+        }}
+        .close-sidebar {{
+            width: 44px;
+            height: 44px;
+            font-size: 28px;
+        }}
+        .share-fab-btn {{
+            min-width: 44px;
+            min-height: 44px;
         }}
     }}
     @media (min-width: 769px) {{
@@ -2083,8 +2171,8 @@ function parseMarkdownLinks(text) {
     Filtreler
 </button>
 
-<div class="control-panel mobile-open" id="controlPanel">
-    <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="true">Kapat</button>
+<div class="control-panel" id="controlPanel">
+    <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">Filtreler</button>
     <h3>Jeopolitik Tarih Haritası</h3>
 
     <div class="instructions">
@@ -2269,8 +2357,8 @@ function parseMarkdownLinks(text) {
 
 <div class="app-footer" id="appFooter">Jeopolitik harita Alpha 1.0 - Gurur Sönmez</div>
 
-<button class="panel-handle" id="panelHandle" onclick="toggleFilterPanel()" aria-label="Filtre panelini aç/kapat" aria-expanded="true">
-    <span class="panel-handle-icon" id="panelHandleIcon" aria-hidden="true">›</span>
+<button class="panel-handle" id="panelHandle" onclick="toggleFilterPanel()" aria-label="Filtre panelini aç/kapat" aria-expanded="false">
+    <span class="panel-handle-icon" id="panelHandleIcon" aria-hidden="true">‹</span>
 </button>
 
 <script>
@@ -4599,34 +4687,43 @@ function closeSidebar() {{
     const sidebar = document.getElementById('countrySidebar');
     if (sidebar) sidebar.classList.remove('open');
 }}
-function toggleFilterPanel() {{
+
+function syncFilterPanelState(isOpen) {{
     const panel = document.getElementById('controlPanel');
     const fab = document.getElementById('panelFab');
     const btn = document.getElementById('panelToggle');
     const handle = document.getElementById('panelHandle');
     const handleIcon = document.getElementById('panelHandleIcon');
     if (!panel) return;
-    const open = !panel.classList.contains('mobile-open');
-    if (open) {{
-        panel.classList.add('mobile-open');
-    }} else {{
-        panel.classList.remove('mobile-open');
-    }}
+
+    panel.classList.toggle('mobile-open', isOpen);
+
     if (fab) {{
-        fab.classList.toggle('hidden', open);
-        fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+        fab.classList.toggle('hidden', isOpen);
+        fab.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }}
     if (btn) {{
-        btn.textContent = 'Kapat';
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = isOpen ? 'Kapat' : 'Filtreler';
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }}
     if (handle) {{
-        handle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        handle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }}
     if (handleIcon) {{
-        // Show direction: when panel is open, arrow points right (close); when closed, left (open).
-        handleIcon.textContent = open ? '›' : '‹';
+        handleIcon.textContent = isOpen ? '›' : '‹';
     }}
+}}
+
+function applyResponsiveFilterPanelState() {{
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    syncFilterPanelState(!isMobile);
+}}
+
+function toggleFilterPanel() {{
+    const panel = document.getElementById('controlPanel');
+    if (!panel) return;
+    const open = !panel.classList.contains('mobile-open');
+    syncFilterPanelState(open);
 }}
 function toggleDecadeSection(header) {{
     const events = header.nextElementSibling;
@@ -4734,6 +4831,13 @@ function clearCountryHighlight() {{
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function() {{
+    applyResponsiveFilterPanelState();
+    const mobileMedia = window.matchMedia('(max-width: 768px)');
+    if (mobileMedia && typeof mobileMedia.addEventListener === 'function') {{
+        mobileMedia.addEventListener('change', applyResponsiveFilterPanelState);
+    }} else if (mobileMedia && typeof mobileMedia.addListener === 'function') {{
+        mobileMedia.addListener(applyResponsiveFilterPanelState);
+    }}
     initFilters();
     initAiSearch();
     updateFilterBadges();
@@ -4870,6 +4974,21 @@ window.addEventListener('load', function() {{
             json.dump(meta_bundle, f, ensure_ascii=False, separators=(",", ":"))
         print(f"  Data asset: meta.json ({meta_path.stat().st_size // 1024}KB)")
 
+    def _normalize_document_shell(self, output_path: str) -> None:
+        """Normalize generated HTML shell for mobile accessibility and document semantics."""
+        output_file = Path(output_path)
+        html = output_file.read_text(encoding="utf-8")
+
+        html = html.replace("<html>", '<html lang="tr">', 1)
+        html = re.sub(
+            r'<meta name="viewport" content="width=device-width,\s*initial-scale=1\.0, maximum-scale=1\.0, user-scalable=no"\s*/>',
+            '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+            html,
+            count=1,
+        )
+
+        output_file.write_text(html, encoding="utf-8")
+
     def create_map(self, output_path: str = None) -> str:
         """Create the interactive geopolitical map."""
         output_path = output_path or self.output_dir / "geopolitical_map.html"
@@ -4936,6 +5055,7 @@ window.addEventListener('load', function() {{
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         m.save(str(output_path))
+        self._normalize_document_shell(output_path)
 
         # Write data assets as separate files for async loading
         self._write_data_assets(Path(output_path).parent)

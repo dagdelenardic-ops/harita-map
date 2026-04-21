@@ -29,6 +29,8 @@ from typing import Any, Optional
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = BASE_DIR / "output"
+PRIMARY_HOST = os.environ.get("PRIMARY_HOST", "jeopolitik.com.tr")
+REDIRECT_WWW_HOST = os.environ.get("REDIRECT_WWW_HOST", f"www.{PRIMARY_HOST}")
 
 VERTEX_SEARCH_ENABLED = os.environ.get("VERTEX_SEARCH_ENABLED", "1").lower() not in {"0", "false", "no"}
 VERTEX_PROJECT = os.environ.get("VERTEX_PROJECT", "project-2d4834e6-d656-4df9-909")
@@ -230,6 +232,16 @@ class GzipStaticHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def _maybe_redirect_primary_host(self) -> bool:
+        host = (self.headers.get("Host") or "").split(":", 1)[0].strip().lower()
+        if not host or host != REDIRECT_WWW_HOST.lower():
+            return False
+        self.send_response(HTTPStatus.MOVED_PERMANENTLY)
+        self.send_header("Location", f"https://{PRIMARY_HOST}{self.path}")
+        self.send_header("Cache-Control", "public, max-age=300")
+        self.end_headers()
+        return True
+
     def _handle_search(self, parsed: urllib.parse.SplitResult) -> None:
         if not VERTEX_SEARCH_ENABLED:
             self._send_json(HTTPStatus.SERVICE_UNAVAILABLE, {"error": "Arama gecici olarak kapali."})
@@ -264,13 +276,22 @@ class GzipStaticHandler(SimpleHTTPRequestHandler):
         self._send_json(status, payload)
 
     def do_GET(self) -> None:
+        if self._maybe_redirect_primary_host():
+            return
         parsed = urllib.parse.urlsplit(self.path)
         if parsed.path == "/api/search":
             self._handle_search(parsed)
             return
         super().do_GET()
 
+    def do_HEAD(self) -> None:
+        if self._maybe_redirect_primary_host():
+            return
+        super().do_HEAD()
+
     def do_OPTIONS(self) -> None:
+        if self._maybe_redirect_primary_host():
+            return
         parsed = urllib.parse.urlsplit(self.path)
         if parsed.path == "/api/search":
             self.send_response(HTTPStatus.NO_CONTENT)
