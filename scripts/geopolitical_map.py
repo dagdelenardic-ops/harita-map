@@ -928,6 +928,73 @@ function parseMarkdownLinks(text) {
         line-height: 1.4;
         color: rgba(236, 240, 241, 0.58);
     }}
+    .map-search-bar {{
+        position: fixed;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(640px, calc(100vw - 32px));
+        z-index: 1090;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 8px;
+        background: rgba(14, 21, 27, 0.8);
+        backdrop-filter: blur(18px) saturate(125%);
+        -webkit-backdrop-filter: blur(18px) saturate(125%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }}
+    .map-search-form {{
+        display: flex;
+        gap: 10px;
+        align-items: stretch;
+    }}
+    .map-search-input {{
+        flex: 1;
+        min-width: 0;
+        min-height: 54px;
+        padding: 0 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.07);
+        color: #ecf0f1;
+        font-size: 17px;
+        outline: none;
+    }}
+    .map-search-input:focus {{
+        border-color: rgba(52, 152, 219, 0.55);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.16);
+    }}
+    .map-search-input::placeholder {{
+        color: rgba(236, 240, 241, 0.5);
+    }}
+    .map-search-button {{
+        min-width: 136px;
+        min-height: 54px;
+        padding: 0 18px;
+        border-radius: 8px;
+        border: 1px solid rgba(52, 152, 219, 0.4);
+        background: rgba(52, 152, 219, 0.2);
+        color: #dff1ff;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+    }}
+    .map-search-button:hover {{
+        background: rgba(52, 152, 219, 0.3);
+    }}
+    .map-search-status {{
+        min-height: 18px;
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(236, 240, 241, 0.65);
+        padding: 0 2px;
+    }}
+    .map-search-status.error {{
+        color: #ffb4a8;
+    }}
 
     /* Decade toggle chips */
     .decade-grid {{
@@ -1432,6 +1499,83 @@ function parseMarkdownLinks(text) {
     .decade-events.open {{
         display: block;
     }}
+    .event-branch {{
+        margin: 8px 10px 10px;
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.025);
+        overflow: hidden;
+    }}
+    .event-branch summary,
+    .event-subbranch summary {{
+        list-style: none;
+    }}
+    .event-branch summary::-webkit-details-marker,
+    .event-subbranch summary::-webkit-details-marker {{
+        display: none;
+    }}
+    .event-branch-summary,
+    .event-subbranch-summary {{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        cursor: pointer;
+        user-select: none;
+    }}
+    .event-branch-summary {{
+        padding: 10px 14px;
+        background: rgba(255,255,255,0.03);
+    }}
+    .event-branch-title {{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #ecf0f1;
+        letter-spacing: 0.2px;
+    }}
+    .event-branch-dot {{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--branch-color, #74b9ff);
+        box-shadow: 0 0 8px var(--branch-color, #74b9ff);
+        flex-shrink: 0;
+    }}
+    .event-branch-count,
+    .event-subbranch-count {{
+        font-size: 10px;
+        color: rgba(236,240,241,0.7);
+        background: rgba(255,255,255,0.06);
+        border-radius: 999px;
+        padding: 3px 8px;
+        flex-shrink: 0;
+    }}
+    .event-branch-body {{
+        padding: 8px 0 2px;
+    }}
+    .event-subbranch {{
+        margin: 0 10px 10px;
+        border-left: 2px solid rgba(255,255,255,0.08);
+        padding-left: 12px;
+    }}
+    .event-subbranch-summary {{
+        padding: 2px 0 8px;
+    }}
+    .event-subbranch-title {{
+        font-size: 11px;
+        font-weight: 700;
+        color: rgba(236,240,241,0.82);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }}
+    .event-item-list {{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }}
     /* Glass event cards */
     .event-item {{
         padding: 14px 16px 14px 48px;
@@ -1858,6 +2002,28 @@ function parseMarkdownLinks(text) {
         .ai-search-form {{
             flex-direction: column;
         }}
+        .map-search-bar {{
+            top: 12px;
+            width: calc(100vw - 20px);
+            padding: 10px;
+            gap: 6px;
+        }}
+        .map-search-form {{
+            flex-direction: column;
+        }}
+        .map-search-input,
+        .map-search-button {{
+            width: 100%;
+            min-height: 48px;
+        }}
+        .map-search-input {{
+            font-size: 16px;
+            padding: 0 14px;
+        }}
+        .map-search-button {{
+            min-width: 0;
+            font-size: 14px;
+        }}
         .ai-search-input,
         .ai-search-button {{
             width: 100%;
@@ -2237,6 +2403,14 @@ function parseMarkdownLinks(text) {
     <div class="sidebar-tab-panel" id="tabRelations">
         <div class="sidebar-content" id="countryRelationsContainer"></div>
     </div>
+</div>
+
+<div class="map-search-bar" id="mapSearchBar">
+    <div class="map-search-form">
+        <input class="map-search-input" id="mapSearchInput" type="search" autocomplete="off" placeholder="Harita üzerinde olay, kriz, kişi veya tema ara">
+        <button class="map-search-button" id="mapSearchButton" type="button" onclick="runMapSearch()">Haritada Ara</button>
+    </div>
+    <div class="map-search-status" id="mapSearchStatus">Sonuçlar AI arama panelinde açılır.</div>
 </div>
 
 <div class="panel-backdrop" id="panelBackdrop" onclick="toggleFilterPanel(false)" aria-hidden="true"></div>
@@ -2653,17 +2827,57 @@ function setAiSearchStatus(text, isError = false) {{
     if (!el) return;
     el.textContent = text || '';
     el.classList.toggle('error', Boolean(isError));
+
+    const mirror = document.getElementById('mapSearchStatus');
+    if (mirror) {{
+        mirror.textContent = text || '';
+        mirror.classList.toggle('error', Boolean(isError));
+    }}
+}}
+
+function syncSearchInputs(sourceId, targetId) {{
+    const source = document.getElementById(sourceId);
+    const target = document.getElementById(targetId);
+    if (!source || !target) return;
+    if (target.value !== source.value) target.value = source.value;
 }}
 
 function initAiSearch() {{
     const input = document.getElementById('aiSearchInput');
     if (!input) return;
+    input.addEventListener('input', function() {{
+        syncSearchInputs('aiSearchInput', 'mapSearchInput');
+    }});
     input.addEventListener('keydown', function(event) {{
         if (event.key === 'Enter') {{
             event.preventDefault();
             aiSearch();
         }}
     }});
+}}
+
+function initMapSearch() {{
+    const input = document.getElementById('mapSearchInput');
+    if (!input) return;
+    input.addEventListener('input', function() {{
+        syncSearchInputs('mapSearchInput', 'aiSearchInput');
+    }});
+    input.addEventListener('keydown', function(event) {{
+        if (event.key === 'Enter') {{
+            event.preventDefault();
+            runMapSearch();
+        }}
+    }});
+}}
+
+function runMapSearch() {{
+    syncSearchInputs('mapSearchInput', 'aiSearchInput');
+    ensureSectionRendered('accAiSearch');
+    setSectionOpen('accAiSearch', true);
+    if (window.matchMedia('(max-width: 768px)').matches) {{
+        syncFilterPanelState(true);
+    }}
+    aiSearch();
 }}
 
 function getAiResultCountry(result) {{
@@ -2777,6 +2991,7 @@ function renderAiSearchResults(data) {{
 async function aiSearch() {{
     const input = document.getElementById('aiSearchInput');
     const button = document.getElementById('aiSearchButton');
+    const mapButton = document.getElementById('mapSearchButton');
     const summaryDiv = document.getElementById('aiSummary');
     const listDiv = document.getElementById('aiResultsList');
     const query = input ? input.value.trim() : '';
@@ -2786,6 +3001,7 @@ async function aiSearch() {{
     }}
 
     if (button) button.disabled = true;
+    if (mapButton) mapButton.disabled = true;
     if (summaryDiv) summaryDiv.textContent = '';
     if (listDiv) listDiv.innerHTML = '';
     setAiSearchStatus('Aranıyor...', false);
@@ -2808,6 +3024,7 @@ async function aiSearch() {{
         setAiSearchStatus('Arama hatası: ' + (err && err.message ? err.message : String(err)), true);
     }} finally {{
         if (button) button.disabled = false;
+        if (mapButton) mapButton.disabled = false;
     }}
 }}
 
@@ -4427,15 +4644,60 @@ function buildEconomyHtml(countryName) {{
 
 let sidebarRefreshTimer = null;
 
-function getSidebarDecadeOpenState() {{
-    const state = {{}};
+const sidebarBranchMeta = {{
+    conflict: {{ label: 'Jeopolitik Çatışmalar', color: '#e74c3c', order: 1 }},
+    power: {{ label: 'Siyaset & Güç', color: '#3498db', order: 2 }},
+    culture_arts: {{ label: 'Kültür & Sanat', color: '#9b59b6', order: 3 }},
+    society: {{ label: 'Toplum & Dönüşüm', color: '#2ecc71', order: 4 }},
+    other: {{ label: 'Diğer Başlıklar', color: '#95a5a6', order: 5 }}
+}};
+
+function getSidebarBranchKey(category) {{
+    if (['war', 'genocide', 'terror'].includes(category)) return 'conflict';
+    if (['revolution', 'leader', 'politics', 'diplomacy'].includes(category)) return 'power';
+    if (['culture', 'cinema', 'music', 'time_100'].includes(category)) return 'culture_arts';
+    return 'society';
+}}
+
+function ensureTrailingPeriod(text) {{
+    const clean = String(text || '').trim();
+    if (!clean) return '';
+    return /[.!?…]$/.test(clean) ? clean : clean + '.';
+}}
+
+function buildEventDescriptionText(event, catLabel) {{
+    const raw = ensureTrailingPeriod(event.description || '');
+    if (raw.length >= 40) return raw;
+
+    const yearText = event.year ? `${{event.year}} yılında` : 'Bu dönemde';
+    const countryText = event.country_name ? `${{event.country_name}} için` : 'bu başlıkta';
+    const titleText = event.title ? `"${{event.title}}"` : 'Bu olay';
+    const catText = String(catLabel || 'bu kategori').toLocaleLowerCase('tr-TR');
+
+    if (raw) {{
+        return `${{raw}} ${{yearText}} ${{countryText}} ${{catText}} hattında öne çıkan ${{titleText}} olayı, daha geniş tarihsel bağlamın parçasıdır.`;
+    }}
+
+    return `${{yearText}} ${{countryText}} öne çıkan ${{titleText}} olayı, ${{catText}} hattında dikkat çeken bir dönüm noktasıdır.`;
+}}
+
+function getSidebarTreeOpenState() {{
+    const state = {{ decades: {{}}, branches: {{}}, categories: {{}} }};
     const sidebarContent = document.getElementById('sidebarContent');
     if (!sidebarContent) return state;
     sidebarContent.querySelectorAll('.decade-section').forEach(section => {{
         const decade = section.getAttribute('data-decade');
         const events = section.querySelector('.decade-events');
         if (!decade || !events) return;
-        state[decade] = events.classList.contains('open');
+        state.decades[decade] = events.classList.contains('open');
+    }});
+    sidebarContent.querySelectorAll('.event-branch').forEach(section => {{
+        const key = section.getAttribute('data-branch-key');
+        if (key) state.branches[key] = section.hasAttribute('open');
+    }});
+    sidebarContent.querySelectorAll('.event-subbranch').forEach(section => {{
+        const key = section.getAttribute('data-category-key');
+        if (key) state.categories[key] = section.hasAttribute('open');
     }});
     return state;
 }}
@@ -4446,7 +4708,7 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
 
     const preserveOpenState = !!options.preserveOpenState;
     const animateEnter = !!options.animateEnter;
-    const openState = preserveOpenState ? getSidebarDecadeOpenState() : {{}};
+    const openState = preserveOpenState ? getSidebarTreeOpenState() : {{ decades: {{}}, branches: {{}}, categories: {{}} }};
 
     const byDecade = {{}};
     countryEvents.forEach(e => {{
@@ -4466,7 +4728,41 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
             if (ta !== tb) return ta - tb;
             return a.year - b.year;
         }});
-        const isOpen = (openState[decade] !== undefined) ? openState[decade] : true;
+        const isOpen = (openState.decades[decade] !== undefined) ? openState.decades[decade] : true;
+        const branchGroups = {{}};
+
+        events.forEach(e => {{
+            const branchKey = getSidebarBranchKey(e.category);
+            const branchMeta = sidebarBranchMeta[branchKey] || sidebarBranchMeta.other;
+            if (!branchGroups[branchKey]) {{
+                branchGroups[branchKey] = {{
+                    key: branchKey,
+                    label: branchMeta.label,
+                    color: branchMeta.color,
+                    order: branchMeta.order,
+                    categories: {{}},
+                    total: 0
+                }};
+            }}
+            const catKey = e.category || 'other';
+            const cat = categories[catKey] || {{}};
+            if (!branchGroups[branchKey].categories[catKey]) {{
+                branchGroups[branchKey].categories[catKey] = {{
+                    key: catKey,
+                    label: cat.label || catKey,
+                    color: cat.color || branchMeta.color,
+                    tier: (cat && typeof cat.tier === 'number') ? cat.tier : 3,
+                    events: []
+                }};
+            }}
+            branchGroups[branchKey].categories[catKey].events.push(e);
+            branchGroups[branchKey].total += 1;
+        }});
+
+        const branchList = Object.values(branchGroups).sort((a, b) => {{
+            if (a.order !== b.order) return a.order - b.order;
+            return a.label.localeCompare(b.label, 'tr');
+        }});
 
         html += `
             <div class="decade-section" data-decade="${{decade}}">
@@ -4477,29 +4773,72 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
                 <div class="decade-events${{isOpen ? ' open' : ''}}">
         `;
 
-        events.forEach(e => {{
-            const cat = categories[e.category] || {{}};
-            const catLabel = cat.label || e.category;
-            const catColor = cat.color || '#636e72';
-            const tier = (cat && typeof cat.tier === 'number') ? cat.tier : 2;
-            const videoHtml = e.youtube_video_id
-                ? `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>`
-                : '';
-            const wikiHtml = e.wikipedia_url
-                ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
-                : '';
-            const categoryHtml = `<div class="event-category">${{catLabel}}</div>`;
-            const eventId = String(e.id || '');
+        branchList.forEach(branch => {{
+            const branchStateKey = `${{decade}}::${{branch.key}}`;
+            const branchOpen = (openState.branches[branchStateKey] !== undefined) ? openState.branches[branchStateKey] : true;
+            const categoryGroups = Object.values(branch.categories).sort((a, b) => {{
+                if (a.tier !== b.tier) return a.tier - b.tier;
+                return a.label.localeCompare(b.label, 'tr');
+            }});
 
             html += `
-                <div class="event-item tier-${{tier}}" data-event-id="${{eventId}}" data-category="${{e.category}}" data-decade="${{e.decade}}" style="--cat-color:${{catColor}}">
-                    <div class="event-year">${{e.year}}</div>
-                    <div class="event-title">${{e.title}}</div>
-                    ${{categoryHtml}}
-                    <div class="event-desc">${{parseMarkdownLinks(e.description)}}</div>
-                    ${{wikiHtml}}
-                    ${{videoHtml}}
-                </div>
+                <details class="event-branch" data-branch-key="${{branchStateKey}}" style="--branch-color:${{branch.color}}" ${{branchOpen ? 'open' : ''}}>
+                    <summary class="event-branch-summary">
+                        <span class="event-branch-title">
+                            <span class="event-branch-dot"></span>
+                            ${{branch.label}}
+                        </span>
+                        <span class="event-branch-count">${{branch.total}}</span>
+                    </summary>
+                    <div class="event-branch-body">
+            `;
+
+            categoryGroups.forEach(group => {{
+                const categoryStateKey = `${{branchStateKey}}::${{group.key}}`;
+                const categoryOpen = (openState.categories[categoryStateKey] !== undefined) ? openState.categories[categoryStateKey] : true;
+
+                html += `
+                    <details class="event-subbranch" data-category-key="${{categoryStateKey}}" ${{categoryOpen ? 'open' : ''}}>
+                        <summary class="event-subbranch-summary">
+                            <span class="event-subbranch-title">${{group.label}}</span>
+                            <span class="event-subbranch-count">${{group.events.length}}</span>
+                        </summary>
+                        <div class="event-item-list">
+                `;
+
+                group.events.forEach(e => {{
+                    const tier = group.tier;
+                    const videoHtml = e.youtube_video_id
+                        ? `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>`
+                        : '';
+                    const wikiHtml = e.wikipedia_url
+                        ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
+                        : '';
+                    const categoryHtml = `<div class="event-category">${{group.label}}</div>`;
+                    const eventId = String(e.id || '');
+                    const descText = buildEventDescriptionText(e, group.label);
+
+                    html += `
+                        <div class="event-item tier-${{tier}}" data-event-id="${{eventId}}" data-category="${{e.category}}" data-decade="${{e.decade}}" style="--cat-color:${{group.color}}">
+                            <div class="event-year">${{e.year}}</div>
+                            <div class="event-title">${{e.title}}</div>
+                            ${{categoryHtml}}
+                            <div class="event-desc">${{parseMarkdownLinks(descText)}}</div>
+                            ${{wikiHtml}}
+                            ${{videoHtml}}
+                        </div>
+                    `;
+                }});
+
+                html += `
+                        </div>
+                    </details>
+                `;
+            }});
+
+            html += `
+                    </div>
+                </details>
             `;
         }});
 
@@ -5023,6 +5362,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     }}
     initFilters();
     initAiSearch();
+    initMapSearch();
     updateFilterBadges();
     setTimeout(updateGroupCounts, 500);
 }});
