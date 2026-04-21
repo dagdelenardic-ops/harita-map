@@ -4652,7 +4652,13 @@ const sidebarBranchMeta = {{
     other: {{ label: 'Diğer Başlıklar', color: '#95a5a6', order: 5 }}
 }};
 
-function getSidebarBranchKey(category) {{
+function getSidebarBranchKey(eventOrCategory) {{
+    if (typeof eventOrCategory === 'object' && eventOrCategory) {{
+        const explicit = String(eventOrCategory.branch || '').trim();
+        if (explicit && sidebarBranchMeta[explicit]) return explicit;
+        return getSidebarBranchKey(eventOrCategory.category || '');
+    }}
+    const category = String(eventOrCategory || '').trim();
     if (['war', 'genocide', 'terror'].includes(category)) return 'conflict';
     if (['revolution', 'leader', 'politics', 'diplomacy'].includes(category)) return 'power';
     if (['culture', 'cinema', 'music', 'time_100'].includes(category)) return 'culture_arts';
@@ -4667,12 +4673,16 @@ function ensureTrailingPeriod(text) {{
 
 function buildEventDescriptionText(event, catLabel) {{
     const raw = ensureTrailingPeriod(event.description || '');
+    const contextNote = ensureTrailingPeriod(event.context_note || '');
+    if (raw.length >= 90) return raw;
+    if (raw && contextNote) return `${{raw}} ${{contextNote}}`;
     if (raw.length >= 40) return raw;
+    if (contextNote) return contextNote;
 
     const yearText = event.year ? `${{event.year}} yılında` : 'Bu dönemde';
     const countryText = event.country_name ? `${{event.country_name}} için` : 'bu başlıkta';
     const titleText = event.title ? `"${{event.title}}"` : 'Bu olay';
-    const catText = String(catLabel || 'bu kategori').toLocaleLowerCase('tr-TR');
+    const catText = String(event.subcategory_label || catLabel || 'bu kategori').toLocaleLowerCase('tr-TR');
 
     if (raw) {{
         return `${{raw}} ${{yearText}} ${{countryText}} ${{catText}} hattında öne çıkan ${{titleText}} olayı, daha geniş tarihsel bağlamın parçasıdır.`;
@@ -4723,8 +4733,8 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
         const events = byDecade[decade].slice().sort((a, b) => {{
             const ca = categories[a.category] || {{}};
             const cb = categories[b.category] || {{}};
-            const ta = (ca && typeof ca.tier === 'number') ? ca.tier : 2;
-            const tb = (cb && typeof cb.tier === 'number') ? cb.tier : 2;
+            const ta = a.context_level === 'primary' ? 1 : (a.context_level === 'secondary' ? 2 : ((ca && typeof ca.tier === 'number') ? ca.tier : 3));
+            const tb = b.context_level === 'primary' ? 1 : (b.context_level === 'secondary' ? 2 : ((cb && typeof cb.tier === 'number') ? cb.tier : 3));
             if (ta !== tb) return ta - tb;
             return a.year - b.year;
         }});
@@ -4732,7 +4742,7 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
         const branchGroups = {{}};
 
         events.forEach(e => {{
-            const branchKey = getSidebarBranchKey(e.category);
+            const branchKey = getSidebarBranchKey(e);
             const branchMeta = sidebarBranchMeta[branchKey] || sidebarBranchMeta.other;
             if (!branchGroups[branchKey]) {{
                 branchGroups[branchKey] = {{
@@ -4749,9 +4759,9 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
             if (!branchGroups[branchKey].categories[catKey]) {{
                 branchGroups[branchKey].categories[catKey] = {{
                     key: catKey,
-                    label: cat.label || catKey,
+                    label: e.subcategory_label || cat.label || catKey,
                     color: cat.color || branchMeta.color,
-                    tier: (cat && typeof cat.tier === 'number') ? cat.tier : 3,
+                    tier: e.context_level === 'primary' ? 1 : (e.context_level === 'secondary' ? 2 : ((cat && typeof cat.tier === 'number') ? cat.tier : 3)),
                     events: []
                 }};
             }}
