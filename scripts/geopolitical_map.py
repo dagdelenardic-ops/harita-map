@@ -5,10 +5,9 @@ Geopolitical History Map - Interactive world map showing major events from the l
 
 import json
 import os
-import re
 import unicodedata
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 import folium
 from folium.plugins import MarkerCluster
@@ -540,6 +539,7 @@ function parseMarkdownLinks(text) {
 <meta name="description" content="Son 100 yılın dünya tarihindeki en önemli jeopolitik olaylarını interaktif harita üzerinde keşfedin. Savaşlar, antlaşmalar ve krizler.">
 <meta name="keywords" content="jeopolitik, tarih, dünya haritası, interaktif harita, askeri tarih, siyasi tarih, olaylar">
 <meta name="author" content="Jeopolitik Map">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -806,22 +806,6 @@ function parseMarkdownLinks(text) {
         border-color: rgba(52, 152, 219, 0.3);
     }}
 
-    .leaflet-marker-icon,
-    .awesome-marker,
-    .awesome-marker-icon {{
-        touch-action: manipulation;
-    }}
-    .awesome-marker,
-    .awesome-marker-icon {{
-        position: relative;
-    }}
-    .awesome-marker::after,
-    .awesome-marker-icon::after {{
-        content: "";
-        position: absolute;
-        inset: -6px;
-    }}
-
     .ai-search-panel {{
         display: flex;
         flex-direction: column;
@@ -927,73 +911,6 @@ function parseMarkdownLinks(text) {
         font-size: 10px;
         line-height: 1.4;
         color: rgba(236, 240, 241, 0.58);
-    }}
-    .map-search-bar {{
-        position: fixed;
-        top: 14px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(640px, calc(100vw - 32px));
-        z-index: 1090;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 12px;
-        border-radius: 8px;
-        background: rgba(14, 21, 27, 0.8);
-        backdrop-filter: blur(18px) saturate(125%);
-        -webkit-backdrop-filter: blur(18px) saturate(125%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-    }}
-    .map-search-form {{
-        display: flex;
-        gap: 10px;
-        align-items: stretch;
-    }}
-    .map-search-input {{
-        flex: 1;
-        min-width: 0;
-        min-height: 54px;
-        padding: 0 16px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.07);
-        color: #ecf0f1;
-        font-size: 17px;
-        outline: none;
-    }}
-    .map-search-input:focus {{
-        border-color: rgba(52, 152, 219, 0.55);
-        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.16);
-    }}
-    .map-search-input::placeholder {{
-        color: rgba(236, 240, 241, 0.5);
-    }}
-    .map-search-button {{
-        min-width: 136px;
-        min-height: 54px;
-        padding: 0 18px;
-        border-radius: 8px;
-        border: 1px solid rgba(52, 152, 219, 0.4);
-        background: rgba(52, 152, 219, 0.2);
-        color: #dff1ff;
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-    }}
-    .map-search-button:hover {{
-        background: rgba(52, 152, 219, 0.3);
-    }}
-    .map-search-status {{
-        min-height: 18px;
-        font-size: 12px;
-        line-height: 1.4;
-        color: rgba(236, 240, 241, 0.65);
-        padding: 0 2px;
-    }}
-    .map-search-status.error {{
-        color: #ffb4a8;
     }}
 
     /* Decade toggle chips */
@@ -1444,7 +1361,7 @@ function parseMarkdownLinks(text) {
 
     /* Timeline in sidebar */
     .decade-section {{
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }}
     .decade-header {{
         padding: 12px 20px 12px 48px;
@@ -1494,172 +1411,48 @@ function parseMarkdownLinks(text) {
     .decade-events {{
         display: none;
         background: transparent;
-        margin-left: 18px;
-        padding: 4px 0 8px 14px;
-        position: relative;
+        padding-bottom: 6px;
     }}
     .decade-events.open {{
         display: block;
     }}
-    .decade-events::before {{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 8px;
-        width: 1px;
-        background: linear-gradient(180deg, rgba(0,206,201,0.22), rgba(116,185,255,0.14), transparent);
-    }}
-    .event-branch {{
-        margin: 6px 0 10px;
-        border: none;
-        border-radius: 0;
-        background: transparent;
-        overflow: visible;
-        position: relative;
-    }}
-    .event-branch summary,
-    .event-subbranch summary {{
-        list-style: none;
-    }}
-    .event-branch summary::-webkit-details-marker,
-    .event-subbranch summary::-webkit-details-marker {{
-        display: none;
-    }}
-    .event-branch-summary,
-    .event-subbranch-summary {{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        cursor: pointer;
-        user-select: none;
-        position: relative;
-    }}
-    .event-branch-summary {{
-        padding: 8px 0 8px 18px;
-        background: transparent;
-    }}
-    .event-branch-summary::before,
-    .event-subbranch-summary::before,
-    .event-item::after {{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 12px;
-        height: 1px;
-        background: rgba(255,255,255,0.16);
-    }}
-    .event-branch-title {{
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 12px;
-        font-weight: 700;
-        color: #ecf0f1;
-        letter-spacing: 0.2px;
-    }}
-    .event-branch-dot {{
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--branch-color, #74b9ff);
-        box-shadow: 0 0 8px var(--branch-color, #74b9ff);
-        flex-shrink: 0;
-    }}
-    .event-branch-count,
-    .event-subbranch-count {{
-        font-size: 10px;
-        color: rgba(236,240,241,0.7);
-        background: rgba(255,255,255,0.05);
-        border-radius: 999px;
-        padding: 3px 8px;
-        flex-shrink: 0;
-    }}
-    .event-branch-body {{
-        padding: 0 0 0 18px;
-        position: relative;
-    }}
-    .event-branch-body::before {{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 10px;
-        width: 1px;
-        background: rgba(255,255,255,0.08);
-    }}
-    .event-subbranch {{
-        margin: 0 0 8px;
-        border-left: none;
-        padding: 0 0 0 18px;
-        position: relative;
-    }}
-    .event-subbranch::before {{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 12px;
-        width: 1px;
-        background: rgba(255,255,255,0.08);
-    }}
-    .event-subbranch-summary {{
-        padding: 7px 0 7px 16px;
-    }}
-    .event-subbranch-title {{
-        font-size: 11px;
-        font-weight: 700;
-        color: rgba(236,240,241,0.82);
-        text-transform: none;
-        letter-spacing: 0;
-    }}
-    .event-item-list {{
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        margin-left: 16px;
-        padding-left: 14px;
-        border-left: 1px solid rgba(255,255,255,0.08);
-    }}
+    /* Glass event cards */
     .event-item {{
-        padding: 8px 0 12px 18px;
-        margin: 0 0 12px;
-        border-radius: 0;
-        border: none;
-        border-left: 2px solid rgba(255, 255, 255, 0.08);
-        background: transparent;
+        padding: 14px 16px 14px 48px;
+        margin: 4px 8px 4px 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 4px solid var(--cat-color, #636e72);
+        background: rgba(255, 255, 255, 0.03);
         position: relative;
         transition: all 0.2s;
     }}
+    /* Small timeline dot on event */
     .event-item::before {{
         content: '';
         position: absolute;
-        left: -5px;
-        top: 14px;
-        width: 7px;
-        height: 7px;
+        left: 16px;
+        top: 20px;
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
         background: var(--cat-color, #636e72);
-        opacity: 0.95;
+        opacity: 0.7;
         z-index: 2;
     }}
-    .event-item::after {{
-        top: 17px;
-    }}
     .event-item:hover {{
-        background: rgba(255, 255, 255, 0.03);
-        border-color: rgba(255, 255, 255, 0.14);
-        transform: none;
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.12);
+        transform: translateX(2px);
     }}
     .event-item:last-child {{
         border-bottom: none;
     }}
     .event-item.tier-1 {{
-        border-left-width: 3px;
-        background: rgba(255, 255, 255, 0.04);
-        border-color: rgba(255, 255, 255, 0.18);
+        border-left-width: 5px;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }}
     .event-item.tier-1::before {{
         width: 8px;
@@ -1668,8 +1461,8 @@ function parseMarkdownLinks(text) {
         box-shadow: 0 0 6px var(--cat-color, #636e72);
     }}
     .event-item.tier-3 {{
-        border-left-width: 2px;
-        background: rgba(255, 255, 255, 0.012);
+        border-left-width: 3px;
+        background: rgba(255, 255, 255, 0.015);
         opacity: 0.88;
     }}
     .event-item.event-enter {{
@@ -1926,9 +1719,6 @@ function parseMarkdownLinks(text) {
 
     /* Mobil: paneller kolay kapansın, daha fazla harita alanı */
     @media (max-width: 768px) {{
-        body {{
-            font-size: 14px;
-        }}
         .country-sidebar {{
             width: 100%;
             left: -100%;
@@ -1937,155 +1727,39 @@ function parseMarkdownLinks(text) {
             transform: translateX(100%);
         }}
         .control-panel {{
-            top: auto;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            width: auto;
-            max-height: min(78vh, calc(100vh - 24px));
-            padding: 12px 12px calc(14px + env(safe-area-inset-bottom, 0px));
-            border-radius: 8px;
-            transform: translateY(calc(100% + 28px));
+            width: min(320px, 92vw);
+            max-height: 80vh;
+            transform: translateX(110%);
             opacity: 0;
             pointer-events: none;
-            overflow-y: auto;
-            box-shadow: 0 14px 40px rgba(0,0,0,0.42), inset 0 0 0 1px rgba(255,255,255,0.04);
         }}
         .control-panel.mobile-open {{
-            transform: translateY(0);
+            transform: translateX(0);
             opacity: 1;
             pointer-events: auto;
         }}
-        .panel-backdrop {{
-            display: block;
-        }}
         .panel-toggle {{
             display: block;
-            margin-bottom: 10px;
         }}
         .panel-fab {{
             display: inline-flex;
+            width: auto !important;
+            height: auto !important;
+            max-width: 130px;
+            padding: 10px 16px !important;
+            font-size: 13px;
         }}
         .panel-handle {{
-            display: none;
+            display: inline-flex;
         }}
-        .panel-sheet-grip {{
-            display: block;
-        }}
-        .build-info,
-        .app-footer {{
-            display: none;
+        .build-info {{
+            right: 10px;
+            left: auto;
+            font-size: 10px;
         }}
         .share-fab {{
-            right: 16px;
             bottom: 16px;
-        }}
-        .acc-header,
-        .acc-actions button,
-        .decade-item,
-        .category-item,
-        .group-card,
-        .indicator-select,
-        .panel-toggle,
-        .panel-fab,
-        .panel-handle,
-        .close-sidebar,
-        .share-fab-btn {{
-            min-height: 44px;
-        }}
-        .acc-header,
-        .category-item,
-        .group-card {{
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }}
-        .acc-title,
-        .group-card-label,
-        .stats-box .label,
-        .instructions,
-        .ai-search-status,
-        .ai-search-summary,
-        .ai-result-meta,
-        .ai-result-snippet,
-        .indicator-legend,
-        .indicator-legend-desc,
-        .indicator-legend-detail,
-        .build-info,
-        .app-footer {{
-            font-size: 12px !important;
-            line-height: 1.45;
-        }}
-        .acc-badge,
-        .group-card-count,
-        .category-tier-label,
-        .acc-actions button {{
-            font-size: 11px !important;
-            line-height: 1.4;
-        }}
-        .panel-fab {{
-            top: auto;
-            left: 16px;
-            right: auto;
-            bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-            padding: 12px 14px;
-        }}
-        .panel-toggle {{
-            padding: 10px 12px;
-            font-size: 14px;
-        }}
-        .panel-handle {{
-            width: 44px;
-            height: 56px;
-        }}
-        .close-sidebar {{
-            width: 44px;
-            height: 44px;
-            font-size: 28px;
-        }}
-        .share-fab-btn {{
-            min-width: 44px;
-            min-height: 44px;
-        }}
-        .ai-search-form {{
-            flex-direction: column;
-        }}
-        .map-search-bar {{
-            top: 12px;
-            width: calc(100vw - 20px);
-            padding: 10px;
-            gap: 6px;
-        }}
-        .map-search-form {{
-            flex-direction: column;
-        }}
-        .map-search-input,
-        .map-search-button {{
-            width: 100%;
-            min-height: 48px;
-        }}
-        .map-search-input {{
-            font-size: 16px;
-            padding: 0 14px;
-        }}
-        .map-search-button {{
-            min-width: 0;
-            font-size: 14px;
-        }}
-        .ai-search-input,
-        .ai-search-button {{
-            width: 100%;
-            min-height: 48px;
-        }}
-        .ai-search-input {{
-            padding: 12px 14px;
-            font-size: 16px;
-        }}
-        .ai-search-button {{
-            padding: 12px 14px;
-            font-size: 14px;
-        }}
-        .ai-search-results {{
-            max-height: 220px;
+            right: 16px;
         }}
     }}
     @media (min-width: 769px) {{
@@ -2136,19 +1810,6 @@ function parseMarkdownLinks(text) {
     }}
     .panel-fab.hidden {{ display: none; }}
     .panel-fab:active {{ transform: scale(0.98); }}
-    .panel-backdrop {{
-        position: fixed;
-        inset: 0;
-        z-index: 996;
-        background: rgba(4, 10, 16, 0.52);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
-    }}
-    .panel-backdrop.active {{
-        opacity: 1;
-        pointer-events: auto;
-    }}
     .panel-handle {{
         /* display is controlled by media queries */
         position: fixed;
@@ -2179,26 +1840,6 @@ function parseMarkdownLinks(text) {
         font-weight: 900;
         line-height: 1;
         display: block;
-    }}
-    .panel-sheet-grip {{
-        display: none;
-        width: 48px;
-        height: 5px;
-        margin: 0 auto 10px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.16);
-    }}
-    .lazy-placeholder {{
-        padding: 4px 2px 8px;
-        font-size: 11px;
-        line-height: 1.5;
-        color: rgba(236, 240, 241, 0.52);
-    }}
-    body.panel-sheet-open .share-fab {{
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(10px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
     }}
     .build-info {{
         position: fixed;
@@ -2452,22 +2093,11 @@ function parseMarkdownLinks(text) {
     </div>
 </div>
 
-<div class="map-search-bar" id="mapSearchBar">
-    <div class="map-search-form">
-        <input class="map-search-input" id="mapSearchInput" type="search" autocomplete="off" placeholder="Harita üzerinde olay, kriz, kişi veya tema ara">
-        <button class="map-search-button" id="mapSearchButton" type="button" onclick="runMapSearch()">Haritada Ara</button>
-    </div>
-    <div class="map-search-status" id="mapSearchStatus">Sonuçlar AI arama panelinde açılır.</div>
-</div>
-
-<div class="panel-backdrop" id="panelBackdrop" onclick="toggleFilterPanel(false)" aria-hidden="true"></div>
-
-<button class="panel-fab hidden" id="panelFab" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">
+<button class="panel-fab" id="panelFab" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">
     Filtreler
 </button>
 
 <div class="control-panel" id="controlPanel">
-    <div class="panel-sheet-grip" aria-hidden="true"></div>
     <button class="panel-toggle" id="panelToggle" onclick="toggleFilterPanel()" aria-label="Filtreleri aç/kapat" aria-expanded="false">Filtreler</button>
     <h3>Jeopolitik Tarih Haritası</h3>
 
@@ -2509,7 +2139,11 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="lazy-placeholder">Zaman dilimi seçenekleri gerektiğinde hazırlanır.</div>
+            <div class="acc-actions">
+                <button onclick="event.stopPropagation();selectAllDecades()">Tümü</button>
+                <button onclick="event.stopPropagation();selectNoDecades()">Hiçbiri</button>
+            </div>
+            <div class="decade-grid" id="decadeFilters"></div>
         </div>
     </div>
 
@@ -2524,7 +2158,11 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="lazy-placeholder">Kategori filtreleri panel açıldığında yüklenir.</div>
+            <div class="acc-actions">
+                <button onclick="event.stopPropagation();selectAllCategories()">Tümü</button>
+                <button onclick="event.stopPropagation();selectNoCategories()">Hiçbiri</button>
+            </div>
+            <div class="category-list" id="categoryFilters"></div>
         </div>
     </div>
 
@@ -2538,7 +2176,18 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="lazy-placeholder">Özel listeler siz açınca görünecek.</div>
+            <div class="category-list">
+                <label class="category-item" style="background: rgba(241, 196, 15, 0.06); border: 1px solid rgba(241, 196, 15, 0.15);">
+                    <input type="checkbox" checked onchange="toggleSpecial('time_100')" id="special-time_100" style="display:none;">
+                    <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
+                    Time 100: Yüzyılın Kişileri
+                </label>
+                <label class="category-item" style="background: rgba(231, 76, 60, 0.06); border: 1px solid rgba(231, 76, 60, 0.15);">
+                    <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows" style="display:none;">
+                    <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
+                    Çatışma Okları
+                </label>
+            </div>
         </div>
     </div>
 
@@ -2552,7 +2201,32 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="lazy-placeholder">Ülke blokları ihtiyaç olduğunda hazırlanır.</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+                <div class="group-card" id="group-nato-card" onclick="toggleCountryGroupCard('nato')" style="--group-color:rgba(52,152,219,0.5);--group-glow:rgba(52,152,219,0.08);--group-bg:rgba(52,152,219,0.15);">
+                    <input type="checkbox" id="group-nato" style="display:none;">
+                    <div class="group-card-icon" style="color:#3498db;">
+                        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="currentColor" opacity="0.5"/></svg>
+                    </div>
+                    <span class="group-card-label">NATO</span>
+                    <span class="group-card-count" id="natoCount"></span>
+                </div>
+                <div class="group-card" id="group-g8-card" onclick="toggleCountryGroupCard('g8')" style="--group-color:rgba(241,196,15,0.5);--group-glow:rgba(241,196,15,0.08);--group-bg:rgba(241,196,15,0.15);">
+                    <input type="checkbox" id="group-g8" style="display:none;">
+                    <div class="group-card-icon" style="color:#f1c40f;">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><text x="8" y="10.5" text-anchor="middle" font-size="6" font-weight="700" fill="currentColor">8</text></svg>
+                    </div>
+                    <span class="group-card-label">G8</span>
+                    <span class="group-card-count" id="g8Count"></span>
+                </div>
+                <div class="group-card" id="group-brics-card" onclick="toggleCountryGroupCard('brics_plus')" style="--group-color:rgba(88,101,242,0.5);--group-glow:rgba(88,101,242,0.08);--group-bg:rgba(88,101,242,0.15);">
+                    <input type="checkbox" id="group-brics_plus" style="display:none;">
+                    <div class="group-card-icon" style="color:#5865f2;">
+                        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="4" height="5" rx="0.5" fill="currentColor" opacity="0.6"/><rect x="6" y="5" width="4" height="9" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="10" y="2" width="4" height="12" rx="0.5" fill="currentColor" opacity="0.8"/></svg>
+                    </div>
+                    <span class="group-card-label">BRICS+</span>
+                    <span class="group-card-count" id="bricsCount"></span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2567,7 +2241,23 @@ function parseMarkdownLinks(text) {
             <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="acc-body">
-            <div class="lazy-placeholder">Gösterge katmanları burada gerektiğinde açılır.</div>
+            <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
+                <option value="">Gösterge kapalı</option>
+                <option value="sanctions_risk_score">Yaptırım / Risk</option>
+                <option value="weather_pressure_score">İklim Baskısı</option>
+                <option value="air_quality_pm25">Hava Kalitesi (PM2.5)</option>
+                <option value="fx_pressure_score">Kur Baskısı (30g USD)</option>
+                <option value="min_wage">Asgari Ücret (USD/saat)</option>
+                <option value="bigmac">Big Mac Endeksi (USD)</option>
+                <option value="water_internal_total">İç Tatlı Su (milyar m3)</option>
+                <option value="water_internal_per_capita">İç Tatlı Su / Kişi</option>
+                <option value="water_stress">Su Stresi</option>
+                <option value="water_withdrawal_pct_internal">Su Çekimi / İç Kaynak</option>
+                <option value="water_use_agriculture">Su Kullanımı: Tarım</option>
+                <option value="water_use_industry">Su Kullanımı: Sanayi</option>
+                <option value="water_use_domestic">Su Kullanımı: Evsel</option>
+            </select>
+            <div class="indicator-legend" id="indicatorLegend" style="display:none;"></div>
         </div>
     </div>
 
@@ -2593,8 +2283,8 @@ function parseMarkdownLinks(text) {
 
 <div class="app-footer" id="appFooter">Jeopolitik harita Alpha 1.0 - Gurur Sönmez</div>
 
-<button class="panel-handle" id="panelHandle" onclick="toggleFilterPanel()" aria-label="Filtre panelini aç/kapat" aria-expanded="false">
-    <span class="panel-handle-icon" id="panelHandleIcon" aria-hidden="true">‹</span>
+<button class="panel-handle" id="panelHandle" onclick="toggleFilterPanel()" aria-label="Filtre panelini aç/kapat" aria-expanded="true">
+    <span class="panel-handle-icon" id="panelHandleIcon" aria-hidden="true">›</span>
 </button>
 
 <script>
@@ -2675,8 +2365,13 @@ async function loadAppData() {{
         return true;
     }} catch(err) {{
         console.error('Data loading failed:', err);
-        progress.textContent = 'Veri yükleme hatası! Sayfa yenileniyor...';
-        setTimeout(() => location.reload(), 3000);
+        progress.textContent = 'Veri yükleme hatası: ' + err.message;
+        progress.style.color = '#e74c3c';
+        // Dismiss loading overlay after 5 seconds so user can still see the map tiles
+        setTimeout(function() {{
+            const ov = document.getElementById('loadingOverlay');
+            if (ov) {{ ov.style.opacity = '0'; setTimeout(() => ov.remove(), 400); }}
+        }}, 5000);
         return false;
     }}
 }}
@@ -2874,57 +2569,17 @@ function setAiSearchStatus(text, isError = false) {{
     if (!el) return;
     el.textContent = text || '';
     el.classList.toggle('error', Boolean(isError));
-
-    const mirror = document.getElementById('mapSearchStatus');
-    if (mirror) {{
-        mirror.textContent = text || '';
-        mirror.classList.toggle('error', Boolean(isError));
-    }}
-}}
-
-function syncSearchInputs(sourceId, targetId) {{
-    const source = document.getElementById(sourceId);
-    const target = document.getElementById(targetId);
-    if (!source || !target) return;
-    if (target.value !== source.value) target.value = source.value;
 }}
 
 function initAiSearch() {{
     const input = document.getElementById('aiSearchInput');
     if (!input) return;
-    input.addEventListener('input', function() {{
-        syncSearchInputs('aiSearchInput', 'mapSearchInput');
-    }});
     input.addEventListener('keydown', function(event) {{
         if (event.key === 'Enter') {{
             event.preventDefault();
             aiSearch();
         }}
     }});
-}}
-
-function initMapSearch() {{
-    const input = document.getElementById('mapSearchInput');
-    if (!input) return;
-    input.addEventListener('input', function() {{
-        syncSearchInputs('mapSearchInput', 'aiSearchInput');
-    }});
-    input.addEventListener('keydown', function(event) {{
-        if (event.key === 'Enter') {{
-            event.preventDefault();
-            runMapSearch();
-        }}
-    }});
-}}
-
-function runMapSearch() {{
-    syncSearchInputs('mapSearchInput', 'aiSearchInput');
-    ensureSectionRendered('accAiSearch');
-    setSectionOpen('accAiSearch', true);
-    if (window.matchMedia('(max-width: 768px)').matches) {{
-        syncFilterPanelState(true);
-    }}
-    aiSearch();
 }}
 
 function getAiResultCountry(result) {{
@@ -3038,7 +2693,6 @@ function renderAiSearchResults(data) {{
 async function aiSearch() {{
     const input = document.getElementById('aiSearchInput');
     const button = document.getElementById('aiSearchButton');
-    const mapButton = document.getElementById('mapSearchButton');
     const summaryDiv = document.getElementById('aiSummary');
     const listDiv = document.getElementById('aiResultsList');
     const query = input ? input.value.trim() : '';
@@ -3048,7 +2702,6 @@ async function aiSearch() {{
     }}
 
     if (button) button.disabled = true;
-    if (mapButton) mapButton.disabled = true;
     if (summaryDiv) summaryDiv.textContent = '';
     if (listDiv) listDiv.innerHTML = '';
     setAiSearchStatus('Aranıyor...', false);
@@ -3071,7 +2724,6 @@ async function aiSearch() {{
         setAiSearchStatus('Arama hatası: ' + (err && err.message ? err.message : String(err)), true);
     }} finally {{
         if (button) button.disabled = false;
-        if (mapButton) mapButton.disabled = false;
     }}
 }}
 
@@ -3395,174 +3047,18 @@ function getConflictIntensityColor(level) {{
     return '#7f8c8d';
 }}
 
-const filterPanelSections = ['accAiSearch', 'accDecades', 'accCategories', 'accSpecial', 'accGroups', 'accIndicators'];
-const filterPanelDefaultSections = {{
-    mobile: ['accAiSearch'],
-    desktop: ['accAiSearch', 'accDecades', 'accCategories']
-}};
-
-const lazySectionRenderers = {{
-    accDecades: () => `
-        <div class="acc-actions">
-            <button onclick="event.stopPropagation();selectAllDecades()">Tümü</button>
-            <button onclick="event.stopPropagation();selectNoDecades()">Hiçbiri</button>
-        </div>
-        <div class="decade-grid" id="decadeFilters"></div>
-    `,
-    accCategories: () => `
-        <div class="acc-actions">
-            <button onclick="event.stopPropagation();selectAllCategories()">Tümü</button>
-            <button onclick="event.stopPropagation();selectNoCategories()">Hiçbiri</button>
-        </div>
-        <div class="category-list" id="categoryFilters"></div>
-    `,
-    accSpecial: () => `
-        <div class="category-list">
-            <label class="category-item" style="background: rgba(241, 196, 15, 0.06); border: 1px solid rgba(241, 196, 15, 0.15);">
-                <input type="checkbox" checked onchange="toggleSpecial('time_100')" id="special-time_100" style="display:none;">
-                <span class="category-color" style="background: #f1c40f; box-shadow: 0 0 5px #f1c40f;"></span>
-                Time 100: Yüzyılın Kişileri
-            </label>
-            <label class="category-item" style="background: rgba(231, 76, 60, 0.06); border: 1px solid rgba(231, 76, 60, 0.15);">
-                <input type="checkbox" checked onchange="toggleConflictArrows()" id="toggle-arrows" style="display:none;">
-                <span class="category-color" style="background: #e74c3c; box-shadow: 0 0 5px #e74c3c;"></span>
-                Çatışma Okları
-            </label>
-        </div>
-    `,
-    accGroups: () => `
-        <div style="display:flex; flex-direction:column; gap:6px;">
-            <div class="group-card" id="group-nato-card" onclick="toggleCountryGroupCard('nato')" style="--group-color:rgba(52,152,219,0.5);--group-glow:rgba(52,152,219,0.08);--group-bg:rgba(52,152,219,0.15);">
-                <input type="checkbox" id="group-nato" style="display:none;">
-                <div class="group-card-icon" style="color:#3498db;">
-                    <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="currentColor" opacity="0.5"/></svg>
-                </div>
-                <span class="group-card-label">NATO</span>
-                <span class="group-card-count" id="natoCount"></span>
-            </div>
-            <div class="group-card" id="group-g8-card" onclick="toggleCountryGroupCard('g8')" style="--group-color:rgba(241,196,15,0.5);--group-glow:rgba(241,196,15,0.08);--group-bg:rgba(241,196,15,0.15);">
-                <input type="checkbox" id="group-g8" style="display:none;">
-                <div class="group-card-icon" style="color:#f1c40f;">
-                    <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><text x="8" y="10.5" text-anchor="middle" font-size="6" font-weight="700" fill="currentColor">8</text></svg>
-                </div>
-                <span class="group-card-label">G8</span>
-                <span class="group-card-count" id="g8Count"></span>
-            </div>
-            <div class="group-card" id="group-brics-card" onclick="toggleCountryGroupCard('brics_plus')" style="--group-color:rgba(88,101,242,0.5);--group-glow:rgba(88,101,242,0.08);--group-bg:rgba(88,101,242,0.15);">
-                <input type="checkbox" id="group-brics_plus" style="display:none;">
-                <div class="group-card-icon" style="color:#5865f2;">
-                    <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="4" height="5" rx="0.5" fill="currentColor" opacity="0.6"/><rect x="6" y="5" width="4" height="9" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="10" y="2" width="4" height="12" rx="0.5" fill="currentColor" opacity="0.8"/></svg>
-                </div>
-                <span class="group-card-label">BRICS+</span>
-                <span class="group-card-count" id="bricsCount"></span>
-            </div>
-        </div>
-    `,
-    accIndicators: () => `
-        <select class="indicator-select" id="indicatorSelect" onchange="setIndicatorMode(this.value)">
-            <option value="">Gösterge kapalı</option>
-            <option value="sanctions_risk_score">Yaptırım / Risk</option>
-            <option value="weather_pressure_score">İklim Baskısı</option>
-            <option value="air_quality_pm25">Hava Kalitesi (PM2.5)</option>
-            <option value="fx_pressure_score">Kur Baskısı (30g USD)</option>
-            <option value="min_wage">Asgari Ücret (USD/saat)</option>
-            <option value="bigmac">Big Mac Endeksi (USD)</option>
-            <option value="water_internal_total">İç Tatlı Su (milyar m3)</option>
-            <option value="water_internal_per_capita">İç Tatlı Su / Kişi</option>
-            <option value="water_stress">Su Stresi</option>
-            <option value="water_withdrawal_pct_internal">Su Çekimi / İç Kaynak</option>
-            <option value="water_use_agriculture">Su Kullanımı: Tarım</option>
-            <option value="water_use_industry">Su Kullanımı: Sanayi</option>
-            <option value="water_use_domestic">Su Kullanımı: Evsel</option>
-        </select>
-        <div class="indicator-legend" id="indicatorLegend" style="display:none;"></div>
-    `
-}};
-
-function syncSpecialControlState() {{
-    const time100Box = document.getElementById('special-time_100');
-    const arrowsBox = document.getElementById('toggle-arrows');
-    if (time100Box) time100Box.checked = !!showTime100;
-    if (arrowsBox) arrowsBox.checked = !!window.showConflictArrows;
-}}
-
-function syncGroupControlState() {{
-    const g8Box = document.getElementById('group-g8');
-    const natoBox = document.getElementById('group-nato');
-    const bricsBox = document.getElementById('group-brics_plus');
-    if (g8Box) g8Box.checked = window.activeCountryGroup === 'g8';
-    if (natoBox) natoBox.checked = window.activeCountryGroup === 'nato';
-    if (bricsBox) bricsBox.checked = window.activeCountryGroup === 'brics_plus';
-
-    ['nato', 'g8', 'brics_plus'].forEach(gk => {{
-        const cardId = gk === 'brics_plus' ? 'group-brics-card' : `group-${{gk}}-card`;
-        const card = document.getElementById(cardId);
-        if (!card) return;
-        card.classList.toggle('active', window.activeCountryGroup === gk);
-    }});
-}}
-
-function syncIndicatorControlState() {{
-    const select = document.getElementById('indicatorSelect');
-    if (select) select.value = window.activeIndicator || '';
-    updateIndicatorLegend();
-}}
-
-function ensureSectionRendered(id) {{
-    const section = document.getElementById(id);
-    if (!section || section.dataset.rendered === 'true') return;
-    const renderer = lazySectionRenderers[id];
-    if (!renderer) return;
-
-    const body = section.querySelector('.acc-body');
-    if (!body) return;
-
-    body.innerHTML = renderer();
-    section.dataset.rendered = 'true';
-
-    if (id === 'accDecades') renderDecadeFilters();
-    if (id === 'accCategories') renderCategoryFilters();
-    if (id === 'accSpecial') syncSpecialControlState();
-    if (id === 'accGroups') {{
-        syncGroupControlState();
-        updateGroupCounts();
-    }}
-    if (id === 'accIndicators') syncIndicatorControlState();
-}}
-
-function setSectionOpen(id, isOpen) {{
-    const section = document.getElementById(id);
-    if (!section) return;
-    if (isOpen) ensureSectionRendered(id);
-    section.classList.toggle('open', isOpen);
-}}
-
-function configureFilterSectionsForViewport(isMobile) {{
-    const defaultOpen = isMobile ? filterPanelDefaultSections.mobile : filterPanelDefaultSections.desktop;
-    filterPanelSections.forEach(id => setSectionOpen(id, defaultOpen.includes(id)));
-}}
-
-function renderDecadeFilters() {{
+// Initialize filters
+function initFilters() {{
     const decadeContainer = document.getElementById('decadeFilters');
-    if (!decadeContainer || decadeContainer.dataset.rendered === 'true') return;
-    decadeContainer.innerHTML = '';
     decades.forEach(decade => {{
         const item = document.createElement('label');
         item.className = 'decade-item';
-        const checkedAttr = selectedDecades.has(decade) ? 'checked' : '';
         item.innerHTML = `
-            <input type="checkbox" ${{checkedAttr}} onchange="toggleDecade('${{decade}}')" id="decade-${{decade}}">
+            <input type="checkbox" checked onchange="toggleDecade('${{decade}}')" id="decade-${{decade}}">
             ${{decade}}
         `;
         decadeContainer.appendChild(item);
     }});
-    decadeContainer.dataset.rendered = 'true';
-}}
-
-function renderCategoryFilters() {{
-    const catContainer = document.getElementById('categoryFilters');
-    if (!catContainer || catContainer.dataset.rendered === 'true') return;
-    catContainer.innerHTML = '';
 
     // SVG icons for categories
     const categorySVG = {{
@@ -3578,6 +3074,7 @@ function renderCategoryFilters() {{
         music: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 12V4l7-2v8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="12" r="2" fill="currentColor" opacity="0.7"/><circle cx="11" cy="10" r="2" fill="currentColor" opacity="0.7"/></svg>',
     }};
 
+    const catContainer = document.getElementById('categoryFilters');
     const catEntries = Object.entries(categories)
         .filter(([key, _cat]) => key !== 'time_100')
         .sort((a, b) => {{
@@ -3617,22 +3114,14 @@ function renderCategoryFilters() {{
         const item = document.createElement('label');
         item.className = `category-item tier-${{tier}}`;
         item.style.setProperty('--tier-color', cat.color);
-        const checkedAttr = selectedCategories.has(key) ? 'checked' : '';
         item.innerHTML = `
-            <input type="checkbox" ${{checkedAttr}} onchange="toggleCategory('${{key}}')" id="cat-${{key}}">
+            <input type="checkbox" checked onchange="toggleCategory('${{key}}')" id="cat-${{key}}">
             <span class="category-color" style="background: ${{cat.color}}; color: ${{cat.color}}; display:flex;align-items:center;justify-content:center;">${{svg || ''}}</span>
             ${{cat.label}}
         `;
         (tierGroup || catContainer).appendChild(item);
     }});
-    catContainer.dataset.rendered = 'true';
-}}
 
-// Initialize filters
-function initFilters() {{
-    renderDecadeFilters();
-    renderCategoryFilters();
-    updateFilterBadges();
     updateVisibleCount();
     updateIndicatorLegend();
 }}
@@ -3644,7 +3133,28 @@ function toggleCountryGroup(groupKey) {{
     }}
 
     window.activeCountryGroup = (window.activeCountryGroup === groupKey) ? null : groupKey;
-    syncGroupControlState();
+
+    // Update hidden checkboxes
+    const g8Box = document.getElementById('group-g8');
+    const natoBox = document.getElementById('group-nato');
+    const bricsBox = document.getElementById('group-brics_plus');
+    if (g8Box) g8Box.checked = window.activeCountryGroup === 'g8';
+    if (natoBox) natoBox.checked = window.activeCountryGroup === 'nato';
+    if (bricsBox) bricsBox.checked = window.activeCountryGroup === 'brics_plus';
+
+    // Update group card visual state
+    ['nato', 'g8', 'brics_plus'].forEach(gk => {{
+        const cardId = gk === 'brics_plus' ? 'group-brics-card' : `group-${{gk}}-card`;
+        const card = document.getElementById(cardId);
+        if (card) {{
+            if (window.activeCountryGroup === gk) {{
+                card.classList.add('active');
+            }} else {{
+                card.classList.remove('active');
+            }}
+        }}
+    }});
+
     updateVisibleCount();
     updateMarkerVisibility();
     updateExternalOverlays();
@@ -3710,7 +3220,6 @@ function updateVisibleCountAnimated(newCount) {{
 
 function setIndicatorMode(mode) {{
     window.activeIndicator = mode || '';
-    syncIndicatorControlState();
     updateExternalOverlays();
 }}
 
@@ -3952,14 +3461,12 @@ function toggleSpecial(type) {{
     if (type === 'time_100') {{
         showTime100 = !showTime100;
     }}
-    syncSpecialControlState();
     updateVisibleCount();
     updateMarkerVisibility();
 }}
 
 function toggleConflictArrows() {{
     window.showConflictArrows = !window.showConflictArrows;
-    syncSpecialControlState();
     if (window.showConflictArrows) {{
         if (window._lastArrowConflictId) {{
             showConflictOnMap(window._lastArrowConflictId, window._lastArrowCountry || '');
@@ -3998,17 +3505,7 @@ function toggleCategory(category) {{
 
 function toggleAcc(id) {{
     const el = document.getElementById(id);
-    if (!el) return;
-    const shouldOpen = !el.classList.contains('open');
-    if (shouldOpen) {{
-        ensureSectionRendered(id);
-        if (window.matchMedia('(max-width: 768px)').matches) {{
-            filterPanelSections.forEach(sectionId => {{
-                if (sectionId !== id) setSectionOpen(sectionId, false);
-            }});
-        }}
-    }}
-    el.classList.toggle('open', shouldOpen);
+    if (el) el.classList.toggle('open');
 }}
 
 function updateFilterBadges() {{
@@ -4691,70 +4188,15 @@ function buildEconomyHtml(countryName) {{
 
 let sidebarRefreshTimer = null;
 
-const sidebarBranchMeta = {{
-    conflict: {{ label: 'Jeopolitik Çatışmalar', color: '#e74c3c', order: 1 }},
-    power: {{ label: 'Siyaset & Güç', color: '#3498db', order: 2 }},
-    culture_arts: {{ label: 'Kültür & Sanat', color: '#9b59b6', order: 3 }},
-    society: {{ label: 'Toplum & Dönüşüm', color: '#2ecc71', order: 4 }},
-    other: {{ label: 'Diğer Başlıklar', color: '#95a5a6', order: 5 }}
-}};
-
-function getSidebarBranchKey(eventOrCategory) {{
-    if (typeof eventOrCategory === 'object' && eventOrCategory) {{
-        const explicit = String(eventOrCategory.branch || '').trim();
-        if (explicit && sidebarBranchMeta[explicit]) return explicit;
-        return getSidebarBranchKey(eventOrCategory.category || '');
-    }}
-    const category = String(eventOrCategory || '').trim();
-    if (['war', 'genocide', 'terror'].includes(category)) return 'conflict';
-    if (['revolution', 'leader', 'politics', 'diplomacy'].includes(category)) return 'power';
-    if (['culture', 'cinema', 'music', 'time_100'].includes(category)) return 'culture_arts';
-    return 'society';
-}}
-
-function ensureTrailingPeriod(text) {{
-    const clean = String(text || '').trim();
-    if (!clean) return '';
-    return /[.!?…]$/.test(clean) ? clean : clean + '.';
-}}
-
-function buildEventDescriptionText(event, catLabel) {{
-    const raw = ensureTrailingPeriod(event.description || '');
-    const contextNote = ensureTrailingPeriod(event.context_note || '');
-    if (raw.length >= 90) return raw;
-    if (raw && contextNote) return `${{raw}} ${{contextNote}}`;
-    if (raw.length >= 40) return raw;
-    if (contextNote) return contextNote;
-
-    const yearText = event.year ? `${{event.year}} yılında` : 'Bu dönemde';
-    const countryText = event.country_name ? `${{event.country_name}} için` : 'bu başlıkta';
-    const titleText = event.title ? `"${{event.title}}"` : 'Bu olay';
-    const catText = String(event.subcategory_label || catLabel || 'bu kategori').toLocaleLowerCase('tr-TR');
-
-    if (raw) {{
-        return `${{raw}} ${{yearText}} ${{countryText}} ${{catText}} hattında öne çıkan ${{titleText}} olayı, daha geniş tarihsel bağlamın parçasıdır.`;
-    }}
-
-    return `${{yearText}} ${{countryText}} öne çıkan ${{titleText}} olayı, ${{catText}} hattında dikkat çeken bir dönüm noktasıdır.`;
-}}
-
-function getSidebarTreeOpenState() {{
-    const state = {{ decades: {{}}, branches: {{}}, categories: {{}} }};
+function getSidebarDecadeOpenState() {{
+    const state = {{}};
     const sidebarContent = document.getElementById('sidebarContent');
     if (!sidebarContent) return state;
     sidebarContent.querySelectorAll('.decade-section').forEach(section => {{
         const decade = section.getAttribute('data-decade');
         const events = section.querySelector('.decade-events');
         if (!decade || !events) return;
-        state.decades[decade] = events.classList.contains('open');
-    }});
-    sidebarContent.querySelectorAll('.event-branch').forEach(section => {{
-        const key = section.getAttribute('data-branch-key');
-        if (key) state.branches[key] = section.hasAttribute('open');
-    }});
-    sidebarContent.querySelectorAll('.event-subbranch').forEach(section => {{
-        const key = section.getAttribute('data-category-key');
-        if (key) state.categories[key] = section.hasAttribute('open');
+        state[decade] = events.classList.contains('open');
     }});
     return state;
 }}
@@ -4765,7 +4207,7 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
 
     const preserveOpenState = !!options.preserveOpenState;
     const animateEnter = !!options.animateEnter;
-    const openState = preserveOpenState ? getSidebarTreeOpenState() : {{ decades: {{}}, branches: {{}}, categories: {{}} }};
+    const openState = preserveOpenState ? getSidebarDecadeOpenState() : {{}};
 
     const byDecade = {{}};
     countryEvents.forEach(e => {{
@@ -4780,46 +4222,12 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
         const events = byDecade[decade].slice().sort((a, b) => {{
             const ca = categories[a.category] || {{}};
             const cb = categories[b.category] || {{}};
-            const ta = a.context_level === 'primary' ? 1 : (a.context_level === 'secondary' ? 2 : ((ca && typeof ca.tier === 'number') ? ca.tier : 3));
-            const tb = b.context_level === 'primary' ? 1 : (b.context_level === 'secondary' ? 2 : ((cb && typeof cb.tier === 'number') ? cb.tier : 3));
+            const ta = (ca && typeof ca.tier === 'number') ? ca.tier : 2;
+            const tb = (cb && typeof cb.tier === 'number') ? cb.tier : 2;
             if (ta !== tb) return ta - tb;
             return a.year - b.year;
         }});
-        const isOpen = (openState.decades[decade] !== undefined) ? openState.decades[decade] : true;
-        const branchGroups = {{}};
-
-        events.forEach(e => {{
-            const branchKey = getSidebarBranchKey(e);
-            const branchMeta = sidebarBranchMeta[branchKey] || sidebarBranchMeta.other;
-            if (!branchGroups[branchKey]) {{
-                branchGroups[branchKey] = {{
-                    key: branchKey,
-                    label: branchMeta.label,
-                    color: branchMeta.color,
-                    order: branchMeta.order,
-                    categories: {{}},
-                    total: 0
-                }};
-            }}
-            const catKey = e.category || 'other';
-            const cat = categories[catKey] || {{}};
-            if (!branchGroups[branchKey].categories[catKey]) {{
-                branchGroups[branchKey].categories[catKey] = {{
-                    key: catKey,
-                    label: e.subcategory_label || cat.label || catKey,
-                    color: cat.color || branchMeta.color,
-                    tier: e.context_level === 'primary' ? 1 : (e.context_level === 'secondary' ? 2 : ((cat && typeof cat.tier === 'number') ? cat.tier : 3)),
-                    events: []
-                }};
-            }}
-            branchGroups[branchKey].categories[catKey].events.push(e);
-            branchGroups[branchKey].total += 1;
-        }});
-
-        const branchList = Object.values(branchGroups).sort((a, b) => {{
-            if (a.order !== b.order) return a.order - b.order;
-            return a.label.localeCompare(b.label, 'tr');
-        }});
+        const isOpen = (openState[decade] !== undefined) ? openState[decade] : true;
 
         html += `
             <div class="decade-section" data-decade="${{decade}}">
@@ -4830,72 +4238,29 @@ function renderSidebarEvents(countryName, countryEvents, options = {{}}) {{
                 <div class="decade-events${{isOpen ? ' open' : ''}}">
         `;
 
-        branchList.forEach(branch => {{
-            const branchStateKey = `${{decade}}::${{branch.key}}`;
-            const branchOpen = (openState.branches[branchStateKey] !== undefined) ? openState.branches[branchStateKey] : true;
-            const categoryGroups = Object.values(branch.categories).sort((a, b) => {{
-                if (a.tier !== b.tier) return a.tier - b.tier;
-                return a.label.localeCompare(b.label, 'tr');
-            }});
+        events.forEach(e => {{
+            const cat = categories[e.category] || {{}};
+            const catLabel = cat.label || e.category;
+            const catColor = cat.color || '#636e72';
+            const tier = (cat && typeof cat.tier === 'number') ? cat.tier : 2;
+            const videoHtml = e.youtube_video_id
+                ? `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>`
+                : '';
+            const wikiHtml = e.wikipedia_url
+                ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
+                : '';
+            const categoryHtml = `<div class="event-category">${{catLabel}}</div>`;
+            const eventId = String(e.id || '');
 
             html += `
-                <details class="event-branch" data-branch-key="${{branchStateKey}}" style="--branch-color:${{branch.color}}" ${{branchOpen ? 'open' : ''}}>
-                    <summary class="event-branch-summary">
-                        <span class="event-branch-title">
-                            <span class="event-branch-dot"></span>
-                            ${{branch.label}}
-                        </span>
-                        <span class="event-branch-count">${{branch.total}}</span>
-                    </summary>
-                    <div class="event-branch-body">
-            `;
-
-            categoryGroups.forEach(group => {{
-                const categoryStateKey = `${{branchStateKey}}::${{group.key}}`;
-                const categoryOpen = (openState.categories[categoryStateKey] !== undefined) ? openState.categories[categoryStateKey] : true;
-
-                html += `
-                    <details class="event-subbranch" data-category-key="${{categoryStateKey}}" ${{categoryOpen ? 'open' : ''}}>
-                        <summary class="event-subbranch-summary">
-                            <span class="event-subbranch-title">${{group.label}}</span>
-                            <span class="event-subbranch-count">${{group.events.length}}</span>
-                        </summary>
-                        <div class="event-item-list">
-                `;
-
-                group.events.forEach(e => {{
-                    const tier = group.tier;
-                    const videoHtml = e.youtube_video_id
-                        ? `<div class="video-container"><iframe src="https://www.youtube.com/embed/${{e.youtube_video_id}}?rel=0" allowfullscreen></iframe></div>`
-                        : '';
-                    const wikiHtml = e.wikipedia_url
-                        ? `<div class="event-links"><a class="event-wiki" href="${{e.wikipedia_url}}" target="_blank" rel="noopener noreferrer">Wikipedia <span aria-hidden="true">↗</span></a></div>`
-                        : '';
-                    const categoryHtml = `<div class="event-category">${{group.label}}</div>`;
-                    const eventId = String(e.id || '');
-                    const descText = buildEventDescriptionText(e, group.label);
-
-                    html += `
-                        <div class="event-item tier-${{tier}}" data-event-id="${{eventId}}" data-category="${{e.category}}" data-decade="${{e.decade}}" style="--cat-color:${{group.color}}">
-                            <div class="event-year">${{e.year}}</div>
-                            <div class="event-title">${{e.title}}</div>
-                            ${{categoryHtml}}
-                            <div class="event-desc">${{parseMarkdownLinks(descText)}}</div>
-                            ${{wikiHtml}}
-                            ${{videoHtml}}
-                        </div>
-                    `;
-                }});
-
-                html += `
-                        </div>
-                    </details>
-                `;
-            }});
-
-            html += `
-                    </div>
-                </details>
+                <div class="event-item tier-${{tier}}" data-event-id="${{eventId}}" data-category="${{e.category}}" data-decade="${{e.decade}}" style="--cat-color:${{catColor}}">
+                    <div class="event-year">${{e.year}}</div>
+                    <div class="event-title">${{e.title}}</div>
+                    ${{categoryHtml}}
+                    <div class="event-desc">${{parseMarkdownLinks(e.description)}}</div>
+                    ${{wikiHtml}}
+                    ${{videoHtml}}
+                </div>
             `;
         }});
 
@@ -5253,56 +4618,34 @@ function closeSidebar() {{
     const sidebar = document.getElementById('countrySidebar');
     if (sidebar) sidebar.classList.remove('open');
 }}
-
-function syncFilterPanelState(isOpen) {{
+function toggleFilterPanel() {{
     const panel = document.getElementById('controlPanel');
     const fab = document.getElementById('panelFab');
     const btn = document.getElementById('panelToggle');
     const handle = document.getElementById('panelHandle');
     const handleIcon = document.getElementById('panelHandleIcon');
-    const backdrop = document.getElementById('panelBackdrop');
     if (!panel) return;
-
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    panel.dataset.mode = isMobile ? 'mobile' : 'desktop';
-    panel.classList.toggle('mobile-open', isMobile && isOpen);
-    document.body.classList.toggle('panel-sheet-open', isMobile && isOpen);
-
+    const open = !panel.classList.contains('mobile-open');
+    if (open) {{
+        panel.classList.add('mobile-open');
+    }} else {{
+        panel.classList.remove('mobile-open');
+    }}
     if (fab) {{
-        fab.classList.toggle('hidden', isMobile && isOpen);
-        fab.setAttribute('aria-expanded', isMobile && isOpen ? 'true' : 'false');
+        fab.classList.toggle('hidden', open);
+        fab.setAttribute('aria-expanded', open ? 'true' : 'false');
     }}
     if (btn) {{
-        btn.textContent = isMobile && isOpen ? 'Filtreleri Kapat' : 'Filtreler';
-        btn.setAttribute('aria-expanded', isMobile && isOpen ? 'true' : 'false');
+        btn.textContent = open ? 'Kapat' : 'Filtreler';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }}
     if (handle) {{
-        handle.setAttribute('aria-expanded', isMobile && isOpen ? 'true' : 'false');
+        handle.setAttribute('aria-expanded', open ? 'true' : 'false');
     }}
     if (handleIcon) {{
-        handleIcon.textContent = isMobile && isOpen ? '›' : '‹';
+        // Show direction: when panel is open, arrow points right (close); when closed, left (open).
+        handleIcon.textContent = open ? '›' : '‹';
     }}
-    if (backdrop) {{
-        backdrop.classList.toggle('active', isMobile && isOpen);
-    }}
-}}
-
-function applyResponsiveFilterPanelState() {{
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const nextMode = isMobile ? 'mobile' : 'desktop';
-    if (window._filterPanelLayoutMode !== nextMode) {{
-        window._filterPanelLayoutMode = nextMode;
-        configureFilterSectionsForViewport(isMobile);
-    }}
-    syncFilterPanelState(!isMobile);
-}}
-
-function toggleFilterPanel(forceOpen = null) {{
-    const panel = document.getElementById('controlPanel');
-    if (!panel) return;
-    const currentOpen = panel.classList.contains('mobile-open');
-    const open = typeof forceOpen === 'boolean' ? forceOpen : !currentOpen;
-    syncFilterPanelState(open);
 }}
 function toggleDecadeSection(header) {{
     const events = header.nextElementSibling;
@@ -5410,16 +4753,8 @@ function clearCountryHighlight() {{
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function() {{
-    applyResponsiveFilterPanelState();
-    const mobileMedia = window.matchMedia('(max-width: 768px)');
-    if (mobileMedia && typeof mobileMedia.addEventListener === 'function') {{
-        mobileMedia.addEventListener('change', applyResponsiveFilterPanelState);
-    }} else if (mobileMedia && typeof mobileMedia.addListener === 'function') {{
-        mobileMedia.addListener(applyResponsiveFilterPanelState);
-    }}
     initFilters();
     initAiSearch();
-    initMapSearch();
     updateFilterBadges();
     setTimeout(updateGroupCounts, 500);
 }});
@@ -5554,39 +4889,6 @@ window.addEventListener('load', function() {{
             json.dump(meta_bundle, f, ensure_ascii=False, separators=(",", ":"))
         print(f"  Data asset: meta.json ({meta_path.stat().st_size // 1024}KB)")
 
-    def _normalize_document_shell(self, output_path: str) -> None:
-        """Normalize generated HTML shell for mobile accessibility and document semantics."""
-        output_file = Path(output_path)
-        html = output_file.read_text(encoding="utf-8")
-
-        html = html.replace("<html>", '<html lang="tr">', 1)
-        html = re.sub(
-            r'<meta name="viewport" content="width=device-width,\s*initial-scale=1\.0, maximum-scale=1\.0, user-scalable=no"\s*/>',
-            '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-            html,
-            count=1,
-        )
-
-        output_file.write_text(html, encoding="utf-8")
-
-    @staticmethod
-    def _has_valid_coordinates(event: Dict[str, Any]) -> bool:
-        try:
-            lat = float(event.get("lat") or 0)
-            lon = float(event.get("lon") or 0)
-        except (TypeError, ValueError):
-            return False
-        if lat == 0 and lon == 0:
-            return False
-        return -85 <= lat <= 85 and -180 <= lon <= 180
-
-    def _select_marker_event(self, country_events: List[dict]) -> Optional[Dict[str, Any]]:
-        ranked = sorted(country_events, key=lambda x: (x.get("year") or 0), reverse=True)
-        for event in ranked:
-            if self._has_valid_coordinates(event):
-                return event
-        return None
-
     def create_map(self, output_path: str = None) -> str:
         """Create the interactive geopolitical map."""
         output_path = output_path or self.output_dir / "geopolitical_map.html"
@@ -5614,28 +4916,8 @@ window.addEventListener('load', function() {{
         m = folium.Map(
             location=[30, 20],
             zoom_start=3,
-            min_zoom=2,
-            max_bounds=True,
-            world_copy_jump=False,
             tiles='CartoDB positron',
             prefer_canvas=True
-        )
-
-        map_name = m.get_name()
-        m.get_root().script.add_child(
-            folium.Element(
-                f"""
-<script>
-window.addEventListener('load', function() {{
-    var map = {map_name};
-    if (!map) return;
-    map.setMinZoom(2);
-    map.setMaxBounds([[-70, -179.9], [85, 179.9]]);
-    map.options.maxBoundsViscosity = 1.0;
-}});
-</script>
-"""
-            )
         )
 
         # Add custom CSS and JS
@@ -5649,13 +4931,10 @@ window.addEventListener('load', function() {{
                 by_country[country] = []
             by_country[country].append(event)
 
-        skipped_marker_countries = []
-        # Add one marker per country using the newest event with valid coordinates.
+        # Add one marker per country (at the location of most recent event)
         for country, events in by_country.items():
-            marker_event = self._select_marker_event(events)
-            if marker_event is None:
-                skipped_marker_countries.append(country)
-                continue
+            # Use the most recent event's location
+            latest = max(events, key=lambda x: x['year'])
 
             # Determine dominant category for icon
             cat_counts = {}
@@ -5667,18 +4946,15 @@ window.addEventListener('load', function() {{
             icon = self._get_marker_icon(dominant_cat)
 
             marker = folium.Marker(
-                location=[marker_event['lat'], marker_event['lon']],
+                location=[latest['lat'], latest['lon']],
                 popup=folium.Popup(popup_content, max_width=350),
                 tooltip=f"{country} ({len(events)} olay)",
                 icon=icon
             )
             marker.add_to(m)
 
-        self.build_info["markerless_countries"] = len(skipped_marker_countries)
-
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         m.save(str(output_path))
-        self._normalize_document_shell(output_path)
 
         # Write data assets as separate files for async loading
         self._write_data_assets(Path(output_path).parent)
@@ -5759,18 +5035,46 @@ window.addEventListener('load', async function() {{
         if (!loaded) return;
     }}
 
+    // Failsafe: remove loading overlay after 15 seconds no matter what
     setTimeout(function() {{
-        // Robustly find Leaflet map instance
-        for (let key in window) {{
-            if (window[key] && window[key] instanceof L.Map) {{
-                window.geoMap = window[key];
-                console.log("Found Leaflet Map instance:", key);
-                break;
-            }}
-        }}
+        const ov = document.getElementById('loadingOverlay');
+        if (ov) {{ ov.style.opacity = '0'; setTimeout(() => ov.remove(), 400); }}
+    }}, 15000);
 
+    function findMapInstance() {{
+        for (let key in window) {{
+            try {{
+                if (window[key] && window[key] instanceof L.Map) {{
+                    return key;
+                }}
+            }} catch(e) {{}}
+        }}
+        return null;
+    }}
+
+    let retries = 0;
+    const maxRetries = 20;
+    function tryInitMap() {{
+        retries++;
+        const mapKey = findMapInstance();
+        if (mapKey) {{
+            window.geoMap = window[mapKey];
+            console.log("Found Leaflet Map instance:", mapKey, "(attempt " + retries + ")");
+            initMapFeatures();
+        }} else if (retries < maxRetries) {{
+            console.log("Map instance not found yet, retrying... (" + retries + "/" + maxRetries + ")");
+            setTimeout(tryInitMap, 500);
+        }} else {{
+            console.error("Map instance not found after " + maxRetries + " attempts!");
+            const ov = document.getElementById('loadingOverlay');
+            if (ov) {{ ov.style.opacity = '0'; setTimeout(() => ov.remove(), 400); }}
+        }}
+    }}
+
+    setTimeout(tryInitMap, 300);
+
+    function initMapFeatures() {{
         if (!window.geoMap) {{
-            console.error("Map instance not found in window properties!");
             return;
         }}
         
@@ -5937,7 +5241,7 @@ window.addEventListener('load', async function() {{
             setTimeout(() => overlay.remove(), 400);
         }}
 
-    }}, 1500); // Wait for Folium to finish initialization
+    }} // end initMapFeatures
 }});
 
 // --- Performance: Debounce + rAF utilities ---
@@ -6778,7 +6082,11 @@ if ("serviceWorker" in navigator) {
 <script defer data-domain="jeopolitik.com.tr" src="https://plausible.io/js/script.js"></script>
 '''
 
-        html = html.replace('</body>', inject_script + share_analytics_html + '</body>')
+        # Folium places </body> BEFORE its scripts. 
+        # By removing Folium's original </body> and appending ours right before </html>, 
+        # we ensure ALL script tags (both Folium's and ours) are inside the <body>.
+        html = html.replace('</body>', inject_script + share_analytics_html)
+        html = html.replace('</html>', '</body>\n</html>')
 
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(html)
