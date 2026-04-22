@@ -8,7 +8,7 @@ import os
 import re
 import unicodedata
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 import folium
 from folium.plugins import MarkerCluster
@@ -1444,7 +1444,7 @@ function parseMarkdownLinks(text) {
 
     /* Timeline in sidebar */
     .decade-section {{
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }}
     .decade-header {{
         padding: 12px 20px 12px 48px;
@@ -1494,17 +1494,29 @@ function parseMarkdownLinks(text) {
     .decade-events {{
         display: none;
         background: transparent;
-        padding-bottom: 6px;
+        margin-left: 18px;
+        padding: 4px 0 8px 14px;
+        position: relative;
     }}
     .decade-events.open {{
         display: block;
     }}
+    .decade-events::before {{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 8px;
+        width: 1px;
+        background: linear-gradient(180deg, rgba(0,206,201,0.22), rgba(116,185,255,0.14), transparent);
+    }}
     .event-branch {{
-        margin: 8px 10px 10px;
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: 10px;
-        background: rgba(255,255,255,0.025);
-        overflow: hidden;
+        margin: 6px 0 10px;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        overflow: visible;
+        position: relative;
     }}
     .event-branch summary,
     .event-subbranch summary {{
@@ -1522,10 +1534,22 @@ function parseMarkdownLinks(text) {
         gap: 10px;
         cursor: pointer;
         user-select: none;
+        position: relative;
     }}
     .event-branch-summary {{
-        padding: 10px 14px;
-        background: rgba(255,255,255,0.03);
+        padding: 8px 0 8px 18px;
+        background: transparent;
+    }}
+    .event-branch-summary::before,
+    .event-subbranch-summary::before,
+    .event-item::after {{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 12px;
+        height: 1px;
+        background: rgba(255,255,255,0.16);
     }}
     .event-branch-title {{
         display: inline-flex;
@@ -1548,71 +1572,94 @@ function parseMarkdownLinks(text) {
     .event-subbranch-count {{
         font-size: 10px;
         color: rgba(236,240,241,0.7);
-        background: rgba(255,255,255,0.06);
+        background: rgba(255,255,255,0.05);
         border-radius: 999px;
         padding: 3px 8px;
         flex-shrink: 0;
     }}
     .event-branch-body {{
-        padding: 8px 0 2px;
+        padding: 0 0 0 18px;
+        position: relative;
+    }}
+    .event-branch-body::before {{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 10px;
+        width: 1px;
+        background: rgba(255,255,255,0.08);
     }}
     .event-subbranch {{
-        margin: 0 10px 10px;
-        border-left: 2px solid rgba(255,255,255,0.08);
-        padding-left: 12px;
+        margin: 0 0 8px;
+        border-left: none;
+        padding: 0 0 0 18px;
+        position: relative;
+    }}
+    .event-subbranch::before {{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 12px;
+        width: 1px;
+        background: rgba(255,255,255,0.08);
     }}
     .event-subbranch-summary {{
-        padding: 2px 0 8px;
+        padding: 7px 0 7px 16px;
     }}
     .event-subbranch-title {{
         font-size: 11px;
         font-weight: 700;
         color: rgba(236,240,241,0.82);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        text-transform: none;
+        letter-spacing: 0;
     }}
     .event-item-list {{
         display: flex;
         flex-direction: column;
         gap: 0;
+        margin-left: 16px;
+        padding-left: 14px;
+        border-left: 1px solid rgba(255,255,255,0.08);
     }}
-    /* Glass event cards */
     .event-item {{
-        padding: 14px 16px 14px 48px;
-        margin: 4px 8px 4px 8px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-left: 4px solid var(--cat-color, #636e72);
-        background: rgba(255, 255, 255, 0.03);
+        padding: 8px 0 12px 18px;
+        margin: 0 0 12px;
+        border-radius: 0;
+        border: none;
+        border-left: 2px solid rgba(255, 255, 255, 0.08);
+        background: transparent;
         position: relative;
         transition: all 0.2s;
     }}
-    /* Small timeline dot on event */
     .event-item::before {{
         content: '';
         position: absolute;
-        left: 16px;
-        top: 20px;
-        width: 6px;
-        height: 6px;
+        left: -5px;
+        top: 14px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
         background: var(--cat-color, #636e72);
-        opacity: 0.7;
+        opacity: 0.95;
         z-index: 2;
     }}
+    .event-item::after {{
+        top: 17px;
+    }}
     .event-item:hover {{
-        background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(255, 255, 255, 0.12);
-        transform: translateX(2px);
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.14);
+        transform: none;
     }}
     .event-item:last-child {{
         border-bottom: none;
     }}
     .event-item.tier-1 {{
-        border-left-width: 5px;
-        background: rgba(255, 255, 255, 0.06);
-        border-color: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        border-left-width: 3px;
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.18);
     }}
     .event-item.tier-1::before {{
         width: 8px;
@@ -1621,8 +1668,8 @@ function parseMarkdownLinks(text) {
         box-shadow: 0 0 6px var(--cat-color, #636e72);
     }}
     .event-item.tier-3 {{
-        border-left-width: 3px;
-        background: rgba(255, 255, 255, 0.015);
+        border-left-width: 2px;
+        background: rgba(255, 255, 255, 0.012);
         opacity: 0.88;
     }}
     .event-item.event-enter {{
@@ -5522,6 +5569,24 @@ window.addEventListener('load', function() {{
 
         output_file.write_text(html, encoding="utf-8")
 
+    @staticmethod
+    def _has_valid_coordinates(event: Dict[str, Any]) -> bool:
+        try:
+            lat = float(event.get("lat") or 0)
+            lon = float(event.get("lon") or 0)
+        except (TypeError, ValueError):
+            return False
+        if lat == 0 and lon == 0:
+            return False
+        return -85 <= lat <= 85 and -180 <= lon <= 180
+
+    def _select_marker_event(self, country_events: List[dict]) -> Optional[Dict[str, Any]]:
+        ranked = sorted(country_events, key=lambda x: (x.get("year") or 0), reverse=True)
+        for event in ranked:
+            if self._has_valid_coordinates(event):
+                return event
+        return None
+
     def create_map(self, output_path: str = None) -> str:
         """Create the interactive geopolitical map."""
         output_path = output_path or self.output_dir / "geopolitical_map.html"
@@ -5549,8 +5614,28 @@ window.addEventListener('load', function() {{
         m = folium.Map(
             location=[30, 20],
             zoom_start=3,
+            min_zoom=2,
+            max_bounds=True,
+            world_copy_jump=False,
             tiles='CartoDB positron',
             prefer_canvas=True
+        )
+
+        map_name = m.get_name()
+        m.get_root().script.add_child(
+            folium.Element(
+                f"""
+<script>
+window.addEventListener('load', function() {{
+    var map = {map_name};
+    if (!map) return;
+    map.setMinZoom(2);
+    map.setMaxBounds([[-70, -179.9], [85, 179.9]]);
+    map.options.maxBoundsViscosity = 1.0;
+}});
+</script>
+"""
+            )
         )
 
         # Add custom CSS and JS
@@ -5564,10 +5649,13 @@ window.addEventListener('load', function() {{
                 by_country[country] = []
             by_country[country].append(event)
 
-        # Add one marker per country (at the location of most recent event)
+        skipped_marker_countries = []
+        # Add one marker per country using the newest event with valid coordinates.
         for country, events in by_country.items():
-            # Use the most recent event's location
-            latest = max(events, key=lambda x: x['year'])
+            marker_event = self._select_marker_event(events)
+            if marker_event is None:
+                skipped_marker_countries.append(country)
+                continue
 
             # Determine dominant category for icon
             cat_counts = {}
@@ -5579,12 +5667,14 @@ window.addEventListener('load', function() {{
             icon = self._get_marker_icon(dominant_cat)
 
             marker = folium.Marker(
-                location=[latest['lat'], latest['lon']],
+                location=[marker_event['lat'], marker_event['lon']],
                 popup=folium.Popup(popup_content, max_width=350),
                 tooltip=f"{country} ({len(events)} olay)",
                 icon=icon
             )
             marker.add_to(m)
+
+        self.build_info["markerless_countries"] = len(skipped_marker_countries)
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         m.save(str(output_path))
